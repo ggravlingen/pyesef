@@ -16,7 +16,7 @@ repos:
         args:
           - --safe
           - --quiet
-        files: ^(pyesef|examples|tests)/.+\.py$
+        files: ^(pyesef|tests)/.+\.py$
   - repo: https://github.com/PyCQA/isort
     rev: 5.10.1
     hooks:
@@ -31,7 +31,7 @@ repos:
         entry: pylint
         language: system
         types: [python]
-        files: ^(pyesef|examples|tests)/.+\.py$
+        files: ^(pyesef|tests)/.+\.py$
   - repo: local
     hooks:
       - id: pytest
@@ -52,4 +52,4 @@ repos:
         entry: flake8
         language: system
         types: [python]
-        files: ^(pyesef|examples|tests)/.+\.py$
+        files: ^(pyesef|tests)/.+\.py$
