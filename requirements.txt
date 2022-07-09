@@ -1,0 +1,5 @@
+eikon==1.1.15
+git+https://github.com/Arelle/Arelle.git#0.9.91
+isodate==0.6.1
+lxml==4.9.1
+pandas==1.4.3
