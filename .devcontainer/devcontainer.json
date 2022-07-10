@@ -3,6 +3,7 @@
 	"context": "..",
 	"dockerFile": "Dockerfile.dev",
 	"postCreateCommand": "script/setup",
+	"postStartCommand": "script/bootstrap",
 	"containerEnv": {
 		"DEVCONTAINER": "1"
 	},
@@ -33,6 +34,7 @@
 	"extensions": [
 		"ms-python.vscode-pylance",
 		"visualstudioexptteam.vscodeintellicode",
-		"esbenp.prettier-vscode"
+		"esbenp.prettier-vscode",
+		"mechatroner.rainbow-csv"
 	],
 }

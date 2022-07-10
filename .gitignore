@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Library related
+filings
+archives
+not_valid
+*.csv

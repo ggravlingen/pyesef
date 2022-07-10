@@ -12,6 +12,10 @@ COPY . $FILE_LOCATION
 
 WORKDIR $FILE_LOCATION
 
+RUN sudo apt-get update && \
+    apt-get install tidy && \
+    apt-get autoremove
+
 RUN sudo python3 -m venv $VIRTUAL_ENV && \
     sudo chown -R $LOCAL_USER:$LOCAL_USER ${VIRTUAL_ENV} && \
     . $VIRTUAL_ENV/bin/activate && \
