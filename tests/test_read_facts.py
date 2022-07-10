@@ -2,7 +2,7 @@
 from pyesef.helpers.read_facts import _get_label
 
 
-def test_test():
+def test_get_label():
     """Just a placeholder test."""
     property_view = (
         ("a", "b"),
