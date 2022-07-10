@@ -110,7 +110,8 @@ def _get_membership(
         return None, None
 
     items = scenario.stringValue.split(":")
-    if not items:
+
+    if not items or len(items) != 2:
         return None, None
 
     return items[0], items[1]
