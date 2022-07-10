@@ -1,11 +1,10 @@
 """Main."""
-from pyesef.helpers.read_filings import read_filings
-from pyesef.helpers.to_dataframe import to_dataframe
+from pyesef.helpers import read_filings, to_dataframe
 
 
 def main():
     """Run main."""
-    filings = read_filings()
+    filings = read_filings(filter_year=2021)
     df = to_dataframe(filings)
 
     df.to_csv("a.csv", sep=";", index=False)

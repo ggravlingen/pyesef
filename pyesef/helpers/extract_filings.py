@@ -5,7 +5,7 @@ import zipfile
 from ..const import PATH_ARCHIVES, PATH_FILINGS
 
 
-def extract_archives():
+def extract_filings():
     """Extract all files in archives folder."""
     for root, _, files in os.walk(PATH_ARCHIVES):
         for file in files:
