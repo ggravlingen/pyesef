@@ -26,7 +26,8 @@ class-const-naming-style = "any"
 disable = [
   "broad-except",
   "too-many-instance-attributes",
-  "too-many-return-statements"
+  "too-many-return-statements",
+  "too-few-public-methods"
 ]
 
 [tool.pylint.REPORTS]

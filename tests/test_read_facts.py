@@ -45,7 +45,7 @@ def test_get_membership():
         """Mock scenario."""
 
         def __init__(self, value) -> None:
-            self.stringValue = value
+            self.stringValue = value  # pylint: disable=invalid-name
 
     test_object = ModelObject(value="a")
     function_val = _get_membership(test_object)
