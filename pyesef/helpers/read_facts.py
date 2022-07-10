@@ -7,8 +7,10 @@ import fractions
 from typing import Any
 
 from arelle import ModelXbrl
-
-from ..utils import parsed_value
+from arelle.ModelDtsObject import ModelConcept
+from arelle.ModelInstanceObject import ModelFact
+from arelle.ModelValue import dateTime
+from arelle.ValidateXbrlCalcs import roundValue
 
 
 @dataclass
@@ -38,7 +40,51 @@ class EsefData:
     # Prefix for the record's parent
     membership_prefix: str | None
     # True if the record has been defined by the company
-    is_self_defined: bool = False
+    is_extension: bool = False
+
+
+def parsed_value(
+    fact: ModelFact,
+) -> (fractions.Fraction | int | Any | bool | str | None):
+    """
+    Parse value.
+
+    https://github.com/private-circle/rlq/blob/master/rlq/rl_utils.py
+    """
+    if fact is None:
+        return None
+
+    concept: ModelConcept = fact.concept
+
+    if concept is None or concept.isTuple or fact.isNil:
+        return None
+
+    if concept.isFraction:
+        num, den = map(fractions.Fraction, fact.fractionValue)
+        return num / den
+
+    val = fact.value.strip()
+
+    if concept.isInteger:
+        return int(val)
+    elif concept.isNumeric:
+        dec = fact.decimals
+
+        if dec is None or dec == "INF":  # show using decimals or reported format
+            dec = len(val.partition(".")[2])
+        else:  # max decimals at 28
+            dec = max(
+                min(int(dec), 28), -28
+            )  # 2.7 wants short int, 3.2 takes regular int, don't use _INT here
+        num = roundValue(val, fact.precision, dec)  # round using reported decimals
+        return num
+    elif concept.baseXbrliType == "dateItemType":
+        return dateTime(val)
+    elif concept.baseXbrliType == "booleanItemType":
+        return val.lower() in ("1", "true")
+    elif concept.isTextBlock:
+        return " ".join(val.split())
+    return val
 
 
 def _get_label(property_view: tuple[tuple[str, str]]) -> str | None:
@@ -62,13 +108,13 @@ def _get_membership(scenario: str | None) -> tuple[str, str] | tuple[None, None]
     return items[0], items[1]
 
 
-def _get_self_defined(prefix: str) -> bool:
+def _get_is_extension(prefix: str) -> bool:
     """Return true if the record is not defined in the IFRS taxonomy."""
-    return prefix == "ifrs-full"
+    return prefix != "ifrs-full"
 
 
 def _get_period_end(end_date_time: datetime) -> date:
-    """Return the end of the fact's period."""
+    """Return the end of the fact's financial period."""
     return (end_date_time - timedelta(days=1)).date()
 
 
@@ -93,10 +139,7 @@ def read_facts(model_xbrl: ModelXbrl, filter_year: int | None = None) -> list[Es
         ]:
             continue
 
-        is_self_defined = _get_self_defined(fact.qname.prefix)
-
         _, lei = fact.context.entityIdentifier
-
         membership_prefix, membership_name = _get_membership(fact.context.scenario)
 
         fact_list.append(
@@ -107,7 +150,7 @@ def read_facts(model_xbrl: ModelXbrl, filter_year: int | None = None) -> list[Es
                 membership_prefix=membership_prefix,
                 membership=membership_name,
                 value=parsed_value(fact),
-                is_self_defined=is_self_defined,
+                is_extension=_get_is_extension(fact.qname.prefix),
                 period_end=date_period_end,
                 lei=lei,
                 currency=fact.unit.value,

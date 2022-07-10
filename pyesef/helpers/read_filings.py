@@ -3,11 +3,18 @@ from __future__ import annotations
 
 import os
 
-from arelle import ModelManager, ModelXbrl
+from arelle import Cntlr, ModelManager, ModelXbrl
 
 from ..const import PATH_FILINGS, FileName
-from ..utils import Controller
 from .read_facts import EsefData, read_facts
+
+
+class Controller(Cntlr.Cntlr):
+    """Controller."""
+
+    def __init__(self):
+        """Init controller with logging."""
+        super().__init__(logFileName="logToPrint")
 
 
 def read_filings(filter_year: int | None = None) -> list[EsefData]:
