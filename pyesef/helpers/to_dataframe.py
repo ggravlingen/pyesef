@@ -5,7 +5,7 @@ from dataclasses import asdict
 
 import pandas as pd
 
-from .read_filings import EsefData
+from .read_facts import EsefData
 
 
 def to_dataframe(filing_list: list[EsefData]) -> pd.DataFrame:

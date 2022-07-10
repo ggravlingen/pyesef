@@ -9,6 +9,7 @@ from typing import Any
 from arelle import ModelXbrl
 from arelle.ModelDtsObject import ModelConcept
 from arelle.ModelInstanceObject import ModelFact
+from arelle.ModelObject import ModelObject
 from arelle.ModelValue import dateTime
 from arelle.ValidateXbrlCalcs import roundValue
 
@@ -67,7 +68,8 @@ def parsed_value(
 
     if concept.isInteger:
         return int(val)
-    elif concept.isNumeric:
+
+    if concept.isNumeric:
         dec = fact.decimals
 
         if dec is None or dec == "INF":  # show using decimals or reported format
@@ -78,12 +80,16 @@ def parsed_value(
             )  # 2.7 wants short int, 3.2 takes regular int, don't use _INT here
         num = roundValue(val, fact.precision, dec)  # round using reported decimals
         return num
-    elif concept.baseXbrliType == "dateItemType":
+
+    if concept.baseXbrliType == "dateItemType":
         return dateTime(val)
-    elif concept.baseXbrliType == "booleanItemType":
+
+    if concept.baseXbrliType == "booleanItemType":
         return val.lower() in ("1", "true")
-    elif concept.isTextBlock:
+
+    if concept.isTextBlock:
         return " ".join(val.split())
+
     return val
 
 
@@ -96,7 +102,9 @@ def _get_label(property_view: tuple[tuple[str, str]]) -> str | None:
     return None
 
 
-def _get_membership(scenario: str | None) -> tuple[str, str] | tuple[None, None]:
+def _get_membership(
+    scenario: ModelObject | None,
+) -> tuple[str, str] | tuple[None, None]:
     """Get membership of item."""
     if scenario is None:
         return None, None
