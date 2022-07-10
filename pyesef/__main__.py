@@ -2,7 +2,7 @@
 from pyesef.helpers import read_filings, to_dataframe
 
 
-def main():
+def main() -> None:
     """Run main."""
     filings = read_filings(filter_year=2021)
     df = to_dataframe(filings)

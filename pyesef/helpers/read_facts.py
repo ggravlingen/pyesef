@@ -9,6 +9,7 @@ from typing import Any
 from arelle import ModelXbrl
 from arelle.ModelDtsObject import ModelConcept
 from arelle.ModelInstanceObject import ModelFact
+from arelle.ModelObject import ModelObject
 from arelle.ModelValue import dateTime
 from arelle.ValidateXbrlCalcs import roundValue
 
@@ -96,7 +97,9 @@ def _get_label(property_view: tuple[tuple[str, str]]) -> str | None:
     return None
 
 
-def _get_membership(scenario: str | None) -> tuple[str, str] | tuple[None, None]:
+def _get_membership(
+    scenario: ModelObject | None,
+) -> tuple[str, str] | tuple[None, None]:
     """Get membership of item."""
     if scenario is None:
         return None, None

@@ -3,16 +3,17 @@ from __future__ import annotations
 
 import os
 
-from arelle import Cntlr, ModelManager, ModelXbrl
+from arelle import ModelManager, ModelXbrl
+from arelle.Cntlr import Cntlr
 
 from ..const import PATH_FILINGS, FileName
 from .read_facts import EsefData, read_facts
 
 
-class Controller(Cntlr.Cntlr):
+class Controller(Cntlr):  # type: ignore
     """Controller."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Init controller with logging."""
         super().__init__(logFileName="logToPrint")
 
