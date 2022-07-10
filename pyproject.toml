@@ -16,14 +16,18 @@ forced_separate = [
 combine_as_imports = true
 
 [tool.pylint.MASTER]
-py-version = "3.8"
-
+py-version = "3.9"
 
 [tool.pylint.BASIC]
 class-const-naming-style = "any"
 
-[tool.pylint."MESSAGES CONTROL"]
 
+[tool.pylint."MESSAGES CONTROL"]
+disable = [
+  "broad-except",
+  "too-many-instance-attributes",
+  "too-many-return-statements"
+]
 
 [tool.pylint.REPORTS]
 score = false
@@ -38,7 +42,6 @@ overgeneral-exceptions = [
 ]
 
 [tool.pylint.TYPING]
-runtime-typing = false
 
 [tool.pytest.ini_options]
 testpaths = [

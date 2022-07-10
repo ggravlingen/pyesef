@@ -68,7 +68,8 @@ def parsed_value(
 
     if concept.isInteger:
         return int(val)
-    elif concept.isNumeric:
+
+    if concept.isNumeric:
         dec = fact.decimals
 
         if dec is None or dec == "INF":  # show using decimals or reported format
@@ -79,12 +80,16 @@ def parsed_value(
             )  # 2.7 wants short int, 3.2 takes regular int, don't use _INT here
         num = roundValue(val, fact.precision, dec)  # round using reported decimals
         return num
-    elif concept.baseXbrliType == "dateItemType":
+
+    if concept.baseXbrliType == "dateItemType":
         return dateTime(val)
-    elif concept.baseXbrliType == "booleanItemType":
+
+    if concept.baseXbrliType == "booleanItemType":
         return val.lower() in ("1", "true")
-    elif concept.isTextBlock:
+
+    if concept.isTextBlock:
         return " ".join(val.split())
+
     return val
 
 
