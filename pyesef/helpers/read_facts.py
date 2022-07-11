@@ -6,12 +6,19 @@ from datetime import date, datetime, timedelta
 import fractions
 from typing import Any
 
-from arelle import ModelXbrl
 from arelle.ModelDtsObject import ModelConcept
 from arelle.ModelInstanceObject import ModelFact
 from arelle.ModelObject import ModelObject
 from arelle.ModelValue import dateTime
+from arelle.ModelXbrl import ModelXbrl
 from arelle.ValidateXbrlCalcs import roundValue
+
+from ..const import NiceType
+from .extract_definitions_to_csv import (
+    check_definitions_exists,
+    definitions_to_dict,
+    extract_definitions_to_csv,
+)
 
 
 @dataclass
@@ -26,6 +33,8 @@ class EsefData:
     label: str | None
     # The XML name of the record item
     local_name: str
+    # A formal description of the line item
+    description: str | None
     # The name of the item this record belongs to
     membership: str | None
     # Currency of the value
@@ -127,7 +136,15 @@ def _get_period_end(end_date_time: datetime) -> date:
     return (end_date_time - timedelta(days=1)).date()
 
 
-# TO:DO: IFRS description
+def _get_description(
+    local_name: str, lookup_table: dict[str, dict[str, str]]
+) -> str | None:
+    if local_name in lookup_table:
+        return lookup_table[local_name]["definition"]
+
+    return None
+
+
 # TO:DO: statement type
 
 
@@ -138,13 +155,23 @@ def read_facts(model_xbrl: ModelXbrl, filter_year: int | None = None) -> list[Es
     for fact in model_xbrl.facts:
         date_period_end = _get_period_end(end_date_time=fact.context.endDatetime)
 
+        # On the first run, we want to make sure we have all the definitions
+        # cached locally
+        if not check_definitions_exists():
+            extract_definitions_to_csv(concept=fact.concept)
+
+        lookup_table = definitions_to_dict()
+        description = _get_description(
+            local_name=fact.qname.localName, lookup_table=lookup_table
+        )
+
         if filter_year is not None and date_period_end.year != filter_year:
             continue
 
         # We don't want to save meta data like company name etc
         if fact.localName == "nonNumeric" or fact.concept.niceType in [
-            "PerShare",
-            "Shares",
+            NiceType.PER_SHARE,
+            NiceType.SHARES,
         ]:
             continue
 
@@ -156,6 +183,7 @@ def read_facts(model_xbrl: ModelXbrl, filter_year: int | None = None) -> list[Es
                 prefix=fact.qname.prefix,
                 label=_get_label(fact.propertyView),
                 local_name=fact.qname.localName,
+                description=description,
                 membership_prefix=membership_prefix,
                 membership=membership_name,
                 value=parsed_value(fact),
