@@ -16,11 +16,19 @@ TEST_DATA = (
             [
                 (
                     "documentation (en)",
-                    "The axis of a table defines the relationship between the members in the table and the line items or concepts that complete the table.",
+                    (
+                        "The axis of a table defines the relationship between the "
+                        "members in the table and the line items or concepts that "
+                        "complete the table."
+                    ),
                 ),
                 (
                     "documentation (sv)",
-                    "Axeln i en tabell anger förhållandet mellan elementen i tabellen och posterna eller begreppen som kompletterar tabellen.",
+                    (
+                        "Axeln i en tabell anger förhållandet mellan elementen i "
+                        "tabellen och posterna eller begreppen som kompletterar "
+                        "tabellen."
+                    ),
                 ),
                 ("label (en)", "Accounting estimates [axis]"),
                 ("label (sv)", "Uppskattningar och bedömningar [axis]"),
@@ -45,7 +53,10 @@ TEST_DATA = (
     ),
     (
         "references",
-        "IAS 10 2021-01-01 22 g http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&num=10&code=ifrs-tx-2021-en-r&anchor=para_22_g&doctype=Standard 2021-03-24",
+        (
+            "IAS 10 2021-01-01 22 g http://eifrs.ifrs.org/eifrs/xifrs-link?type=IAS&"
+            "num=10&code=ifrs-tx-2021-en-r&anchor=para_22_g&doctype=Standard 2021-03-24"
+        ),
     ),
 )
 
@@ -71,9 +82,9 @@ def test_get_label():
 def test_get_definition():
     """Test function _get_definition."""
     function_value = _get_definition(TEST_DATA)
-    assert (
-        function_value
-        == "The axis of a table defines the relationship between the members in the table and the line items or concepts that complete the table."
+    assert function_value == (
+        "The axis of a table defines the relationship between the members in the "
+        "table and the line items or concepts that complete the table."
     )
 
 
@@ -87,4 +98,9 @@ def test_definitions_to_dict():
         assert (
             "AbnormallyLargeChangesInAssetPricesOrForeignExchangeRatesMember"
             in function_value
+        )
+
+        assert function_value["AccountingEstimatesAxis"]["definition"] == (
+            "The axis of a table defines the relationship between the members "
+            "in the table and the line items or concepts that complete the table."
         )

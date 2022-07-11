@@ -140,7 +140,7 @@ def _get_description(
     local_name: str, lookup_table: dict[str, dict[str, str]]
 ) -> str | None:
     if local_name in lookup_table:
-        return lookup_table[local_name]
+        return lookup_table[local_name]["definition"]
 
     return None
 
