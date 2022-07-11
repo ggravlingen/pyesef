@@ -6,7 +6,7 @@ import os
 from arelle import ModelManager, ModelXbrl
 from arelle.Cntlr import Cntlr
 
-from ..const import PATH_FILINGS, FileName
+from ..const import FILE_ENDING_XML, PATH_FILINGS, FileName
 from .read_facts import EsefData, read_facts
 
 
@@ -30,7 +30,7 @@ def read_filings(filter_year: int | None = None) -> list[EsefData]:
 
             for root, _, files in os.walk(entry.path):
                 for file in files:
-                    if ".xhtml" in file:
+                    if FILE_ENDING_XML in file:
                         url_filing = os.path.join(root, file)
 
                     if file in [
