@@ -1,4 +1,4 @@
-label_xml;label;definition
-AbnormallyLargeChangesInAssetPricesOrForeignExchangeRatesMember;Abnormally large changes in asset prices or foreign exchange rates [member];This member stands for abnormally large changes in asset prices or foreign exchange rates.
-AccountingEstimatesAxis;Accounting estimates [axis];The axis of a table defines the relationship between the members in the table and the line items or concepts that complete the table.
-AccountingEstimatesMember;Accounting estimates [member];This member stands for an asset, a liability or a periodic consumption of an asset, subject to adjustments that result from the assessment of the present status of, and expected future benefits and obligations associated with, assets and liabilities. It also represents the standard value for the 'Accounting estimates' axis if no other member is used.
+label_xml|label|definition
+AbnormallyLargeChangesInAssetPricesOrForeignExchangeRatesMember|Abnormally large changes in asset prices or foreign exchange rates [member]|This member stands for abnormally large changes in asset prices or foreign exchange rates.
+AccountingEstimatesAxis|Accounting estimates [axis]|The axis of a table defines the relationship between the members in the table and the line items or concepts that complete the table.
+AccountingEstimatesMember|Accounting estimates [member]|This member stands for an asset, a liability or a periodic consumption of an asset, subject to adjustments that result from the assessment of the present status of, and expected future benefits and obligations associated with, assets and liabilities. It also represents the standard value for the 'Accounting estimates' axis if no other member is used.

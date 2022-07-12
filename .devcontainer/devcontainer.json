@@ -30,11 +30,12 @@
 		"python.languageServer": "Pylance",
 		"python.testing.unittestEnabled": false,
 		"python.testing.pytestEnabled": true,
+		"rainbow_csv.autodetection_min_line_count": 3
 	},
 	"extensions": [
 		"ms-python.vscode-pylance",
 		"visualstudioexptteam.vscodeintellicode",
 		"esbenp.prettier-vscode",
 		"mechatroner.rainbow-csv"
-	],
+	]
 }
