@@ -10,6 +10,8 @@ PATH_ARCHIVES = os.path.join(PATH_BASE, "archives")
 
 FILE_ENDING_XML = ".xhtml"
 
+CSV_SEPARATOR = "|"
+
 
 class FileName(str, Enum):
     """Representation of files that may be available in the XBRL-folder."""

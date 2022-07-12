@@ -5,6 +5,7 @@ import os
 
 from arelle import ModelManager, ModelXbrl
 from arelle.Cntlr import Cntlr
+from arelle.XbrlConst import summationItem
 
 from ..const import FILE_ENDING_XML, PATH_FILINGS, FileName
 from .read_facts import EsefData, read_facts
@@ -16,6 +17,42 @@ class Controller(Cntlr):  # type: ignore
     def __init__(self) -> None:
         """Init controller with logging."""
         super().__init__(logFileName="logToPrint")
+
+
+def extract_model_roles(model_xbrl: ModelXbrl) -> dict[str, str]:
+    """
+    Extract a lookup table between XML item name and the item's role.
+
+    This allows us to determine what financial statement an item belongs to, eg income
+    statement, cash flow analysis or balance sheet.
+    """
+
+    result_dict: dict[str, str] = {}
+
+    rel_set = model_xbrl.relationshipSet(summationItem)
+    concepts_by_roles: dict[str, list[str]] = {}
+
+    for rel in rel_set.modelRelationships:
+        link = concepts_by_roles.get(rel.linkrole, [])
+
+        from_clark = rel.fromModelObject.qname.clarkNotation
+        to_clark = rel.toModelObject.qname.clarkNotation
+
+        if from_clark not in link:
+            link.append(from_clark)
+
+        if to_clark not in link:
+            link.append(to_clark)
+
+        if rel.linkrole not in concepts_by_roles:
+            concepts_by_roles[rel.linkrole] = link
+
+    for key, value_list in concepts_by_roles.items():
+        for item in value_list:
+            if item not in result_dict:
+                result_dict[item] = key.split("/")[-1]
+
+    return result_dict
 
 
 def read_filings(filter_year: int | None = None) -> list[EsefData]:
@@ -46,9 +83,13 @@ def read_filings(filter_year: int | None = None) -> list[EsefData]:
                     model_xbrl: ModelXbrl = model_manager.load(
                         url_filing, taxonomyPackages=url_taxonomy
                     )
+
+                    model_roles = extract_model_roles(model_xbrl=model_xbrl)
+
                     fact_list = read_facts(
                         model_xbrl=model_xbrl,
                         filter_year=filter_year,
+                        model_roles=model_roles,
                     )
                     filing_list.extend(fact_list)
                     model_xbrl.close()

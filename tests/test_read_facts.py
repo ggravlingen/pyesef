@@ -6,6 +6,7 @@ from pyesef.helpers.read_facts import (
     _get_label,
     _get_membership,
     _get_period_end,
+    _get_statement_type,
 )
 
 
@@ -59,3 +60,16 @@ def test_get_membership():
     function_val = _get_membership(test_object)
 
     assert function_val == ("a", "b")
+
+
+def test_get_statement_type():
+    """Test function _get_statement_type."""
+    model_roles = {
+        "abc": "RapportOEverTotalresultat",
+    }
+    clark_notation = "abc"
+
+    assert (
+        _get_statement_type(model_roles=model_roles, clark_notation=clark_notation)
+        == "RapportOEverTotalresultat"
+    )

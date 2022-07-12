@@ -29,6 +29,8 @@ class EsefData:
     lei: str
     # A date representing the end of the record's period
     period_end: date
+    # Type of statement (eg balance sheet or income statement)
+    statement_type: str | None
     # The stated name of the record item
     label: str | None
     # The XML name of the record item
@@ -140,20 +142,35 @@ def _get_description(
     local_name: str, lookup_table: dict[str, dict[str, str]]
 ) -> str | None:
     if local_name in lookup_table:
-        return lookup_table[local_name]["definition"]
+        return (
+            lookup_table[local_name]["definition"]
+            # Make sure the descriptions don't contain line breaks
+            .replace("\r", "").replace("\n", "")
+        )
 
     return None
 
 
-# TO:DO: statement type
+def _get_statement_type(model_roles: dict[str, str], clark_notation: str) -> str | None:
+    """Determine what financial statement type an item belongs to."""
+    if clark_notation in model_roles:
+        return model_roles[clark_notation]
+
+    return None
 
 
-def read_facts(model_xbrl: ModelXbrl, filter_year: int | None = None) -> list[EsefData]:
+def read_facts(
+    model_xbrl: ModelXbrl, model_roles: dict[str, str], filter_year: int | None = None
+) -> list[EsefData]:
     """Read facts of XBRL-files."""
     fact_list: list[EsefData] = []
 
     for fact in model_xbrl.facts:
         date_period_end = _get_period_end(end_date_time=fact.context.endDatetime)
+
+        statement_type = _get_statement_type(
+            model_roles=model_roles, clark_notation=fact.concept.qname.clarkNotation
+        )
 
         # On the first run, we want to make sure we have all the definitions
         # cached locally
@@ -183,6 +200,7 @@ def read_facts(model_xbrl: ModelXbrl, filter_year: int | None = None) -> list[Es
                 prefix=fact.qname.prefix,
                 label=_get_label(fact.propertyView),
                 local_name=fact.qname.localName,
+                statement_type=statement_type,
                 description=description,
                 membership_prefix=membership_prefix,
                 membership=membership_name,
