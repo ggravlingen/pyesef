@@ -1,13 +1,16 @@
 """Helper to read filings."""
 from __future__ import annotations
 
+import logging
 import os
+import shutil
 
 from arelle import ModelManager, ModelXbrl
 from arelle.Cntlr import Cntlr
 from arelle.XbrlConst import summationItem
 
-from ..const import FILE_ENDING_XML, PATH_FILINGS, FileName
+from ..const import CSV_SEPARATOR, FILE_ENDING_XML, PATH_FILINGS, PATH_PARSED, FileName
+from ..utils import to_dataframe
 from .read_facts import EsefData, read_facts
 
 
@@ -26,7 +29,6 @@ def extract_model_roles(model_xbrl: ModelXbrl) -> dict[str, str]:
     This allows us to determine what financial statement an item belongs to, eg income
     statement, cash flow analysis or balance sheet.
     """
-
     result_dict: dict[str, str] = {}
 
     rel_set = model_xbrl.relationshipSet(summationItem)
@@ -55,13 +57,15 @@ def extract_model_roles(model_xbrl: ModelXbrl) -> dict[str, str]:
     return result_dict
 
 
-def read_filings(filter_year: int | None = None) -> list[EsefData]:
+def read_and_save_filings() -> None:
     """Read all filings in the filings folder."""
     cntlr = Controller()
-    filing_list: list[EsefData] = []
 
     with os.scandir(PATH_FILINGS) as dir_iter:
         for entry in dir_iter:
+            cntlr.addToLog(f"Working on {entry}")
+
+            filing_list: list[EsefData] = []
             url_filing: str | None = None
             url_taxonomy: list[str] = []
 
@@ -88,12 +92,32 @@ def read_filings(filter_year: int | None = None) -> list[EsefData]:
 
                     fact_list = read_facts(
                         model_xbrl=model_xbrl,
-                        filter_year=filter_year,
                         model_roles=model_roles,
                     )
                     filing_list.extend(fact_list)
                     model_xbrl.close()
                 except Exception as exc:
-                    print(f"Error {entry.name} due to {exc}")
+                    cntlr.addToLog(
+                        f"Error {entry.name} due to {exc}",
+                        level=logging.WARNING,
+                    )
 
-    return filing_list
+            data_frame = to_dataframe(filing_list)
+            output_path = "output.csv"
+            data_frame.to_csv(
+                output_path,
+                sep=CSV_SEPARATOR,
+                index=False,
+                mode="a",
+                header=not os.path.exists(output_path),
+            )
+
+            # Move the filing folder to another location.
+            # This helps us if the script stops due to memory
+            # constraints.
+            shutil.move(
+                entry,
+                PATH_PARSED,
+            )
+
+    cntlr.close()
