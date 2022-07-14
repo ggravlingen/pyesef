@@ -13,7 +13,7 @@ from arelle.ModelValue import dateTime
 from arelle.ModelXbrl import ModelXbrl
 from arelle.ValidateXbrlCalcs import roundValue
 
-from ..const import NORMALISED_STATEMENT_TYPE, NiceType
+from ..const import NORMALISED_STATEMENT_MAP, NiceType
 from .extract_definitions_to_csv import (
     check_definitions_exists,
     extract_definitions_to_csv,
@@ -139,8 +139,8 @@ def _get_statement_type_raw(
 
 def _get_statement_type(statement_type_raw: str) -> str:
     """Convert statement type raw into a normalised format."""
-    if statement_type_raw in NORMALISED_STATEMENT_TYPE:
-        return NORMALISED_STATEMENT_TYPE[statement_type_raw]
+    if statement_type_raw in NORMALISED_STATEMENT_MAP:
+        return NORMALISED_STATEMENT_MAP[statement_type_raw]
 
     return statement_type_raw
 

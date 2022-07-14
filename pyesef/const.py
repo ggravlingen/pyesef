@@ -58,8 +58,12 @@ class StatementType(Enum):
     EQ = "changes_equity"
 
 
-NORMALISED_STATEMENT_TYPE = {
+# Gör analys av kombinationer mot xml-namnet
+
+NORMALISED_STATEMENT_MAP = {
+    # General items
     "ias_1_role-110000": StatementType.GENERAL.value,
+    # Balance sheet
     "ias_1_role-210000": StatementType.BS.value,
     "ias_1_role-220000": StatementType.BS.value,
     "RapportOEverFinansiellStaellning": StatementType.BS.value,
@@ -70,6 +74,11 @@ NORMALISED_STATEMENT_TYPE = {
     "EgetKapitalOchSkulder": StatementType.BS.value,
     "Tillgangar": StatementType.BS.value,
     "ConsolidatedStatementsOfFinancialPosition": StatementType.BS.value,
+    "FinancialPositionGroup": StatementType.BS.value,
+    "ConsolidatedBalanceSheets": StatementType.BS.value,
+    "Balansräkningkoncernen": StatementType.BS.value,
+    "FinancialPosition2": StatementType.BS.value,
+    # Income statement
     "ias_1_role-310000": StatementType.IS.value,
     "ias_1_role-320000": StatementType.IS.value,
     "RapportOEverTotalresultat": StatementType.IS.value,
@@ -81,13 +90,28 @@ NORMALISED_STATEMENT_TYPE = {
     "Rapportöverresultatochövrigttotalresultatförkoncernen": StatementType.IS.value,
     "IncomeStatement2": StatementType.IS.value,
     "ConsolidatedStatementsOfOperations": StatementType.IS.value,
+    "IncomeStatementGroup": StatementType.IS.value,
+    "ConsolidatedStatementsOfIncome": StatementType.IS.value,
+    "AnalysAvIntaekterOchKostnader": StatementType.IS.value,
+    "Resultaträkningkoncernen": StatementType.IS.value,
+    "ConsolidatedStatementsOfIncomeLossAndComprehensiveIncome": StatementType.IS.value,
+    # Other comprehensive income
     "ias_1_role-410000": StatementType.OCI_AT.value,
+    "ConsolidatedStatementsOfTotalEquity": StatementType.OCI_AT.value,
     "ias_1_role-420000": StatementType.OCI_PT.value,
     "ComprehensiveIncome": StatementType.OCI.value,
     "StatementOfComprehensiveIncome": StatementType.OCI.value,
     "RapportOEverTotalresultat1": StatementType.OCI.value,
     "ComprehensiveIncome2": StatementType.OCI.value,
     "ConsolidatedStatementsOfComprehensiveIncomeLoss": StatementType.OCI.value,
+    "ComprehensiveIncomeGroup": StatementType.OCI.value,
+    "ConsolidatedStatementsOfComprehensiveIncome": StatementType.OCI.value,
+    "RapportOEverTotalresultat3": StatementType.OCI.value,
+    "OtherComprehensiveIncome": StatementType.OCI.value,
+    "StatementOfComprehensiveIncome1": StatementType.OCI.value,
+    "OCI": StatementType.OCI.value,
+    "RapportOEverTotalresultat2": StatementType.OCI.value,
+    # Cash flow statement
     "ias_1_role-510000": StatementType.CF.value,
     "ias_1_role-520000": StatementType.CF.value,
     "ias_7_role-520000": StatementType.CF.value,
@@ -96,6 +120,9 @@ NORMALISED_STATEMENT_TYPE = {
     "CashFlow": StatementType.CF.value,
     "StatementOfCashFlows": StatementType.CF.value,
     "ConsolidatedStatementsOfCashFlows": StatementType.CF.value,
+    "Kassaflödesanalyskoncernen": StatementType.CF.value,
+    "KassaflödesanalyskoncernenParentheticals1": StatementType.CF.value,
+    # Changes in equity
     "ias_1_role-610000": StatementType.EQ.value,
     "RapportOEverFoeraendringarIEgetKapital": StatementType.EQ.value,
     "ChangesinEquity": StatementType.EQ.value,
@@ -103,4 +130,8 @@ NORMALISED_STATEMENT_TYPE = {
     "RapportOEverFoeraendringarIEgetKapital6": StatementType.EQ.value,
     "RapportOEverFoeraendringarIEgetKapital8": StatementType.EQ.value,
     "ChangesinEquity2": StatementType.EQ.value,
+    "StatementOfChangesInEquity": StatementType.EQ.value,
+    "StatementOfChangesInEquity7": StatementType.EQ.value,
+    "ChangesinEquityPrevious": StatementType.EQ.value,
+    "RapportOEverFoeraendringarIEgetKapital2": StatementType.EQ.value,
 }
