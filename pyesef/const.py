@@ -1,4 +1,6 @@
 """Constants."""
+from __future__ import annotations
+
 from enum import Enum
 import os
 import pathlib
@@ -58,8 +60,8 @@ class StatementType(Enum):
     EQ = "changes_equity"
 
 
-# Gör analys av kombinationer mot xml-namnet
-
+# It appears companies may define role names freely. This is a mapping from the
+# companies' role name to a standardised name.
 NORMALISED_STATEMENT_MAP = {
     # General items
     "ias_1_role-110000": StatementType.GENERAL.value,
@@ -135,3 +137,30 @@ NORMALISED_STATEMENT_MAP = {
     "ChangesinEquityPrevious": StatementType.EQ.value,
     "RapportOEverFoeraendringarIEgetKapital2": StatementType.EQ.value,
 }
+
+# A list of XML-names that represent a summation line
+LOCAL_NAME_KNOWN_TOTAL: list[str] = [
+    # Income statement
+    "GrossProfit",
+    "FinanceIncomeCost",
+    "ProfitLossBeforeTax",
+    "ProfitLoss",
+    "ProfitLossFromOperatingActivities",
+    "ProfitLossAttributableToOwnersOfParent",
+    "FinanceCosts",
+    "EBITDA",
+    # Balance sheet
+    "CurrentAssets",
+    "NoncurrentAssets",
+    "Assets",
+    "NoncurrentLiabilities",
+    "CurrentLiabilities",
+    "Liabilities",
+    "EquityAndLiabilities",
+    # Cash flow
+    "CashFlowsFromUsedInOperatingActivities",
+    "CashFlowsFromUsedInOperationsBeforeChangesInWorkingCapital",
+    "CashFlowsFromUsedInInvestingActivities",
+    "CashFlowBeforeFinancing",
+    "CashFlowsFromUsedInFinancingActivities",
+]

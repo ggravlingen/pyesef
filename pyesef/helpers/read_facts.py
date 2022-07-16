@@ -9,11 +9,16 @@ from typing import Any
 from arelle.ModelDtsObject import ModelConcept
 from arelle.ModelInstanceObject import ModelFact
 from arelle.ModelObject import ModelObject
-from arelle.ModelValue import dateTime
+from arelle.ModelValue import QName, dateTime
 from arelle.ModelXbrl import ModelXbrl
 from arelle.ValidateXbrlCalcs import roundValue
 
-from ..const import NORMALISED_STATEMENT_MAP, NiceType
+from ..const import (
+    LOCAL_NAME_KNOWN_TOTAL,
+    NORMALISED_STATEMENT_MAP,
+    NiceType,
+    StatementType,
+)
 from .extract_definitions_to_csv import (
     check_definitions_exists,
     extract_definitions_to_csv,
@@ -29,7 +34,7 @@ class EsefData:
     # A date representing the end of the record's period
     period_end: date
     # Type of statement in a normalised format
-    statement_type: str
+    statement_type: str | None
     # The stated name of the record item
     label: str | None
     # The XML name of the record item
@@ -42,6 +47,8 @@ class EsefData:
     value: fractions.Fraction | int | Any | bool | str | None
     # True if the record has been defined by the company
     is_extension: bool = False
+    # True if the item is a sum of other items
+    is_total: bool = False
 
 
 def parsed_value(
@@ -137,8 +144,18 @@ def _get_statement_type_raw(
     return None
 
 
-def _get_statement_type(statement_type_raw: str) -> str:
+def _get_is_total(local_name: str) -> bool:
+    """Return true if the item is a sum of other items."""
+    return local_name in LOCAL_NAME_KNOWN_TOTAL
+
+
+def _get_statement_type(statement_type_raw: str, xml_name: str) -> str:
     """Convert statement type raw into a normalised format."""
+    if "Comprehensive" in xml_name:
+        # Companies sometimes put OCI in the income statement.
+        # We want to separate them so that's handled here.
+        return StatementType.OCI.value
+
     if statement_type_raw in NORMALISED_STATEMENT_MAP:
         return NORMALISED_STATEMENT_MAP[statement_type_raw]
 
@@ -155,12 +172,19 @@ def read_facts(
     for fact in model_xbrl.facts:
         date_period_end = _get_period_end(end_date_time=fact.context.endDatetime)
 
+        qname: QName = fact.concept.qname
+
         statement_type_raw = _get_statement_type_raw(
-            model_roles=model_roles, clark_notation=fact.concept.qname.clarkNotation
+            model_roles=model_roles, clark_notation=qname.clarkNotation
         )
 
+        # The name of the item, eg ComprehensiveIncome
+        xml_name: str = qname.localName
+
         if statement_type_raw is not None:
-            statement_type = _get_statement_type(statement_type_raw=statement_type_raw)
+            statement_type = _get_statement_type(
+                statement_type_raw=statement_type_raw, xml_name=xml_name
+            )
         else:
             statement_type = None
 
@@ -182,14 +206,15 @@ def read_facts(
         fact_list.append(
             EsefData(
                 label=_get_label(fact.propertyView),
-                local_name=fact.qname.localName,
+                local_name=xml_name,
                 statement_type=statement_type,
                 membership=membership_name,
                 value=parsed_value(fact),
-                is_extension=_get_is_extension(fact.qname.prefix),
+                is_extension=_get_is_extension(qname.prefix),
                 period_end=date_period_end,
                 lei=lei,
                 currency=fact.unit.value,
+                is_total=_get_is_total(local_name=xml_name),
             )
         )
 

@@ -1,8 +1,11 @@
 """Placeholder test."""
 from datetime import datetime
 
+import pytest
+
 from pyesef.helpers.read_facts import (
     _get_is_extension,
+    _get_is_total,
     _get_label,
     _get_membership,
     _get_period_end,
@@ -73,3 +76,17 @@ def test_get_statement_type():
         _get_statement_type(model_roles=model_roles, clark_notation=clark_notation)
         == "RapportOEverTotalresultat"
     )
+
+
+@pytest.mark.parametrize(
+    "test_value, expected_result",
+    [
+        ("ProfitLoss", True),
+        ("RevenueFromSaleOfGoods", False),
+    ],
+)
+def test_get_is_total(test_value: str, expected_result: bool):
+    """Test function _get_is_total."""
+    function_value = _get_is_total(test_value)
+
+    assert function_value is expected_result

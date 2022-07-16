@@ -135,3 +135,5 @@ parsed
 not_valid
 *.csv
 *.ipynb*
+*.bin
+*.html

@@ -3,14 +3,16 @@ from __future__ import annotations
 
 import logging
 import os
-import shutil
+import time
 
-from arelle import ModelManager, ModelXbrl
+from arelle import ModelManager
 from arelle.Cntlr import Cntlr
+from arelle.ModelValue import QName
+from arelle.ModelXbrl import ModelXbrl
 from arelle.XbrlConst import summationItem
 
-from ..const import CSV_SEPARATOR, FILE_ENDING_XML, PATH_FILINGS, PATH_PARSED, FileName
-from ..utils import to_dataframe
+from ..const import CSV_SEPARATOR, FILE_ENDING_XML, PATH_FILINGS, FileName
+from ..utils import move_file_to_parsed, to_dataframe
 from .read_facts import EsefData, read_facts
 
 
@@ -22,7 +24,7 @@ class Controller(Cntlr):  # type: ignore
         super().__init__(logFileName="logToPrint")
 
 
-def extract_model_roles(model_xbrl: ModelXbrl) -> dict[str, str]:
+def _extract_model_roles(model_xbrl: ModelXbrl) -> dict[str, str]:
     """
     Extract a lookup table between XML item name and the item's role.
 
@@ -37,13 +39,15 @@ def extract_model_roles(model_xbrl: ModelXbrl) -> dict[str, str]:
     for rel in rel_set.modelRelationships:
         link = concepts_by_roles.get(rel.linkrole, [])
 
-        from_clark = rel.fromModelObject.qname.clarkNotation
-        to_clark = rel.toModelObject.qname.clarkNotation
+        from_clark_qname: QName = rel.fromModelObject.qname
+        to_clark_qname: QName = rel.toModelObject.qname
+        from_clark = from_clark_qname.clarkNotation
+        to_clark = to_clark_qname.clarkNotation
 
-        if from_clark not in link:
+        if from_clark not in link and from_clark is not None:
             link.append(from_clark)
 
-        if to_clark not in link:
+        if to_clark not in link and to_clark is not None:
             link.append(to_clark)
 
         if rel.linkrole not in concepts_by_roles:
@@ -59,10 +63,12 @@ def extract_model_roles(model_xbrl: ModelXbrl) -> dict[str, str]:
 
 def read_and_save_filings() -> None:
     """Read all filings in the filings folder."""
+    idx = None
+    start = time.time()
     cntlr = Controller()
 
     with os.scandir(PATH_FILINGS) as dir_iter:
-        for entry in dir_iter:
+        for idx, entry in enumerate(dir_iter):
             cntlr.addToLog(f"Working on {entry}")
 
             filing_list: list[EsefData] = []
@@ -88,7 +94,7 @@ def read_and_save_filings() -> None:
                         url_filing, taxonomyPackages=url_taxonomy
                     )
 
-                    model_roles = extract_model_roles(model_xbrl=model_xbrl)
+                    model_roles = _extract_model_roles(model_xbrl=model_xbrl)
 
                     fact_list = read_facts(
                         model_xbrl=model_xbrl,
@@ -115,9 +121,13 @@ def read_and_save_filings() -> None:
             # Move the filing folder to another location.
             # This helps us if the script stops due to memory
             # constraints.
-            shutil.move(
-                entry,
-                PATH_PARSED,
-            )
+            move_file_to_parsed(entry=entry)
+            cntlr.addToLog("Moved files to parsed folder")
 
+    if idx is not None:
+        end = time.time()
+        total_time = end - start
+        cntlr.addToLog(f"Loaded {idx} XBRL-files in {total_time}s")
+
+    cntlr.addToLog("Finished loading")
     cntlr.close()
