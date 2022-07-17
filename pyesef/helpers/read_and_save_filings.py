@@ -67,10 +67,12 @@ def read_and_save_filings() -> None:
     start = time.time()
     cntlr = Controller()
 
-    with os.scandir(PATH_FILINGS) as dir_iter:
-        for idx, entry in enumerate(dir_iter):
-            cntlr.addToLog(f"Working on {entry}")
+    # Count the number of folders in the filings directory
+    no_folders = len([1 for _ in list(os.scandir(PATH_FILINGS))])
 
+    with os.scandir(PATH_FILINGS) as dir_iter:
+        cntlr.addToLog(f"Parsing {no_folders} reports")
+        for idx, entry in enumerate(dir_iter):
             filing_list: list[EsefData] = []
             url_filing: str | None = None
             url_taxonomy: list[str] = []
@@ -127,7 +129,7 @@ def read_and_save_filings() -> None:
     if idx is not None:
         end = time.time()
         total_time = end - start
-        cntlr.addToLog(f"Loaded {idx} XBRL-files in {total_time}s")
+        cntlr.addToLog(f"Loaded {idx+1} XBRL-files in {total_time}s")
 
     cntlr.addToLog("Finished loading")
     cntlr.close()

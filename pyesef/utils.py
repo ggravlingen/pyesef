@@ -35,7 +35,11 @@ def move_file_to_parsed(entry: os.DirEntry) -> None:
     parsed_folder = os.path.join(PATH_PARSED, entry.name)
 
     if os.path.exists(parsed_folder):
-        shutil.rmtree(parsed_folder)
+        try:
+            shutil.rmtree(parsed_folder)
+        except NotADirectoryError:
+            os.remove(parsed_folder)
+
     shutil.move(
         entry,
         PATH_PARSED,

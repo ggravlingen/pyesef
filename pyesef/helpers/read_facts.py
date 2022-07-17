@@ -16,6 +16,7 @@ from arelle.ValidateXbrlCalcs import roundValue
 from ..const import (
     LOCAL_NAME_KNOWN_TOTAL,
     NORMALISED_STATEMENT_MAP,
+    STATEMENT_ITEM_GROUP_MAP,
     NiceType,
     StatementType,
 )
@@ -31,6 +32,8 @@ class EsefData:
 
     # The lei of the entity
     lei: str
+    # The legal name of the entity
+    legal_name: str | None
     # A date representing the end of the record's period
     period_end: date
     # Type of statement in a normalised format
@@ -39,6 +42,8 @@ class EsefData:
     label: str | None
     # The XML name of the record item
     local_name: str
+    # The line item group the record belongs to
+    statement_item_group: str
     # The name of the item this record belongs to
     membership: str | None
     # Currency of the value
@@ -162,12 +167,36 @@ def _get_statement_type(statement_type_raw: str, xml_name: str) -> str:
     return statement_type_raw
 
 
+def _get_statement_item_group(local_name: str) -> str:
+    """Get statement item group name."""
+    if local_name in STATEMENT_ITEM_GROUP_MAP:
+        return STATEMENT_ITEM_GROUP_MAP[local_name]
+
+    return local_name
+
+
+def _get_legal_name(facts: list) -> str | None:
+    """Get legal name of entity."""
+    for fact in facts:
+        if fact.attrib["name"] == "ifrs-full:NameOfUltimateParentOfGroup":
+            return parsed_value(fact)
+
+        if fact.attrib["name"] == "ifrs-full:NameOfParentEntity":
+            return parsed_value(fact)
+
+    return None
+
+
 def read_facts(
     model_xbrl: ModelXbrl,
     model_roles: dict[str, str],
 ) -> list[EsefData]:
     """Read facts of XBRL-files."""
     fact_list: list[EsefData] = []
+
+    legal_name = _get_legal_name(facts=model_xbrl.facts)
+
+    model_xbrl.modelManager.cntlr.addToLog(f"Parsing files for {legal_name}")
 
     for fact in model_xbrl.facts:
         date_period_end = _get_period_end(end_date_time=fact.context.endDatetime)
@@ -206,7 +235,9 @@ def read_facts(
         fact_list.append(
             EsefData(
                 label=_get_label(fact.propertyView),
+                legal_name=legal_name,
                 local_name=xml_name,
+                statement_item=_get_statement_item_group(local_name=xml_name),
                 statement_type=statement_type,
                 membership=membership_name,
                 value=parsed_value(fact),

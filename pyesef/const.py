@@ -6,11 +6,11 @@ import os
 import pathlib
 
 PATH_BASE = pathlib.Path(__file__).parent.resolve()
-
-PATH_ARCHIVES = os.path.join(PATH_BASE, "archives")
-PATH_FILINGS = os.path.join(PATH_BASE, "filings")
-PATH_PARSED = os.path.join(PATH_BASE, "parsed")
 PATH_PROJECT_ROOT = os.path.join(PATH_BASE, "..")
+
+PATH_ARCHIVES = os.path.join(PATH_PROJECT_ROOT, "archives")
+PATH_FILINGS = os.path.join(PATH_PROJECT_ROOT, "filings")
+PATH_PARSED = os.path.join(PATH_PROJECT_ROOT, "parsed")
 
 FILE_ENDING_XML = ".xhtml"
 
@@ -97,6 +97,9 @@ NORMALISED_STATEMENT_MAP = {
     "AnalysAvIntaekterOchKostnader": StatementType.IS.value,
     "Resultaträkningkoncernen": StatementType.IS.value,
     "ConsolidatedStatementsOfIncomeLossAndComprehensiveIncome": StatementType.IS.value,
+    "Rapportövertotalresultatkoncernen": StatementType.IS.value,
+    "ProfitOrLoss1": StatementType.IS.value,
+    "AnalysAvIntaekterOchKostnader1": StatementType.IS.value,
     # Other comprehensive income
     "ias_1_role-410000": StatementType.OCI_AT.value,
     "ConsolidatedStatementsOfTotalEquity": StatementType.OCI_AT.value,
@@ -149,6 +152,18 @@ LOCAL_NAME_KNOWN_TOTAL: list[str] = [
     "ProfitLossAttributableToOwnersOfParent",
     "FinanceCosts",
     "EBITDA",
+    "TotalresultatFoerAret",
+    "Totalincometax",
+    "TotalRevenueOtherOperatingIncomeAndWorkPerformedByEntityAndCapitalised",
+    "TotalRevenue",
+    "TotalOtherExpensesIncome",
+    "TotalOperatingExpensesExcludingDepreciationAndAmortisationExpense",
+    "TotalOperatingExpensesBeforeCreditLosses",
+    "TotalOperatingExpenses",
+    "TotalOperatingCosts",
+    "TotalFinancialItems",
+    "TotalExpensesBeforeCreditLosses",
+    "TotalExpenses",
     # Balance sheet
     "CurrentAssets",
     "NoncurrentAssets",
@@ -157,6 +172,7 @@ LOCAL_NAME_KNOWN_TOTAL: list[str] = [
     "CurrentLiabilities",
     "Liabilities",
     "EquityAndLiabilities",
+    "CurrentAssetsexcludingCash",
     # Cash flow
     "CashFlowsFromUsedInOperatingActivities",
     "CashFlowsFromUsedInOperationsBeforeChangesInWorkingCapital",
@@ -164,3 +180,17 @@ LOCAL_NAME_KNOWN_TOTAL: list[str] = [
     "CashFlowBeforeFinancing",
     "CashFlowsFromUsedInFinancingActivities",
 ]
+
+STATEMENT_ITEM_GROUP_MAP = {
+    "BankOverdraftsClassifiedAsCashEquivalents": "CashAndCashEquivalents",
+    "Cash": "CashAndCashEquivalents",
+    "CashAndBankBalancesAtCentralBanks": "CashAndCashEquivalents",
+    "CashAndCashEquivalents": "CashAndCashEquivalents",
+    "CashEquivalents": "CashAndCashEquivalents",
+    "CurrentAssetsexcludingCash": "CashAndCashEquivalents",
+    "NoncurrentRestrictedCashAndCashEquivalents": "CashAndCashEquivalents",
+    "OtherCashAndCashEquivalents": "CashAndCashEquivalents",
+    "ShorttermDepositsClassifiedAsCashEquivalents": "CashAndCashEquivalents",
+    "ShorttermDepositsNotClassifiedAsCashEquivalents": "CashAndCashEquivalents",
+    "ShorttermInvestmentsClassifiedAsCashEquivalents": "CashAndCashEquivalents",
+}
