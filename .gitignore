@@ -132,8 +132,8 @@ dmypy.json
 filings
 archives
 parsed
+error
 not_valid
 *.csv
-*.ipynb*
 *.bin
 *.html

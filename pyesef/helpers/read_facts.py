@@ -30,30 +30,32 @@ from .extract_definitions_to_csv import (
 class EsefData:
     """Represent ESEF data as a dataclass."""
 
-    # The lei of the entity
-    lei: str
-    # The legal name of the entity
-    legal_name: str | None
     # A date representing the end of the record's period
     period_end: date
     # Type of statement in a normalised format
     statement_type: str | None
+    # False if no statement item group was matched
+    has_resolved_group: bool
+    # True if the record has been defined by the company
+    is_extension: bool
+    # True if the item is a sum of other items
+    is_total: bool
+    # The line item group the record belongs to
+    statement_item_group: str | None
+    # The XML name of the record item
+    xml_name: str
     # The stated name of the record item
     label: str | None
-    # The XML name of the record item
-    local_name: str
-    # The line item group the record belongs to
-    statement_item_group: str
     # The name of the item this record belongs to
     membership: str | None
     # Currency of the value
     currency: str
     # Nominal value (in currency) of the record
     value: fractions.Fraction | int | Any | bool | str | None
-    # True if the record has been defined by the company
-    is_extension: bool = False
-    # True if the item is a sum of other items
-    is_total: bool = False
+    # The lei of the entity
+    lei: str
+    # The legal name of the entity
+    legal_name: str | None
 
 
 def parsed_value(
@@ -149,9 +151,9 @@ def _get_statement_type_raw(
     return None
 
 
-def _get_is_total(local_name: str) -> bool:
+def _get_is_total(xml_name: str) -> bool:
     """Return true if the item is a sum of other items."""
-    return local_name in LOCAL_NAME_KNOWN_TOTAL
+    return xml_name in LOCAL_NAME_KNOWN_TOTAL
 
 
 def _get_statement_type(statement_type_raw: str, xml_name: str) -> str:
@@ -167,15 +169,17 @@ def _get_statement_type(statement_type_raw: str, xml_name: str) -> str:
     return statement_type_raw
 
 
-def _get_statement_item_group(local_name: str) -> str:
+def _get_statement_item_group(xml_name: str) -> tuple[str | None, bool]:
     """Get statement item group name."""
-    if local_name in STATEMENT_ITEM_GROUP_MAP:
-        return STATEMENT_ITEM_GROUP_MAP[local_name]
+    if xml_name in STATEMENT_ITEM_GROUP_MAP:
+        return STATEMENT_ITEM_GROUP_MAP[xml_name], True
 
-    return local_name
+    return None, False
 
 
-def _get_legal_name(facts: list) -> str | None:
+def _get_legal_name(
+    facts: list[Any],
+) -> (fractions.Fraction | int | Any | bool | str | None):
     """Get legal name of entity."""
     for fact in facts:
         if fact.attrib["name"] == "ifrs-full:NameOfUltimateParentOfGroup":
@@ -231,13 +235,19 @@ def read_facts(
 
         _, lei = fact.context.entityIdentifier
         _, membership_name = _get_membership(fact.context.scenario)
+        statement_item_group, has_resolved_group = _get_statement_item_group(
+            xml_name=xml_name
+        )
+
+        assert isinstance(legal_name, str)
 
         fact_list.append(
             EsefData(
                 label=_get_label(fact.propertyView),
                 legal_name=legal_name,
-                local_name=xml_name,
-                statement_item=_get_statement_item_group(local_name=xml_name),
+                xml_name=xml_name,
+                statement_item_group=statement_item_group,
+                has_resolved_group=has_resolved_group,
                 statement_type=statement_type,
                 membership=membership_name,
                 value=parsed_value(fact),
@@ -245,7 +255,7 @@ def read_facts(
                 period_end=date_period_end,
                 lei=lei,
                 currency=fact.unit.value,
-                is_total=_get_is_total(local_name=xml_name),
+                is_total=_get_is_total(xml_name=xml_name),
             )
         )
 

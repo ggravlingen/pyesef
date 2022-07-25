@@ -7,12 +7,19 @@ import time
 
 from arelle import ModelManager
 from arelle.Cntlr import Cntlr
+from arelle.FileSource import FileSource, openFileSource
 from arelle.ModelValue import QName
 from arelle.ModelXbrl import ModelXbrl
 from arelle.XbrlConst import summationItem
 
-from ..const import CSV_SEPARATOR, FILE_ENDING_XML, PATH_FILINGS, FileName
-from ..utils import move_file_to_parsed, to_dataframe
+from ..const import (
+    CSV_SEPARATOR,
+    FILE_ENDING_XML,
+    PATH_ARCHIVES,
+    PATH_FILINGS,
+    FileName,
+)
+from ..utils import move_file_to_error, move_file_to_parsed, to_dataframe
 from .read_facts import EsefData, read_facts
 
 
@@ -61,6 +68,15 @@ def _extract_model_roles(model_xbrl: ModelXbrl) -> dict[str, str]:
     return result_dict
 
 
+def read_and_save_filings_v2() -> None:
+    """Test."""
+    filename = f"{PATH_ARCHIVES}/529900G9LZILBPCZXA17-2021-12-31-sv.zip"
+    cntlr = Controller()
+    model_manager = ModelManager.initialize(cntlr)
+    file_source: FileSource = openFileSource(filename=filename, cntlr=cntlr)
+    model_manager.load(filesource=file_source)
+
+
 def read_and_save_filings() -> None:
     """Read all filings in the filings folder."""
     idx = None
@@ -73,6 +89,8 @@ def read_and_save_filings() -> None:
     with os.scandir(PATH_FILINGS) as dir_iter:
         cntlr.addToLog(f"Parsing {no_folders} reports")
         for idx, entry in enumerate(dir_iter):
+            _error: bool = False
+
             filing_list: list[EsefData] = []
             url_filing: str | None = None
             url_taxonomy: list[str] = []
@@ -91,9 +109,9 @@ def read_and_save_filings() -> None:
 
             if url_filing is not None and url_taxonomy:
                 try:
-                    model_manager: ModelManager = ModelManager.initialize(cntlr)
+                    model_manager = ModelManager.initialize(cntlr)
                     model_xbrl: ModelXbrl = model_manager.load(
-                        url_filing, taxonomyPackages=url_taxonomy
+                        filesource=url_filing, taxonomyPackages=url_taxonomy
                     )
 
                     model_roles = _extract_model_roles(model_xbrl=model_xbrl)
@@ -107,24 +125,29 @@ def read_and_save_filings() -> None:
                 except Exception as exc:
                     cntlr.addToLog(
                         f"Error {entry.name} due to {exc}",
-                        level=logging.WARNING,
+                        level=logging.CRITICAL,
                     )
+                    _error = True
 
-            data_frame = to_dataframe(filing_list)
-            output_path = "output.csv"
-            data_frame.to_csv(
-                output_path,
-                sep=CSV_SEPARATOR,
-                index=False,
-                mode="a",
-                header=not os.path.exists(output_path),
-            )
+            if _error:
+                move_file_to_error(entry=entry)
+                cntlr.addToLog("Moved files to error folder")
+            else:
+                data_frame = to_dataframe(filing_list)
+                output_path = "output.csv"
+                data_frame.to_csv(
+                    output_path,
+                    sep=CSV_SEPARATOR,
+                    index=False,
+                    mode="a",
+                    header=not os.path.exists(output_path),
+                )
 
-            # Move the filing folder to another location.
-            # This helps us if the script stops due to memory
-            # constraints.
-            move_file_to_parsed(entry=entry)
-            cntlr.addToLog("Moved files to parsed folder")
+                # Move the filing folder to another location.
+                # This helps us if the script stops due to memory
+                # constraints.
+                move_file_to_parsed(entry=entry)
+                cntlr.addToLog("Moved files to parsed folder")
 
     if idx is not None:
         end = time.time()

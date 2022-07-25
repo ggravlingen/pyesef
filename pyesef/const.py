@@ -11,6 +11,7 @@ PATH_PROJECT_ROOT = os.path.join(PATH_BASE, "..")
 PATH_ARCHIVES = os.path.join(PATH_PROJECT_ROOT, "archives")
 PATH_FILINGS = os.path.join(PATH_PROJECT_ROOT, "filings")
 PATH_PARSED = os.path.join(PATH_PROJECT_ROOT, "parsed")
+PATH_FAILED = os.path.join(PATH_PROJECT_ROOT, "error")
 
 FILE_ENDING_XML = ".xhtml"
 
@@ -62,7 +63,7 @@ class StatementType(Enum):
 
 # It appears companies may define role names freely. This is a mapping from the
 # companies' role name to a standardised name.
-NORMALISED_STATEMENT_MAP = {
+NORMALISED_STATEMENT_MAP: dict[str, str] = {
     # General items
     "ias_1_role-110000": StatementType.GENERAL.value,
     # Balance sheet
@@ -164,6 +165,8 @@ LOCAL_NAME_KNOWN_TOTAL: list[str] = [
     "TotalFinancialItems",
     "TotalExpensesBeforeCreditLosses",
     "TotalExpenses",
+    "InterestRevenueExpense",  # For banks
+    "FeeAndCommissionIncomeExpense"  # For banks
     # Balance sheet
     "CurrentAssets",
     "NoncurrentAssets",
@@ -171,8 +174,13 @@ LOCAL_NAME_KNOWN_TOTAL: list[str] = [
     "NoncurrentLiabilities",
     "CurrentLiabilities",
     "Liabilities",
+    "IntangibleAssetsAndGoodwill",
     "EquityAndLiabilities",
+    "PropertyPlantAndEquipment",
+    "Equity",
     "CurrentAssetsexcludingCash",
+    "CurrentAssets",
+    "NoncurrentAssets",
     # Cash flow
     "CashFlowsFromUsedInOperatingActivities",
     "CashFlowsFromUsedInOperationsBeforeChangesInWorkingCapital",
@@ -181,7 +189,8 @@ LOCAL_NAME_KNOWN_TOTAL: list[str] = [
     "CashFlowsFromUsedInFinancingActivities",
 ]
 
-STATEMENT_ITEM_GROUP_MAP = {
+STATEMENT_ITEM_GROUP_MAP: dict[str, str] = {
+    # Cash and equivalents
     "BankOverdraftsClassifiedAsCashEquivalents": "CashAndCashEquivalents",
     "Cash": "CashAndCashEquivalents",
     "CashAndBankBalancesAtCentralBanks": "CashAndCashEquivalents",
@@ -193,4 +202,62 @@ STATEMENT_ITEM_GROUP_MAP = {
     "ShorttermDepositsClassifiedAsCashEquivalents": "CashAndCashEquivalents",
     "ShorttermDepositsNotClassifiedAsCashEquivalents": "CashAndCashEquivalents",
     "ShorttermInvestmentsClassifiedAsCashEquivalents": "CashAndCashEquivalents",
+    # Payables
+    "TradeAndOtherCurrentPayablesToRelatedParties": "CurrentPayables",
+    "TradeAndOtherCurrentPayablesToTradeSuppliers": "CurrentPayables",
+    # Intangibles
+    "Goodwill": "IntangibleAssets",
+    "IntangibleAssetsOtherThanGoodwill": "IntangibleAssets",
+    # Equity
+    "NoncontrollingInterests": "TotalEquity",
+    "EquityAttributableToOwnersOfParent": "TotalEquity",
+    # Revenue
+    "OtherRevenue": "Revenue",
+    "OtherIncome": "Revenue",
+    "Revenue": "Revenue",
+    "RevenueFromConstructionContracts": "Revenue",
+    "RevenueFromContractsWithCustomers": "Revenue",
+    "RevenueFromHotelOperations": "Revenue",
+    "RevenueFromRenderingOfServices": "Revenue",
+    "RevenueFromSaleOfGoods": "Revenue",
+    "RevenueFromSaleOfOilAndGasProducts": "Revenue",
+    "RevenueFromSaleOfOilAndGasProductsAndRoyaltyExpense": "Revenue",
+    # Revenue | real estate
+    "RentalIncome": "Revenue",
+    "RentalIncomeFromInvestmentProperty": "Revenue",
+    # Revenue | banks
+    "InterestRevenueCalculatedUsingEffectiveInterestMethod": "Revenue",
+    "InterestIncomeOnOtherFinancialAssets": "Revenue",
+    # Cost of goods sold
+    "CostOfSales": "CostOfSales",
+    "CostOfMerchandiseSold": "CostOfSales",
+    "CostOfGoodsSold": "CostOfSales",
+    "RawMaterialsAndConsumablesUsed": "CostOfSales",
+    "ProductionExpenses": "CostOfSales",
+    "OperatingExpense": "CostOfSales",
+    # Cost of goods sold | real estate
+    "DirectOperatingExpenseFromInvestmentProperty": "CostOfSales",
+    "DirectOperatingExpenseFromInvestmentPropertyGeneratingRentalIncome": "CostOfSales",
+    "PropertyTaxExpense": "CostOfSales",
+    # Cost of goods sold | bank
+    "InterestExpense": "CostOfSales",
+    # Net finance cost
+    "FinanceIncome": "NetFinanceIncomeCost",
+    "FinanceCosts": "NetFinanceIncomeCost",
+    "ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax": "NetFinanceIncomeCost",
+    # SG&A
+    "AdministrativeExpense": "SellingGeneralAndAdministrativeExpense",
+    "OtherExpenseByFunction": "SellingGeneralAndAdministrativeExpense",
+    "SellingGeneralAndAdministrativeExpense": "SellingGeneralAndAdministrativeExpense",
+    # R&D
+    "ResearchAndDevelopmentExpense": "ResearchAndDevelopmentExpense",
+    # Marketing
+    "SalesAndMarketingExpense": "SalesAndMarketingExpense",
+    "SellingExpense": "SalesAndMarketingExpense",
+    # Gains and losses
+    "GainsLossesOnHedgesOfNetInvestmentsInForeignOperationsBeforeTax": "GainsLosses",
+    "GainsLossesOnExchangeDifferencesOnTranslationBeforeTax": "GainsLosses",
+    "GainsLossesOnCashFlowHedgesBeforeTax": "GainsLosses",
+    # Taxes
+    "IncomeTaxExpenseContinuingOperations": "CurrentTaxes",
 }

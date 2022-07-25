@@ -9,6 +9,7 @@ from pyesef.helpers.read_facts import (
     _get_label,
     _get_membership,
     _get_period_end,
+    _get_statement_item_group,
     _get_statement_type,
 )
 
@@ -67,14 +68,12 @@ def test_get_membership():
 
 def test_get_statement_type():
     """Test function _get_statement_type."""
-    model_roles = {
-        "abc": "RapportOEverTotalresultat",
-    }
-    clark_notation = "abc"
-
     assert (
-        _get_statement_type(model_roles=model_roles, clark_notation=clark_notation)
-        == "RapportOEverTotalresultat"
+        _get_statement_type(
+            statement_type_raw="BalanceSheet",
+            xml_name="ABC",
+        )
+        == "balance_sheet"
     )
 
 
@@ -90,3 +89,44 @@ def test_get_is_total(test_value: str, expected_result: bool):
     function_value = _get_is_total(test_value)
 
     assert function_value is expected_result
+
+
+@pytest.mark.parametrize(
+    "test_value, expected_result",
+    [
+        (
+            "RevenueFromContractsWithCustomers",
+            (
+                "Revenue",
+                True,
+            ),
+        ),
+        (
+            "OtherIncome",
+            (
+                "Revenue",
+                True,
+            ),
+        ),
+        (
+            "CostOfMerchandiseSold",
+            (
+                "CostOfSales",
+                True,
+            ),
+        ),
+        (
+            "ABC",
+            (
+                None,
+                False,
+            ),
+        ),
+    ],
+)
+def test_get_statement_item_group(test_value: str, expected_result: tuple[str, bool]):
+    """Test function _get_is_total."""
+    function_value = _get_statement_item_group(test_value)
+
+    assert function_value[0] == expected_result[0]
+    assert function_value[1] == expected_result[1]
