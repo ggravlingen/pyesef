@@ -27,7 +27,8 @@ disable = [
   "broad-except",
   "too-many-instance-attributes",
   "too-many-return-statements",
-  "too-few-public-methods"
+  "too-few-public-methods",
+  "too-many-locals",
 ]
 
 [tool.pylint.REPORTS]

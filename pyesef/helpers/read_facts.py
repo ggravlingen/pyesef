@@ -4,7 +4,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 import fractions
-from typing import Any
+from typing import Any, cast
 
 from arelle.ModelDtsObject import ModelConcept
 from arelle.ModelInstanceObject import ModelFact
@@ -177,16 +177,14 @@ def _get_statement_item_group(xml_name: str) -> tuple[str | None, bool]:
     return None, False
 
 
-def _get_legal_name(
-    facts: list[Any],
-) -> (fractions.Fraction | int | Any | bool | str | None):
+def _get_legal_name(facts: list[Any]) -> str | None:
     """Get legal name of entity."""
     for fact in facts:
         if fact.attrib["name"] == "ifrs-full:NameOfUltimateParentOfGroup":
-            return parsed_value(fact)
+            return cast(str, parsed_value(fact))
 
         if fact.attrib["name"] == "ifrs-full:NameOfParentEntity":
-            return parsed_value(fact)
+            return cast(str, parsed_value(fact))
 
     return None
 
@@ -203,6 +201,9 @@ def read_facts(
     model_xbrl.modelManager.cntlr.addToLog(f"Entity: {legal_name}")
 
     for fact in model_xbrl.facts:
+        if fact.concept is None:
+            continue
+
         date_period_end = _get_period_end(end_date_time=fact.context.endDatetime)
 
         qname: QName = fact.concept.qname
@@ -238,8 +239,6 @@ def read_facts(
         statement_item_group, has_resolved_group = _get_statement_item_group(
             xml_name=xml_name
         )
-
-        assert isinstance(legal_name, str)
 
         fact_list.append(
             EsefData(

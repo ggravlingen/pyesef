@@ -14,6 +14,8 @@ def download_packages() -> None:
     """Download XBRL-packages from XBRL.org."""
     data_list: list[dict[str, str]] = []
     identifier_list: list[str] = []
+    idx: int = 0
+
     with urllib.request.urlopen(f"{BASE_URL}table-index.json") as url:
         data = json.loads(url.read().decode())
         for idx, item in enumerate(data):
@@ -37,6 +39,6 @@ def _download_package(item: dict[str, str], chunk_size: int = 128) -> None:
     url = f"{BASE_URL}{item['path']}/{item['file_name']}"
     req = requests.get(url, stream=True)
     write_location = os.path.join(PATH_ARCHIVES, item["file_name"])
-    with open(write_location, "wb") as fd:
+    with open(write_location, "wb") as _file:
         for chunk in req.iter_content(chunk_size=chunk_size):
-            fd.write(chunk)
+            _file.write(chunk)
