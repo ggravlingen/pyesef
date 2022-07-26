@@ -17,6 +17,16 @@ FILE_ENDING_ZIP = ".zip"
 CSV_SEPARATOR = "|"
 
 
+class Country(str, Enum):
+    """Representation of different countries."""
+
+    DENMARK = "DK"
+    FINLAND = "FI"
+    ICELAND = "IS"
+    NORWAY = "NO"
+    SWEDEN = "SE"
+
+
 class NiceType(str, Enum):
     """Representation of different types of 'nice types'."""
 

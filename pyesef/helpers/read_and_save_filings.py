@@ -27,11 +27,11 @@ class Controller(Cntlr):  # type: ignore
         super().__init__(logFileName="logToPrint", hasGui=False)
 
 
-def _load_esef_xbrl_model(file_path: str, cntlr: Controller) -> ModelXbrl:
+def _load_esef_xbrl_model(zip_file_path: str, cntlr: Controller) -> ModelXbrl:
     """Load a ModelXbrl from a file path."""
     try:
         file_source: FileSource = FileSourceFile.openFileSource(
-            file_path,
+            zip_file_path,
             cntlr,
             checkIfXmlIsEis=False,
         )
@@ -39,7 +39,7 @@ def _load_esef_xbrl_model(file_path: str, cntlr: Controller) -> ModelXbrl:
         # Find entrypoint files
         _entrypoint_files = filesourceEntrypointFiles(
             filesource=file_source,
-            entrypointFiles=[{"file": file_path}],
+            entrypointFiles=[{"file": zip_file_path}],
         )
 
         # This is required to correctly populate _entrypointFiles
@@ -130,15 +130,16 @@ def read_and_save_filings() -> None:
             cntlr.addToLog(f"Working on file {file}")
 
             _error: bool = False
+            error_message: str | None = None
             filing_list: list[EsefData] = []
 
-            file_path = subdir + os.sep + file
+            zip_file_path = subdir + os.sep + file
 
-            if file_path.endswith(FILE_ENDING_ZIP):
+            if zip_file_path.endswith(FILE_ENDING_ZIP):
                 try:
                     # Load zip-file into a ModelXbrl instance
-                    model_xbrl = _load_esef_xbrl_model(
-                        file_path=file_path,
+                    model_xbrl: ModelXbrl = _load_esef_xbrl_model(
+                        zip_file_path=zip_file_path,
                         cntlr=cntlr,
                     )
 
@@ -158,15 +159,14 @@ def read_and_save_filings() -> None:
                     filing_list.extend(fact_list)
                     model_xbrl.close()
                 except Exception as exc:
-                    error = "".join(
+                    error_message = "".join(
                         traceback.TracebackException.from_exception(exc).format()
                     )
-                    print(error)
                     _error = True
 
-                if _error:
-                    move_file_to_error(file=file)
-                    cntlr.addToLog("Moved file to error folder")
+                if _error and error_message is not None:
+                    move_file_to_error(zip_file_path=zip_file_path)
+                    cntlr.addToLog(f"Moved file to error folder due to {error_message}")
                 else:
                     idx += 1
                     data_frame = to_dataframe(filing_list)
@@ -182,7 +182,7 @@ def read_and_save_filings() -> None:
                     # Move the filing folder to another location.
                     # This helps us if the script stops due to memory
                     # constraints.
-                    move_file_to_parsed(file=file)
+                    move_file_to_parsed(zip_file_path=zip_file_path)
                     cntlr.addToLog("Moved files to parsed folder")
 
     end = time.time()

@@ -189,6 +189,14 @@ def _get_legal_name(facts: list[Any]) -> str | None:
     return None
 
 
+def _get_sign_multiplier(balance: str) -> int:
+    """Return multiplier to get correct sign for value."""
+    if balance == "credit":
+        return 1
+
+    return -1
+
+
 def read_facts(
     model_xbrl: ModelXbrl,
     model_roles: dict[str, str],
@@ -240,6 +248,8 @@ def read_facts(
             xml_name=xml_name
         )
 
+        value_multiplier: int = _get_sign_multiplier(fact.concept.balance)
+
         fact_list.append(
             EsefData(
                 label=_get_label(fact.propertyView),
@@ -249,7 +259,7 @@ def read_facts(
                 has_resolved_group=has_resolved_group,
                 statement_type=statement_type,
                 membership=membership_name,
-                value=parsed_value(fact),
+                value=parsed_value(fact) * value_multiplier,
                 is_extension=_get_is_extension(qname.prefix),
                 period_end=date_period_end,
                 lei=lei,

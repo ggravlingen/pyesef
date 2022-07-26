@@ -6,6 +6,7 @@ from pyesef.helpers.download_package import download_packages
 from pyesef.helpers.read_and_save_filings import read_and_save_filings
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser(description="Handle XBRL files.")
     parser.add_argument("--version", action="version", version=f"pyesef {__version__}")
     parser.add_argument(

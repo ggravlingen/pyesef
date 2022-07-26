@@ -30,14 +30,20 @@ def get_item_description(
     return None
 
 
-def move_file_to_parsed(file: str) -> None:
+def move_file_to_parsed(zip_file_path: str) -> None:
     """Move a file from the filings folder to the parsed folder."""
-    os.replace(os.path.join(PATH_ARCHIVES, file), os.path.join(PATH_PARSED, file))
+    os.replace(
+        zip_file_path,
+        os.path.join(PATH_PARSED, os.path.basename(zip_file_path)),
+    )
 
 
-def move_file_to_error(file: str) -> None:
+def move_file_to_error(zip_file_path: str) -> None:
     """Move a file from the filings folder to the error folder."""
-    os.replace(os.path.join(PATH_ARCHIVES, file), os.path.join(PATH_FAILED, file))
+    os.replace(
+        os.path.join(PATH_ARCHIVES, zip_file_path),
+        os.path.join(PATH_FAILED, os.path.basename(zip_file_path)),
+    )
 
 
 def _read_json(filename: str) -> dict[str, str]:
