@@ -9,21 +9,12 @@ PATH_BASE = pathlib.Path(__file__).parent.resolve()
 PATH_PROJECT_ROOT = os.path.join(PATH_BASE, "..")
 
 PATH_ARCHIVES = os.path.join(PATH_PROJECT_ROOT, "archives")
-PATH_FILINGS = os.path.join(PATH_PROJECT_ROOT, "filings")
 PATH_PARSED = os.path.join(PATH_PROJECT_ROOT, "parsed")
 PATH_FAILED = os.path.join(PATH_PROJECT_ROOT, "error")
 
-FILE_ENDING_XML = ".xhtml"
+FILE_ENDING_ZIP = ".zip"
 
 CSV_SEPARATOR = "|"
-
-
-class FileName(str, Enum):
-    """Representation of files that may be available in the XBRL-folder."""
-
-    CATALOG = "catalog.xml"
-    TAXONOMY_PACKAGE = "taxonomyPackage.xml"
-    TAXONOMY_PACKAGE_DOT = ".taxonomyPackage.xml"
 
 
 class NiceType(str, Enum):

@@ -1,24 +1,18 @@
 """Helper to read filings."""
 from __future__ import annotations
 
-import logging
 import os
 import time
 
-from arelle import ModelManager
+from arelle import FileSource as FileSourceFile, PluginManager
 from arelle.Cntlr import Cntlr
-from arelle.FileSource import FileSource, openFileSource
+from arelle.CntlrCmdLine import filesourceEntrypointFiles
+from arelle.FileSource import FileSource
 from arelle.ModelValue import QName
 from arelle.ModelXbrl import ModelXbrl
 from arelle.XbrlConst import summationItem
 
-from ..const import (
-    CSV_SEPARATOR,
-    FILE_ENDING_XML,
-    PATH_ARCHIVES,
-    PATH_FILINGS,
-    FileName,
-)
+from ..const import CSV_SEPARATOR, FILE_ENDING_ZIP, PATH_ARCHIVES
 from ..utils import move_file_to_error, move_file_to_parsed, to_dataframe
 from .read_facts import EsefData, read_facts
 
@@ -28,7 +22,55 @@ class Controller(Cntlr):  # type: ignore
 
     def __init__(self) -> None:
         """Init controller with logging."""
-        super().__init__(logFileName="logToPrint")
+        super().__init__(logFileName="logToPrint", hasGui=False)
+
+
+def _load_esef_xbrl_model(file_path: str, cntlr: Controller) -> ModelXbrl:
+    """Load a ModelXbrl from a file path."""
+    try:
+        filesource: FileSource = FileSourceFile.openFileSource(
+            file_path,
+            cntlr,
+            checkIfXmlIsEis=False,
+        )
+
+        # Find entrypoint files
+        _entrypointFiles = filesourceEntrypointFiles(
+            filesource=filesource,
+            entrypointFiles=[{"file": file_path}],
+        )
+
+        # This is required to correctly populate _entrypointFiles
+        for pluginXbrlMethod in PluginManager.pluginClassMethods(
+            "CntlrCmdLine.Filing.Start"
+        ):
+            pluginXbrlMethod(
+                cntlr,
+                None,
+                filesource,
+                _entrypointFiles,
+                sourceZipStream=None,
+                responseZipStream=None,
+            )
+        _entrypoint = _entrypointFiles[0]
+        _entrypointFile = _entrypoint["file"]
+        filesource.select(_entrypointFile)
+        cntlr.entrypointFile = _entrypointFile
+
+        # Load plugin
+        cntlr.modelManager.validateDisclosureSystem = True
+        cntlr.modelManager.disclosureSystem.select("esef")
+
+        model_xbrl = cntlr.modelManager.load(
+            filesource,
+            "Loading",
+            entrypoint=_entrypoint,
+        )
+
+        filesource.close()
+        return model_xbrl
+    except Exception as exc:
+        raise IOError("File not loaded due to ", exc) from exc
 
 
 def _extract_model_roles(model_xbrl: ModelXbrl) -> dict[str, str]:
@@ -68,71 +110,52 @@ def _extract_model_roles(model_xbrl: ModelXbrl) -> dict[str, str]:
     return result_dict
 
 
-def read_and_save_filings_v2() -> None:
-    """Test."""
-    filename = f"{PATH_ARCHIVES}/529900G9LZILBPCZXA17-2021-12-31-sv.zip"
-    cntlr = Controller()
-    model_manager = ModelManager.initialize(cntlr)
-    file_source: FileSource = openFileSource(filename=filename, cntlr=cntlr)
-    model_manager.load(filesource=file_source)
-
-
 def read_and_save_filings() -> None:
     """Read all filings in the filings folder."""
-    idx = None
+    idx = 0
     start = time.time()
     cntlr = Controller()
+    PluginManager.addPluginModule("validate/ESEF")
 
-    # Count the number of folders in the filings directory
-    no_folders = len([1 for _ in list(os.scandir(PATH_FILINGS))])
+    for subdir, _, files in os.walk(PATH_ARCHIVES):
+        cntlr.addToLog(f"Parsing {len(files)} reports in folder {subdir}")
 
-    with os.scandir(PATH_FILINGS) as dir_iter:
-        cntlr.addToLog(f"Parsing {no_folders} reports")
-        for idx, entry in enumerate(dir_iter):
-            _error: bool = False
+        for file in files:
+            cntlr.addToLog(f"Working on file {file}")
 
+            _error: Exception | None = None
             filing_list: list[EsefData] = []
-            url_filing: str | None = None
-            url_taxonomy: list[str] = []
 
-            for root, _, files in os.walk(entry.path):
-                for file in files:
-                    if FILE_ENDING_XML in file:
-                        url_filing = os.path.join(root, file)
+            file_path = subdir + os.sep + file
 
-                    if file in [
-                        FileName.TAXONOMY_PACKAGE,
-                        FileName.TAXONOMY_PACKAGE_DOT,
-                        FileName.CATALOG,
-                    ]:
-                        url_taxonomy.append(os.path.join(root, file))
-
-            if url_filing is not None and url_taxonomy:
+            if file_path.endswith(FILE_ENDING_ZIP):
                 try:
-                    model_manager = ModelManager.initialize(cntlr)
-                    model_xbrl: ModelXbrl = model_manager.load(
-                        filesource=url_filing, taxonomyPackages=url_taxonomy
+                    # Load zip-file into a ModelXbrl instance
+                    model_xbrl = _load_esef_xbrl_model(
+                        file_path=file_path,
+                        cntlr=cntlr,
                     )
 
-                    model_roles = _extract_model_roles(model_xbrl=model_xbrl)
+                    # Extract the model roles
+                    model_roles = _extract_model_roles(
+                        model_xbrl=model_xbrl,
+                    )
 
+                    # Read all facts into a list
                     fact_list = read_facts(
                         model_xbrl=model_xbrl,
                         model_roles=model_roles,
                     )
                     filing_list.extend(fact_list)
                     model_xbrl.close()
-                except Exception as exc:
-                    cntlr.addToLog(
-                        f"Error {entry.name} due to {exc}",
-                        level=logging.CRITICAL,
-                    )
-                    _error = True
+                except Exception as err:
+                    _error = err
 
-            if _error:
-                move_file_to_error(entry=entry)
-                cntlr.addToLog("Moved files to error folder")
+            if _error is not None:
+                move_file_to_error(file=file)
+                cntlr.addToLog(f"Moved file to error folder due to {_error}")
             else:
+                idx += 1
                 data_frame = to_dataframe(filing_list)
                 output_path = "output.csv"
                 data_frame.to_csv(
@@ -146,13 +169,12 @@ def read_and_save_filings() -> None:
                 # Move the filing folder to another location.
                 # This helps us if the script stops due to memory
                 # constraints.
-                move_file_to_parsed(entry=entry)
+                move_file_to_parsed(file=file)
                 cntlr.addToLog("Moved files to parsed folder")
 
-    if idx is not None:
-        end = time.time()
-        total_time = end - start
-        cntlr.addToLog(f"Loaded {idx+1} XBRL-files in {total_time}s")
+    end = time.time()
+    total_time = end - start
+    cntlr.addToLog(f"Loaded {idx} XBRL-files in {total_time}s")
 
     cntlr.addToLog("Finished loading")
     cntlr.close()

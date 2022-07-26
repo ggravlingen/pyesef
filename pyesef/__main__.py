@@ -3,22 +3,11 @@ import argparse
 
 from pyesef import __version__
 from pyesef.helpers.download_package import download_packages
-from pyesef.helpers.extract_filings import extract_filings
-from pyesef.helpers.read_and_save_filings import (  # read_and_save_filings_v2,
-    read_and_save_filings,
-)
+from pyesef.helpers.read_and_save_filings import read_and_save_filings
 
 if __name__ == "__main__":
-    # read_and_save_filings_v2()
-
     parser = argparse.ArgumentParser(description="Handle XBRL files.")
     parser.add_argument("--version", action="version", version=f"pyesef {__version__}")
-    parser.add_argument(
-        "--extract",
-        "-x",
-        action="store_true",
-        help="Extract all zip-files in the archive-folder",
-    )
     parser.add_argument(
         "--export",
         "-e",
@@ -36,9 +25,6 @@ if __name__ == "__main__":
 
     if org_args.download:
         download_packages()
-
-    if org_args.extract:
-        extract_filings()
 
     if org_args.export:
         read_and_save_filings()

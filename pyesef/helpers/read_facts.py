@@ -200,7 +200,7 @@ def read_facts(
 
     legal_name = _get_legal_name(facts=model_xbrl.facts)
 
-    model_xbrl.modelManager.cntlr.addToLog(f"Parsing files for {legal_name}")
+    model_xbrl.modelManager.cntlr.addToLog(f"Entity: {legal_name}")
 
     for fact in model_xbrl.facts:
         date_period_end = _get_period_end(end_date_time=fact.context.endDatetime)
