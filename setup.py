@@ -26,8 +26,9 @@ setup(
     author_email="no@email.com",
     long_description_content_type="text/markdown",
     url=GITHUB_URL,
+    package_data={"pyesef": ["py.typed"]},
     include_package_data=True,
-    license="MIT",
+    license="???",
     keywords="esef financial statement",
     download_url=DOWNLOAD_URL,
     classifiers=[

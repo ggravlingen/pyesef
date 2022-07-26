@@ -4,19 +4,24 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 import fractions
-from typing import Any
+from typing import Any, cast
 
 from arelle.ModelDtsObject import ModelConcept
 from arelle.ModelInstanceObject import ModelFact
 from arelle.ModelObject import ModelObject
-from arelle.ModelValue import dateTime
+from arelle.ModelValue import QName, dateTime
 from arelle.ModelXbrl import ModelXbrl
 from arelle.ValidateXbrlCalcs import roundValue
 
-from ..const import NiceType
+from ..const import (
+    LOCAL_NAME_KNOWN_TOTAL,
+    NORMALISED_STATEMENT_MAP,
+    STATEMENT_ITEM_GROUP_MAP,
+    NiceType,
+    StatementType,
+)
 from .extract_definitions_to_csv import (
     check_definitions_exists,
-    definitions_to_dict,
     extract_definitions_to_csv,
 )
 
@@ -25,34 +30,32 @@ from .extract_definitions_to_csv import (
 class EsefData:
     """Represent ESEF data as a dataclass."""
 
-    # The lei of the entity
-    lei: str
     # A date representing the end of the record's period
     period_end: date
-    # Type of statement (eg balance sheet or income statement)
+    # Type of statement in a normalised format
     statement_type: str | None
+    # False if no statement item group was matched
+    has_resolved_group: bool
+    # True if the record has been defined by the company
+    is_extension: bool
+    # True if the item is a sum of other items
+    is_total: bool
+    # The line item group the record belongs to
+    statement_item_group: str | None
+    # The XML name of the record item
+    xml_name: str
     # The stated name of the record item
     label: str | None
-    # The XML name of the record item
-    local_name: str
-    # A formal description of the line item
-    description: str | None
     # The name of the item this record belongs to
     membership: str | None
     # Currency of the value
     currency: str
     # Nominal value (in currency) of the record
     value: fractions.Fraction | int | Any | bool | str | None
-    # Type of period. Duration for income statement and cf, instant for balance sheet
-    period_type: str
-    # Denote if the record is debit or credit
-    debit_or_credit: str
-    # Prefix for the record's name
-    prefix: str
-    # Prefix for the record's parent
-    membership_prefix: str | None
-    # True if the record has been defined by the company
-    is_extension: bool = False
+    # The lei of the entity
+    lei: str
+    # The legal name of the entity
+    legal_name: str | None
 
 
 def parsed_value(
@@ -138,20 +141,9 @@ def _get_period_end(end_date_time: datetime) -> date:
     return (end_date_time - timedelta(days=1)).date()
 
 
-def _get_description(
-    local_name: str, lookup_table: dict[str, dict[str, str]]
+def _get_statement_type_raw(
+    model_roles: dict[str, str], clark_notation: str
 ) -> str | None:
-    if local_name in lookup_table:
-        return (
-            lookup_table[local_name]["definition"]
-            # Make sure the descriptions don't contain line breaks
-            .replace("\r", "").replace("\n", "")
-        )
-
-    return None
-
-
-def _get_statement_type(model_roles: dict[str, str], clark_notation: str) -> str | None:
     """Determine what financial statement type an item belongs to."""
     if clark_notation in model_roles:
         return model_roles[clark_notation]
@@ -159,31 +151,81 @@ def _get_statement_type(model_roles: dict[str, str], clark_notation: str) -> str
     return None
 
 
+def _get_is_total(xml_name: str) -> bool:
+    """Return true if the item is a sum of other items."""
+    return xml_name in LOCAL_NAME_KNOWN_TOTAL
+
+
+def _get_statement_type(statement_type_raw: str, xml_name: str) -> str:
+    """Convert statement type raw into a normalised format."""
+    if "Comprehensive" in xml_name:
+        # Companies sometimes put OCI in the income statement.
+        # We want to separate them so that's handled here.
+        return StatementType.OCI.value
+
+    if statement_type_raw in NORMALISED_STATEMENT_MAP:
+        return NORMALISED_STATEMENT_MAP[statement_type_raw]
+
+    return statement_type_raw
+
+
+def _get_statement_item_group(xml_name: str) -> tuple[str | None, bool]:
+    """Get statement item group name."""
+    if xml_name in STATEMENT_ITEM_GROUP_MAP:
+        return STATEMENT_ITEM_GROUP_MAP[xml_name], True
+
+    return None, False
+
+
+def _get_legal_name(facts: list[Any]) -> str | None:
+    """Get legal name of entity."""
+    for fact in facts:
+        if fact.attrib["name"] == "ifrs-full:NameOfUltimateParentOfGroup":
+            return cast(str, parsed_value(fact))
+
+        if fact.attrib["name"] == "ifrs-full:NameOfParentEntity":
+            return cast(str, parsed_value(fact))
+
+    return None
+
+
 def read_facts(
-    model_xbrl: ModelXbrl, model_roles: dict[str, str], filter_year: int | None = None
+    model_xbrl: ModelXbrl,
+    model_roles: dict[str, str],
 ) -> list[EsefData]:
     """Read facts of XBRL-files."""
     fact_list: list[EsefData] = []
 
+    legal_name = _get_legal_name(facts=model_xbrl.facts)
+
+    model_xbrl.modelManager.cntlr.addToLog(f"Entity: {legal_name}")
+
     for fact in model_xbrl.facts:
+        if fact.concept is None:
+            continue
+
         date_period_end = _get_period_end(end_date_time=fact.context.endDatetime)
 
-        statement_type = _get_statement_type(
-            model_roles=model_roles, clark_notation=fact.concept.qname.clarkNotation
+        qname: QName = fact.concept.qname
+
+        statement_type_raw = _get_statement_type_raw(
+            model_roles=model_roles, clark_notation=qname.clarkNotation
         )
+
+        # The name of the item, eg ComprehensiveIncome
+        xml_name: str = qname.localName
+
+        if statement_type_raw is not None:
+            statement_type = _get_statement_type(
+                statement_type_raw=statement_type_raw, xml_name=xml_name
+            )
+        else:
+            statement_type = None
 
         # On the first run, we want to make sure we have all the definitions
         # cached locally
         if not check_definitions_exists():
             extract_definitions_to_csv(concept=fact.concept)
-
-        lookup_table = definitions_to_dict()
-        description = _get_description(
-            local_name=fact.qname.localName, lookup_table=lookup_table
-        )
-
-        if filter_year is not None and date_period_end.year != filter_year:
-            continue
 
         # We don't want to save meta data like company name etc
         if fact.localName == "nonNumeric" or fact.concept.niceType in [
@@ -193,24 +235,26 @@ def read_facts(
             continue
 
         _, lei = fact.context.entityIdentifier
-        membership_prefix, membership_name = _get_membership(fact.context.scenario)
+        _, membership_name = _get_membership(fact.context.scenario)
+        statement_item_group, has_resolved_group = _get_statement_item_group(
+            xml_name=xml_name
+        )
 
         fact_list.append(
             EsefData(
-                prefix=fact.qname.prefix,
                 label=_get_label(fact.propertyView),
-                local_name=fact.qname.localName,
+                legal_name=legal_name,
+                xml_name=xml_name,
+                statement_item_group=statement_item_group,
+                has_resolved_group=has_resolved_group,
                 statement_type=statement_type,
-                description=description,
-                membership_prefix=membership_prefix,
                 membership=membership_name,
                 value=parsed_value(fact),
-                is_extension=_get_is_extension(fact.qname.prefix),
+                is_extension=_get_is_extension(qname.prefix),
                 period_end=date_period_end,
                 lei=lei,
                 currency=fact.unit.value,
-                period_type=fact.concept.periodType,
-                debit_or_credit=fact.concept.balance,
+                is_total=_get_is_total(xml_name=xml_name),
             )
         )
 
