@@ -73,7 +73,7 @@ def _load_esef_xbrl_model(zip_file_path: str, cntlr: Controller) -> ModelXbrl:
 
         return model_xbrl
     except Exception as exc:
-        raise IOError("File not loaded due to ", exc) from exc
+        raise OSError("File not loaded due to ", exc) from exc
 
 
 def _extract_model_roles(model_xbrl: ModelXbrl) -> dict[str, str]:
@@ -114,6 +114,11 @@ def _extract_model_roles(model_xbrl: ModelXbrl) -> dict[str, str]:
         raise PyEsefError("Unable to load model roles due to ", exc) from exc
 
     return result_dict
+
+
+def _path_to_language(subdir: str) -> str:
+    """Extract language from path."""
+    return subdir.split(os.sep)[-1]
 
 
 def read_and_save_filings() -> None:
@@ -164,8 +169,10 @@ def read_and_save_filings() -> None:
                     )
                     _error = True
 
+                language = _path_to_language(subdir)
+
                 if _error and error_message is not None:
-                    move_file_to_error(zip_file_path=zip_file_path)
+                    move_file_to_error(zip_file_path=zip_file_path, language=language)
                     cntlr.addToLog(f"Moved file to error folder due to {error_message}")
                 else:
                     idx += 1
@@ -182,7 +189,7 @@ def read_and_save_filings() -> None:
                     # Move the filing folder to another location.
                     # This helps us if the script stops due to memory
                     # constraints.
-                    move_file_to_parsed(zip_file_path=zip_file_path)
+                    move_file_to_parsed(zip_file_path=zip_file_path, language=language)
                     cntlr.addToLog("Moved files to parsed folder")
 
     end = time.time()
