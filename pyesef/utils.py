@@ -3,12 +3,13 @@ from __future__ import annotations
 
 from dataclasses import asdict
 import os
-from typing import Any, Dict, cast
+from pathlib import Path
+from typing import Any, cast
 
 import jstyleson
 import pandas as pd
 
-from .const import PATH_ARCHIVES, PATH_BASE, PATH_FAILED, PATH_PARSED
+from .const import PATH_BASE, PATH_FAILED, PATH_PARSED
 
 
 def to_dataframe(data_list: list[Any]) -> pd.DataFrame:
@@ -30,18 +31,30 @@ def get_item_description(
     return None
 
 
-def move_file_to_parsed(file: str) -> None:
+def move_file_to_parsed(zip_file_path: str, language: str) -> None:
     """Move a file from the filings folder to the parsed folder."""
-    os.replace(os.path.join(PATH_ARCHIVES, file), os.path.join(PATH_PARSED, file))
+    final_path = os.path.join(PATH_PARSED, language)
+    Path(final_path).mkdir(parents=True, exist_ok=True)
+
+    os.replace(
+        zip_file_path,
+        os.path.join(final_path, os.path.basename(zip_file_path)),
+    )
 
 
-def move_file_to_error(file: str) -> None:
+def move_file_to_error(zip_file_path: str, language: str) -> None:
     """Move a file from the filings folder to the error folder."""
-    os.replace(os.path.join(PATH_ARCHIVES, file), os.path.join(PATH_FAILED, file))
+    final_path = os.path.join(PATH_FAILED, language)
+    Path(final_path).mkdir(parents=True, exist_ok=True)
+
+    os.replace(
+        zip_file_path,
+        os.path.join(final_path, os.path.basename(zip_file_path)),
+    )
 
 
 def _read_json(filename: str) -> dict[str, str]:
     """Open and read a json-file and return as a dict."""
     with open(os.path.join(PATH_BASE, filename), "rb") as _file:
         contents = _file.read()
-        return cast(Dict[str, str], jstyleson.loads(contents))
+        return cast(dict[str, str], jstyleson.loads(contents))

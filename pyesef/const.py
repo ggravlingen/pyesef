@@ -6,15 +6,25 @@ import os
 import pathlib
 
 PATH_BASE = pathlib.Path(__file__).parent.resolve()
-PATH_PROJECT_ROOT = os.path.join(PATH_BASE, "..")
+PATH_PROJECT_ROOT = os.path.abspath(os.path.join(PATH_BASE, ".."))
 
-PATH_ARCHIVES = os.path.join(PATH_PROJECT_ROOT, "archives")
-PATH_PARSED = os.path.join(PATH_PROJECT_ROOT, "parsed")
-PATH_FAILED = os.path.join(PATH_PROJECT_ROOT, "error")
+PATH_ARCHIVES = os.path.abspath(os.path.join(PATH_PROJECT_ROOT, "archives"))
+PATH_PARSED = os.path.abspath(os.path.join(PATH_PROJECT_ROOT, "parsed"))
+PATH_FAILED = os.path.abspath(os.path.join(PATH_PROJECT_ROOT, "error"))
 
 FILE_ENDING_ZIP = ".zip"
 
 CSV_SEPARATOR = "|"
+
+
+class Country(str, Enum):
+    """Representation of different countries."""
+
+    DENMARK = "DK"
+    FINLAND = "FI"
+    ICELAND = "IS"
+    NORWAY = "NO"
+    SWEDEN = "SE"
 
 
 class NiceType(str, Enum):
@@ -206,7 +216,12 @@ STATEMENT_ITEM_GROUP_MAP: dict[str, str] = {
     "TradeAndOtherCurrentPayablesToTradeSuppliers": "CurrentPayables",
     # Intangibles
     "Goodwill": "IntangibleAssets",
-    "IntangibleAssetsOtherThanGoodwill": "IntangibleAssets",
+    "IntangibleAssetsOtherThanGoodwill": "IntangibleAssetsOtherThanGoodwill",
+    # PPE
+    "Land": "PropertyPlantAndEquipment",
+    "MachineryAndEquipment": "PropertyPlantAndEquipment",
+    "RightofuseAssets": "PropertyPlantAndEquipment",
+    "ConstructionInProgress": "PropertyPlantAndEquipment",
     # Equity
     "NoncontrollingInterests": "TotalEquity",
     "EquityAttributableToOwnersOfParent": "TotalEquity",
@@ -259,4 +274,5 @@ STATEMENT_ITEM_GROUP_MAP: dict[str, str] = {
     "GainsLossesOnCashFlowHedgesBeforeTax": "GainsLosses",
     # Taxes
     "IncomeTaxExpenseContinuingOperations": "CurrentTaxes",
+    "CurrentTaxExpenseIncome": "CurrentTaxes",
 }

@@ -1,4 +1,11 @@
 */archives*
 */filings*
 */parsed*
+*/error*
+
 .git
+
+.mypy_cache
+.pytest_cache
+.tox
+.pyesef.egg-info
