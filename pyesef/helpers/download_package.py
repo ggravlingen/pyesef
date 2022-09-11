@@ -108,7 +108,7 @@ def _download_package(filing: Filing) -> None:
 
     print(f"Downloading {url}")
 
-    req = requests.get(url, stream=True)
+    req = requests.get(url, stream=True, timeout=30)
     write_location = os.path.join(download_path, filing.file_name)
     with open(write_location, "wb") as _file:
         for chunk in req.iter_content(chunk_size=2048):
