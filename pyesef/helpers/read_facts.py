@@ -3,23 +3,19 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
+from enum import Enum
 import fractions
 from typing import Any, cast
 
 from arelle.ModelDtsObject import ModelConcept
-from arelle.ModelInstanceObject import ModelFact
+from arelle.ModelInstanceObject import ModelContext, ModelFact
 from arelle.ModelObject import ModelObject
 from arelle.ModelValue import QName, dateTime
 from arelle.ModelXbrl import ModelXbrl
 from arelle.ValidateXbrlCalcs import roundValue
 
-from ..const import (
-    LOCAL_NAME_KNOWN_TOTAL,
-    NORMALISED_STATEMENT_MAP,
-    STATEMENT_ITEM_GROUP_MAP,
-    NiceType,
-    StatementType,
-)
+from ..const import NORMALISED_STATEMENT_MAP, STATEMENT_ITEM_GROUP_MAP, NiceType
+from ..error import PyEsefError
 from .extract_definitions_to_csv import (
     check_definitions_exists,
     extract_definitions_to_csv,
@@ -45,6 +41,8 @@ class EsefData:
     # The XML name of the record item
     xml_name: str
     # The stated name of the record item
+    xml_name_parent: str | None
+    # The parent of the stated name of the record item
     label: str | None
     # The name of the item this record belongs to
     membership: str | None
@@ -58,18 +56,26 @@ class EsefData:
     legal_name: str | None
 
 
+class BaseXBRLiType(Enum):
+    """Representation of baseXbrliType."""
+
+    BOOLEAN = "booleanItemType"
+    DATE = "dateItemType"
+
+
 def parsed_value(
     fact: ModelFact,
 ) -> (fractions.Fraction | int | Any | bool | str | None):
     """
     Parse value.
 
+    Based on:
     https://github.com/private-circle/rlq/blob/master/rlq/rl_utils.py
     """
     if fact is None:
         return None
 
-    concept: ModelConcept = fact.concept
+    concept: ModelConcept | None = fact.concept
 
     if concept is None or concept.isTuple or fact.isNil:
         return None
@@ -95,10 +101,10 @@ def parsed_value(
         num = roundValue(val, fact.precision, dec)  # round using reported decimals
         return num
 
-    if concept.baseXbrliType == "dateItemType":
+    if concept.baseXbrliType == BaseXBRLiType.DATE:
         return dateTime(val)
 
-    if concept.baseXbrliType == "booleanItemType":
+    if concept.baseXbrliType == BaseXBRLiType.BOOLEAN:
         return val.lower() in ("1", "true")
 
     if concept.isTextBlock:
@@ -141,32 +147,23 @@ def _get_period_end(end_date_time: datetime) -> date:
     return (end_date_time - timedelta(days=1)).date()
 
 
-def _get_statement_type_raw(
-    model_roles: dict[str, str], clark_notation: str
-) -> str | None:
-    """Determine what financial statement type an item belongs to."""
-    if clark_notation in model_roles:
-        return model_roles[clark_notation]
-
-    return None
-
-
-def _get_is_total(xml_name: str) -> bool:
+def _get_is_total(xml_name: str, summation_items: list[str]) -> bool:
     """Return true if the item is a sum of other items."""
-    return xml_name in LOCAL_NAME_KNOWN_TOTAL
+    return xml_name in summation_items
 
 
-def _get_statement_type(statement_type_raw: str, xml_name: str) -> str:
+def _get_statement_type(
+    xml_name_parent: str,
+    xml_name: str,
+) -> str:
     """Convert statement type raw into a normalised format."""
-    if "Comprehensive" in xml_name:
-        # Companies sometimes put OCI in the income statement.
-        # We want to separate them so that's handled here.
-        return StatementType.OCI.value
+    if xml_name_parent in NORMALISED_STATEMENT_MAP:
+        return NORMALISED_STATEMENT_MAP[xml_name_parent]
 
-    if statement_type_raw in NORMALISED_STATEMENT_MAP:
-        return NORMALISED_STATEMENT_MAP[statement_type_raw]
+    if xml_name in NORMALISED_STATEMENT_MAP:
+        return NORMALISED_STATEMENT_MAP[xml_name]
 
-    return statement_type_raw
+    return f"Unmatched: {xml_name}"
 
 
 def _get_statement_item_group(xml_name: str) -> tuple[str | None, bool]:
@@ -197,76 +194,101 @@ def _get_sign_multiplier(balance: str) -> int:
     return -1
 
 
+def _get_parent(xml_name: str, hierarchy_dict: dict[str, str]) -> str | None:
+    """Get the parent of the item, if any."""
+    if xml_name in hierarchy_dict:
+        return hierarchy_dict[xml_name]
+
+    return None
+
+
 def read_facts(
     model_xbrl: ModelXbrl,
-    model_roles: dict[str, str],
+    summation_items: list[str],
+    hierarchy_dict: dict[str, str],
 ) -> list[EsefData]:
     """Read facts of XBRL-files."""
     fact_list: list[EsefData] = []
+    model_xbrl_fact_list: list[ModelFact] = model_xbrl.facts
 
     legal_name = _get_legal_name(facts=model_xbrl.facts)
-
     model_xbrl.modelManager.cntlr.addToLog(f"Entity: {legal_name}")
 
-    for fact in model_xbrl.facts:
-        if fact.concept is None:
-            continue
+    for fact in model_xbrl_fact_list:
+        concept: ModelConcept | None = fact.concept
+        context: ModelContext | None = fact.context
 
-        date_period_end = _get_period_end(end_date_time=fact.context.endDatetime)
+        try:
+            if concept is None or context is None:
+                continue
 
-        qname: QName = fact.concept.qname
+            # We don't want to save meta data like company name etc
+            if fact.localName == "nonNumeric" or concept.niceType in [
+                NiceType.PER_SHARE,
+                NiceType.SHARES,
+            ]:
+                continue
 
-        statement_type_raw = _get_statement_type_raw(
-            model_roles=model_roles, clark_notation=qname.clarkNotation
-        )
+            date_period_end = _get_period_end(end_date_time=context.endDatetime)
 
-        # The name of the item, eg ComprehensiveIncome
-        xml_name: str = qname.localName
+            qname: QName = concept.qname
 
-        if statement_type_raw is not None:
-            statement_type = _get_statement_type(
-                statement_type_raw=statement_type_raw, xml_name=xml_name
+            # The name of the item, eg ComprehensiveIncome
+            xml_name: str = qname.localName
+
+            xml_name_parent = _get_parent(
+                xml_name=xml_name, hierarchy_dict=hierarchy_dict
             )
-        else:
-            statement_type = None
 
-        # On the first run, we want to make sure we have all the definitions
-        # cached locally
-        if not check_definitions_exists():
-            extract_definitions_to_csv(concept=fact.concept)
+            if xml_name_parent is None:
+                statement_type = None
+            else:
+                statement_type = _get_statement_type(
+                    xml_name_parent=xml_name_parent,
+                    xml_name=xml_name,
+                )
 
-        # We don't want to save meta data like company name etc
-        if fact.localName == "nonNumeric" or fact.concept.niceType in [
-            NiceType.PER_SHARE,
-            NiceType.SHARES,
-        ]:
-            continue
+            # On the first run, we want to make sure we have all the definitions
+            # cached locally
+            if not check_definitions_exists():
+                extract_definitions_to_csv(concept=concept)
 
-        _, lei = fact.context.entityIdentifier
-        _, membership_name = _get_membership(fact.context.scenario)
-        statement_item_group, has_resolved_group = _get_statement_item_group(
-            xml_name=xml_name
-        )
-
-        value_multiplier: int = _get_sign_multiplier(fact.concept.balance)
-        value = cast(int, parsed_value(fact))
-
-        fact_list.append(
-            EsefData(
-                label=_get_label(fact.propertyView),
-                legal_name=legal_name,
-                xml_name=xml_name,
-                statement_item_group=statement_item_group,
-                has_resolved_group=has_resolved_group,
-                statement_type=statement_type,
-                membership=membership_name,
-                value=value * value_multiplier,
-                is_extension=_get_is_extension(qname.prefix),
-                period_end=date_period_end,
-                lei=lei,
-                currency=fact.unit.value,
-                is_total=_get_is_total(xml_name=xml_name),
+            _, lei = context.entityIdentifier
+            _, membership_name = _get_membership(context.scenario)
+            statement_item_group, has_resolved_group = _get_statement_item_group(
+                xml_name=xml_name
             )
-        )
+
+            value = parsed_value(fact)
+
+            if value is None:
+                continue
+
+            value = cast(int, value)
+            value_multiplier: int = _get_sign_multiplier(concept.balance)
+
+            fact_list.append(
+                EsefData(
+                    label=_get_label(fact.propertyView),
+                    legal_name=legal_name,
+                    xml_name=xml_name,
+                    xml_name_parent=xml_name_parent,
+                    statement_item_group=statement_item_group,
+                    has_resolved_group=has_resolved_group,
+                    statement_type=statement_type,
+                    membership=membership_name,
+                    value=value * value_multiplier,
+                    is_extension=_get_is_extension(qname.prefix),
+                    period_end=date_period_end,
+                    lei=lei,
+                    currency=fact.unit.value,
+                    is_total=_get_is_total(
+                        xml_name=xml_name,
+                        summation_items=summation_items,
+                    ),
+                )
+            )
+        except Exception as exc:
+            raise PyEsefError(f"Unable to parse fact {fact} ", exc) from exc
 
     return fact_list
