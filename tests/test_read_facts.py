@@ -70,7 +70,7 @@ def test_get_statement_type():
     """Test function _get_statement_type."""
     assert (
         _get_statement_type(
-            statement_type_raw="BalanceSheet",
+            xml_name_parent="CurrentAssets",
             xml_name="ABC",
         )
         == "balance_sheet"
@@ -86,7 +86,9 @@ def test_get_statement_type():
 )
 def test_get_is_total(test_value: str, expected_result: bool):
     """Test function _get_is_total."""
-    function_value = _get_is_total(test_value)
+    summation_items = ["ProfitLoss"]
+
+    function_value = _get_is_total(xml_name=test_value, summation_items=summation_items)
 
     assert function_value is expected_result
 
