@@ -21,6 +21,9 @@ class Filing:
     path: str
 
 
+IdentifierType = dict[str, list[Filing]]
+
+
 def _parse_file_ending(path: str) -> str:
     """Parse the file ending."""
     path = path.lower()
@@ -29,38 +32,61 @@ def _parse_file_ending(path: str) -> str:
     return country_iso
 
 
+def _cleanup_package_dict(identifier_map: IdentifierType) -> list[Filing]:
+    """
+    Cleanup package dict and return only one filing.
+
+    Will return the English version if available.
+    """
+    data_list: list[Filing] = []
+    for key, _ in identifier_map.items():
+        filing_list = identifier_map[key]
+
+        if len(filing_list) == 1:
+            data_list.append(filing_list[0])
+            continue
+
+        for filing in filing_list:
+            if "en" in filing.file_name:
+                data_list.append(filing)
+                continue
+
+    return data_list
+
+
 def download_packages() -> None:
     """
     Download XBRL-packages from XBRL.org.
 
     Prefer the English version of there are multiple languages available.
     """
-    data_list: list[Filing] = []
-    identifier_list: list[str] = []
+    identifier_map: IdentifierType = {}
     idx: int = 0
 
     with urllib.request.urlopen(f"{BASE_URL}table-index.json") as url:
         data = json.loads(url.read().decode())
         for idx, item in enumerate(data):
             if item["country"] in [
-                Country.DENMARK,
-                Country.FINLAND,
-                Country.ICELAND,
-                Country.NORWAY,
+                # Country.DENMARK,
+                # Country.FINLAND,
+                # Country.ICELAND,
+                # Country.NORWAY,
                 Country.SWEDEN,
             ]:
-                split_file = item["report-package"].split("-")
-                identifier = split_file[0]
 
-                if identifier not in identifier_list:
-                    identifier_list.append(identifier)
-                    data_list.append(
-                        Filing(
-                            country=_parse_file_ending(path=item["path"]),
-                            file_name=item["report-package"],
-                            path=item["path"],
-                        )
-                    )
+                lei = item["lei"]
+                filing = Filing(
+                    country=_parse_file_ending(path=item["path"]),
+                    file_name=item["report-package"],
+                    path=item["path"],
+                )
+
+                if lei not in identifier_map:
+                    identifier_map[lei] = [filing]
+                else:
+                    identifier_map[lei].append(filing)
+
+    data_list = _cleanup_package_dict(identifier_map=identifier_map)
 
     print(f"{len(data_list)} items found")
 
@@ -76,6 +102,7 @@ def _download_package(filing: Filing) -> None:
     url = f"{BASE_URL}{filing.path}/{filing.file_name}"
 
     download_path = os.path.join(PATH_ARCHIVES, filing.country)
+
     # Create download path if it does not exist
     Path(download_path).mkdir(parents=True, exist_ok=True)
 

@@ -4,6 +4,7 @@ from __future__ import annotations
 from enum import Enum
 import os
 import pathlib
+from typing import Final
 
 PATH_BASE = pathlib.Path(__file__).parent.resolve()
 PATH_PROJECT_ROOT = os.path.abspath(os.path.join(PATH_BASE, ".."))
@@ -70,133 +71,64 @@ class StatementType(Enum):
     EQ = "changes_equity"
 
 
-# It appears companies may define role names freely. This is a mapping from the
-# companies' role name to a standardised name.
-NORMALISED_STATEMENT_MAP: dict[str, str] = {
-    # General items
-    "ias_1_role-110000": StatementType.GENERAL.value,
-    # Balance sheet
-    "ias_1_role-210000": StatementType.BS.value,
-    "ias_1_role-220000": StatementType.BS.value,
-    "RapportOEverFinansiellStaellning": StatementType.BS.value,
-    "Rapportöverfinansiellställningförkoncernen": StatementType.BS.value,
-    "StatementOfFinancialPosition": StatementType.BS.value,
-    "FinancialPosition": StatementType.BS.value,
-    "BalanceSheet": StatementType.BS.value,
-    "EgetKapitalOchSkulder": StatementType.BS.value,
-    "Tillgangar": StatementType.BS.value,
-    "ConsolidatedStatementsOfFinancialPosition": StatementType.BS.value,
-    "FinancialPositionGroup": StatementType.BS.value,
-    "ConsolidatedBalanceSheets": StatementType.BS.value,
-    "Balansräkningkoncernen": StatementType.BS.value,
-    "FinancialPosition2": StatementType.BS.value,
+# We have to use .value here, else the value stored in the CSV becomes
+# eg StatementType.IS instead of income_statement.
+NORMALISED_STATEMENT_MAP: Final[dict[str, str]] = {
     # Income statement
-    "ias_1_role-310000": StatementType.IS.value,
-    "ias_1_role-320000": StatementType.IS.value,
-    "RapportOEverTotalresultat": StatementType.IS.value,
-    "IncomeStatement": StatementType.IS.value,
-    "ProfitOrLoss": StatementType.IS.value,
-    "ProfitAndLoss": StatementType.IS.value,
-    "Resultat": StatementType.IS.value,
-    "Roerelseresultat": StatementType.IS.value,
-    "Rapportöverresultatochövrigttotalresultatförkoncernen": StatementType.IS.value,
-    "IncomeStatement2": StatementType.IS.value,
-    "ConsolidatedStatementsOfOperations": StatementType.IS.value,
-    "IncomeStatementGroup": StatementType.IS.value,
-    "ConsolidatedStatementsOfIncome": StatementType.IS.value,
-    "AnalysAvIntaekterOchKostnader": StatementType.IS.value,
-    "Resultaträkningkoncernen": StatementType.IS.value,
-    "ConsolidatedStatementsOfIncomeLossAndComprehensiveIncome": StatementType.IS.value,
-    "Rapportövertotalresultatkoncernen": StatementType.IS.value,
-    "ProfitOrLoss1": StatementType.IS.value,
-    "AnalysAvIntaekterOchKostnader1": StatementType.IS.value,
+    "ProfitLossFromOperatingActivities": StatementType.IS.value,
+    "OperatingExpense": StatementType.IS.value,
+    "FinanceIncomeCost": StatementType.IS.value,
+    "GrossProfit": StatementType.IS.value,
+    "RevenueFromSaleOfOilAndGasProductsAndRoyaltyExpense": StatementType.IS.value,
+    "ProfitLossBeforeTax": StatementType.IS.value,
+    "ProfitLoss": StatementType.IS.value,
+    "ProfitLossAttributableToOwnersOfParent": StatementType.IS.value,
     # Other comprehensive income
-    "ias_1_role-410000": StatementType.OCI_AT.value,
-    "ConsolidatedStatementsOfTotalEquity": StatementType.OCI_AT.value,
-    "ias_1_role-420000": StatementType.OCI_PT.value,
-    "ComprehensiveIncome": StatementType.OCI.value,
-    "StatementOfComprehensiveIncome": StatementType.OCI.value,
-    "RapportOEverTotalresultat1": StatementType.OCI.value,
-    "ComprehensiveIncome2": StatementType.OCI.value,
-    "ConsolidatedStatementsOfComprehensiveIncomeLoss": StatementType.OCI.value,
-    "ComprehensiveIncomeGroup": StatementType.OCI.value,
-    "ConsolidatedStatementsOfComprehensiveIncome": StatementType.OCI.value,
-    "RapportOEverTotalresultat3": StatementType.OCI.value,
     "OtherComprehensiveIncome": StatementType.OCI.value,
-    "StatementOfComprehensiveIncome1": StatementType.OCI.value,
-    "OCI": StatementType.OCI.value,
-    "RapportOEverTotalresultat2": StatementType.OCI.value,
-    # Cash flow statement
-    "ias_1_role-510000": StatementType.CF.value,
-    "ias_1_role-520000": StatementType.CF.value,
-    "ias_7_role-520000": StatementType.CF.value,
-    "RapportOEverKassafloeden": StatementType.CF.value,
-    "Rapportöverkassaflödenförkoncernen": StatementType.CF.value,
-    "CashFlow": StatementType.CF.value,
-    "StatementOfCashFlows": StatementType.CF.value,
-    "ConsolidatedStatementsOfCashFlows": StatementType.CF.value,
-    "Kassaflödesanalyskoncernen": StatementType.CF.value,
-    "KassaflödesanalyskoncernenParentheticals1": StatementType.CF.value,
-    # Changes in equity
-    "ias_1_role-610000": StatementType.EQ.value,
-    "RapportOEverFoeraendringarIEgetKapital": StatementType.EQ.value,
-    "ChangesinEquity": StatementType.EQ.value,
-    "RapportOEverFoeraendringarIEgetKapital5": StatementType.EQ.value,
-    "RapportOEverFoeraendringarIEgetKapital6": StatementType.EQ.value,
-    "RapportOEverFoeraendringarIEgetKapital8": StatementType.EQ.value,
-    "ChangesinEquity2": StatementType.EQ.value,
-    "StatementOfChangesInEquity": StatementType.EQ.value,
-    "StatementOfChangesInEquity7": StatementType.EQ.value,
-    "ChangesinEquityPrevious": StatementType.EQ.value,
-    "RapportOEverFoeraendringarIEgetKapital2": StatementType.EQ.value,
+    "ComprehensiveIncome": StatementType.OCI.value,
+    "ComprehensiveIncomeAttributableToOwnersOfParent": StatementType.OCI.value,
+    "OtherComprehensiveIncomeBeforeTax": StatementType.OCI.value,
+    "ComprehensiveIncomeAttributableToNoncontrollingInterests": StatementType.OCI.value,
+    "ItemsInComprehensiveIncome": StatementType.OCI.value,
+    # Balance sheet
+    "NoncurrentAssets": StatementType.BS.value,
+    "CurrentAssets": StatementType.BS.value,
+    "TradeAndOtherCurrentReceivables": StatementType.BS.value,
+    "Assets": StatementType.BS.value,
+    "Equity": StatementType.BS.value,
+    "NoncurrentLiabilities": StatementType.BS.value,
+    "CurrentLiabilities": StatementType.BS.value,
+    "EquityAndLiabilities": StatementType.BS.value,
+    "IntangibleAssetsAndGoodwill": StatementType.BS.value,
+    "PropertyPlantAndEquipment": StatementType.BS.value,
+    "NoncurrentReceivables": StatementType.BS.value,
+    "Inventories": StatementType.BS.value,
+    "TotalEquity": StatementType.BS.value,
+    "TradeAndOtherReceivables": StatementType.BS.value,
+    # Cash flow
+    "CashFlowsFromUsedInOperationsBeforeChangesInWorkingCapital": StatementType.CF.value,
+    "CashFlowsFromUsedInOperatingActivities": StatementType.CF.value,
+    "CashFlowsFromUsedInInvestingActivities": StatementType.CF.value,
+    "CashFlowsFromUsedInFinancingActivities": StatementType.CF.value,
+    "IncreaseDecreaseInCashAndCashEquivalents": StatementType.CF.value,
+    "IncreaseDecreaseInWorkingCapital": StatementType.CF.value,
+    "IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges": StatementType.CF.value,  # pylint: disable=line-too-long
+    "EffectOfExchangeRateChangesOnCashAndCashEquivalents": StatementType.CF.value,
+    # Statement of equity
+    "IncreaseDecreaseThroughTransactionsWithOwners": StatementType.EQ.value,
+    "DividendsRecognisedAsDistributionsToOwnersOfParentRelatingToPriorYears": StatementType.EQ.value,  # pylint: disable=line-too-long
+    "ShareIssueRelatedCost": StatementType.EQ.value,
+    "IncreaseDecreaseThroughOtherContributionsByOwners": StatementType.EQ.value,
+    "IncreaseDecreaseThroughSharebasedPaymentTransactions": StatementType.EQ.value,
+    "IncreaseDecreaseThroughExerciseOfOptions": StatementType.EQ.value,
+    "EquityAttributableToOwnersOfParent": StatementType.EQ.value,
+    "DividendsPaid": StatementType.EQ.value,
+    "IssueOfEquity": StatementType.EQ.value,
+    "DividendsRecognisedAsDistributionsToOwnersOfParent": StatementType.EQ.value,
+    "DividendsRecognisedAsDistributionsToNoncontrollingInterests": StatementType.EQ.value,
+    "IncreaseDecreaseThroughTransfersAndOtherChangesEquity": StatementType.EQ.value,
 }
 
-# A list of XML-names that represent a summation line
-LOCAL_NAME_KNOWN_TOTAL: list[str] = [
-    # Income statement
-    "GrossProfit",
-    "FinanceIncomeCost",
-    "ProfitLossBeforeTax",
-    "ProfitLoss",
-    "ProfitLossFromOperatingActivities",
-    "ProfitLossAttributableToOwnersOfParent",
-    "FinanceCosts",
-    "EBITDA",
-    "TotalresultatFoerAret",
-    "Totalincometax",
-    "TotalRevenueOtherOperatingIncomeAndWorkPerformedByEntityAndCapitalised",
-    "TotalRevenue",
-    "TotalOtherExpensesIncome",
-    "TotalOperatingExpensesExcludingDepreciationAndAmortisationExpense",
-    "TotalOperatingExpensesBeforeCreditLosses",
-    "TotalOperatingExpenses",
-    "TotalOperatingCosts",
-    "TotalFinancialItems",
-    "TotalExpensesBeforeCreditLosses",
-    "TotalExpenses",
-    "InterestRevenueExpense",  # For banks
-    "FeeAndCommissionIncomeExpense"  # For banks
-    # Balance sheet
-    "CurrentAssets",
-    "NoncurrentAssets",
-    "Assets",
-    "NoncurrentLiabilities",
-    "CurrentLiabilities",
-    "Liabilities",
-    "IntangibleAssetsAndGoodwill",
-    "EquityAndLiabilities",
-    "PropertyPlantAndEquipment",
-    "Equity",
-    "CurrentAssetsexcludingCash",
-    "CurrentAssets",
-    "NoncurrentAssets",
-    # Cash flow
-    "CashFlowsFromUsedInOperatingActivities",
-    "CashFlowsFromUsedInOperationsBeforeChangesInWorkingCapital",
-    "CashFlowsFromUsedInInvestingActivities",
-    "CashFlowBeforeFinancing",
-    "CashFlowsFromUsedInFinancingActivities",
-]
 
 STATEMENT_ITEM_GROUP_MAP: dict[str, str] = {
     # Cash and equivalents
@@ -262,7 +194,10 @@ STATEMENT_ITEM_GROUP_MAP: dict[str, str] = {
     # SG&A
     "AdministrativeExpense": "SellingGeneralAndAdministrativeExpense",
     "OtherExpenseByFunction": "SellingGeneralAndAdministrativeExpense",
+    "GeneralAndAdministrativeExpense": "SellingGeneralAndAdministrativeExpense",
     "SellingGeneralAndAdministrativeExpense": "SellingGeneralAndAdministrativeExpense",
+    "OtherExpenseByNature": "SellingGeneralAndAdministrativeExpense",
+    "EmployeeBenefitsExpense": "SellingGeneralAndAdministrativeExpense",
     # R&D
     "ResearchAndDevelopmentExpense": "ResearchAndDevelopmentExpense",
     # Marketing

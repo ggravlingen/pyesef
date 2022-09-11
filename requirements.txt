@@ -1,4 +1,4 @@
-git+https://github.com/Arelle/Arelle.git#165a725fb1d8aaa4b841631b427a94178f3330a8
+git+https://github.com/Arelle/Arelle.git#9b982a90901526ef55d5f1a99e2ee4fe441e31f9
 ipykernel==6.15.1
 jstyleson==0.0.2
 lxml==4.9.1
