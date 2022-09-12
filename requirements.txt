@@ -1,5 +1,5 @@
 git+https://github.com/Arelle/Arelle.git#9b982a90901526ef55d5f1a99e2ee4fe441e31f9
-ipykernel==6.15.1
+ipykernel==6.15.2
 jstyleson==0.0.2
 lxml==4.9.1
 pandas==1.4.3
