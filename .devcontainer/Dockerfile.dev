@@ -1,4 +1,4 @@
-ARG VARIANT=3.10-bullseye
+ARG VARIANT=3.9-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
 ENV VIRTUAL_ENV=/opt/.venv
@@ -13,6 +13,4 @@ WORKDIR $FILE_LOCATION
 RUN sudo python3 -m venv $VIRTUAL_ENV && \
     sudo chown -R $LOCAL_USER:$LOCAL_USER ${VIRTUAL_ENV} && \
     . $VIRTUAL_ENV/bin/activate && \
-    python3 -m pip install --upgrade pip setuptools wheel Cython tox && \
-    python3 -m pip install -r $FILE_LOCATION/requirements.txt && \
-    python3 -m pip install -r $FILE_LOCATION/requirements_test.txt
+    python3 -m pip install --upgrade pip setuptools wheel Cython tox
