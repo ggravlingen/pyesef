@@ -1,5 +1,5 @@
 {
-  "name": "PYesef dev",
+  "name": "PyESEF dev",
   "context": "..",
   "dockerFile": "Dockerfile.dev",
   "postCreateCommand": "script/setup",
