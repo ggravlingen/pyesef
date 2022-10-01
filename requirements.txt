@@ -1,4 +1,4 @@
-git+https://github.com/Arelle/Arelle.git#f9c8b213ce2409367ee7591be46946775524254d
+arelle-release==2.0.0
 ipykernel==6.15.3
 jstyleson==0.0.2
 lxml==4.9.1
