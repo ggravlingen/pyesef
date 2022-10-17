@@ -67,10 +67,10 @@ def download_packages() -> None:
         data = json.loads(url.read().decode())
         for idx, item in enumerate(data):
             if item["country"] in [
-                # Country.DENMARK,
-                # Country.FINLAND,
-                # Country.ICELAND,
-                # Country.NORWAY,
+                Country.DENMARK,
+                Country.FINLAND,
+                Country.ICELAND,
+                Country.NORWAY,
                 Country.SWEDEN,
             ]:
 
