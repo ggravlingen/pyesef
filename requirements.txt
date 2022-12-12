@@ -1,5 +1,5 @@
 arelle-release==2.2.2
-ipykernel==6.17.1
+ipykernel==6.19.2
 jstyleson==0.0.2
 lxml==4.9.1
 pandas==1.5.2
