@@ -3,4 +3,4 @@ ipykernel==6.19.4
 jstyleson==0.0.2
 lxml==4.9.2
 pandas==1.5.2
-requests==2.28.1
+requests==2.28.2
