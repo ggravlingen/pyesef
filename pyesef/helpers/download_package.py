@@ -73,7 +73,6 @@ def download_packages() -> None:
                 Country.NORWAY,
                 Country.SWEDEN,
             ]:
-
                 lei = item["lei"]
                 filing = Filing(
                     country=_parse_file_ending(path=item["path"]),
