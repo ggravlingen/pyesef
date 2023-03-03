@@ -65,7 +65,7 @@ class BaseXBRLiType(Enum):
 
 def parsed_value(
     fact: ModelFact,
-) -> (fractions.Fraction | int | Any | bool | str | None):
+) -> fractions.Fraction | int | Any | bool | str | None:
     """
     Parse value.
 
