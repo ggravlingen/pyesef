@@ -2,5 +2,5 @@ arelle-release==2.10.5
 ipykernel==6.23.1
 jstyleson==0.0.2
 lxml==4.9.2
-pandas==2.0.1
+pandas==2.0.2
 requests==2.31.0
