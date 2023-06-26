@@ -1,4 +1,4 @@
-arelle-release==2.10.8
+arelle-release==2.11.3
 ipykernel==6.23.2
 jstyleson==0.0.2
 lxml==4.9.2
