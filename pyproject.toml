@@ -16,7 +16,7 @@ forced_separate = [
 combine_as_imports = true
 
 [tool.pylint.MASTER]
-py-version = "3.9"
+py-version = "3.10"
 
 [tool.pylint.BASIC]
 class-const-naming-style = "any"
@@ -52,4 +52,44 @@ testpaths = [
 norecursedirs = [
     ".git",
     "testing_config",
+]
+
+[tool.ruff]
+exclude = []
+
+target-version = "py310"
+
+select = [
+    "UP",  # pyupgrade
+]
+
+# Same as Black.
+line-length = 88
+
+ignore = [# One of these is to be disabled..
+          "D213", # See https://github.com/charliermarsh/ruff/issues/2281
+          #"D212", # See https://github.com/charliermarsh/ruff/issues/2281
+
+          "D203", # See https://github.com/charliermarsh/ruff/issues/2281
+          #"D211", # See https://github.com/charliermarsh/ruff/issues/2281
+              # keep-runtime-annotations
+          'UP006', # Non PEP585 annotations
+          'UP007', # Non PEP604 annotations
+]
+
+[tool.ruff.flake8-pytest-style]
+fixture-parentheses = false
+
+[tool.ruff.pydocstyle]
+convention = 'pep257'
+
+[tool.ruff.isort]
+combine-as-imports = true
+force-sort-within-sections = true
+forced-separate = [
+  "tests",
+]
+known-first-party = [
+  "pyesef",
+  "tests",
 ]

@@ -19,7 +19,7 @@ PACKAGES = find_packages(exclude=["tests", "tests.*"])
 setup(
     name="pyesef",
     packages=PACKAGES,
-    python_requires=">=3.9",
+    python_requires=">=3.10",
     version=VERSION,
     long_description=LONG_DESCRIPTION,
     author="ggravlingen",
@@ -34,7 +34,6 @@ setup(
     classifiers=[
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Intended Audience :: Financial and Insurance Industry",
     ],
