@@ -33,6 +33,7 @@ jobs:
               - .github/**/*.yml
               - requirements.txt
               - requirements_test.txt
+              - pyproject.toml
 
       - name: Collect additional information
         id: info
