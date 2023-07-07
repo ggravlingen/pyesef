@@ -100,8 +100,6 @@ jobs:
         run: black --check --fast --quiet --diff pyesef tests
       - name: Run mypy
         run: mypy pyesef
-      - name: Run flake8
-        run: flake8 pyesef tests
       - name: Run pylint
         run: pylint pyesef tests
 
