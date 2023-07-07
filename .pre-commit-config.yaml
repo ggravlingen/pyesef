@@ -25,37 +25,11 @@ repos:
           - --safe
           - --quiet
         files: ^(pyesef|tests)/.+\.py$
-  - repo: https://github.com/PyCQA/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-        name: isort
   - repo: local
     hooks:
       - id: pylint
         name: pylint
         entry: pylint
-        language: system
-        types: [python]
-        files: ^(pyesef|tests)/.+\.py$
-  - repo: local
-    hooks:
-      - id: pytest
-        name: pytest
-        args:
-          - --timeout=30
-          - --cov=pyesef
-          - --cov-report=html
-        stages: [push, manual]
-        entry: pytest
-        language: system
-        types: [python]
-        files: tests
-  - repo: local
-    hooks:
-      - id: flake8
-        name: flake8
-        entry: flake8
         language: system
         types: [python]
         files: ^(pyesef|tests)/.+\.py$

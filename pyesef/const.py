@@ -106,17 +106,17 @@ NORMALISED_STATEMENT_MAP: Final[dict[str, str]] = {
     "TotalEquity": StatementType.BS.value,
     "TradeAndOtherReceivables": StatementType.BS.value,
     # Cash flow
-    "CashFlowsFromUsedInOperationsBeforeChangesInWorkingCapital": StatementType.CF.value,
+    "CashFlowsFromUsedInOperationsBeforeChangesInWorkingCapital": StatementType.CF.value,  # pylint: disable=line-too-long # noqa: E501
     "CashFlowsFromUsedInOperatingActivities": StatementType.CF.value,
     "CashFlowsFromUsedInInvestingActivities": StatementType.CF.value,
     "CashFlowsFromUsedInFinancingActivities": StatementType.CF.value,
     "IncreaseDecreaseInCashAndCashEquivalents": StatementType.CF.value,
     "IncreaseDecreaseInWorkingCapital": StatementType.CF.value,
-    "IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges": StatementType.CF.value,  # pylint: disable=line-too-long
+    "IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges": StatementType.CF.value,  # pylint: disable=line-too-long # noqa: E501
     "EffectOfExchangeRateChangesOnCashAndCashEquivalents": StatementType.CF.value,
     # Statement of equity
     "IncreaseDecreaseThroughTransactionsWithOwners": StatementType.EQ.value,
-    "DividendsRecognisedAsDistributionsToOwnersOfParentRelatingToPriorYears": StatementType.EQ.value,  # pylint: disable=line-too-long
+    "DividendsRecognisedAsDistributionsToOwnersOfParentRelatingToPriorYears": StatementType.EQ.value,  # pylint: disable=line-too-long # noqa: E501
     "ShareIssueRelatedCost": StatementType.EQ.value,
     "IncreaseDecreaseThroughOtherContributionsByOwners": StatementType.EQ.value,
     "IncreaseDecreaseThroughSharebasedPaymentTransactions": StatementType.EQ.value,
@@ -125,7 +125,7 @@ NORMALISED_STATEMENT_MAP: Final[dict[str, str]] = {
     "DividendsPaid": StatementType.EQ.value,
     "IssueOfEquity": StatementType.EQ.value,
     "DividendsRecognisedAsDistributionsToOwnersOfParent": StatementType.EQ.value,
-    "DividendsRecognisedAsDistributionsToNoncontrollingInterests": StatementType.EQ.value,
+    "DividendsRecognisedAsDistributionsToNoncontrollingInterests": StatementType.EQ.value,  # pylint: disable=line-too-long # noqa: E501
     "IncreaseDecreaseThroughTransfersAndOtherChangesEquity": StatementType.EQ.value,
 }
 

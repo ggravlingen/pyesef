@@ -65,7 +65,7 @@ def download_packages() -> None:
 
     with urllib.request.urlopen(f"{BASE_URL}table-index.json") as url:
         data = json.loads(url.read().decode())
-        for idx, item in enumerate(data):
+        for _, item in enumerate(data):
             if item["country"] in [
                 Country.DENMARK,
                 Country.FINLAND,
@@ -87,11 +87,11 @@ def download_packages() -> None:
 
     data_list = _cleanup_package_dict(identifier_map=identifier_map)
 
-    print(f"{len(data_list)} items found")
+    print(f"{len(data_list)} items found")  # noqa: T201
 
     for idx, item in enumerate(data_list):
         if idx % 10 == 0:
-            print(f"Parsing {idx}/{len(data_list)}")
+            print(f"Parsing {idx}/{len(data_list)}")  # noqa: T201
 
         _download_package(item)
 
@@ -105,7 +105,7 @@ def _download_package(filing: Filing) -> None:
     # Create download path if it does not exist
     Path(download_path).mkdir(parents=True, exist_ok=True)
 
-    print(f"Downloading {url}")
+    print(f"Downloading {url}")  # noqa: T201
 
     req = requests.get(url, stream=True, timeout=30)
     write_location = os.path.join(download_path, filing.file_name)
