@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import os
-from typing import Any, Dict, cast
+from typing import Any, cast
 
 from arelle.ModelDtsObject import ModelConcept
 import pandas as pd
@@ -61,7 +61,7 @@ def definitions_to_dict() -> dict[str, dict[str, str]]:
         DEFINITIONS_FILENAME, sep=CSV_SEPARATOR, index_col="label_xml"
     )
     output_dict = data_frame.to_dict("index")
-    return cast(Dict[str, Dict[str, str]], output_dict)
+    return cast(dict[str, dict[str, str]], output_dict)
 
 
 def extract_definitions_to_csv(concept: ModelConcept) -> None:

@@ -1,9 +1,10 @@
 repos:
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v3.8.0
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.275
     hooks:
-      - id: pyupgrade
-        args: [--py39-plus]
+      - id: ruff
+        args:
+          - --fix
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
@@ -14,7 +15,7 @@ repos:
         exclude: (.vscode|.devcontainer)
       - id: no-commit-to-branch
         args:
-          - --branch=master
+          - --branch=main
   - repo: https://github.com/psf/black
     rev: 23.3.0
     hooks:

@@ -92,9 +92,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - uses: syphar/restore-virtualenv@v1.3
         id: cache-virtualenv
-      #      - name: Run ruff (fully)
-      #        run: |
-      #          pre-commit run --hook-stage manual ruff --all-files --show-diff-on-failure
+      - name: Run ruff (fully)
+        run: |
+          pre-commit run --hook-stage manual ruff --all-files --show-diff-on-failure
       - name: Run Black
         run: black --check --fast --quiet --diff pyesef tests
       - name: Run mypy
