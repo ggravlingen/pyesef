@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+permissions:
+  pull-requests: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
@@ -55,7 +58,7 @@ jobs:
         uses: actions/checkout@v3.5.3
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4.6.1
+        uses: actions/setup-python@v4.7.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -88,7 +91,7 @@ jobs:
         with:
           fetch-depth: "2"
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4.6.1
+        uses: actions/setup-python@v4.7.0
         with:
           python-version: ${{ matrix.python-version }}
       - uses: syphar/restore-virtualenv@v1.3
@@ -120,7 +123,7 @@ jobs:
         uses: actions/checkout@v3.5.3
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4.6.1
+        uses: actions/setup-python@v4.7.0
         with:
           python-version: ${{ matrix.python-version }}
 
