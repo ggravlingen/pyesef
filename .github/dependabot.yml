@@ -10,3 +10,12 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+    groups:
+      actions:
+        patterns:
+          - "actions/*"
+          - "release-drafter/*"
+          - "peter-evans/*"
+          - "syphar/*"
+          - "dorny/*"
+          - "orgoro/*"
