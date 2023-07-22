@@ -5,11 +5,6 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
-  - package-ecosystem: pip
-    directory: "/"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
     groups:
       actions:
         patterns:
@@ -19,3 +14,8 @@ updates:
           - "syphar/*"
           - "dorny/*"
           - "orgoro/*"
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
