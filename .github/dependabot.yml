@@ -13,4 +13,9 @@ updates:
     groups:
       actions:
         patterns:
-          - "actions" # a single dependency name
+          - "actions/*"
+          - "release-drafter/*"
+          - "peter-evans/*"
+          - "syphar/*"
+          - "dorny/*"
+          - "orgoro/*"
