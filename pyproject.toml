@@ -12,6 +12,12 @@ authors     = [
 ]
 keywords    = ["esef", "statement", "financial"]
 requires-python = ">=3.10.0"
+classifiers=[
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Intended Audience :: Financial and Insurance Industry",
+]
 dependencies    = [
   "arelle-release==2.23.13",
   "ipykernel==6.29.3",
@@ -20,11 +26,18 @@ dependencies    = [
   "pandas==2.2.1",
   "requests==2.31.0",
 ]
-classifiers=[
-    "Natural Language :: English",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Intended Audience :: Financial and Insurance Industry",
+[project.optional-dependencies]
+dev = [
+  "black==24.2.0",
+  "coverage==7.4.3",
+  "mypy==1.8.0",
+  "pre-commit==3.5.0",
+  "pylint==3.0.2",
+  "pytest==8.0.2",
+  "pytest-cov==4.1.0",
+  "pytest-timeout==2.2.0",
+  "ruff==0.3.2",
+  "types-requests==2.31.0.20240218",
 ]
 
 [tool.setuptools]
