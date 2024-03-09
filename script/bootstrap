@@ -8,6 +8,5 @@ cd "$(dirname "$0")/.."
 
 echo "Installing dependencies..."
 
-. $VIRTUAL_ENV/bin/activate \
-    && python3 -m pip install -e .'[dev]'
+python3 -m pip install -e .'[dev]'
 
