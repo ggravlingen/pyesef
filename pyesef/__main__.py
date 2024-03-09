@@ -1,4 +1,5 @@
 """Main."""
+
 import argparse
 
 from pyesef import __version__
