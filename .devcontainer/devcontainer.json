@@ -3,6 +3,8 @@
   "context": "..",
   "dockerFile": "Dockerfile.dev",
   "postCreateCommand": "script/setup",
+  "containerUser": "root",
+  "remoteUser": "root",
   "containerEnv": {
     "DEVCONTAINER": "1"
   },
@@ -16,7 +18,7 @@
         ],
         "[python]": {
           "editor.codeActionsOnSave": {
-            "source.organizeImports": true
+            "source.organizeImports": "explicit"
           },
           "editor.defaultFormatter": "ms-python.black-formatter",
           "editor.formatOnSave": true,

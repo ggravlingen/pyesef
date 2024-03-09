@@ -1,5 +1,5 @@
 ARG VARIANT=3.10-bullseye
-FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
+FROM mcr.microsoft.com/vscode/devcontainers/python:${VARIANT}
 
 ENV FILE_LOCATION "/usr/src/app"
 
