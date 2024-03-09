@@ -29,7 +29,6 @@ LOGGING_CONFIG = {
     },
     "root": {
         "handlers": [
-            "json_file",
             "console",
         ],
         "level": "INFO",
