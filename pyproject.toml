@@ -22,7 +22,7 @@ dependencies    = [
   "arelle-release==2.23.13",
   "ipykernel==6.29.3",
   "jstyleson==0.0.2",
-  "lxml==4.9.3,<5",
+  "lxml==5.1.0",
   "pandas==2.2.1",
   "requests==2.31.0",
 ]
