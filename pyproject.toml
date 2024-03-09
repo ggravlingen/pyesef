@@ -1,3 +1,33 @@
+[build-system]
+requires = ["setuptools==69.1.1", "wheel~=0.42.0", "toml"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name        = "pyesef"
+version     = "1.0.2"
+license     = {text = "MIT"}
+description = "Parse financial statements in XBRL format"
+authors     = [
+    {name = "ggravlingen", email = "no@email.com"}
+]
+keywords    = ["esef", "statement", "financial"]
+requires-python = ">=3.10.0"
+# dependencies    = []
+classifiers=[
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Intended Audience :: Financial and Insurance Industry",
+]
+
+[tool.setuptools]
+platforms = ["any"]
+zip-safe  = false
+include-package-data = true
+
+[tool.setuptools.package-data]
+"pyesef" = ["py.typed"]
+
 [tool.black]
 target-version = ["py310"]
 
