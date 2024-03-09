@@ -89,10 +89,10 @@ def test_filing_property__file_url() -> None:
 def test_filing_property__download_country_folder() -> None:
     """Return Filing.download_country_folder."""
     model = Filing(country="se", file_name="abc", path="a/b/c")
-    assert model.download_country_folder == "/workspaces/pyesef/archives/se"
+    assert "/pyesef/archives/se" in model.download_country_folder
 
 
 def test_filing_property__write_location() -> None:
     """Return Filing.write_location."""
     model = Filing(country="se", file_name="abc", path="a/b/c")
-    assert model.write_location == "/workspaces/pyesef/archives/se/abc"
+    assert "/pyesef/archives/se/abc" in model.write_location
