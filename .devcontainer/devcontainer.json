@@ -6,31 +6,43 @@
   "containerEnv": {
     "DEVCONTAINER": "1"
   },
-  "settings": {
-    "python.pythonPath": "/opt/.venv/bin/python",
-    "python.defaultInterpreterPath": "/opt/.venv/bin/python",
-    "python.terminal.activateEnvInCurrentTerminal": true,
-    "python.formatting.provider": "black",
-    "[python]": {
-      "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-      }
-    },
-    "python.formatting.blackArgs": ["-S", "--line-length", "88"],
-    "python.linting.enabled": true,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "files.trimTrailingWhitespace": true,
-    "python.languageServer": "Pylance",
-    "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true,
-    "rainbow_csv.autodetection_min_line_count": 3
-  },
-  "extensions": [
-    "ms-python.vscode-pylance",
-    "visualstudioexptteam.vscodeintellicode",
-    "esbenp.prettier-vscode",
-    "mechatroner.rainbow-csv"
-  ]
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.pythonPath": "/usr/local/bin/python",
+        "python.languageServer": "Pylance",
+        "python.analysis.extraPaths": [
+          "/workspaces/pyesef"
+        ],
+        "[python]": {
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+          },
+          "editor.defaultFormatter": "ms-python.black-formatter",
+          "editor.formatOnSave": true,
+          "editor.formatOnPaste": false,
+          "editor.formatOnType": true
+        },
+        "python.testing.pytestEnabled": true,
+        "files.trimTrailingWhitespace": true,
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/usr/bin/zsh"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      },
+      "extensions": [
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "ms-python.mypy-type-checker",
+        "ms-python.pylint",
+        "charliermarsh.ruff",
+        "esbenp.prettier-vscode",
+        "visualstudioexptteam.vscodeintellicode",
+        "mechatroner.rainbow-csv"
+      ]
+    }
+  }
 }
