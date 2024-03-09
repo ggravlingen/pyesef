@@ -10,7 +10,7 @@ from arelle.ModelDtsObject import ModelConcept
 import pandas as pd
 
 from ..const import CSV_SEPARATOR
-from ..utils import to_dataframe
+from ..utils import data_list_to_clean_df
 
 DEFINITIONS_FILENAME = "definitions.csv"
 
@@ -83,5 +83,5 @@ def extract_definitions_to_csv(concept: ModelConcept) -> None:
             )
         )
 
-    data_frame = to_dataframe(definition_list)
+    data_frame = data_list_to_clean_df(definition_list)
     data_frame.to_csv(DEFINITIONS_FILENAME, sep=CSV_SEPARATOR, index=False)

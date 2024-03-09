@@ -7,7 +7,8 @@ from enum import Enum
 import fractions
 from typing import Any, cast
 
-from arelle.ModelDtsObject import ModelConcept
+from arelle import XbrlConst
+from arelle.ModelDtsObject import ModelConcept, ModelRelationship
 from arelle.ModelInstanceObject import ModelContext, ModelFact
 from arelle.ModelObject import ModelObject
 from arelle.ModelValue import QName, dateTime
@@ -143,6 +144,25 @@ def _get_parent(xml_name: str, hierarchy_dict: dict[str, str]) -> str | None:
     return None
 
 
+def _wider_anchor_to_dict(model_xbrl: ModelXbrl) -> dict[str, Any]:
+    """Extract map of XML names from wider anchor."""
+    output_map: dict[str, str] = {}
+    wide_narrow_relationship: list[ModelRelationship] = model_xbrl.relationshipSet(
+        XbrlConst.widerNarrower
+    ).modelRelationships
+    for relation in wide_narrow_relationship:
+        cleaned_from_list = str(relation.toModelObject.qname).split(":")
+        cleaned_to_list = str(relation.fromModelObject.qname).split(":")
+
+        company_defined_name = cleaned_from_list[1]
+        formal_name = cleaned_to_list[1]
+
+        if company_defined_name not in output_map.keys():
+            output_map[company_defined_name] = formal_name
+
+    return output_map
+
+
 def read_facts(
     model_xbrl: ModelXbrl,
     hierarchy_dict: dict[str, str],
@@ -154,7 +174,9 @@ def read_facts(
     legal_name = _get_legal_name(facts=model_xbrl.facts)
     model_xbrl.modelManager.cntlr.addToLog(f"Entity: {legal_name}")
 
-    for fact in model_xbrl_fact_list:
+    wider_anchor_map = _wider_anchor_to_dict(model_xbrl=model_xbrl)
+
+    for idx, fact in enumerate(model_xbrl_fact_list):
         concept: ModelConcept | None = fact.concept
         context: ModelContext | None = fact.context
 
@@ -180,6 +202,11 @@ def read_facts(
                 xml_name=xml_name, hierarchy_dict=hierarchy_dict
             )
 
+            if xml_name in wider_anchor_map:
+                wider_anchor = wider_anchor_map[xml_name]
+            else:
+                wider_anchor = None
+
             # On the first run, we want to make sure we have all the definitions
             # cached locally
             if not check_definitions_exists():
@@ -193,6 +220,11 @@ def read_facts(
             if value is None:
                 continue
 
+            if wider_anchor is None:
+                wider_anchor_or_xml_name = xml_name
+            else:
+                wider_anchor_or_xml_name = wider_anchor
+
             value = cast(int, value)
             value_multiplier: int = _get_sign_multiplier(concept.balance)
 
@@ -201,13 +233,16 @@ def read_facts(
                     period_end=date_period_end,
                     lei=lei,
                     legal_name=legal_name,
+                    wider_anchor_or_xml_name=wider_anchor_or_xml_name,
+                    wider_anchor=wider_anchor,
                     xml_name=xml_name,
                     currency=fact.unit.value,
                     value=value * value_multiplier,
-                    company_defined=_get_is_extension(qname.prefix),
+                    is_company_defined=_get_is_extension(qname.prefix),
                     membership=membership_name,
                     xml_name_parent=xml_name_parent,
                     label=_get_label(fact.propertyView),
+                    sort_order=idx,
                 )
             )
         except Exception as exc:

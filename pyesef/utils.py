@@ -13,9 +13,33 @@ import pandas as pd
 from .const import PATH_BASE, PATH_FAILED, PATH_PARSED
 
 
-def to_dataframe(data_list: list[Any]) -> pd.DataFrame:
+def data_list_to_clean_df(data_list: list[Any]) -> pd.DataFrame:
     """Convert a list of filing data to a Pandas dataframe."""
-    return pd.json_normalize(asdict(obj) for obj in data_list)  # type: ignore[arg-type]
+    data_frame_from_data_class = pd.json_normalize(asdict(obj) for obj in data_list)  # type: ignore[arg-type]
+
+    data_frame_from_data_class["period_end"] = pd.to_datetime(
+        data_frame_from_data_class["period_end"]
+    )
+
+    # Drop zero values
+    data_frame_from_data_class = data_frame_from_data_class.query("value != 0")
+
+    # Drop any duplicates
+    data_frame_from_data_class = data_frame_from_data_class.drop_duplicates(
+        subset=["lei", "period_end", "wider_anchor_or_xml_name", "xml_name_parent"],
+        keep="last",
+    )
+
+    # Drop beginning-of-year items
+    # data_frame_from_data_class = data_frame_from_data_class.query(
+    #     "not (period_end.dt.month == 1 & period_end.dt.day == 1)"
+    # )
+
+    data_frame_from_data_class = data_frame_from_data_class.sort_values(
+        ["lei", "period_end", "sort_order"],
+    )
+
+    return data_frame_from_data_class
 
 
 def get_item_description(
