@@ -16,10 +16,12 @@ from arelle.ModelValue import QName
 from arelle.ModelXbrl import ModelXbrl
 from arelle.XbrlConst import summationItem
 
+from pyesef.load_parse_file.common import EsefData
+
 from ..const import CSV_SEPARATOR, FILE_ENDING_ZIP, PATH_ARCHIVES
 from ..error import PyEsefError
+from ..load_parse_file.read_facts import read_facts
 from ..utils import move_file_to_error, move_file_to_parsed, to_dataframe
-from .read_facts import EsefData, read_facts
 
 
 class Controller(Cntlr):  # type: ignore

@@ -1,15 +1,19 @@
 """Placeholder test."""
 
 from datetime import datetime
+from unittest.mock import Mock, patch
 
 import pytest
 
-from pyesef.helpers.read_facts import (
+from pyesef.load_parse_file.read_facts import (
     _get_is_extension,
     _get_is_total,
     _get_label,
+    _get_legal_name,
     _get_membership,
+    _get_parent,
     _get_period_end,
+    _get_sign_multiplier,
     _get_statement_item_group,
     _get_statement_type,
 )
@@ -133,3 +137,78 @@ def test_get_statement_item_group(test_value: str, expected_result: tuple[str, b
 
     assert function_value[0] == expected_result[0]
     assert function_value[1] == expected_result[1]
+
+
+@pytest.mark.parametrize("balance, expected_result", [("credit", 1), ("debit", -1)])
+def test_get_sign_multiplier(balance, expected_result) -> None:
+    """Test function _get_sign_multiplier."""
+    function_result = _get_sign_multiplier(balance=balance)
+    assert function_result == expected_result
+
+
+@patch(
+    "pyesef.load_parse_file.read_facts.parsed_value",
+    return_value="NameOfUltimateParentOfGroup",
+)
+def test_get_legal_name_of_ultimate_parent(_mock_data):
+    """Test function _get_legal_name."""
+    facts = [
+        Mock(
+            attrib={"name": "ifrs-full:NameOfUltimateParentOfGroup"},
+        ),
+        Mock(
+            attrib={
+                "name": "ifrs-full:OtherFact",
+            },
+        ),
+    ]
+    result = _get_legal_name(facts)
+    assert result == "NameOfUltimateParentOfGroup"
+
+
+@patch(
+    "pyesef.load_parse_file.read_facts.parsed_value",
+    return_value="NameOfParentEntity",
+)
+def test_get_legal_name_of_parent_entity(_mock_data):
+    """Test function _get_legal_name."""
+    facts = [
+        Mock(
+            attrib={
+                "name": "ifrs-full:NameOfParentEntity",
+            },
+        ),
+    ]
+    result = _get_legal_name(facts)
+    assert result == "NameOfParentEntity"
+
+
+@patch(
+    "pyesef.load_parse_file.read_facts.parsed_value",
+    return_value="NameOfParentEntity",
+)
+def test_get_legal_name__none(_mock_data):
+    """Test function _get_legal_name."""
+    facts = []
+    result = _get_legal_name(facts)
+    assert result is None
+
+
+def test_get_parent() -> None:
+    """Test function _get_parent."""
+    function_result = _get_parent(
+        xml_name="abc",
+        hierarchy_dict={
+            "abc": "a",
+            "def": "b",
+        },
+    )
+
+    assert function_result == "a"
+
+
+def test_get_parent__none() -> None:
+    """Test function _get_parent for None result."""
+    function_result = _get_parent(xml_name="abc", hierarchy_dict={})
+
+    assert function_result is None

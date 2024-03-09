@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from enum import Enum
 import fractions
@@ -15,46 +14,14 @@ from arelle.ModelValue import QName, dateTime
 from arelle.ModelXbrl import ModelXbrl
 from arelle.ValidateXbrlCalcs import roundValue
 
+from pyesef.load_parse_file.common import EsefData
+
 from ..const import NORMALISED_STATEMENT_MAP, STATEMENT_ITEM_GROUP_MAP, NiceType
 from ..error import PyEsefError
-from .extract_definitions_to_csv import (
+from ..helpers.extract_definitions_to_csv import (
     check_definitions_exists,
     extract_definitions_to_csv,
 )
-
-
-@dataclass
-class EsefData:
-    """Represent ESEF data as a dataclass."""
-
-    # A date representing the end of the record's period
-    period_end: date
-    # Type of statement in a normalised format
-    statement_type: str | None
-    # False if no statement item group was matched
-    has_resolved_group: bool
-    # True if the record has been defined by the company
-    is_extension: bool
-    # True if the item is a sum of other items
-    is_total: bool
-    # The line item group the record belongs to
-    statement_item_group: str | None
-    # The XML name of the record item
-    xml_name: str
-    # The stated name of the record item
-    xml_name_parent: str | None
-    # The parent of the stated name of the record item
-    label: str | None
-    # The name of the item this record belongs to
-    membership: str | None
-    # Currency of the value
-    currency: str
-    # Nominal value (in currency) of the record
-    value: fractions.Fraction | int | Any | bool | str | None
-    # The lei of the entity
-    lei: str
-    # The legal name of the entity
-    legal_name: str | None
 
 
 class BaseXBRLiType(Enum):
