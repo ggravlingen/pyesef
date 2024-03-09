@@ -16,7 +16,7 @@ from arelle.ValidateXbrlCalcs import roundValue
 
 from pyesef.load_parse_file.common import EsefData
 
-from ..const import NORMALISED_STATEMENT_MAP, STATEMENT_ITEM_GROUP_MAP, NiceType
+from ..const import NiceType
 from ..error import PyEsefError
 from ..helpers.extract_definitions_to_csv import (
     check_definitions_exists,
@@ -115,33 +115,6 @@ def _get_period_end(end_date_time: datetime) -> date:
     return (end_date_time - timedelta(days=1)).date()
 
 
-def _get_is_total(xml_name: str, summation_items: list[str]) -> bool:
-    """Return true if the item is a sum of other items."""
-    return xml_name in summation_items
-
-
-def _get_statement_type(
-    xml_name_parent: str,
-    xml_name: str,
-) -> str:
-    """Convert statement type raw into a normalised format."""
-    if xml_name_parent in NORMALISED_STATEMENT_MAP:
-        return NORMALISED_STATEMENT_MAP[xml_name_parent]
-
-    if xml_name in NORMALISED_STATEMENT_MAP:
-        return NORMALISED_STATEMENT_MAP[xml_name]
-
-    return f"Unmatched: {xml_name}"
-
-
-def _get_statement_item_group(xml_name: str) -> tuple[str | None, bool]:
-    """Get statement item group name."""
-    if xml_name in STATEMENT_ITEM_GROUP_MAP:
-        return STATEMENT_ITEM_GROUP_MAP[xml_name], True
-
-    return None, False
-
-
 def _get_legal_name(facts: list[Any]) -> str | None:
     """Get legal name of entity."""
     for fact in facts:
@@ -172,7 +145,6 @@ def _get_parent(xml_name: str, hierarchy_dict: dict[str, str]) -> str | None:
 
 def read_facts(
     model_xbrl: ModelXbrl,
-    summation_items: list[str],
     hierarchy_dict: dict[str, str],
 ) -> list[EsefData]:
     """Read facts of XBRL-files."""
@@ -208,14 +180,6 @@ def read_facts(
                 xml_name=xml_name, hierarchy_dict=hierarchy_dict
             )
 
-            if xml_name_parent is None:
-                statement_type = None
-            else:
-                statement_type = _get_statement_type(
-                    xml_name_parent=xml_name_parent,
-                    xml_name=xml_name,
-                )
-
             # On the first run, we want to make sure we have all the definitions
             # cached locally
             if not check_definitions_exists():
@@ -223,9 +187,6 @@ def read_facts(
 
             _, lei = context.entityIdentifier
             _, membership_name = _get_membership(context.scenario)
-            statement_item_group, has_resolved_group = _get_statement_item_group(
-                xml_name=xml_name
-            )
 
             value = parsed_value(fact)
 
@@ -237,23 +198,16 @@ def read_facts(
 
             fact_list.append(
                 EsefData(
-                    label=_get_label(fact.propertyView),
-                    legal_name=legal_name,
-                    xml_name=xml_name,
-                    xml_name_parent=xml_name_parent,
-                    statement_item_group=statement_item_group,
-                    has_resolved_group=has_resolved_group,
-                    statement_type=statement_type,
-                    membership=membership_name,
-                    value=value * value_multiplier,
-                    is_extension=_get_is_extension(qname.prefix),
                     period_end=date_period_end,
                     lei=lei,
+                    legal_name=legal_name,
+                    xml_name=xml_name,
                     currency=fact.unit.value,
-                    is_total=_get_is_total(
-                        xml_name=xml_name,
-                        summation_items=summation_items,
-                    ),
+                    value=value * value_multiplier,
+                    company_defined=_get_is_extension(qname.prefix),
+                    membership=membership_name,
+                    xml_name_parent=xml_name_parent,
+                    label=_get_label(fact.propertyView),
                 )
             )
         except Exception as exc:
