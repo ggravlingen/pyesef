@@ -166,7 +166,7 @@ def read_and_save_filings() -> None:
                     )
 
                     # Extract the model roles
-                    _, summation_items, hierarchy_dict = _extract_model_roles(
+                    _, __, hierarchy_dict = _extract_model_roles(
                         model_xbrl=model_xbrl,
                     )
 
@@ -174,7 +174,6 @@ def read_and_save_filings() -> None:
                     try:
                         fact_list = read_facts(
                             model_xbrl=model_xbrl,
-                            summation_items=summation_items,
                             hierarchy_dict=hierarchy_dict,
                         )
                     except Exception as exc:
@@ -194,14 +193,18 @@ def read_and_save_filings() -> None:
                     cntlr.addToLog(f"Moved file to error folder due to {error_message}")
                 else:
                     idx += 1
-                    data_frame = to_dataframe(filing_list)
+                    data_frame_from_data_class = to_dataframe(filing_list)
+                    # Drop zero values
+                    data_frame_from_data_class = data_frame_from_data_class.query(
+                        "value != 0"
+                    )
                     output_path = "output.csv"
-                    data_frame.to_csv(
+                    data_frame_from_data_class.to_csv(
                         output_path,
                         sep=CSV_SEPARATOR,
                         index=False,
-                        mode="a",
-                        header=not os.path.exists(output_path),
+                        # mode="a",
+                        # header=not os.path.exists(output_path),
                     )
 
                     # Move the filing folder to another location.
