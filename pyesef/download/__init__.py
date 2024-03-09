@@ -36,6 +36,21 @@ class Filing:
     file_name: str
     path: str
 
+    @property
+    def file_url(self) -> str:
+        """Return file URL."""
+        return f"{BASE_URL}{self.path}/{self.file_name}"
+
+    @property
+    def download_country_folder(self) -> str:
+        """Return download path."""
+        return os.path.join(PATH_ARCHIVES, self.country)
+
+    @property
+    def write_location(self) -> str:
+        """Return file write location."""
+        return os.path.join(self.download_country_folder, self.file_name)
+
 
 IdentifierType = dict[str, list[Filing]]
 
@@ -72,18 +87,17 @@ def _cleanup_package_dict(identifier_map: IdentifierType) -> list[Filing]:
 
 def _download_package(filing: Filing) -> None:
     """Download a package and store it the archive-folder."""
-    url = f"{BASE_URL}{filing.path}/{filing.file_name}"
+    Path(  # Create download path if it does not exist
+        filing.download_country_folder
+    ).mkdir(
+        parents=True,
+        exist_ok=True,
+    )
 
-    download_path = os.path.join(PATH_ARCHIVES, filing.country)
+    LOGGER.info(f"Downloading {filing.file_url}")
 
-    # Create download path if it does not exist
-    Path(download_path).mkdir(parents=True, exist_ok=True)
-
-    LOGGER.info(f"Downloading {url}")
-
-    req = requests.get(url, stream=True, timeout=30)
-    write_location = os.path.join(download_path, filing.file_name)
-    with open(write_location, "wb") as _file:
+    req = requests.get(filing.file_url, stream=True, timeout=30)
+    with open(filing.write_location, "wb") as _file:
         for chunk in req.iter_content(chunk_size=2048):
             _file.write(chunk)
 
