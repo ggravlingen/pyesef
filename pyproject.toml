@@ -96,7 +96,7 @@ exclude = []
 
 target-version = "py310"
 
-select = [
+lint.select = [
     "B007", # Loop control variable {name} not used within loop body
     "B014", # Exception handler with duplicate exception
     "C",  # complexity
@@ -115,24 +115,24 @@ select = [
 # Same as Black.
 line-length = 88
 
-ignore = [# One of these is to be disabled..
-          "D213", # See https://github.com/charliermarsh/ruff/issues/2281
-          #"D212", # See https://github.com/charliermarsh/ruff/issues/2281
-
-          "D203", # See https://github.com/charliermarsh/ruff/issues/2281
-          #"D211", # See https://github.com/charliermarsh/ruff/issues/2281
-              # keep-runtime-annotations
-          'UP006', # Non PEP585 annotations
-          'UP007', # Non PEP604 annotations
+lint.ignore = [
+  # One of these is to be disabled..
+  "D213", # See https://github.com/charliermarsh/ruff/issues/2281
+  #"D212", # See https://github.com/charliermarsh/ruff/issues/2281
+  "D203", # See https://github.com/charliermarsh/ruff/issues/2281
+  #"D211", # See https://github.com/charliermarsh/ruff/issues/2281
+  # keep-runtime-annotations
+  'UP006', # Non PEP585 annotations
+  'UP007', # Non PEP604 annotations
 ]
 
-[tool.ruff.flake8-pytest-style]
+[tool.ruff.lint.flake8-pytest-style]
 fixture-parentheses = false
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = 'pep257'
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 combine-as-imports = true
 force-sort-within-sections = true
 forced-separate = [
