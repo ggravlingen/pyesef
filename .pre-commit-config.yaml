@@ -37,7 +37,7 @@ repos:
     hooks:
       - id: mypy
         name: mypy
-        entry: ./script/run-pre-commit.sh mypy
+        entry: script/run-in-env.sh mypy
         language: script
         types: [python]
         require_serial: true
