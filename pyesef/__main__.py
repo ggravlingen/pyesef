@@ -3,7 +3,7 @@
 import argparse
 
 from pyesef import __version__
-from pyesef.helpers.download_package import download_packages
+from pyesef.download import download_packages
 from pyesef.helpers.read_and_save_filings import read_and_save_filings
 
 if __name__ == "__main__":

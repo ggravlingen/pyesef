@@ -1,6 +1,9 @@
-"""Helper function to download a XBRL-package."""
+"""Download ESEF-files."""
+
+from __future__ import annotations
 
 from dataclasses import dataclass
+from enum import Enum
 import json
 import os
 from pathlib import Path
@@ -8,9 +11,19 @@ import urllib.request
 
 import requests
 
-from ..const import PATH_ARCHIVES, Country
+from ..const import PATH_ARCHIVES
 
 BASE_URL = "https://filings.xbrl.org/"
+
+
+class Country(str, Enum):
+    """Representation of different countries."""
+
+    DENMARK = "DK"
+    FINLAND = "FI"
+    ICELAND = "IS"
+    NORWAY = "NO"
+    SWEDEN = "SE"
 
 
 @dataclass
@@ -25,7 +38,7 @@ class Filing:
 IdentifierType = dict[str, list[Filing]]
 
 
-def _parse_file_ending(path: str) -> str:
+def _extract_alpha_2_code(path: str) -> str:
     """Parse the file ending."""
     path = path.lower()
     splitted_path = path.split("/")
@@ -55,6 +68,24 @@ def _cleanup_package_dict(identifier_map: IdentifierType) -> list[Filing]:
     return data_list
 
 
+def _download_package(filing: Filing) -> None:
+    """Download a package and store it the archive-folder."""
+    url = f"{BASE_URL}{filing.path}/{filing.file_name}"
+
+    download_path = os.path.join(PATH_ARCHIVES, filing.country)
+
+    # Create download path if it does not exist
+    Path(download_path).mkdir(parents=True, exist_ok=True)
+
+    print(f"Downloading {url}")  # noqa: T201
+
+    req = requests.get(url, stream=True, timeout=30)
+    write_location = os.path.join(download_path, filing.file_name)
+    with open(write_location, "wb") as _file:
+        for chunk in req.iter_content(chunk_size=2048):
+            _file.write(chunk)
+
+
 def download_packages() -> None:
     """
     Download XBRL-packages from XBRL.org.
@@ -76,7 +107,7 @@ def download_packages() -> None:
             ]:
                 lei = item["lei"]
                 filing = Filing(
-                    country=_parse_file_ending(path=item["path"]),
+                    country=_extract_alpha_2_code(path=item["path"]),
                     file_name=item["report-package"],
                     path=item["path"],
                 )
@@ -95,21 +126,3 @@ def download_packages() -> None:
             print(f"Parsing {idx}/{len(data_list)}")  # noqa: T201
 
         _download_package(item)
-
-
-def _download_package(filing: Filing) -> None:
-    """Download a package and store it the archive-folder."""
-    url = f"{BASE_URL}{filing.path}/{filing.file_name}"
-
-    download_path = os.path.join(PATH_ARCHIVES, filing.country)
-
-    # Create download path if it does not exist
-    Path(download_path).mkdir(parents=True, exist_ok=True)
-
-    print(f"Downloading {url}")  # noqa: T201
-
-    req = requests.get(url, stream=True, timeout=30)
-    write_location = os.path.join(download_path, filing.file_name)
-    with open(write_location, "wb") as _file:
-        for chunk in req.iter_content(chunk_size=2048):
-            _file.write(chunk)
