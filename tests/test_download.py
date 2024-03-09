@@ -78,3 +78,21 @@ def test_cleanup_package_dict(test_data, expected_result) -> None:
     """Test function _cleanup_package_dict."""
     function_result = _cleanup_package_dict(test_data)
     assert function_result == expected_result
+
+
+def test_filing_property__file_url() -> None:
+    """Return Filing.file_url."""
+    model = Filing(country="se", file_name="abc", path="a/b/c")
+    assert model.file_url == "https://filings.xbrl.org/a/b/c/abc"
+
+
+def test_filing_property__download_country_folder() -> None:
+    """Return Filing.download_country_folder."""
+    model = Filing(country="se", file_name="abc", path="a/b/c")
+    assert "/pyesef/archives/se" in model.download_country_folder
+
+
+def test_filing_property__write_location() -> None:
+    """Return Filing.write_location."""
+    model = Filing(country="se", file_name="abc", path="a/b/c")
+    assert "/pyesef/archives/se/abc" in model.write_location
