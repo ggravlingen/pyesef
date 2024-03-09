@@ -11,6 +11,8 @@ import urllib.request
 
 import requests
 
+from pyesef.log import LOGGER
+
 from ..const import PATH_ARCHIVES
 
 BASE_URL = "https://filings.xbrl.org/"
@@ -77,7 +79,7 @@ def _download_package(filing: Filing) -> None:
     # Create download path if it does not exist
     Path(download_path).mkdir(parents=True, exist_ok=True)
 
-    print(f"Downloading {url}")  # noqa: T201
+    LOGGER.info(f"Downloading {url}")
 
     req = requests.get(url, stream=True, timeout=30)
     write_location = os.path.join(download_path, filing.file_name)
@@ -119,10 +121,10 @@ def download_packages() -> None:
 
     data_list = _cleanup_package_dict(identifier_map=identifier_map)
 
-    print(f"{len(data_list)} items found")  # noqa: T201
+    LOGGER.info(f"{len(data_list)} items found")
 
     for idx, item in enumerate(data_list):
         if idx % 10 == 0:
-            print(f"Parsing {idx}/{len(data_list)}")  # noqa: T201
+            LOGGER.info(f"Parsing {idx}/{len(data_list)}")
 
         _download_package(item)

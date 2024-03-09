@@ -67,6 +67,8 @@ disable = [
   "too-many-return-statements",
   "too-few-public-methods",
   "too-many-locals",
+  # It's easier to use f-string than lazy % formatting
+  "logging-fstring-interpolation",
 ]
 
 [tool.pylint.REPORTS]
