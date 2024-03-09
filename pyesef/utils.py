@@ -15,7 +15,7 @@ from .const import PATH_BASE, PATH_FAILED, PATH_PARSED
 
 def to_dataframe(data_list: list[Any]) -> pd.DataFrame:
     """Convert a list of filing data to a Pandas dataframe."""
-    return pd.json_normalize(asdict(obj) for obj in data_list)
+    return pd.json_normalize(asdict(obj) for obj in data_list)  # type: ignore[arg-type]
 
 
 def get_item_description(
