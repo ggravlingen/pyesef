@@ -1,4 +1,5 @@
 """Helper function to read facts."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass

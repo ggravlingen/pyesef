@@ -1,4 +1,5 @@
 """Helper function to download a XBRL-package."""
+
 from dataclasses import dataclass
 import json
 import os

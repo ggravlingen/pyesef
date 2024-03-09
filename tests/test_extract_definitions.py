@@ -1,4 +1,5 @@
 """Tests for helper to extract definitions."""
+
 from unittest.mock import patch
 
 from pyesef.helpers.extract_definitions_to_csv import (
