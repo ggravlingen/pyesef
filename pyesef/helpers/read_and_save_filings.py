@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 import time
 import traceback
+from typing import Any
 
 from arelle import FileSource as FileSourceFile, PluginManager
 from arelle.Cntlr import Cntlr
@@ -15,14 +16,52 @@ from arelle.ModelRelationshipSet import ModelRelationshipSet
 from arelle.ModelValue import QName
 from arelle.ModelXbrl import ModelXbrl
 from arelle.XbrlConst import summationItem
+import pandas as pd
 
 from pyesef.load_parse_file.common import EsefData
+from pyesef.utils.data_management import asdict_with_properties
 from pyesef.utils.file_handling import move_file_to_error, move_file_to_parsed
 
 from ..const import CSV_SEPARATOR, FILE_ENDING_ZIP, PATH_ARCHIVES
 from ..error import PyEsefError
 from ..load_parse_file.read_facts import read_facts
-from ..utils import data_list_to_clean_df
+
+
+def data_list_to_clean_df(data_list: list[Any]) -> pd.DataFrame:
+    """Convert a list of filing data to a Pandas dataframe."""
+    data_frame_from_data_class = pd.json_normalize(  # type: ignore[arg-type]
+        asdict_with_properties(obj) for obj in data_list
+    )
+
+    data_frame_from_data_class["period_end"] = pd.to_datetime(
+        data_frame_from_data_class["period_end"]
+    )
+
+    # Drop zero values
+    data_frame_from_data_class = data_frame_from_data_class.query("value != 0")
+
+    # Drop any duplicates
+    data_frame_from_data_class = data_frame_from_data_class.drop_duplicates(
+        subset=[
+            "lei",
+            "period_end",
+            "wider_anchor_or_xml_name",
+            "xml_name",
+            "xml_name_parent",
+        ],
+        keep="last",
+    )
+
+    # Drop beginning-of-year items
+    data_frame_from_data_class = data_frame_from_data_class.query(
+        "not (period_end.dt.month == 1 & period_end.dt.day == 1)"
+    )
+
+    data_frame_from_data_class = data_frame_from_data_class.sort_values(
+        ["lei", "period_end", "sort_order"],
+    )
+
+    return data_frame_from_data_class
 
 
 class Controller(Cntlr):  # type: ignore

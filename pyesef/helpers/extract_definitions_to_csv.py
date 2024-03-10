@@ -9,8 +9,9 @@ from typing import Any, cast
 from arelle.ModelDtsObject import ModelConcept
 import pandas as pd
 
+from pyesef.utils.data_management import asdict_with_properties
+
 from ..const import CSV_SEPARATOR
-from ..utils import data_list_to_clean_df
 
 DEFINITIONS_FILENAME = "definitions.csv"
 
@@ -83,5 +84,8 @@ def extract_definitions_to_csv(concept: ModelConcept) -> None:
             )
         )
 
-    data_frame = data_list_to_clean_df(definition_list)
+    data_frame = pd.json_normalize(  # type: ignore[arg-type]
+        asdict_with_properties(obj) for obj in definition_list
+    )
+
     data_frame.to_csv(DEFINITIONS_FILENAME, sep=CSV_SEPARATOR, index=False)
