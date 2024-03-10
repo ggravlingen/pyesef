@@ -17,11 +17,12 @@ from arelle.ModelXbrl import ModelXbrl
 from arelle.XbrlConst import summationItem
 
 from pyesef.load_parse_file.common import EsefData
+from pyesef.utils.file_handling import move_file_to_error, move_file_to_parsed
 
 from ..const import CSV_SEPARATOR, FILE_ENDING_ZIP, PATH_ARCHIVES
 from ..error import PyEsefError
 from ..load_parse_file.read_facts import read_facts
-from ..utils import data_list_to_clean_df, move_file_to_error, move_file_to_parsed
+from ..utils import data_list_to_clean_df
 
 
 class Controller(Cntlr):  # type: ignore
