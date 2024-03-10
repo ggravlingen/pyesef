@@ -157,7 +157,7 @@ def _wider_anchor_to_dict(model_xbrl: ModelXbrl) -> dict[str, Any]:
         company_defined_name = cleaned_from_list[1]
         formal_name = cleaned_to_list[1]
 
-        if company_defined_name not in output_map.keys():
+        if company_defined_name not in output_map:
             output_map[company_defined_name] = formal_name
 
     return output_map
@@ -202,7 +202,7 @@ def read_facts(
                 xml_name=xml_name, hierarchy_dict=hierarchy_dict
             )
 
-            if xml_name in wider_anchor_map:
+            if wider_anchor_map.get(xml_name, False):
                 wider_anchor = wider_anchor_map[xml_name]
             else:
                 wider_anchor = None
@@ -238,6 +238,7 @@ def read_facts(
                     xml_name=xml_name,
                     currency=fact.unit.value,
                     value=value * value_multiplier,
+                    raw_value=value,
                     is_company_defined=_get_is_extension(qname.prefix),
                     membership=membership_name,
                     xml_name_parent=xml_name_parent,
