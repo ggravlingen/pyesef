@@ -6,15 +6,15 @@ import json
 import math
 from urllib import request
 
-from pyesef.download.common import Country, FilingV2
+from pyesef.download.common import Country, Filing
 from pyesef.log import LOGGER
 
 API_URL = "https://filings.xbrl.org/api/filings?page%5Bnumber%5D="
 
 
-def api_to_filing_record_list() -> list[FilingV2]:
+def api_to_filing_record_list() -> list[Filing]:
     """Load API data."""
-    filing_list: list[FilingV2] = []
+    filing_list: list[Filing] = []
     hash_list: list[str] = []
 
     # Determine number of pages with data
@@ -61,7 +61,7 @@ def api_to_filing_record_list() -> list[FilingV2]:
                 hash_key = f"{lei}{period_end}"
                 if hash_key not in hash_list:
                     filing_list.append(
-                        FilingV2(
+                        Filing(
                             lei=lei,
                             country_iso_2=attributes["country"],
                             period_end=period_end,
