@@ -1,7 +1,6 @@
 """Common."""
 
 from dataclasses import dataclass
-from datetime import date
 from enum import Enum
 import os
 
@@ -26,7 +25,7 @@ class Filing:
 
     country_iso_2: str
     package_url: str
-    period_end: date
+    period_end: str
     lei: str
 
     @property
@@ -39,7 +38,7 @@ class Filing:
         """Return download path."""
         return os.path.join(
             PATH_ARCHIVES,
-            self.period_end.strftime("%Y-%m-%d"),
+            self.period_end,
             self.country_iso_2,
         )
 
