@@ -12,6 +12,9 @@ from pyesef.log import LOGGER
 API_URL = "https://filings.xbrl.org/api/filings?page%5Bnumber%5D="
 
 
+DEBUG_FILTER_LEI_LIST: list[str] = []
+
+
 def api_to_filing_record_list() -> list[Filing]:
     """Load API data."""
     filing_list: list[Filing] = []
@@ -56,6 +59,11 @@ def api_to_filing_record_list() -> list[Filing]:
                 )
 
                 lei = related_list[-1]
+
+                # Allow debugging by filtering on the LEI codes in DEBUG_FILTER_LEI_LIST
+                if len(DEBUG_FILTER_LEI_LIST) > 0 and lei not in DEBUG_FILTER_LEI_LIST:
+                    continue
+
                 period_end = attributes["period_end"]
 
                 hash_key = f"{lei}{period_end}"
