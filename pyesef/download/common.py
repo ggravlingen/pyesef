@@ -1,0 +1,58 @@
+"""Common."""
+
+from dataclasses import dataclass
+from datetime import date
+from enum import Enum
+import os
+
+from pyesef.const import PATH_ARCHIVES
+
+BASE_URL = "https://filings.xbrl.org/"
+
+
+class Country(str, Enum):
+    """Representation of different countries."""
+
+    DENMARK = "DK"
+    FINLAND = "FI"
+    ICELAND = "IS"
+    NORWAY = "NO"
+    SWEDEN = "SE"
+
+
+@dataclass
+class Filing:
+    """Version 2 of a filing record."""
+
+    country_iso_2: str
+    package_url: str
+    period_end: date
+    lei: str
+
+    @property
+    def file_url(self) -> str:
+        """Return file URL."""
+        return f"{BASE_URL}/{self.package_url}"
+
+    @property
+    def download_folder(self) -> str:
+        """Return download path."""
+        return os.path.join(
+            PATH_ARCHIVES,
+            self.period_end.strftime("%Y-%m-%d"),
+            self.country_iso_2,
+        )
+
+    @property
+    def file_name(self) -> str:
+        """Return file name."""
+        splitted_string = self.package_url.split("/")
+        return splitted_string[-1]
+
+    @property
+    def write_location(self) -> str:
+        """Return file write location."""
+        return os.path.join(
+            self.download_folder,
+            self.file_name,
+        )
