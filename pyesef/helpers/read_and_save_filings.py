@@ -21,7 +21,7 @@ from pyesef.load_parse_file.common import EsefData
 from ..const import CSV_SEPARATOR, FILE_ENDING_ZIP, PATH_ARCHIVES
 from ..error import PyEsefError
 from ..load_parse_file.read_facts import read_facts
-from ..utils import move_file_to_error, move_file_to_parsed, to_dataframe
+from ..utils import data_list_to_clean_df, move_file_to_error, move_file_to_parsed
 
 
 class Controller(Cntlr):  # type: ignore
@@ -149,69 +149,68 @@ def read_and_save_filings() -> None:
         cntlr.addToLog(f"Parsing {len(files)} reports in folder {subdir}")
 
         for file in files:
+            zip_file_path = subdir + os.sep + file
+
+            if not zip_file_path.endswith(FILE_ENDING_ZIP):
+                continue
+
             cntlr.addToLog(f"Working on file {file}")
 
             _error: bool = False
             error_message: str | None = None
             filing_list: list[EsefData] = []
 
-            zip_file_path = subdir + os.sep + file
+            try:
+                # Load zip-file into a ModelXbrl instance
+                model_xbrl: ModelXbrl = _load_esef_xbrl_model(
+                    zip_file_path=zip_file_path,
+                    cntlr=cntlr,
+                )
 
-            if zip_file_path.endswith(FILE_ENDING_ZIP):
+                # Extract the model roles
+                _, __, hierarchy_dict = _extract_model_roles(
+                    model_xbrl=model_xbrl,
+                )
+
+                # Read all facts into a list
                 try:
-                    # Load zip-file into a ModelXbrl instance
-                    model_xbrl: ModelXbrl = _load_esef_xbrl_model(
-                        zip_file_path=zip_file_path,
-                        cntlr=cntlr,
-                    )
-
-                    # Extract the model roles
-                    _, __, hierarchy_dict = _extract_model_roles(
+                    fact_list = read_facts(
                         model_xbrl=model_xbrl,
+                        hierarchy_dict=hierarchy_dict,
                     )
-
-                    # Read all facts into a list
-                    try:
-                        fact_list = read_facts(
-                            model_xbrl=model_xbrl,
-                            hierarchy_dict=hierarchy_dict,
-                        )
-                    except Exception as exc:
-                        raise PyEsefError("Fact list error", exc) from exc
-                    filing_list.extend(fact_list)
-                    model_xbrl.close()
                 except Exception as exc:
-                    error_message = "".join(
-                        traceback.TracebackException.from_exception(exc).format()
-                    )
-                    _error = True
+                    raise PyEsefError("Fact list error", exc) from exc
+                filing_list.extend(fact_list)
+                model_xbrl.close()
+            except Exception as exc:
+                error_message = "".join(
+                    traceback.TracebackException.from_exception(exc).format()
+                )
+                _error = True
 
-                language = _path_to_language(subdir)
+            language = _path_to_language(subdir)
 
-                if _error and error_message is not None:
-                    move_file_to_error(zip_file_path=zip_file_path, language=language)
-                    cntlr.addToLog(f"Moved file to error folder due to {error_message}")
-                else:
-                    idx += 1
-                    data_frame_from_data_class = to_dataframe(filing_list)
-                    # Drop zero values
-                    data_frame_from_data_class = data_frame_from_data_class.query(
-                        "value != 0"
-                    )
-                    output_path = "output.csv"
-                    data_frame_from_data_class.to_csv(
-                        output_path,
-                        sep=CSV_SEPARATOR,
-                        index=False,
-                        # mode="a",
-                        # header=not os.path.exists(output_path),
-                    )
+            if _error and error_message is not None:
+                move_file_to_error(zip_file_path=zip_file_path, language=language)
+                cntlr.addToLog(f"Moved file to error folder due to {error_message}")
+            else:
+                idx += 1
+                data_frame_from_data_class = data_list_to_clean_df(filing_list)
 
-                    # Move the filing folder to another location.
-                    # This helps us if the script stops due to memory
-                    # constraints.
-                    move_file_to_parsed(zip_file_path=zip_file_path, language=language)
-                    cntlr.addToLog("Moved files to parsed folder")
+                output_path = "output.csv"
+                data_frame_from_data_class.to_csv(
+                    output_path,
+                    sep=CSV_SEPARATOR,
+                    index=False,
+                    mode="a",
+                    header=not os.path.exists(output_path),
+                )
+
+                # Move the filing folder to another location.
+                # This helps us if the script stops due to memory
+                # constraints.
+                move_file_to_parsed(zip_file_path=zip_file_path, language=language)
+                cntlr.addToLog("Moved files to parsed folder")
 
     end = time.time()
     total_time = end - start
