@@ -54,8 +54,8 @@ def test_parse_file_ending() -> None:
                     ),
                     Filing(
                         country="is",
-                        file_name="5493004ARP9VPUIX5B73-2021-12-31-is.zip",
-                        path="5493004ARP9VPUIX5B73/2021-12-31/ESEF/IS/1",
+                        file_name="5493004ARP9VPUIX5B73-2022-12-31-is.zip",
+                        path="5493004ARP9VPUIX5B73/2022-12-31/ESEF/IS/1",
                     ),
                 ],
             },
@@ -69,6 +69,11 @@ def test_parse_file_ending() -> None:
                     country="is",
                     file_name="5493004ARP9VPUIX5B73-2021-12-31-en.zip",
                     path="5493004ARP9VPUIX5B73/2021-12-31/ESEF/IS/0",
+                ),
+                Filing(
+                    country="is",
+                    file_name="5493004ARP9VPUIX5B73-2022-12-31-is.zip",
+                    path="5493004ARP9VPUIX5B73/2022-12-31/ESEF/IS/1",
                 ),
             ],
         ),
