@@ -1,8 +1,11 @@
 """Tests for the download package."""
 
+from unittest.mock import patch
+
 import pytest
 
 from pyesef.download import Filing, _cleanup_package_dict, _extract_alpha_2_code
+from pyesef.download.api_loader import api_to_filing_record_list
 
 
 def test_parse_file_ending() -> None:
@@ -101,3 +104,14 @@ def test_filing_property__write_location() -> None:
     """Return Filing.write_location."""
     model = Filing(country="se", file_name="abc", path="a/b/c")
     assert "/pyesef/archives/se/abc" in model.write_location
+
+
+def test_api_to_filing_record_list() -> None:
+    """Test function api_to_filing_record_list."""
+    with patch("urllib.request.urlopen") as mock_urlopen:
+        with open("tests/fixtures/api_page.json", "rb") as _file:
+            mock_data = _file.read()
+            # Set the return value of mock_urlopen
+            mock_urlopen.return_value.read.return_value = mock_data
+
+            api_to_filing_record_list()

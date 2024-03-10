@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from enum import Enum
 import json
 import os
 from pathlib import Path
@@ -14,44 +12,7 @@ import requests
 from pyesef.log import LOGGER
 from pyesef.utils.file_handling import is_valid_zip
 
-from ..const import PATH_ARCHIVES
-
-BASE_URL = "https://filings.xbrl.org/"
-
-
-class Country(str, Enum):
-    """Representation of different countries."""
-
-    DENMARK = "DK"
-    FINLAND = "FI"
-    ICELAND = "IS"
-    NORWAY = "NO"
-    SWEDEN = "SE"
-
-
-@dataclass
-class Filing:
-    """Represent a filing."""
-
-    country: str
-    file_name: str
-    path: str
-
-    @property
-    def file_url(self) -> str:
-        """Return file URL."""
-        return f"{BASE_URL}{self.path}/{self.file_name}"
-
-    @property
-    def download_country_folder(self) -> str:
-        """Return download path."""
-        return os.path.join(PATH_ARCHIVES, self.country)
-
-    @property
-    def write_location(self) -> str:
-        """Return file write location."""
-        return os.path.join(self.download_country_folder, self.file_name)
-
+from .common import BASE_URL, Country, Filing
 
 IdentifierType = dict[str, list[Filing]]
 
