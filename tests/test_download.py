@@ -5,7 +5,7 @@ from unittest.mock import patch
 import pytest
 
 from pyesef.download import Filing, _cleanup_package_dict, _extract_alpha_2_code
-from pyesef.download.api_loader import api_to_filing_record_list
+from pyesef.download.api_extractor import api_to_filing_record_list
 
 
 def test_parse_file_ending() -> None:
@@ -108,10 +108,12 @@ def test_filing_property__write_location() -> None:
 
 def test_api_to_filing_record_list() -> None:
     """Test function api_to_filing_record_list."""
-    with patch("urllib.request.urlopen") as mock_urlopen:
+    with patch("urllib.request.urlopen") as mock_url:
         with open("tests/fixtures/api_page.json", "rb") as _file:
-            mock_data = _file.read()
             # Set the return value of mock_urlopen
-            mock_urlopen.return_value.read.return_value = mock_data
+            mock_url.return_value.__enter__.return_value.read.return_value = (
+                _file.read()
+            )
 
-            api_to_filing_record_list()
+            x = api_to_filing_record_list()
+            assert len(x) == 2
