@@ -55,17 +55,3 @@ def data_list_to_clean_df(data_list: list[Any]) -> pd.DataFrame:
     )
 
     return data_frame_from_data_class
-
-
-def get_item_description(
-    local_name: str, lookup_table: dict[str, dict[str, str]]
-) -> str | None:
-    """Get the formal description of a line item."""
-    if local_name in lookup_table:
-        return (
-            lookup_table[local_name]["definition"]
-            # Make sure the descriptions don't contain line breaks
-            .replace("\r", "").replace("\n", "")
-        )
-
-    return None
