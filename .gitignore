@@ -137,3 +137,5 @@ not_valid
 *.csv
 *.bin
 *.html
+
+.DS_Store
