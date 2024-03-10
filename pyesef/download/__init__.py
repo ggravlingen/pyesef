@@ -12,6 +12,7 @@ import urllib.request
 import requests
 
 from pyesef.log import LOGGER
+from pyesef.utils.file_handling import is_valid_zip
 
 from ..const import PATH_ARCHIVES
 
@@ -73,20 +74,18 @@ def _cleanup_package_dict(identifier_map: IdentifierType) -> list[Filing]:
     for key, _ in identifier_map.items():
         filing_list = identifier_map[key]
 
-        if len(filing_list) == 1:
-            data_list.append(filing_list[0])
-            continue
-
         for filing in filing_list:
-            if "en" in filing.file_name:
-                data_list.append(filing)
-                continue
+            data_list.append(filing)
 
     return data_list
 
 
-def _download_package(filing: Filing) -> None:
-    """Download a package and store it the archive-folder."""
+def _download_and_verify_package(filing: Filing) -> None:
+    """
+    Download a package and store it the archive-folder.
+
+    Verify that it's a valid ZIP, or delete the file.
+    """
     Path(  # Create download path if it does not exist
         filing.download_country_folder
     ).mkdir(
@@ -101,31 +100,41 @@ def _download_package(filing: Filing) -> None:
         for chunk in req.iter_content(chunk_size=2048):
             _file.write(chunk)
 
+    if not is_valid_zip(filing.write_location):
+        LOGGER.warning(f"{filing.write_location} not a valid zip, deleting")
+        os.remove(filing.write_location)
 
-def download_packages() -> None:
-    """
-    Download XBRL-packages from XBRL.org.
 
-    Prefer the English version of there are multiple languages available.
-    """
+def _create_filing_list() -> IdentifierType:
+    """Return a list of filings."""
     identifier_map: IdentifierType = {}
-    idx: int = 0
-
     with urllib.request.urlopen(f"{BASE_URL}table-index.json") as url:
         data = json.loads(url.read().decode())
         for _, item in enumerate(data):
-            if item["country"] in [
+
+            # We're only interested in these countries for now
+            if item["country"] not in [
                 Country.DENMARK,
                 Country.FINLAND,
                 Country.ICELAND,
                 Country.NORWAY,
                 Country.SWEDEN,
             ]:
-                lei = item["lei"]
+                continue
+
+            lei = item["lei"]
+
+            # This is a bit hacky, but should work
+            # We guess that there is a ZIP-file for more years
+            # than what is available in the JSON
+            for year in [2021, 2022, 2023]:
+                file_name = str(item["report-package"]).replace("2021", str(year))
+                file_path = str(item["path"]).replace("2021", str(year))
+
                 filing = Filing(
                     country=_extract_alpha_2_code(path=item["path"]),
-                    file_name=item["report-package"],
-                    path=item["path"],
+                    file_name=file_name,
+                    path=file_path,
                 )
 
                 if lei not in identifier_map:
@@ -133,6 +142,12 @@ def download_packages() -> None:
                 else:
                     identifier_map[lei].append(filing)
 
+    return identifier_map
+
+
+def download_packages() -> None:
+    """Download XBRL-packages from XBRL.org."""
+    identifier_map = _create_filing_list()
     data_list = _cleanup_package_dict(identifier_map=identifier_map)
 
     LOGGER.info(f"{len(data_list)} items found")
@@ -141,4 +156,4 @@ def download_packages() -> None:
         if idx % 10 == 0:
             LOGGER.info(f"Parsing {idx}/{len(data_list)}")
 
-        _download_package(item)
+        _download_and_verify_package(item)
