@@ -1,16 +1,11 @@
-"""Util functions."""
+"""Utils."""
 
 from __future__ import annotations
 
 from dataclasses import asdict as std_asdict
-import os
-from pathlib import Path
-from typing import Any, cast
+from typing import Any
 
-import jstyleson
 import pandas as pd
-
-from .const import PATH_BASE, PATH_FAILED, PATH_PARSED
 
 
 def asdict(obj):
@@ -74,32 +69,3 @@ def get_item_description(
         )
 
     return None
-
-
-def move_file_to_parsed(zip_file_path: str, language: str) -> None:
-    """Move a file from the filings folder to the parsed folder."""
-    final_path = os.path.join(PATH_PARSED, language)
-    Path(final_path).mkdir(parents=True, exist_ok=True)
-
-    os.replace(
-        zip_file_path,
-        os.path.join(final_path, os.path.basename(zip_file_path)),
-    )
-
-
-def move_file_to_error(zip_file_path: str, language: str) -> None:
-    """Move a file from the filings folder to the error folder."""
-    final_path = os.path.join(PATH_FAILED, language)
-    Path(final_path).mkdir(parents=True, exist_ok=True)
-
-    os.replace(
-        zip_file_path,
-        os.path.join(final_path, os.path.basename(zip_file_path)),
-    )
-
-
-def _read_json(filename: str) -> dict[str, str]:
-    """Open and read a json-file and return as a dict."""
-    with open(os.path.join(PATH_BASE, filename), "rb") as _file:
-        contents = _file.read()
-        return cast(dict[str, str], jstyleson.loads(contents))
