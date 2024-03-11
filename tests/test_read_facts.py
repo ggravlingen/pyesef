@@ -3,8 +3,6 @@
 from datetime import datetime
 from unittest.mock import Mock, patch
 
-import pytest
-
 from pyesef.load_parse_file.read_facts import (
     _get_is_extension,
     _get_label,
@@ -12,7 +10,6 @@ from pyesef.load_parse_file.read_facts import (
     _get_membership,
     _get_parent,
     _get_period_end,
-    _get_sign_multiplier,
 )
 
 
@@ -66,13 +63,6 @@ def test_get_membership():
     function_val = _get_membership(test_object)
 
     assert function_val == ("a", "b")
-
-
-@pytest.mark.parametrize("balance, expected_result", [("credit", 1), ("debit", -1)])
-def test_get_sign_multiplier(balance, expected_result) -> None:
-    """Test function _get_sign_multiplier."""
-    function_result = _get_sign_multiplier(balance=balance)
-    assert function_result == expected_result
 
 
 @patch(

@@ -50,8 +50,8 @@ def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
     data_frame_from_data_class = data_frame_from_data_class.query("value != 0")
 
     # Create a column we can use to eliminate dupliactes
-    data_frame_from_data_class["raw_value_int"] = (
-        data_frame_from_data_class["raw_value"] * 10000
+    data_frame_from_data_class["value_int"] = (
+        data_frame_from_data_class["value"] * 10000
     ).astype(int)
 
     # Drop any duplicates
@@ -62,12 +62,12 @@ def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
             "wider_anchor_or_xml_name",
             "xml_name",
             "xml_name_parent",
-            "raw_value_int",
+            "value",
         ],
         ignore_index=True,
     )
 
-    data_frame_no_duplicates = data_frame_no_duplicates.drop(columns=["raw_value_int"])
+    data_frame_no_duplicates = data_frame_no_duplicates.drop(columns=["value_int"])
 
     return data_frame_no_duplicates
 

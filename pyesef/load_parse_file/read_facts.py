@@ -128,14 +128,6 @@ def _get_legal_name(facts: list[Any]) -> str | None:
     return None
 
 
-def _get_sign_multiplier(balance: str) -> int:
-    """Return multiplier to get correct sign for value."""
-    if balance == "credit":
-        return 1
-
-    return -1
-
-
 def _get_parent(xml_name: str, hierarchy_dict: dict[str, str]) -> str | None:
     """Get the parent of the item, if any."""
     if xml_name in hierarchy_dict:
@@ -226,7 +218,6 @@ def read_facts(
                 wider_anchor_or_xml_name = wider_anchor
 
             value = cast(int, value)
-            value_multiplier: int = _get_sign_multiplier(concept.balance)
 
             fact_list.append(
                 EsefData(
@@ -237,8 +228,7 @@ def read_facts(
                     wider_anchor=wider_anchor,
                     xml_name=xml_name,
                     currency=fact.unit.value,
-                    value=value * value_multiplier,
-                    raw_value=value,
+                    value=value,
                     is_company_defined=_get_is_extension(qname.prefix),
                     membership=membership_name,
                     xml_name_parent=xml_name_parent,

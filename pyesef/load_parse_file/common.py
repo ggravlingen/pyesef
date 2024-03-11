@@ -25,10 +25,7 @@ class EsefData:
     # # Currency of the value
     currency: str
     # Nominal value (in currency) of the record
-    # Adjusted for debit/credit
     value: fractions.Fraction | int | Any | bool | str | None
-    # Nominal value (in currency) of the record
-    raw_value: fractions.Fraction | int | Any | bool | str | None
     # True if the record has been defined by the company
     is_company_defined: bool
     # The name of the item this record belongs to
