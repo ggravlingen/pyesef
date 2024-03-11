@@ -59,14 +59,17 @@ class EsefData:
 
         Experimental, may bot be 100% correct.
         """
-        return bool(
-            self.xml_name_parent
-            and (
+        if self.xml_name_parent:
+            return bool(
                 "Liabilities" in self.xml_name_parent
                 or "Assets" in self.xml_name_parent
-                or "Equity" in self.xml_name_parent
+                or "EquityAttributableToOwnersOfParent" in self.xml_name_parent
             )
-        )
+
+        if self.label:
+            return bool("Equity" in self.label)
+
+        return False
 
     @property
     def is_income_statement_maybe(self) -> bool:
