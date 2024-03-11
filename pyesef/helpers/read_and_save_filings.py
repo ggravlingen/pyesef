@@ -186,7 +186,7 @@ def _path_to_language(subdir: str) -> str:
     return subdir.split(os.sep)[-1]
 
 
-def read_and_save_filings() -> None:
+def read_and_save_filings(move_parsed_file: bool = True) -> None:
     """Read all filings in the filings folder."""
     idx = 0
     start = time.time()
@@ -257,8 +257,9 @@ def read_and_save_filings() -> None:
                 # Move the filing folder to another location.
                 # This helps us if the script stops due to memory
                 # constraints.
-                move_file_to_parsed(zip_file_path=zip_file_path, language=language)
-                cntlr.addToLog("Moved files to parsed folder")
+                if move_parsed_file:
+                    move_file_to_parsed(zip_file_path=zip_file_path, language=language)
+                    cntlr.addToLog("Moved files to parsed folder")
 
     end = time.time()
     total_time = end - start
