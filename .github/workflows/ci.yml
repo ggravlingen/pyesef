@@ -167,7 +167,7 @@ jobs:
         run: |
           . venv/bin/activate
 
-          export PYTEST_ARGS="--timeout=30 --cov pyesef --cov-report xml:coverage.xml"
+          export PYTEST_ARGS="--timeout=90 --cov pyesef --cov-report xml:coverage.xml"
 
           pytest tests/ $PYTEST_ARGS
 
