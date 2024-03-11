@@ -38,7 +38,6 @@ class Filing:
         """Return download path."""
         return os.path.join(
             PATH_ARCHIVES,
-            self.period_end,
             self.country_iso_2,
         )
 
