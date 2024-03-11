@@ -5,7 +5,6 @@ from __future__ import annotations
 import os
 import time
 import traceback
-from typing import Any
 
 from arelle import FileSource as FileSourceFile, PluginManager
 from arelle.Cntlr import Cntlr
@@ -27,7 +26,7 @@ from ..error import PyEsefError
 from ..load_parse_file.read_facts import read_facts
 
 
-def data_list_to_clean_df(data_list: list[Any]) -> pd.DataFrame:
+def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
     """Convert a list of filing data to a Pandas dataframe."""
     data_frame_from_data_class = pd.json_normalize(  # type: ignore[arg-type]
         asdict_with_properties(obj) for obj in data_list
@@ -37,31 +36,40 @@ def data_list_to_clean_df(data_list: list[Any]) -> pd.DataFrame:
         data_frame_from_data_class["period_end"]
     )
 
-    # Drop zero values
-    data_frame_from_data_class = data_frame_from_data_class.query("value != 0")
-
-    # Drop any duplicates
-    data_frame_from_data_class = data_frame_from_data_class.drop_duplicates(
-        subset=[
-            "lei",
-            "period_end",
-            "wider_anchor_or_xml_name",
-            "xml_name",
-            "xml_name_parent",
-        ],
-        keep="last",
-    )
-
     # Drop beginning-of-year items
     data_frame_from_data_class = data_frame_from_data_class.query(
         "not (period_end.dt.month == 1 & period_end.dt.day == 1)"
     )
 
-    data_frame_from_data_class = data_frame_from_data_class.sort_values(
-        ["lei", "period_end", "sort_order"],
+    # Drop items before 2020
+    data_frame_from_data_class = data_frame_from_data_class.query(
+        "period_end.dt.year >= 2020"
     )
 
-    return data_frame_from_data_class
+    # Drop zero values
+    data_frame_from_data_class = data_frame_from_data_class.query("value != 0")
+
+    # Create a column we can use to eliminate dupliactes
+    data_frame_from_data_class["raw_value_int"] = (
+        data_frame_from_data_class["raw_value"] * 10000
+    ).astype(int)
+
+    # Drop any duplicates
+    data_frame_no_duplicates = data_frame_from_data_class.drop_duplicates(
+        subset=[
+            "period_end",
+            "lei",
+            "wider_anchor_or_xml_name",
+            "xml_name",
+            "xml_name_parent",
+            "raw_value_int",
+        ],
+        ignore_index=True,
+    )
+
+    data_frame_no_duplicates = data_frame_no_duplicates.drop(columns=["raw_value_int"])
+
+    return data_frame_no_duplicates
 
 
 class Controller(Cntlr):  # type: ignore
