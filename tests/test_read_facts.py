@@ -8,7 +8,6 @@ from pyesef.load_parse_file.read_facts import (
     _get_label,
     _get_legal_name,
     _get_membership,
-    _get_parent,
     _get_period_end,
 )
 
@@ -111,23 +110,3 @@ def test_get_legal_name__none(_mock_data):
     facts = []
     result = _get_legal_name(facts)
     assert result is None
-
-
-def test_get_parent() -> None:
-    """Test function _get_parent."""
-    function_result = _get_parent(
-        xml_name="abc",
-        hierarchy_dict={
-            "abc": "a",
-            "def": "b",
-        },
-    )
-
-    assert function_result == "a"
-
-
-def test_get_parent__none() -> None:
-    """Test function _get_parent for None result."""
-    function_result = _get_parent(xml_name="abc", hierarchy_dict={})
-
-    assert function_result is None
