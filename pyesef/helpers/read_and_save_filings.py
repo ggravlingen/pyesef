@@ -24,6 +24,7 @@ from pyesef.utils.file_handling import move_file_to_error, move_file_to_parsed
 from ..const import CSV_SEPARATOR, FILE_ENDING_ZIP, PATH_ARCHIVES
 from ..error import PyEsefError
 from ..load_parse_file.read_facts import read_facts
+from .hierarchy import Hierarchy
 
 
 def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
@@ -61,7 +62,7 @@ def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
             "lei",
             "wider_anchor_or_xml_name",
             "xml_name",
-            "xml_name_parent",
+            "level_1",
             "value",
         ],
         ignore_index=True,
@@ -131,7 +132,7 @@ def _load_esef_xbrl_model(zip_file_path: str, cntlr: Controller) -> ModelXbrl:
 
 def _extract_model_roles(
     model_xbrl: ModelXbrl,
-) -> tuple[dict[str, str], list[str], dict[str, str]]:
+) -> tuple[dict[str, str], list[str], Hierarchy]:
     """
     Extract a lookup table between XML item name and the item's role.
 
@@ -178,7 +179,9 @@ def _extract_model_roles(
     except Exception as exc:
         raise PyEsefError("Unable to load model roles due to ", exc) from exc
 
-    return model_role_dict, summation_items_list, hierarchy_dict
+    hierarchy_data = Hierarchy(hierarchy_dict=hierarchy_dict)
+
+    return model_role_dict, summation_items_list, hierarchy_data
 
 
 def _path_to_language(subdir: str) -> str:
@@ -216,7 +219,7 @@ def read_and_save_filings(move_parsed_file: bool = True) -> None:
                 )
 
                 # Extract the model roles
-                _, __, hierarchy_dict = _extract_model_roles(
+                _, __, hierarchy_data = _extract_model_roles(
                     model_xbrl=model_xbrl,
                 )
 
@@ -224,7 +227,7 @@ def read_and_save_filings(move_parsed_file: bool = True) -> None:
                 try:
                     fact_list = read_facts(
                         model_xbrl=model_xbrl,
-                        hierarchy_dict=hierarchy_dict,
+                        hierarchy_data=hierarchy_data,
                     )
                 except Exception as exc:
                     raise PyEsefError("Fact list error", exc) from exc
@@ -238,7 +241,7 @@ def read_and_save_filings(move_parsed_file: bool = True) -> None:
 
             language = _path_to_language(subdir)
 
-            if _error and error_message is not None:
+            if _error and error_message is not None and move_parsed_file:
                 move_file_to_error(zip_file_path=zip_file_path, language=language)
                 cntlr.addToLog(f"Moved file to error folder due to {error_message}")
             else:
