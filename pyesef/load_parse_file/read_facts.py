@@ -15,6 +15,7 @@ from arelle.ModelValue import QName, dateTime
 from arelle.ModelXbrl import ModelXbrl
 from arelle.ValidateXbrlCalcs import roundValue
 
+from pyesef.helpers.hierarchy import Hierarchy
 from pyesef.load_parse_file.common import EsefData
 
 from ..const import NiceType
@@ -128,14 +129,6 @@ def _get_legal_name(facts: list[Any]) -> str | None:
     return None
 
 
-def _get_parent(xml_name: str, hierarchy_dict: dict[str, str]) -> str | None:
-    """Get the parent of the item, if any."""
-    if xml_name in hierarchy_dict:
-        return hierarchy_dict[xml_name]
-
-    return None
-
-
 def _wider_anchor_to_dict(model_xbrl: ModelXbrl) -> dict[str, Any]:
     """Extract map of XML names from wider anchor."""
     output_map: dict[str, str] = {}
@@ -157,7 +150,7 @@ def _wider_anchor_to_dict(model_xbrl: ModelXbrl) -> dict[str, Any]:
 
 def read_facts(
     model_xbrl: ModelXbrl,
-    hierarchy_dict: dict[str, str],
+    hierarchy_data: Hierarchy,
 ) -> list[EsefData]:
     """Read facts of XBRL-files."""
     fact_list: list[EsefData] = []
@@ -168,7 +161,7 @@ def read_facts(
 
     wider_anchor_map = _wider_anchor_to_dict(model_xbrl=model_xbrl)
 
-    for idx, fact in enumerate(model_xbrl_fact_list):
+    for fact in model_xbrl_fact_list:
         concept: ModelConcept | None = fact.concept
         context: ModelContext | None = fact.context
 
@@ -189,10 +182,6 @@ def read_facts(
 
             # The name of the item, eg ComprehensiveIncome
             xml_name: str = qname.localName
-
-            xml_name_parent = _get_parent(
-                xml_name=xml_name, hierarchy_dict=hierarchy_dict
-            )
 
             if wider_anchor_map.get(xml_name, False):
                 wider_anchor = wider_anchor_map[xml_name]
@@ -219,11 +208,17 @@ def read_facts(
 
             value = cast(int, value)
 
+            xml_level_1 = hierarchy_data.get_ultimate_parent(xml_name)
+
+            if xml_level_1:
+                level_1 = xml_level_1.name
+            else:
+                level_1 = None
+
             fact_list.append(
                 EsefData(
                     period_end=date_period_end,
                     lei=lei,
-                    legal_name=legal_name,
                     wider_anchor_or_xml_name=wider_anchor_or_xml_name,
                     wider_anchor=wider_anchor,
                     xml_name=xml_name,
@@ -231,9 +226,8 @@ def read_facts(
                     value=value,
                     is_company_defined=_get_is_extension(qname.prefix),
                     membership=membership_name,
-                    xml_name_parent=xml_name_parent,
                     label=_get_label(fact.propertyView),
-                    sort_order=idx,
+                    level_1=level_1,
                 )
             )
         except Exception as exc:
