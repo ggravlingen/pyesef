@@ -50,12 +50,18 @@ class EsefData:
     @property
     def is_cash_flow(self) -> bool:
         """Return True if the node is part of the cash flow statement."""
-        return self.level_1 == "IncreaseDecreaseInCashAndCashEquivalents"
+        return self.level_1 in (
+            "IncreaseDecreaseInCashAndCashEquivalents",
+            "IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges",
+        )
 
     @property
     def is_income_statement(self) -> bool:
         """Return True if the node is part of the income statement."""
-        return self.level_1 == "ComprehensiveIncome"
+        return self.level_1 in (
+            "ComprehensiveIncome",
+            "ProfitLoss",
+        )
 
     @property
     def is_other(self) -> bool:
