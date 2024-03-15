@@ -44,16 +44,21 @@ def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
 
     # Drop items before 2020
     data_frame_from_data_class = data_frame_from_data_class.query(
-        "period_end.dt.year >= 2020"
+        "period_end.dt.year > 2020"
     )
 
     # Drop zero values
     data_frame_from_data_class = data_frame_from_data_class.query("value != 0")
 
-    # Create a column we can use to eliminate dupliactes
-    data_frame_from_data_class["value_int"] = (
-        data_frame_from_data_class["value"] * 10000
-    ).astype(int)
+    # It's easier to look for duplicates when using ints than when using floats
+    try:
+        data_frame_from_data_class["value_int"] = (
+            data_frame_from_data_class["value"] * 100
+        ).astype(int)
+    except OverflowError:
+        data_frame_from_data_class["value_int"] = (
+            data_frame_from_data_class["value"]
+        ).astype(int)
 
     # Drop any duplicates
     data_frame_no_duplicates = data_frame_from_data_class.drop_duplicates(
@@ -244,25 +249,34 @@ def read_and_save_filings(move_parsed_file: bool = True) -> None:
             if _error and error_message is not None and move_parsed_file:
                 move_file_to_error(zip_file_path=zip_file_path, language=language)
                 cntlr.addToLog(f"Moved file to error folder due to {error_message}")
-            else:
-                idx += 1
+                continue
+
+            try:
                 data_frame_from_data_class = data_list_to_clean_df(filing_list)
-
-                output_path = "output.csv"
-                data_frame_from_data_class.to_csv(
-                    output_path,
-                    sep=CSV_SEPARATOR,
-                    index=False,
-                    mode="a",
-                    header=not os.path.exists(output_path),
+            except Exception as exc:
+                error_message = "".join(
+                    traceback.TracebackException.from_exception(exc).format()
                 )
+                move_file_to_error(zip_file_path=zip_file_path, language=language)
+                cntlr.addToLog(f"Moved file to error folder due to {error_message}")
+                continue
 
-                # Move the filing folder to another location.
-                # This helps us if the script stops due to memory
-                # constraints.
-                if move_parsed_file:
-                    move_file_to_parsed(zip_file_path=zip_file_path, language=language)
-                    cntlr.addToLog("Moved files to parsed folder")
+            idx += 1
+            output_path = "output.csv"
+            data_frame_from_data_class.to_csv(
+                output_path,
+                sep=CSV_SEPARATOR,
+                index=False,
+                mode="a",
+                header=not os.path.exists(output_path),
+            )
+
+            # Move the filing folder to another location.
+            # This helps us if the script stops due to memory
+            # constraints.
+            if move_parsed_file:
+                move_file_to_parsed(zip_file_path=zip_file_path, language=language)
+                cntlr.addToLog("Moved files to parsed folder")
 
     end = time.time()
     total_time = end - start
