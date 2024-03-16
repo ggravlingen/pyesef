@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from enum import Enum
+from enum import StrEnum
 import os
 import pathlib
 
@@ -18,7 +18,7 @@ FILE_ENDING_ZIP = ".zip"
 CSV_SEPARATOR = "|"
 
 
-class NiceType(str, Enum):
+class NiceType(StrEnum):
     """Representation of different types of 'nice types'."""
 
     PER_SHARE = "PerShare"
@@ -46,16 +46,3 @@ STANDARD_ROLE_MAP = {
     "ias_1_role-610000": "Statement of changes in equity",
     "ias_1_role-710000": "Statement of changes in net assets available for benefits",
 }
-
-
-class StatementType(Enum):
-    """Representation of statement types."""
-
-    GENERAL = "general_information"
-    BS = "balance_sheet"
-    IS = "income_statement"
-    CF = "cash_flow_statement"
-    OCI = "other_comprehensive_income"
-    OCI_AT = "other_comprehensive_income_after_tax"
-    OCI_PT = "other_comprehensive_income_pre_tax"
-    EQ = "changes_equity"
