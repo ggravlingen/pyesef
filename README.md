@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/ggravlingen/pyesef/badge.svg?branch=main)](https://coveralls.io/github/ggravlingen/pyesef?branch=main)
+
 ## pyesef
 
 A library for extracting XBRL-files in the ESEF-format using the [Arelle module](https://github.com/Arelle/Arelle).
