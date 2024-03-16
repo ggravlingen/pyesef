@@ -89,55 +89,6 @@ class Controller(Cntlr):  # type: ignore
         super().__init__(logFileName="logToPrint", hasGui=False)
 
 
-def _load_esef_xbrl_model(zip_file_path: str, cntlr: Controller) -> ModelXbrl:
-    """Load a ModelXbrl from a file path."""
-    try:
-        file_source: FileSource = FileSourceFile.openFileSource(
-            zip_file_path,
-            cntlr,
-            checkIfXmlIsEis=False,
-        )
-
-        # Find entrypoint files
-        _entrypoint_files = filesourceEntrypointFiles(
-            filesource=file_source,
-            entrypointFiles=[{"file": zip_file_path}],
-        )
-
-        # This is required to correctly populate _entrypointFiles
-        for plugin_xbrl_method in PluginManager.pluginClassMethods(
-            "CntlrCmdLine.Filing.Start"
-        ):
-            plugin_xbrl_method(
-                cntlr,
-                None,
-                file_source,
-                _entrypoint_files,
-                sourceZipStream=None,
-                responseZipStream=None,
-            )
-        _entrypoint = _entrypoint_files[0]
-        _entrypoint_file = _entrypoint["file"]
-        file_source.select(_entrypoint_file)
-        cntlr.entrypointFile = _entrypoint_file
-
-        # Load plugin
-        cntlr.modelManager.validateDisclosureSystem = True
-        cntlr.modelManager.disclosureSystem.select("esef")
-
-        model_xbrl = cntlr.modelManager.load(
-            file_source,
-            "Loading",
-            entrypoint=_entrypoint,
-        )
-
-        file_source.close()
-
-        return model_xbrl
-    except Exception as exc:
-        raise OSError("File not loaded due to ", exc) from exc
-
-
 def _clean_linkrole(link_role: str) -> str:
     """Clean link role."""
     split_link_role = link_role.split("/")
@@ -243,12 +194,61 @@ class ReadFiling:
 
                 self.file_to_parse_list.append(zip_file_path)
 
+    @staticmethod
+    def load_model_xbrl(zip_file_path: str, cntlr: Controller) -> ModelXbrl:
+        """Load a ModelXbrl from a file path."""
+        try:
+            file_source: FileSource = FileSourceFile.openFileSource(
+                zip_file_path,
+                cntlr,
+                checkIfXmlIsEis=False,
+            )
+
+            # Find entrypoint files
+            _entrypoint_files = filesourceEntrypointFiles(
+                filesource=file_source,
+                entrypointFiles=[{"file": zip_file_path}],
+            )
+
+            # This is required to correctly populate _entrypointFiles
+            for plugin_xbrl_method in PluginManager.pluginClassMethods(
+                "CntlrCmdLine.Filing.Start"
+            ):
+                plugin_xbrl_method(
+                    cntlr,
+                    None,
+                    file_source,
+                    _entrypoint_files,
+                    sourceZipStream=None,
+                    responseZipStream=None,
+                )
+            _entrypoint = _entrypoint_files[0]
+            _entrypoint_file = _entrypoint["file"]
+            file_source.select(_entrypoint_file)
+            cntlr.entrypointFile = _entrypoint_file
+
+            # Load plugin
+            cntlr.modelManager.validateDisclosureSystem = True
+            cntlr.modelManager.disclosureSystem.select("esef")
+
+            model_xbrl = cntlr.modelManager.load(
+                file_source,
+                "Loading",
+                entrypoint=_entrypoint,
+            )
+
+            file_source.close()
+
+            return model_xbrl
+        except Exception as exc:
+            raise OSError("File not loaded due to ", exc) from exc
+
     def parse_file_list(self) -> None:
         """PARSE FILE."""
         for zip_file_path in self.file_to_parse_list:
             try:
                 # Load zip-file into a ModelXbrl instance
-                model_xbrl: ModelXbrl = _load_esef_xbrl_model(
+                model_xbrl = self.load_model_xbrl(
                     zip_file_path=zip_file_path,
                     cntlr=self.cntlr,
                 )
