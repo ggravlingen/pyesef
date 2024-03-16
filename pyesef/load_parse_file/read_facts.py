@@ -19,10 +19,6 @@ from pyesef.load_parse_file.common import EsefData
 
 from ..const import NiceType
 from ..error import PyEsefError
-from ..helpers.extract_definitions_to_csv import (
-    check_definitions_exists,
-    extract_definitions_to_csv,
-)
 
 
 class BaseXBRLiType(Enum):
@@ -186,11 +182,6 @@ def facts_to_data_list(
                 wider_anchor = wider_anchor_map[xml_name]
             else:
                 wider_anchor = None
-
-            # On the first run, we want to make sure we have all the definitions
-            # cached locally
-            if not check_definitions_exists():
-                extract_definitions_to_csv(concept=concept)
 
             _, lei = context.entityIdentifier
             _, membership_name = _get_membership(context.scenario)

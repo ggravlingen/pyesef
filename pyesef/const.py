@@ -15,8 +15,6 @@ PATH_FAILED = os.path.abspath(os.path.join(PATH_PROJECT_ROOT, "error"))
 
 FILE_ENDING_ZIP = ".zip"
 
-CSV_SEPARATOR = "|"
-
 
 class NiceType(StrEnum):
     """Representation of different types of 'nice types'."""
