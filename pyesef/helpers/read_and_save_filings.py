@@ -19,15 +19,21 @@ from arelle.XbrlConst import summationItem
 from openpyxl.styles import NamedStyle
 import pandas as pd
 
-from pyesef.const import PATH_FAILED, PATH_PARSED
 from pyesef.helpers.extract_definitions_to_csv import extract_definitions_to_csv
 from pyesef.load_parse_file.common import EsefData
 from pyesef.utils.data_management import asdict_with_properties
 
-from ..const import FILE_ENDING_ZIP, PATH_ARCHIVES
+from ..const import PATH_PROJECT_ROOT
 from ..error import PyEsefError
 from ..load_parse_file.read_facts import facts_to_data_list
 from .hierarchy import Hierarchy
+
+FILE_ENDING_ZIP = ".zip"
+
+PATH_FAILED = os.path.abspath(os.path.join(PATH_PROJECT_ROOT, "error"))
+PATH_ARCHIVES = os.path.abspath(os.path.join(PATH_PROJECT_ROOT, "archives"))
+PATH_PARSED = os.path.abspath(os.path.join(PATH_PROJECT_ROOT, "parsed"))
+PATH_FAILED = os.path.abspath(os.path.join(PATH_PROJECT_ROOT, "error"))
 
 
 def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
