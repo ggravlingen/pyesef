@@ -30,7 +30,7 @@ class EsefData:
     membership: str | None
     # The parent of the stated name of the record item
     label: str | None
-    # The top level parent of the stated name of the record item
+    # The type of statement (balance sheet, income statement or cash flow statement)
     level_1: str | None
 
     # Will be output to JSON object
@@ -45,23 +45,17 @@ class EsefData:
     @property
     def is_balance_sheet(self) -> bool:
         """Return True if the node is part of the balance sheet."""
-        return self.level_1 in ("EquityAndLiabilities", "Assets")
+        return self.level_1 in ("RapportOEverFinansiellStaellning",)
 
     @property
     def is_cash_flow(self) -> bool:
         """Return True if the node is part of the cash flow statement."""
-        return self.level_1 in (
-            "IncreaseDecreaseInCashAndCashEquivalents",
-            "IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges",
-        )
+        return self.level_1 in ("RapportOEverKassafloeden",)
 
     @property
     def is_income_statement(self) -> bool:
         """Return True if the node is part of the income statement."""
-        return self.level_1 in (
-            "ComprehensiveIncome",
-            "ProfitLoss",
-        )
+        return self.level_1 in ("RapportOEverTotalresultat",)
 
     @property
     def is_other(self) -> bool:

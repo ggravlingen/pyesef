@@ -15,7 +15,6 @@ from arelle.ModelValue import QName, dateTime
 from arelle.ModelXbrl import ModelXbrl
 from arelle.ValidateXbrlCalcs import roundValue
 
-from pyesef.helpers.hierarchy import Hierarchy
 from pyesef.load_parse_file.common import EsefData
 
 from ..const import NiceType
@@ -148,9 +147,9 @@ def _wider_anchor_to_dict(model_xbrl: ModelXbrl) -> dict[str, Any]:
     return output_map
 
 
-def read_facts(
+def facts_to_data_list(
     model_xbrl: ModelXbrl,
-    hierarchy_data: Hierarchy,
+    to_model_to_linkrole_map: dict[str, str],
 ) -> list[EsefData]:
     """Read facts of XBRL-files."""
     fact_list: list[EsefData] = []
@@ -208,12 +207,10 @@ def read_facts(
 
             value = cast(int, value)
 
-            xml_level_1 = hierarchy_data.get_ultimate_parent(xml_name)
-
-            if xml_level_1:
-                level_1 = xml_level_1.name
+            if xml_name in to_model_to_linkrole_map:
+                xml_level_1 = to_model_to_linkrole_map[xml_name]
             else:
-                level_1 = None
+                xml_level_1 = None
 
             fact_list.append(
                 EsefData(
@@ -227,7 +224,7 @@ def read_facts(
                     is_company_defined=_get_is_extension(qname.prefix),
                     membership=membership_name,
                     label=_get_label(fact.propertyView),
-                    level_1=level_1,
+                    level_1=xml_level_1,
                 )
             )
         except Exception as exc:
