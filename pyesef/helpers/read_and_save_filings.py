@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import os
 import time
-import traceback
 
 from arelle import FileSource as FileSourceFile, PluginManager
 from arelle.Cntlr import Cntlr
@@ -27,14 +26,14 @@ from ..load_parse_file.read_facts import facts_to_data_list
 from .hierarchy import Hierarchy
 
 
-def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame | None:
+def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
     """Convert a list of filing data to a Pandas dataframe."""
     data_frame_from_data_class = pd.json_normalize(  # type: ignore[arg-type]
         asdict_with_properties(obj) for obj in data_list
     )
 
     if data_frame_from_data_class.empty:
-        return None
+        return pd.DataFrame()
 
     data_frame_from_data_class["period_end"] = pd.to_datetime(
         data_frame_from_data_class["period_end"]
@@ -197,38 +196,60 @@ def _extract_model_roles(
     return to_model_to_linkrole_map, hierarchy_data
 
 
-def _path_to_language(subdir: str) -> str:
-    """Extract language from path."""
-    return subdir.split(os.sep)[-1]
+class ReadFiling:
+    """Read and save filings."""
 
+    TEMPLATE_OUTPUT_PATH = "output.csv"
 
-def read_and_save_filings(move_parsed_file: bool = True) -> None:
-    """Read all filings in the filings folder."""
-    idx = 0
-    start = time.time()
-    cntlr = Controller()
-    PluginManager.addPluginModule("validate/ESEF")
+    def __init__(
+        self,
+        filing_folder: str = PATH_ARCHIVES,
+        move_parsed_file: bool = True,
+    ) -> None:
+        """Init class."""
+        start_time = time.time()
 
-    for subdir, _, files in os.walk(PATH_ARCHIVES):
-        cntlr.addToLog(f"Parsing {len(files)} reports in folder {subdir}")
+        self.filing_folder = filing_folder
+        self.file_to_parse_list: list[str] = []
+        self.filing_list: list[EsefData] = []
+        self.move_parsed_file = move_parsed_file
 
-        for file in files:
-            zip_file_path = subdir + os.sep + file
+        self.cntlr = Controller()  # The Arelle controller
 
-            if not zip_file_path.endswith(FILE_ENDING_ZIP):
-                continue
+        # Add support for reading ESEF-files
+        PluginManager.addPluginModule("validate/ESEF")
 
-            cntlr.addToLog(f"Working on file {file}")
+        self.find_files()
+        self.parse_file_list()
+        self.save_to_csv()
 
-            _error: bool = False
-            error_message: str | None = None
-            filing_list: list[EsefData] = []
+        # Close the controller
+        self.cntlr.close()
+        end_time = time.time()
+        total_time = round(end_time - start_time, 0)
+        self.cntlr.addToLog(
+            f"Parsed {len(self.file_to_parse_list)} files in {total_time}s"
+        )
 
+    def find_files(self) -> None:
+        """Loop through the archive folder and locate relevant files to parse."""
+        for subdir, _, files in os.walk(PATH_ARCHIVES):
+            for file in files:
+                zip_file_path = subdir + os.sep + file
+
+                if not zip_file_path.endswith(FILE_ENDING_ZIP):
+                    continue
+
+                self.file_to_parse_list.append(zip_file_path)
+
+    def parse_file_list(self) -> None:
+        """PARSE FILE."""
+        for zip_file_path in self.file_to_parse_list:
             try:
                 # Load zip-file into a ModelXbrl instance
                 model_xbrl: ModelXbrl = _load_esef_xbrl_model(
                     zip_file_path=zip_file_path,
-                    cntlr=cntlr,
+                    cntlr=self.cntlr,
                 )
 
                 # Extract the model roles
@@ -236,61 +257,35 @@ def read_and_save_filings(move_parsed_file: bool = True) -> None:
                     model_xbrl=model_xbrl,
                 )
 
-                # Read all facts into a list
-                try:
-                    fact_list = facts_to_data_list(
-                        model_xbrl=model_xbrl,
-                        to_model_to_linkrole_map=to_model_to_linkrole_map,
-                    )
-                except Exception as exc:
-                    raise PyEsefError("Fact list error", exc) from exc
-                filing_list.extend(fact_list)
+                fact_list = facts_to_data_list(
+                    model_xbrl=model_xbrl,
+                    to_model_to_linkrole_map=to_model_to_linkrole_map,
+                )
+                self.filing_list.extend(fact_list)
                 model_xbrl.close()
+
+                # Move the filing folder to another location.
+                # This helps us if the script stops due to memory
+                # constraints.
+                if self.move_parsed_file:
+                    move_file_to_parsed(zip_file_path=zip_file_path)
+                    self.cntlr.addToLog("Moved files to parsed folder")
+
             except Exception as exc:
-                error_message = "".join(
-                    traceback.TracebackException.from_exception(exc).format()
-                )
-                _error = True
-            language = _path_to_language(subdir)
+                if self.move_parsed_file:
+                    move_file_to_error(zip_file_path=zip_file_path)
+                    self.cntlr.addToLog(f"Moved file to error folder due to {exc}")
 
-            if _error and error_message is not None and move_parsed_file:
-                move_file_to_error(zip_file_path=zip_file_path, language=language)
-                cntlr.addToLog(f"Moved file to error folder due to {error_message}")
-                continue
+    def save_to_csv(self) -> None:
+        """Save file to CSV."""
+        data_frame_from_data_class = data_list_to_clean_df(self.filing_list)
+        if data_frame_from_data_class.empty:
+            return
 
-            try:
-                data_frame_from_data_class = data_list_to_clean_df(filing_list)
-            except Exception as exc:
-                error_message = "".join(
-                    traceback.TracebackException.from_exception(exc).format()
-                )
-                move_file_to_error(zip_file_path=zip_file_path, language=language)
-                cntlr.addToLog(f"Moved file to error folder due to {error_message}")
-                continue
-
-            if data_frame_from_data_class is None:
-                continue
-
-            idx += 1
-            output_path = "output.csv"
-            data_frame_from_data_class.to_csv(
-                output_path,
-                sep=CSV_SEPARATOR,
-                index=False,
-                mode="a",
-                header=not os.path.exists(output_path),
-            )
-
-            # Move the filing folder to another location.
-            # This helps us if the script stops due to memory
-            # constraints.
-            if move_parsed_file:
-                move_file_to_parsed(zip_file_path=zip_file_path, language=language)
-                cntlr.addToLog("Moved files to parsed folder")
-
-    end = time.time()
-    total_time = end - start
-    cntlr.addToLog(f"Loaded {idx} XBRL-files in {total_time}s")
-
-    cntlr.addToLog("Finished loading")
-    cntlr.close()
+        data_frame_from_data_class.to_csv(
+            self.TEMPLATE_OUTPUT_PATH,
+            sep=CSV_SEPARATOR,
+            index=False,
+            mode="a",
+            header=not os.path.exists(self.TEMPLATE_OUTPUT_PATH),
+        )
