@@ -3,17 +3,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-import os
 from typing import Any, cast
 
 from arelle.ModelDtsObject import ModelConcept
 import pandas as pd
 
 from pyesef.utils.data_management import asdict_with_properties
-
-from ..const import CSV_SEPARATOR
-
-DEFINITIONS_FILENAME = "definitions.csv"
 
 
 @dataclass
@@ -52,40 +47,26 @@ def _get_label_xml(property_view: tuple[str, Any]) -> str | None:
     return None
 
 
-def check_definitions_exists() -> bool:
-    """Check if definitions file exists."""
-    return os.path.isfile(DEFINITIONS_FILENAME)
-
-
-def definitions_to_dict() -> dict[str, dict[str, str]]:
-    """Create a lookup table of the definitions file."""
-    data_frame = pd.read_csv(
-        DEFINITIONS_FILENAME, sep=CSV_SEPARATOR, index_col="label_xml"
-    )
-    output_dict = data_frame.to_dict("index")
-    return cast(dict[str, dict[str, str]], output_dict)
-
-
-def extract_definitions_to_csv(concept: ModelConcept) -> None:
+def extract_definitions_to_csv(concept: ModelConcept) -> pd.DataFrame:
     """Save item definitions to a text file."""
     definition_list: list[DefinitionData] = []
 
     id_objects: dict[str, ModelConcept] = concept.modelDocument.idObjects
     for key in id_objects:
         property_view = id_objects[key].propertyView
+
         definition = _get_definition(property_view=property_view)
         label = _get_label(property_view=property_view)
+        label_xml = _get_label_xml(property_view=property_view)
 
         definition_list.append(
             DefinitionData(
-                label_xml=_get_label_xml(property_view=property_view),
+                label_xml=label_xml,
                 label=label,
                 definition=definition,
             )
         )
 
-    data_frame = pd.json_normalize(  # type: ignore[arg-type]
+    return pd.json_normalize(  # type: ignore[arg-type]
         asdict_with_properties(obj) for obj in definition_list
     )
-
-    data_frame.to_csv(DEFINITIONS_FILENAME, sep=CSV_SEPARATOR, index=False)

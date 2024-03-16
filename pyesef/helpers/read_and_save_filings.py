@@ -20,6 +20,7 @@ from openpyxl.styles import NamedStyle
 import pandas as pd
 
 from pyesef.const import PATH_FAILED, PATH_PARSED
+from pyesef.helpers.extract_definitions_to_csv import extract_definitions_to_csv
 from pyesef.load_parse_file.common import EsefData
 from pyesef.utils.data_management import asdict_with_properties
 
@@ -164,8 +165,6 @@ class ReadFiling:
 
     TEMPLATE_OUTPUT_PATH_EXCEL = "output.xlsx"
 
-    OUTPUT_FORMAT_CSV = 1
-
     def __init__(
         self,
         filing_folder: str = PATH_ARCHIVES,
@@ -179,6 +178,7 @@ class ReadFiling:
         self.filing_list: list[EsefData] = []
         self.should_move_parsed_file = should_move_parsed_file
         self.output_df: pd.DataFrame
+        self.definitions: pd.DataFrame = pd.DataFrame()
 
         self.cntlr = Controller()  # The Arelle controller
 
@@ -268,6 +268,11 @@ class ReadFiling:
                     cntlr=self.cntlr,
                 )
 
+                if self.definitions.empty and len(model_xbrl.facts):
+                    self.definitions = extract_definitions_to_csv(
+                        model_xbrl.facts[0].concept
+                    )
+
                 # Extract the model roles
                 to_model_to_linkrole_map, _ = _extract_model_roles(
                     model_xbrl=model_xbrl,
@@ -340,6 +345,15 @@ class ReadFiling:
             # Apply the integer style to the value column (column 'B')
             for cell in worksheet["G"]:
                 cell.style = int_style
+
+            # Store the definitions in the Excel file
+            if not self.definitions.empty:
+                self.definitions.to_excel(
+                    writer,
+                    index=False,
+                    sheet_name="Definitions",
+                    freeze_panes=(1, 0),
+                )
 
     @staticmethod
     def move_parsed_file(zip_file_path: str, target_path: str) -> None:

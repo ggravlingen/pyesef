@@ -1,12 +1,9 @@
 """Tests for helper to extract definitions."""
 
-from unittest.mock import patch
-
 from pyesef.helpers.extract_definitions_to_csv import (
     _get_definition,
     _get_label,
     _get_label_xml,
-    definitions_to_dict,
 )
 
 TEST_DATA = (
@@ -87,21 +84,3 @@ def test_get_definition():
         "The axis of a table defines the relationship between the members in the "
         "table and the line items or concepts that complete the table."
     )
-
-
-def test_definitions_to_dict():
-    """Test function definitions_to_dict."""
-    with patch(
-        "pyesef.helpers.extract_definitions_to_csv.DEFINITIONS_FILENAME",
-        "tests/fixtures/definitions.csv",
-    ):
-        function_value = definitions_to_dict()
-        assert (
-            "AbnormallyLargeChangesInAssetPricesOrForeignExchangeRatesMember"
-            in function_value
-        )
-
-        assert function_value["AccountingEstimatesAxis"]["definition"] == (
-            "The axis of a table defines the relationship between the members "
-            "in the table and the line items or concepts that complete the table."
-        )
