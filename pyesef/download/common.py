@@ -1,7 +1,7 @@
 """Common."""
 
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum
 import os
 
 from pyesef.const import PATH_ARCHIVES
@@ -9,7 +9,7 @@ from pyesef.const import PATH_ARCHIVES
 BASE_URL = "https://filings.xbrl.org/"
 
 
-class Country(str, Enum):
+class Country(StrEnum):
     """Representation of different countries."""
 
     DENMARK = "DK"

@@ -45,11 +45,11 @@ def api_to_filing_record_list() -> list[Filing]:
 
                 # Filter on the Nordics
                 if country_iso_2 not in [
-                    Country.DENMARK,
-                    Country.FINLAND,
-                    Country.ICELAND,
-                    Country.NORWAY,
-                    Country.SWEDEN,
+                    Country.DENMARK.value,
+                    Country.FINLAND.value,
+                    Country.ICELAND.value,
+                    Country.NORWAY.value,
+                    Country.SWEDEN.value,
                 ]:
                     continue
 

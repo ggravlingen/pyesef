@@ -170,8 +170,8 @@ def facts_to_data_list(
 
             # We don't want to save meta data like company name etc
             if fact.localName == "nonNumeric" or concept.niceType in [
-                NiceType.PER_SHARE,
-                NiceType.SHARES,
+                NiceType.PER_SHARE.value,
+                NiceType.SHARES.value,
             ]:
                 continue
 
