@@ -11,11 +11,12 @@ authors     = [
     {name = "ggravlingen", email = "no@email.com"}
 ]
 keywords    = ["esef", "statement", "financial"]
-requires-python = ">=3.10.0"
+requires-python = ">=3.11.0"
 classifiers=[
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Intended Audience :: Financial and Insurance Industry",
 ]
 dependencies    = [
@@ -53,10 +54,10 @@ packages = ["pyesef"]
 "pyesef" = ["py.typed"]
 
 [tool.black]
-target-version = ["py310"]
+target-version = ["py311"]
 
 [tool.pylint.MASTER]
-py-version = "3.10"
+py-version = "3.11"
 
 [tool.pylint.BASIC]
 class-const-naming-style = "any"
@@ -98,7 +99,7 @@ norecursedirs = [
 [tool.ruff]
 exclude = []
 
-target-version = "py310"
+target-version = "py311"
 
 lint.select = [
     "B007", # Loop control variable {name} not used within loop body
@@ -148,7 +149,7 @@ known-first-party = [
 ]
 
 [tools.mypy]
-python_version = "3.10"
+python_version = "3.11"
 show_error_codes = true
 follow_imports = "silent"
 ignore_missing_imports = true
