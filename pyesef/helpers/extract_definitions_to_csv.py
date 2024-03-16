@@ -59,6 +59,11 @@ def extract_definitions_to_csv(concept: ModelConcept) -> pd.DataFrame:
         label = _get_label(property_view=property_view)
         label_xml = _get_label_xml(property_view=property_view)
 
+        if label_xml is not None and (
+            "Abstract" in label_xml or "Member" in label_xml or "Axis" in label_xml
+        ):
+            continue
+
         definition_list.append(
             DefinitionData(
                 label_xml=label_xml,
