@@ -172,5 +172,5 @@ jobs:
 
           pytest tests/ $PYTEST_ARGS
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@v2.2.3
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2.2.3
