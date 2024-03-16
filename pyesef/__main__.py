@@ -28,4 +28,4 @@ if __name__ == "__main__":
         download_packages()
 
     if org_args.export:
-        ReadFiling()
+        ReadFiling(should_move_parsed_file=False)

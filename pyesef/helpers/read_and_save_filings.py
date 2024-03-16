@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 import os
 from pathlib import Path
 import time
@@ -15,13 +16,14 @@ from arelle.ModelRelationshipSet import ModelRelationshipSet
 from arelle.ModelValue import QName
 from arelle.ModelXbrl import ModelXbrl
 from arelle.XbrlConst import summationItem
+from openpyxl.styles import NamedStyle
 import pandas as pd
 
 from pyesef.const import PATH_FAILED, PATH_PARSED
 from pyesef.load_parse_file.common import EsefData
 from pyesef.utils.data_management import asdict_with_properties
 
-from ..const import CSV_SEPARATOR, FILE_ENDING_ZIP, PATH_ARCHIVES
+from ..const import FILE_ENDING_ZIP, PATH_ARCHIVES
 from ..error import PyEsefError
 from ..load_parse_file.read_facts import facts_to_data_list
 from .hierarchy import Hierarchy
@@ -38,6 +40,11 @@ def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
 
     data_frame_from_data_class["period_end"] = pd.to_datetime(
         data_frame_from_data_class["period_end"]
+    )
+
+    # Make the value column an int
+    data_frame_from_data_class["value"] = data_frame_from_data_class["value"].astype(
+        int
     )
 
     # Drop beginning-of-year items
@@ -149,9 +156,15 @@ def _extract_model_roles(
 
 
 class ReadFiling:
-    """Read and save filings."""
+    """
+    Read and save filings.
 
-    TEMPLATE_OUTPUT_PATH = "output.csv"
+    The data will be stored in a Excel file.
+    """
+
+    TEMPLATE_OUTPUT_PATH_EXCEL = "output.xlsx"
+
+    OUTPUT_FORMAT_CSV = 1
 
     def __init__(
         self,
@@ -165,6 +178,7 @@ class ReadFiling:
         self.file_to_parse_list: list[str] = []
         self.filing_list: list[EsefData] = []
         self.should_move_parsed_file = should_move_parsed_file
+        self.output_df: pd.DataFrame
 
         self.cntlr = Controller()  # The Arelle controller
 
@@ -173,7 +187,8 @@ class ReadFiling:
 
         self.find_files()
         self.parse_file_list()
-        self.save_to_csv()
+        self.filings_to_clean_df()
+        self.save_to_excel()
 
         # Close the controller
         self.cntlr.close()
@@ -279,21 +294,52 @@ class ReadFiling:
                     self.move_parsed_file(
                         zip_file_path=zip_file_path, target_path=PATH_FAILED
                     )
-                    self.cntlr.addToLog(f"Moved file to error folder due to {exc}")
+                    self.cntlr.addToLog(
+                        f"Moved file to error folder due to {exc}",
+                        level=logging.WARNING,
+                    )
 
-    def save_to_csv(self) -> None:
-        """Save file to CSV."""
-        data_frame_from_data_class = data_list_to_clean_df(self.filing_list)
-        if data_frame_from_data_class.empty:
+    def filings_to_clean_df(self) -> None:
+        """Return a clean df."""
+        self.output_df = data_list_to_clean_df(self.filing_list)
+
+    def save_to_excel(self) -> None:
+        """Save file to Excel."""
+        if self.output_df.empty:
+            self.cntlr.addToLog(
+                "Empty output dataframe. Output file not saved.", level=logging.WARNING
+            )
             return
 
-        data_frame_from_data_class.to_csv(
-            self.TEMPLATE_OUTPUT_PATH,
-            sep=CSV_SEPARATOR,
-            index=False,
-            mode="a",
-            header=not os.path.exists(self.TEMPLATE_OUTPUT_PATH),
-        )
+        with pd.ExcelWriter(
+            self.TEMPLATE_OUTPUT_PATH_EXCEL,
+            engine="openpyxl",
+        ) as writer:
+            self.output_df.to_excel(
+                writer,
+                index=False,
+                sheet_name="Data",
+                freeze_panes=(1, 0),
+            )
+
+            # Define a named style with the desired date format
+            date_style = NamedStyle(name="date_style")
+            date_style.number_format = "yyyy-mm-dd"
+
+            # Get the workbook and sheet objects
+            worksheet = writer.sheets["Data"]
+
+            # Apply the date style to the entire column
+            for cell in worksheet["A"]:
+                cell.style = date_style
+
+            # Define a named style for integer formatting
+            int_style = NamedStyle(name="int_style")
+            int_style.number_format = "0"
+
+            # Apply the integer style to the value column (column 'B')
+            for cell in worksheet["G"]:
+                cell.style = int_style
 
     @staticmethod
     def move_parsed_file(zip_file_path: str, target_path: str) -> None:

@@ -45,17 +45,31 @@ class EsefData:
     @property
     def is_balance_sheet(self) -> bool:
         """Return True if the node is part of the balance sheet."""
-        return self.level_1 in ("RapportOEverFinansiellStaellning",)
+        return self.level_1 in (
+            "RapportOEverFinansiellStaellning",
+        ) or self.xml_name in (
+            "Assets",
+            "Liabilities",
+            "EquityAndLiabilities",
+        )
 
     @property
     def is_cash_flow(self) -> bool:
         """Return True if the node is part of the cash flow statement."""
-        return self.level_1 in ("RapportOEverKassafloeden",)
+        return self.level_1 in ("RapportOEverKassafloeden",) or self.xml_name in (
+            "IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges",
+            "EffectOfExchangeRateChangesOnCashAndCashEquivalents",
+        )
 
     @property
     def is_income_statement(self) -> bool:
         """Return True if the node is part of the income statement."""
-        return self.level_1 in ("RapportOEverTotalresultat",)
+        return self.level_1 in ("RapportOEverTotalresultat", "Resultat")
+
+    @property
+    def is_changes_in_equity(self) -> bool:
+        """Retrun True if the node is part of the change in equity statement."""
+        return self.level_1 in ("RapportOEverFoeraendringarIEgetKapital",)
 
     @property
     def is_other(self) -> bool:
@@ -76,6 +90,7 @@ class EsefData:
             "CashFlowsFromUsedInFinancingActivities",
             "CashFlowsFromUsedInInvestingActivities",
             "IncreaseDecreaseInCashAndCashEquivalents",
+            "IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges",
             # Balance sheet items
             "NoncurrentAssets",
             "CurrentAssets",
