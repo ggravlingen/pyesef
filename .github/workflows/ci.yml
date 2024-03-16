@@ -5,7 +5,6 @@ env:
   CACHE_VERSION: 1
 
 on:
-  push:
   pull_request:
     branches:
       - main
@@ -174,3 +173,17 @@ jobs:
 
       - name: Coveralls
         uses: coverallsapp/github-action@v2.2.3
+        with:
+          flag-name: run-${{ join(matrix.*, '-') }}
+          parallel: true
+
+  finish:
+    needs: pytest
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@v2.2.3
+      with:
+        parallel-finished: true
+        carryforward: "run-3.11,run-3.12"
