@@ -5,7 +5,6 @@ env:
   CACHE_VERSION: 1
 
 on:
-  push:
   pull_request:
     branches:
       - main
