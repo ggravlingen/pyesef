@@ -5,6 +5,7 @@ env:
   CACHE_VERSION: 1
 
 on:
+  push:
   pull_request:
     branches:
       - main
@@ -171,8 +172,5 @@ jobs:
 
           pytest tests/ $PYTEST_ARGS
 
-      - name: Post coverage
-        uses: orgoro/coverage@v3
-        with:
-          coverageFile: coverage.xml
-          token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Coveralls
+      uses: coverallsapp/github-action@v2.2.3
