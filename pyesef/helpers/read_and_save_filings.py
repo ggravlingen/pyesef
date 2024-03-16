@@ -67,18 +67,20 @@ def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
     # Drop zero values
     data_frame_from_data_class = data_frame_from_data_class.query("value != 0")
 
+    df_before_duplicate_drop = data_frame_from_data_class.copy()
+
     # It's easier to look for duplicates when using ints than when using floats
     try:
-        data_frame_from_data_class["value_int"] = (
-            data_frame_from_data_class["value"] * 100
+        df_before_duplicate_drop.loc[:, "value_int"] = (
+            df_before_duplicate_drop["value"] * 100
         ).astype(int)
     except OverflowError:
-        data_frame_from_data_class["value_int"] = (
-            data_frame_from_data_class["value"]
+        df_before_duplicate_drop.loc[:, "value_int"] = (
+            df_before_duplicate_drop["value"]
         ).astype(int)
 
     # Drop any duplicates
-    data_frame_no_duplicates = data_frame_from_data_class.drop_duplicates(
+    df_before_duplicate_drop = df_before_duplicate_drop.drop_duplicates(
         subset=[
             "period_end",
             "lei",
@@ -90,9 +92,9 @@ def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
         ignore_index=True,
     )
 
-    data_frame_no_duplicates = data_frame_no_duplicates.drop(columns=["value_int"])
+    df_before_duplicate_drop = df_before_duplicate_drop.drop(columns=["value_int"])
 
-    return data_frame_no_duplicates
+    return df_before_duplicate_drop
 
 
 class Controller(Cntlr):  # type: ignore
