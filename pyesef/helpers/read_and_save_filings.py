@@ -23,15 +23,18 @@ from pyesef.utils.file_handling import move_file_to_error, move_file_to_parsed
 
 from ..const import CSV_SEPARATOR, FILE_ENDING_ZIP, PATH_ARCHIVES
 from ..error import PyEsefError
-from ..load_parse_file.read_facts import read_facts
+from ..load_parse_file.read_facts import facts_to_data_list
 from .hierarchy import Hierarchy
 
 
-def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
+def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame | None:
     """Convert a list of filing data to a Pandas dataframe."""
     data_frame_from_data_class = pd.json_normalize(  # type: ignore[arg-type]
         asdict_with_properties(obj) for obj in data_list
     )
+
+    if data_frame_from_data_class.empty:
+        return None
 
     data_frame_from_data_class["period_end"] = pd.to_datetime(
         data_frame_from_data_class["period_end"]
@@ -135,17 +138,22 @@ def _load_esef_xbrl_model(zip_file_path: str, cntlr: Controller) -> ModelXbrl:
         raise OSError("File not loaded due to ", exc) from exc
 
 
+def _clean_linkrole(link_role: str) -> str:
+    """Clean link role."""
+    split_link_role = link_role.split("/")
+    return split_link_role[-1]
+
+
 def _extract_model_roles(
     model_xbrl: ModelXbrl,
-) -> tuple[dict[str, str], list[str], Hierarchy]:
+) -> tuple[dict[str, str], Hierarchy]:
     """
     Extract a lookup table between XML item name and the item's role.
 
     This allows us to determine what financial statement an item belongs to, eg income
     statement, cash flow analysis or balance sheet.
     """
-    model_role_dict: dict[str, str] = {}
-    summation_items_list: list[str] = []
+    to_model_to_linkrole_map: dict[str, str] = {}
     hierarchy_dict: dict[str, str] = {}
 
     rel_set: ModelRelationshipSet = model_xbrl.relationshipSet(summationItem)
@@ -162,8 +170,12 @@ def _extract_model_roles(
             from_clark = from_clark_qname.clarkNotation
             to_clark = to_clark_qname.clarkNotation
 
+            if to_clark_qname not in to_model_to_linkrole_map:
+                to_model_to_linkrole_map[to_clark_qname.localName] = _clean_linkrole(
+                    rel.linkrole
+                )
+
             if "summation-item" in rel.arcrole:
-                summation_items_list.append(from_clark_qname.localName)
                 # Create a lookup table of the parent item of each statement item, eg
                 # DepreciationAndAmortisationExpense is part of OperatingExpense
                 hierarchy_dict[to_clark_qname.localName] = from_clark_qname.localName
@@ -177,16 +189,12 @@ def _extract_model_roles(
             if rel.linkrole not in concepts_by_roles:
                 concepts_by_roles[rel.linkrole] = link
 
-        for key, value_list in concepts_by_roles.items():
-            for item in value_list:
-                if item not in model_role_dict:
-                    model_role_dict[item] = key.split("/")[-1]
     except Exception as exc:
         raise PyEsefError("Unable to load model roles due to ", exc) from exc
 
     hierarchy_data = Hierarchy(hierarchy_dict=hierarchy_dict)
 
-    return model_role_dict, summation_items_list, hierarchy_data
+    return to_model_to_linkrole_map, hierarchy_data
 
 
 def _path_to_language(subdir: str) -> str:
@@ -224,15 +232,15 @@ def read_and_save_filings(move_parsed_file: bool = True) -> None:
                 )
 
                 # Extract the model roles
-                _, __, hierarchy_data = _extract_model_roles(
+                to_model_to_linkrole_map, _ = _extract_model_roles(
                     model_xbrl=model_xbrl,
                 )
 
                 # Read all facts into a list
                 try:
-                    fact_list = read_facts(
+                    fact_list = facts_to_data_list(
                         model_xbrl=model_xbrl,
-                        hierarchy_data=hierarchy_data,
+                        to_model_to_linkrole_map=to_model_to_linkrole_map,
                     )
                 except Exception as exc:
                     raise PyEsefError("Fact list error", exc) from exc
@@ -243,7 +251,6 @@ def read_and_save_filings(move_parsed_file: bool = True) -> None:
                     traceback.TracebackException.from_exception(exc).format()
                 )
                 _error = True
-
             language = _path_to_language(subdir)
 
             if _error and error_message is not None and move_parsed_file:
@@ -259,6 +266,9 @@ def read_and_save_filings(move_parsed_file: bool = True) -> None:
                 )
                 move_file_to_error(zip_file_path=zip_file_path, language=language)
                 cntlr.addToLog(f"Moved file to error folder due to {error_message}")
+                continue
+
+            if data_frame_from_data_class is None:
                 continue
 
             idx += 1
