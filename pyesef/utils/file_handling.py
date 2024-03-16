@@ -23,9 +23,9 @@ def is_valid_zip(file_path: str) -> bool:
         return False
 
 
-def move_file_to_parsed(zip_file_path: str, language: str) -> None:
+def move_file_to_parsed(zip_file_path: str) -> None:
     """Move a file from the filings folder to the parsed folder."""
-    final_path = os.path.join(PATH_PARSED, language)
+    final_path = os.path.join(PATH_PARSED)
     Path(final_path).mkdir(parents=True, exist_ok=True)
 
     os.replace(
@@ -34,9 +34,9 @@ def move_file_to_parsed(zip_file_path: str, language: str) -> None:
     )
 
 
-def move_file_to_error(zip_file_path: str, language: str) -> None:
+def move_file_to_error(zip_file_path: str) -> None:
     """Move a file from the filings folder to the error folder."""
-    final_path = os.path.join(PATH_FAILED, language)
+    final_path = os.path.join(PATH_FAILED)
     Path(final_path).mkdir(parents=True, exist_ok=True)
 
     os.replace(

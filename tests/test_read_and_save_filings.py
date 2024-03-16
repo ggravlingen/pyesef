@@ -8,8 +8,8 @@ import pytest
 
 from pyesef.helpers.hierarchy import Hierarchy
 from pyesef.helpers.read_and_save_filings import (
+    ReadFiling,
     data_list_to_clean_df,
-    read_and_save_filings,
 )
 from pyesef.load_parse_file.common import EsefData
 
@@ -160,7 +160,7 @@ def test_read_and_save_filings() -> None:
         "pyesef.helpers.read_and_save_filings.PATH_ARCHIVES",
         os.path.abspath(os.path.join("tests", "fixtures")),
     ):
-        read_and_save_filings(move_parsed_file=False)
+        ReadFiling(move_parsed_file=False)
 
         assert True
 
