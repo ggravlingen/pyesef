@@ -4,14 +4,25 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+import zipfile
 
 import requests
 
 from pyesef.download.api_extractor import api_to_filing_record_list
 from pyesef.log import LOGGER
-from pyesef.utils.file_handling import is_valid_zip
 
 from .common import Filing
+
+
+def is_valid_zip(file_path: str) -> bool:
+    """Return True if file is a valid ZIP file."""
+    try:
+        with zipfile.ZipFile(file_path, "r") as zip_ref:
+            # Check if the zip file is valid
+            zip_ref.testzip()
+            return True
+    except zipfile.BadZipFile:
+        return False
 
 
 def _download_and_verify_package(filing: Filing) -> None:

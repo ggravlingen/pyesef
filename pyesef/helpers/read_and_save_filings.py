@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from pathlib import Path
 import time
 
 from arelle import FileSource as FileSourceFile, PluginManager
@@ -16,9 +17,9 @@ from arelle.ModelXbrl import ModelXbrl
 from arelle.XbrlConst import summationItem
 import pandas as pd
 
+from pyesef.const import PATH_FAILED, PATH_PARSED
 from pyesef.load_parse_file.common import EsefData
 from pyesef.utils.data_management import asdict_with_properties
-from pyesef.utils.file_handling import move_file_to_error, move_file_to_parsed
 
 from ..const import CSV_SEPARATOR, FILE_ENDING_ZIP, PATH_ARCHIVES
 from ..error import PyEsefError
@@ -204,7 +205,7 @@ class ReadFiling:
     def __init__(
         self,
         filing_folder: str = PATH_ARCHIVES,
-        move_parsed_file: bool = True,
+        should_move_parsed_file: bool = True,
     ) -> None:
         """Init class."""
         start_time = time.time()
@@ -212,7 +213,7 @@ class ReadFiling:
         self.filing_folder = filing_folder
         self.file_to_parse_list: list[str] = []
         self.filing_list: list[EsefData] = []
-        self.move_parsed_file = move_parsed_file
+        self.should_move_parsed_file = should_move_parsed_file
 
         self.cntlr = Controller()  # The Arelle controller
 
@@ -267,13 +268,17 @@ class ReadFiling:
                 # Move the filing folder to another location.
                 # This helps us if the script stops due to memory
                 # constraints.
-                if self.move_parsed_file:
-                    move_file_to_parsed(zip_file_path=zip_file_path)
+                if self.should_move_parsed_file:
+                    self.move_parsed_file(
+                        zip_file_path=zip_file_path, target_path=PATH_PARSED
+                    )
                     self.cntlr.addToLog("Moved files to parsed folder")
 
             except Exception as exc:
-                if self.move_parsed_file:
-                    move_file_to_error(zip_file_path=zip_file_path)
+                if self.should_move_parsed_file:
+                    self.move_parsed_file(
+                        zip_file_path=zip_file_path, target_path=PATH_FAILED
+                    )
                     self.cntlr.addToLog(f"Moved file to error folder due to {exc}")
 
     def save_to_csv(self) -> None:
@@ -288,4 +293,14 @@ class ReadFiling:
             index=False,
             mode="a",
             header=not os.path.exists(self.TEMPLATE_OUTPUT_PATH),
+        )
+
+    @staticmethod
+    def move_parsed_file(zip_file_path: str, target_path: str) -> None:
+        """Move a file from the filings folder to the parsed folder."""
+        Path(target_path).mkdir(parents=True, exist_ok=True)
+
+        os.replace(
+            zip_file_path,
+            os.path.join(target_path, os.path.basename(zip_file_path)),
         )

@@ -3,44 +3,11 @@
 from __future__ import annotations
 
 import os
-from pathlib import Path
 from typing import cast
-import zipfile
 
 import jstyleson
 
-from pyesef.const import PATH_BASE, PATH_FAILED, PATH_PARSED
-
-
-def is_valid_zip(file_path: str) -> bool:
-    """Return True if file is a valid ZIP file."""
-    try:
-        with zipfile.ZipFile(file_path, "r") as zip_ref:
-            # Check if the zip file is valid
-            zip_ref.testzip()
-            return True
-    except zipfile.BadZipFile:
-        return False
-
-
-def move_file_to_parsed(zip_file_path: str) -> None:
-    """Move a file from the filings folder to the parsed folder."""
-    Path(PATH_PARSED).mkdir(parents=True, exist_ok=True)
-
-    os.replace(
-        zip_file_path,
-        os.path.join(PATH_PARSED, os.path.basename(zip_file_path)),
-    )
-
-
-def move_file_to_error(zip_file_path: str) -> None:
-    """Move a file from the filings folder to the error folder."""
-    Path(PATH_FAILED).mkdir(parents=True, exist_ok=True)
-
-    os.replace(
-        zip_file_path,
-        os.path.join(PATH_FAILED, os.path.basename(zip_file_path)),
-    )
+from pyesef.const import PATH_BASE
 
 
 def read_json(filename: str) -> dict[str, str]:
