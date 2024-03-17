@@ -235,11 +235,9 @@ class ReadFiling:
                 filer_role = role
 
         if filer_role == "":
-            model_xbrl.modelManager.cntlr.addToLog(
-                f"Filter role {name} not found in {model_xbrl.fileSource.baseurl}",
-                level=logging.ERROR,
+            raise ValueError(
+                f"Filter role {name} not found in {model_xbrl.fileSource.baseurl}"
             )
-            return ""
 
         clean_role = filer_role.split("/")[-1]
         return clean_role
