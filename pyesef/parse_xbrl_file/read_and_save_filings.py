@@ -234,8 +234,12 @@ class ReadFiling:
                 max_score = score
                 filer_role = role
 
-        clean_role = filer_role.split("/")[-1]
+        if filer_role == "":
+            raise PyEsefError(
+                f"Filter role {name} not found in {model_xbrl.fileSource.baseurl}"
+            )
 
+        clean_role = filer_role.split("/")[-1]
         return clean_role
 
     def get_statement_base_name(self, model_xbrl: ModelXbrl) -> StatementBaseName:

@@ -130,7 +130,7 @@ dmypy.json
 
 # Library related
 filings
-archives
+archives*
 parsed
 error
 not_valid
