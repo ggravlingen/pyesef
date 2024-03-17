@@ -21,12 +21,12 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.worksheet import Worksheet
 import pandas as pd
 
-from pyesef.parse_xbrl_file.common import EsefData
-from pyesef.parse_xbrl_file.extract_definitions_to_csv import extract_definitions_to_csv
 from pyesef.utils.data_management import asdict_with_properties
 
 from ..const import PATH_PROJECT_ROOT
 from ..error import PyEsefError
+from .common import EsefData, clean_linkrole
+from .extract_definitions_to_csv import extract_definitions_to_csv
 from .hierarchy import Hierarchy
 from .read_facts import facts_to_data_list
 
@@ -107,12 +107,6 @@ class Controller(Cntlr):  # type: ignore
         super().__init__(logFileName="logToPrint", hasGui=False)
 
 
-def _clean_linkrole(link_role: str) -> str:
-    """Clean link role."""
-    split_link_role = link_role.split("/")
-    return split_link_role[-1]
-
-
 def _extract_model_roles(
     model_xbrl: ModelXbrl,
 ) -> tuple[dict[str, str], Hierarchy]:
@@ -140,7 +134,7 @@ def _extract_model_roles(
             to_clark = to_clark_qname.clarkNotation
 
             if to_clark_qname not in to_model_to_linkrole_map:
-                to_model_to_linkrole_map[to_clark_qname.localName] = _clean_linkrole(
+                to_model_to_linkrole_map[to_clark_qname.localName] = clean_linkrole(
                     rel.linkrole
                 )
 
