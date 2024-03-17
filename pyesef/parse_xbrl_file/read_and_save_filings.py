@@ -24,7 +24,6 @@ from ..const import PATH_PROJECT_ROOT
 from ..error import PyEsefError
 from .common import Controller, EsefData, clean_linkrole, load_model_xbrl
 from .extract_definitions_to_csv import extract_definitions_to_csv
-from .hierarchy import Hierarchy
 from .load_statement_definition import (
     StatementName,
     UpdateStatementDefinitionJson,
@@ -103,7 +102,7 @@ def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
 
 def _extract_model_roles(
     model_xbrl: ModelXbrl,
-) -> tuple[dict[str, str], Hierarchy]:
+) -> dict[str, str]:
     """
     Extract a lookup table between XML item name and the item's role.
 
@@ -111,7 +110,6 @@ def _extract_model_roles(
     statement, cash flow analysis or balance sheet.
     """
     to_model_to_linkrole_map: dict[str, str] = {}
-    hierarchy_dict: dict[str, str] = {}
 
     rel_set: ModelRelationshipSet = model_xbrl.relationshipSet(summationItem)
     concepts_by_roles: dict[str, list[str]] = {}
@@ -132,11 +130,6 @@ def _extract_model_roles(
                     rel.linkrole
                 )
 
-            if "summation-item" in rel.arcrole:
-                # Create a lookup table of the parent item of each statement item, eg
-                # DepreciationAndAmortisationExpense is part of OperatingExpense
-                hierarchy_dict[to_clark_qname.localName] = from_clark_qname.localName
-
             if from_clark not in link and from_clark is not None:
                 link.append(from_clark)
 
@@ -149,9 +142,7 @@ def _extract_model_roles(
     except Exception as exc:
         raise PyEsefError("Unable to load model roles due to ", exc) from exc
 
-    hierarchy_data = Hierarchy(hierarchy_dict=hierarchy_dict)
-
-    return to_model_to_linkrole_map, hierarchy_data
+    return to_model_to_linkrole_map
 
 
 @dataclass
@@ -295,7 +286,7 @@ class ReadFiling:
                     )
 
                 # Extract the model roles
-                to_model_to_linkrole_map, _ = _extract_model_roles(
+                to_model_to_linkrole_map = _extract_model_roles(
                     model_xbrl=model_xbrl,
                 )
 
