@@ -4,7 +4,7 @@ import argparse
 
 from pyesef import __version__
 from pyesef.download import download_packages
-from pyesef.helpers.read_and_save_filings import ReadFiling
+from pyesef.parse_xbrl_file import ReadFiling
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Handle XBRL files.")

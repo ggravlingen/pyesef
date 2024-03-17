@@ -6,12 +6,12 @@ from unittest.mock import patch
 
 import pytest
 
-from pyesef.helpers.hierarchy import Hierarchy
-from pyesef.helpers.read_and_save_filings import (
+from pyesef.load_parse_file.common import EsefData
+from pyesef.parse_xbrl_file.hierarchy import Hierarchy
+from pyesef.parse_xbrl_file.read_and_save_filings import (
     ReadFiling,
     data_list_to_clean_df,
 )
-from pyesef.load_parse_file.common import EsefData
 
 HIERARCHY_TEST_DATA = {
     "AdjustmentsForDecreaseIncreaseInTradeAndOtherReceivables": (
@@ -157,7 +157,7 @@ def test_data_list_to_clean_df__drop_duplicates() -> None:
 def test_read_and_save_filings() -> None:
     """Test read_and_save_filings."""
     with patch(
-        "pyesef.helpers.read_and_save_filings.PATH_ARCHIVES",
+        "pyesef.parse_xbrl_file.read_and_save_filings.PATH_ARCHIVES",
         os.path.abspath(os.path.join("tests", "fixtures")),
     ):
         ReadFiling(should_move_parsed_file=False)

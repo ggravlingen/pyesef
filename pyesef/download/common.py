@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from enum import StrEnum
 import os
 
-from pyesef.helpers.read_and_save_filings import PATH_ARCHIVES
+from pyesef.parse_xbrl_file.read_and_save_filings import PATH_ARCHIVES
 
 BASE_URL = "https://filings.xbrl.org/"
 
