@@ -15,15 +15,8 @@ from arelle.ModelRelationshipSet import ModelRelationshipSet
 from arelle.ModelValue import QName
 from arelle.ModelXbrl import ModelXbrl
 from arelle.XbrlConst import parentChild, summationItem
-from openpyxl.styles import NamedStyle
-from openpyxl.utils import get_column_letter
-from openpyxl.worksheet.worksheet import Worksheet
 import pandas as pd
 
-from pyesef.parse_xbrl_file.load_statement_definition import (
-    StatementName,
-    UpdateStatementDefinitionJson,
-)
 from pyesef.utils.data_management import asdict_with_properties
 
 from ..const import PATH_PROJECT_ROOT
@@ -31,7 +24,12 @@ from ..error import PyEsefError
 from .common import Controller, EsefData, clean_linkrole, load_model_xbrl
 from .extract_definitions_to_csv import extract_definitions_to_csv
 from .hierarchy import Hierarchy
+from .load_statement_definition import (
+    StatementName,
+    UpdateStatementDefinitionJson,
+)
 from .read_facts import StatementBaseName, facts_to_data_list
+from .save_excel import SaveToExcel
 
 FILE_ENDING_ZIP = ".zip"
 
@@ -324,56 +322,11 @@ class ReadFiling:
         self.output_df = data_list_to_clean_df(self.filing_list)
 
     def save_to_excel(self) -> None:
-        """Save file to Excel."""
-        if self.output_df.empty:
-            self.cntlr.addToLog(
-                "Empty output dataframe. Output file not saved.", level=logging.WARNING
-            )
-            return
-
-        with pd.ExcelWriter(
-            self.TEMPLATE_OUTPUT_PATH_EXCEL,
-            engine="openpyxl",
-        ) as writer:
-            self.output_df.to_excel(
-                writer,
-                index=False,
-                sheet_name="Data",
-                freeze_panes=(1, 0),
-            )
-
-            # Define a named style with the desired date format
-            date_style = NamedStyle(name="date_style")
-            date_style.number_format = "yyyy-mm-dd"
-
-            # Get the workbook and sheet objects
-            worksheet: Worksheet = writer.sheets["Data"]
-
-            # Enable autofilter
-            worksheet.auto_filter.ref = (
-                "A1:" + get_column_letter(worksheet.max_column) + str(worksheet.max_row)
-            )
-
-            # Apply the date style to the entire column
-            for cell in worksheet["A"]:
-                cell.style = date_style
-
-            # Define a named style for integer formatting
-            int_style = NamedStyle(name="int_style")
-            int_style.number_format = "0"
-
-            # Apply the integer style to the value column (column 'B')
-            for cell in worksheet["G"]:
-                cell.style = int_style
-
-            # Store the definitions in the Excel file
-            if not self.definitions.empty:
-                self.definitions.to_excel(
-                    writer,
-                    index=False,
-                    sheet_name="Definitions",
-                    freeze_panes=(1, 0),
-                )
+        """Save data to Excel."""
+        SaveToExcel(
+            parent=self,
+            df_to_save=self.output_df,
+        )
 
     @staticmethod
     def move_parsed_file(zip_file_path: str, target_path: str) -> None:
