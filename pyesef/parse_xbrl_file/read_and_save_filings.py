@@ -235,7 +235,7 @@ class ReadFiling:
                 filer_role = role
 
         if filer_role == "":
-            raise ValueError(
+            raise PyEsefError(
                 f"Filter role {name} not found in {model_xbrl.fileSource.baseurl}"
             )
 
