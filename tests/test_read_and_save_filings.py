@@ -6,7 +6,7 @@ from unittest.mock import patch
 
 import pytest
 
-from pyesef.load_parse_file.common import EsefData
+from pyesef.parse_xbrl_file.common import EsefData
 from pyesef.parse_xbrl_file.hierarchy import Hierarchy
 from pyesef.parse_xbrl_file.read_and_save_filings import (
     ReadFiling,

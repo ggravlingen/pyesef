@@ -1,6 +1,6 @@
 """Tests for helper to extract definitions."""
 
-from pyesef.helpers.extract_definitions_to_csv import (
+from pyesef.parse_xbrl_file.extract_definitions_to_csv import (
     _get_definition,
     _get_label,
     _get_label_xml,

@@ -3,7 +3,7 @@
 from datetime import datetime
 from unittest.mock import Mock, patch
 
-from pyesef.load_parse_file.read_facts import (
+from pyesef.parse_xbrl_file.read_facts import (
     _get_is_extension,
     _get_label,
     _get_legal_name,
