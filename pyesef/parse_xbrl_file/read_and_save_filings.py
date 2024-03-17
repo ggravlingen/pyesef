@@ -31,7 +31,7 @@ from ..error import PyEsefError
 from .common import Controller, EsefData, clean_linkrole, load_model_xbrl
 from .extract_definitions_to_csv import extract_definitions_to_csv
 from .hierarchy import Hierarchy
-from .read_facts import facts_to_data_list
+from .read_facts import StatementBaseName, facts_to_data_list
 
 FILE_ENDING_ZIP = ".zip"
 
@@ -239,6 +239,32 @@ class ReadFiling:
 
         return clean_role
 
+    def get_statement_base_name(self, model_xbrl: ModelXbrl) -> StatementBaseName:
+        """Return statement base name."""
+        cash_flow_name = self.find_link_role(
+            model_xbrl=model_xbrl,
+            name=StatementName.CASH_FLOW.value,
+        )
+        income_statement_name = self.find_link_role(
+            model_xbrl=model_xbrl,
+            name=StatementName.INCOME_STATEMENT.value,
+        )
+        balance_sheet_name = self.find_link_role(
+            model_xbrl=model_xbrl,
+            name=StatementName.BALANCE_SHEET.value,
+        )
+        changes_equity_name = self.find_link_role(
+            model_xbrl=model_xbrl,
+            name=StatementName.CHANGES_EQUITY.value,
+        )
+
+        return StatementBaseName(
+            balance_sheet=balance_sheet_name,
+            cash_flow=cash_flow_name,
+            income_statement=income_statement_name,
+            changes_equity=changes_equity_name,
+        )
+
     def parse_file_list(self) -> None:
         """PARSE FILE."""
         for idx, zip_file_path in enumerate(self.file_to_parse_list):
@@ -249,21 +275,8 @@ class ReadFiling:
                     cntlr=self.cntlr,
                 )
 
-                cash_flow_name = self.find_link_role(
-                    model_xbrl=model_xbrl,
-                    name=StatementName.CASH_FLOW.value,
-                )
-                income_statement_name = self.find_link_role(
-                    model_xbrl=model_xbrl,
-                    name=StatementName.INCOME_STATEMENT.value,
-                )
-                balance_sheet_name = self.find_link_role(
-                    model_xbrl=model_xbrl,
-                    name=StatementName.BALANCE_SHEET.value,
-                )
-                changes_equity_name = self.find_link_role(
-                    model_xbrl=model_xbrl,
-                    name=StatementName.CHANGES_EQUITY.value,
+                statement_base_name = self.get_statement_base_name(
+                    model_xbrl=model_xbrl
                 )
 
                 if self.definitions.empty and len(model_xbrl.facts):
@@ -279,10 +292,7 @@ class ReadFiling:
                 fact_list = facts_to_data_list(
                     model_xbrl=model_xbrl,
                     to_model_to_linkrole_map=to_model_to_linkrole_map,
-                    cash_flow_name=cash_flow_name,
-                    income_statement_name=income_statement_name,
-                    balance_sheet_name=balance_sheet_name,
-                    changes_equity_name=changes_equity_name,
+                    statement_base_name=statement_base_name,
                 )
                 self.filing_list.extend(fact_list)
                 model_xbrl.modelManager.cntlr.addToLog(

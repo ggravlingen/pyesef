@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from enum import Enum
 import fractions
@@ -125,24 +126,30 @@ def _get_legal_name(facts: list[Any]) -> str | None:
     return None
 
 
+@dataclass
+class StatementBaseName:
+    """Define statement base names."""
+
+    balance_sheet: str
+    cash_flow: str
+    income_statement: str
+    changes_equity: str
+
+
 def _get_level_1(
-    xml_level_1_key: str | None,
-    cash_flow_name: str,
-    income_statement_name: str,
-    balance_sheet_name: str,
-    changes_equity_name: str,
+    xml_level_1_key: str | None, statement_base_name: StatementBaseName
 ) -> str | None:
     """Get the type of statement."""
     if not xml_level_1_key:
         return None
 
-    if xml_level_1_key == cash_flow_name:
+    if xml_level_1_key == statement_base_name.cash_flow:
         return StatementName.CASH_FLOW.value
-    if xml_level_1_key == income_statement_name:
+    if xml_level_1_key == statement_base_name.income_statement:
         return StatementName.INCOME_STATEMENT.value
-    if xml_level_1_key == balance_sheet_name:
+    if xml_level_1_key == statement_base_name.balance_sheet:
         return StatementName.BALANCE_SHEET.value
-    if xml_level_1_key == changes_equity_name:
+    if xml_level_1_key == statement_base_name.changes_equity:
         return StatementName.CHANGES_EQUITY.value
 
     return None
@@ -170,10 +177,7 @@ def _wider_anchor_to_dict(model_xbrl: ModelXbrl) -> dict[str, Any]:
 def facts_to_data_list(
     model_xbrl: ModelXbrl,
     to_model_to_linkrole_map: dict[str, str],
-    cash_flow_name: str,
-    income_statement_name: str,
-    balance_sheet_name: str,
-    changes_equity_name: str,
+    statement_base_name: StatementBaseName,
 ) -> list[EsefData]:
     """Read facts of XBRL-files."""
     fact_list: list[EsefData] = []
@@ -232,11 +236,7 @@ def facts_to_data_list(
                 xml_level_1_key = None
 
             level_1 = _get_level_1(
-                xml_level_1_key=xml_level_1_key,
-                cash_flow_name=cash_flow_name,
-                income_statement_name=income_statement_name,
-                balance_sheet_name=balance_sheet_name,
-                changes_equity_name=changes_equity_name,
+                xml_level_1_key=xml_level_1_key, statement_base_name=statement_base_name
             )
 
             fact_list.append(
