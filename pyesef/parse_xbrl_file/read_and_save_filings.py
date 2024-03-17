@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from functools import cached_property
 import json
 import logging
@@ -153,6 +154,14 @@ def _extract_model_roles(
     return to_model_to_linkrole_map, hierarchy_data
 
 
+@dataclass
+class ParseListData:
+    """Represent file data."""
+
+    zip_file_path: str
+    language_code: str
+
+
 class ReadFiling:
     """
     Read and save filings.
@@ -171,7 +180,7 @@ class ReadFiling:
         start_time = time.time()
 
         self.filing_folder = filing_folder
-        self.file_to_parse_list: list[str] = []
+        self.file_to_parse_list: list[ParseListData] = []
         self.should_move_parsed_file = should_move_parsed_file
         self.definitions: pd.DataFrame = pd.DataFrame()
 
@@ -195,12 +204,17 @@ class ReadFiling:
         """Loop through the archive folder and locate relevant files to parse."""
         for subdir, _, files in os.walk(PATH_ARCHIVES):
             for file in files:
-                zip_file_path = subdir + os.sep + file
+                zip_file_path = os.path.join(subdir, file)
 
                 if not zip_file_path.endswith(FILE_ENDING_ZIP):
                     continue
 
-                self.file_to_parse_list.append(zip_file_path)
+                self.file_to_parse_list.append(
+                    ParseListData(
+                        zip_file_path=zip_file_path,
+                        language_code=subdir.split("/")[-1],  # Language code
+                    )
+                )
 
     @cached_property
     def model_role_map(self) -> dict[str, set[str]]:
@@ -261,13 +275,13 @@ class ReadFiling:
 
     def parse_file_list(self) -> None:
         """PARSE FILE."""
-        for idx, zip_file_path in enumerate(self.file_to_parse_list):
+        for idx, parse_list_data in enumerate(self.file_to_parse_list):
             filing_list: list[EsefData] = []
 
             try:
                 # Load zip-file into a ModelXbrl instance
                 model_xbrl = load_model_xbrl(
-                    zip_file_path=zip_file_path,
+                    zip_file_path=parse_list_data.zip_file_path,
                     cntlr=self.cntlr,
                 )
 
@@ -291,32 +305,40 @@ class ReadFiling:
                     statement_base_name=statement_base_name,
                 )
                 filing_list.extend(fact_list)
+
+                df_result = data_list_to_clean_df(filing_list)
+                self.save_to_excel(df_result=df_result)
+
                 model_xbrl.modelManager.cntlr.addToLog(
                     f"Finished working on: {idx}/{len(self.file_to_parse_list)}"
                 )
+
                 model_xbrl.close()
 
-                # Move the filing folder to another location.
-                # This helps us if the script stops due to memory
-                # constraints.
-                if self.should_move_parsed_file:
-                    self.move_parsed_file(
-                        zip_file_path=zip_file_path, target_path=PATH_PARSED
-                    )
-                    self.cntlr.addToLog("Moved files to parsed folder")
+                if not self.should_move_parsed_file:
+                    continue
+
+                self.move_parsed_file(
+                    zip_file_path=parse_list_data.zip_file_path,
+                    target_path=os.path.join(
+                        PATH_PARSED, parse_list_data.language_code
+                    ),
+                )
+                self.cntlr.addToLog("Moved files to parsed folder")
 
             except Exception as exc:
-                if self.should_move_parsed_file:
-                    self.move_parsed_file(
-                        zip_file_path=zip_file_path, target_path=PATH_FAILED
-                    )
-                    self.cntlr.addToLog(
-                        f"Moved file to error folder due to {exc}",
-                        level=logging.WARNING,
-                    )
-
-            df_result = data_list_to_clean_df(filing_list)
-            self.save_to_excel(df_result=df_result)
+                if not self.should_move_parsed_file:
+                    continue
+                self.move_parsed_file(
+                    zip_file_path=parse_list_data.zip_file_path,
+                    target_path=os.path.join(
+                        PATH_FAILED, parse_list_data.language_code
+                    ),
+                )
+                self.cntlr.addToLog(
+                    f"Moved file to error folder due to {exc}",
+                    level=logging.WARNING,
+                )
 
     def save_to_excel(self, df_result: pd.DataFrame) -> None:
         """Save data to Excel."""

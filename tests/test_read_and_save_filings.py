@@ -12,6 +12,7 @@ from pyesef.parse_xbrl_file.read_and_save_filings import (
     ReadFiling,
     data_list_to_clean_df,
 )
+from pyesef.parse_xbrl_file.save_excel import SaveToExcel
 
 HIERARCHY_TEST_DATA = {
     "AdjustmentsForDecreaseIncreaseInTradeAndOtherReceivables": (
@@ -161,8 +162,7 @@ def test_read_and_save_filings() -> None:
         os.path.abspath(os.path.join("tests", "fixtures")),
     ):
         ReadFiling(should_move_parsed_file=False)
-
-        assert True
+        assert os.path.exists(SaveToExcel.TEMPLATE_OUTPUT_PATH_EXCEL)
 
 
 @pytest.mark.parametrize(

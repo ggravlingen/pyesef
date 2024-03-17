@@ -34,7 +34,7 @@ if __name__ == "__main__":
         download_packages()
 
     if org_args.export:
-        ReadFiling(should_move_parsed_file=False)
+        ReadFiling(should_move_parsed_file=True)
 
     if org_args.update:
         UpdateStatementDefinitionJson()
