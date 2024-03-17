@@ -68,7 +68,11 @@ class EsefData:
     @property
     def is_balance_sheet(self) -> bool:
         """Return True if the node is part of the balance sheet."""
-        return self.level_1 == StatementName.BALANCE_SHEET.value
+        return (
+            self.level_1 == StatementName.BALANCE_SHEET.value
+            # We need to catch these separately
+            or self.wider_anchor_or_xml_name in ("Assets", "EquityAndLiabilities")
+        )
 
     @property
     def is_cash_flow(self) -> bool:
