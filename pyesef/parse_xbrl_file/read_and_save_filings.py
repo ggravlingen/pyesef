@@ -172,9 +172,7 @@ class ReadFiling:
 
         self.filing_folder = filing_folder
         self.file_to_parse_list: list[str] = []
-        self.filing_list: list[EsefData] = []
         self.should_move_parsed_file = should_move_parsed_file
-        self.output_df: pd.DataFrame
         self.definitions: pd.DataFrame = pd.DataFrame()
 
         self.cntlr = Controller()  # The Arelle controller
@@ -184,8 +182,6 @@ class ReadFiling:
 
         self.find_files()
         self.parse_file_list()
-        self.filings_to_clean_df()
-        self.save_to_excel()
 
         # Close the controller
         self.cntlr.close()
@@ -266,6 +262,8 @@ class ReadFiling:
     def parse_file_list(self) -> None:
         """PARSE FILE."""
         for idx, zip_file_path in enumerate(self.file_to_parse_list):
+            filing_list: list[EsefData] = []
+
             try:
                 # Load zip-file into a ModelXbrl instance
                 model_xbrl = load_model_xbrl(
@@ -292,7 +290,7 @@ class ReadFiling:
                     to_model_to_linkrole_map=to_model_to_linkrole_map,
                     statement_base_name=statement_base_name,
                 )
-                self.filing_list.extend(fact_list)
+                filing_list.extend(fact_list)
                 model_xbrl.modelManager.cntlr.addToLog(
                     f"Finished working on: {idx}/{len(self.file_to_parse_list)}"
                 )
@@ -317,15 +315,14 @@ class ReadFiling:
                         level=logging.WARNING,
                     )
 
-    def filings_to_clean_df(self) -> None:
-        """Return a clean df."""
-        self.output_df = data_list_to_clean_df(self.filing_list)
+            df_result = data_list_to_clean_df(filing_list)
+            self.save_to_excel(df_result=df_result)
 
-    def save_to_excel(self) -> None:
+    def save_to_excel(self, df_result: pd.DataFrame) -> None:
         """Save data to Excel."""
         SaveToExcel(
             parent=self,
-            df_to_save=self.output_df,
+            df_to_save=df_result,
         )
 
     @staticmethod
