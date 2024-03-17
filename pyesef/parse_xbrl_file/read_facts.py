@@ -15,6 +15,8 @@ from arelle.ModelValue import QName, dateTime
 from arelle.ModelXbrl import ModelXbrl
 from arelle.ValidateXbrlCalcs import roundValue
 
+from pyesef.parse_xbrl_file.load_statement_definition import StatementName
+
 from ..const import NiceType
 from ..error import PyEsefError
 from .common import EsefData
@@ -25,94 +27,6 @@ class BaseXBRLiType(Enum):
 
     BOOLEAN = "booleanItemType"
     DATE = "dateItemType"
-
-
-ROLE_TO_STATEMENT_TYPE_MAP = {
-    # Balance sheet
-    "ConsolidatedBalanceSheets": "BalanceSheet",
-    "EgetKapitalOchSkulder": "BalanceSheet",
-    "ias_1_role-210000": "BalanceSheet",
-    "ias_1_role-210000_extended": "BalanceSheet",
-    "ias_1_role-220000": "BalanceSheet",
-    "FinancialPosition": "BalanceSheet",
-    "KoncernensBalansrkning": "BalanceSheet",
-    "Koncernensbalansraekning": "BalanceSheet",
-    "Rapportöverfinansiellställningförkoncernen": "BalanceSheet",
-    "RapportverFinansiellStllningFrKoncernen": "BalanceSheet",
-    "RapportOEverFinansiellStaellning": "BalanceSheet",
-    "StatementOfFinancialPosition": "BalanceSheet",
-    "StatementoffinancialpositioncurrentnoncurrentStatement": "BalanceSheet",
-    "Table1StatementOfFinancialPositionAbstract": "BalanceSheet",
-    "Tillgangar": "BalanceSheet",
-    # Cash flow
-    "ias_7_role-520000": "CashFlow",
-    "ias_7_role-520000_extended": "CashFlow",
-    "CashFlowStatement": "CashFlow",
-    "ConsolidatedStatementsOfCashFlows": "CashFlow",
-    "KassafldesanalysFrKoncernen": "CashFlow",
-    "Koncernenskassafloedesanalys": "CashFlow",
-    "RapportOEverKassafloeden": "CashFlow",
-    "Rapportöverkassaflödenförkoncernen": "CashFlow",
-    "StatementOfCashFlows": "CashFlow",
-    "Table1StatementOfCashFlowsAbstract": "CashFlow",
-    "StatementofcashflowsindirectmethodStatement": "CashFlow",
-    # Changes in equity
-    "ChangesinEquity": "ChangesEquity",
-    "ChangesinEquity2": "ChangesEquity",
-    "ConsolidatedStatementsOfChangesInEquity": "ChangesEquity",
-    "ias_1_role-610000": "ChangesEquity",
-    "ias_1_role-610000_extended": "ChangesEquity",
-    "RapportOEverFoeraendringarIEgetKapital": "ChangesEquity",
-    "SammanstllningverFrndringAvEgetKapitalIKoncernen": "ChangesEquity",
-    "StatementofchangesinequityStatement": "ChangesEquity",
-    # Income statement
-    "ConsolidatedStatementsOfComprehensiveIncomeLoss": "IncomeStatement",
-    "ConsolidatedStatementsOfOperations": "IncomeStatement",
-    "ComprehensiveIncome": "IncomeStatement",
-    "IncomeStatement": "IncomeStatement",
-    "IncomeStatement2": "IncomeStatement",
-    "ias_1_role-310000": "IncomeStatement",
-    "ias_1_role-310000_extended": "IncomeStatement",
-    "ias_1_role-320000": "IncomeStatement",
-    "ias_1_role-320000_extended": "IncomeStatement",
-    "ias_1_role-410000": "IncomeStatement",
-    "ias_1_role-410000_extended": "IncomeStatement",
-    "ias_1_role-420000": "IncomeStatement",
-    "KoncernensResultatrkningOchvrigtTotalresultat": "IncomeStatement",
-    "KoncernensRapportverTotalresultatAlternate1": "IncomeStatement",
-    "KoncernensRapportverTotalresultat": "IncomeStatement",
-    "Koncernensrapportoevertotalresultat": "IncomeStatement",
-    "KoncernensResultatrkning": "IncomeStatement",
-    "KoncernensResultatrkningAlternate1": "IncomeStatement",
-    "ProfitOrLoss": "IncomeStatement",
-    "ProfitLoss": "IncomeStatement",
-    "RapportOEverTotalresultat": "IncomeStatement",
-    "RapportOEverTotalresultat2": "IncomeStatement",
-    "Rapportöverresultatochövrigttotalresultatförkoncernen": "IncomeStatement",
-    "Resultat": "IncomeStatement",
-    "StatementOfComprehensiveIncome": "IncomeStatement",
-    "StatementOfComprehensiveIncome2": "IncomeStatement",
-    "Table1ProfitOrLossAbstract": "IncomeStatement",
-    "Table1StatementOfComprehensiveIncomeAbstract": "IncomeStatement",
-    "StatementofcomprehensiveincomeOCIcomponentspresentednetoftaxStatement": (
-        "IncomeStatement"
-    ),
-    "StatementofcomprehensiveincomeOCIcomponentspresentednetoftaxStatement_1": (
-        "IncomeStatement"
-    ),
-    "StatementofcomprehensiveincomeprofitorlossbyfunctionofexpenseStatement": (
-        "IncomeStatement"
-    ),
-    "StatementofcomprehensiveincomeprofitorlossbyfunctionofexpenseStatement_1": (
-        "IncomeStatement"
-    ),
-    "StatementofcomprehensiveincomeprofitorlossbynatureofexpenseStatement": (
-        "IncomeStatement"
-    ),
-    "StatementofcomprehensiveincomeprofitorlossbynatureofexpenseStatement_1": (
-        "IncomeStatement"
-    ),
-}
 
 
 def parsed_value(
@@ -211,6 +125,29 @@ def _get_legal_name(facts: list[Any]) -> str | None:
     return None
 
 
+def _get_level_1(
+    xml_level_1_key: str | None,
+    cash_flow_name: str,
+    income_statement_name: str,
+    balance_sheet_name: str,
+    changes_equity_name: str,
+) -> str | None:
+    """Get the type of statement."""
+    if not xml_level_1_key:
+        return None
+
+    if xml_level_1_key == cash_flow_name:
+        return StatementName.CASH_FLOW.value
+    if xml_level_1_key == income_statement_name:
+        return StatementName.INCOME_STATEMENT.value
+    if xml_level_1_key == balance_sheet_name:
+        return StatementName.BALANCE_SHEET.value
+    if xml_level_1_key == changes_equity_name:
+        return StatementName.CHANGES_EQUITY.value
+
+    return None
+
+
 def _wider_anchor_to_dict(model_xbrl: ModelXbrl) -> dict[str, Any]:
     """Extract map of XML names from wider anchor."""
     output_map: dict[str, str] = {}
@@ -233,6 +170,10 @@ def _wider_anchor_to_dict(model_xbrl: ModelXbrl) -> dict[str, Any]:
 def facts_to_data_list(
     model_xbrl: ModelXbrl,
     to_model_to_linkrole_map: dict[str, str],
+    cash_flow_name: str,
+    income_statement_name: str,
+    balance_sheet_name: str,
+    changes_equity_name: str,
 ) -> list[EsefData]:
     """Read facts of XBRL-files."""
     fact_list: list[EsefData] = []
@@ -290,11 +231,13 @@ def facts_to_data_list(
             else:
                 xml_level_1_key = None
 
-            level_1: str | None
-            if xml_level_1_key and xml_level_1_key in ROLE_TO_STATEMENT_TYPE_MAP:
-                level_1 = ROLE_TO_STATEMENT_TYPE_MAP[xml_level_1_key]
-            else:
-                level_1 = xml_level_1_key
+            level_1 = _get_level_1(
+                xml_level_1_key=xml_level_1_key,
+                cash_flow_name=cash_flow_name,
+                income_statement_name=income_statement_name,
+                balance_sheet_name=balance_sheet_name,
+                changes_equity_name=changes_equity_name,
+            )
 
             fact_list.append(
                 EsefData(

@@ -14,15 +14,8 @@ from arelle.ModelXbrl import ModelXbrl
 from arelle.XbrlConst import parentChild
 
 from pyesef.const import PATH_PROJECT_ROOT
-from pyesef.parse_xbrl_file.common import clean_linkrole
-from pyesef.parse_xbrl_file.read_and_save_filings import Controller, ReadFiling
 
-
-def clean_ifrs(xml_tag: str) -> str:
-    """Remove ifrs from tag."""
-    cleaned_from_ifrs = xml_tag.replace("ifrs-full}", "")
-    clean_other = cleaned_from_ifrs.replace("esef_cor}", "")
-    return clean_other
+from .common import Controller, StatementName, load_model_xbrl
 
 
 class LinkRoleDefinition(StrEnum):
@@ -60,65 +53,52 @@ class UpdateStatementDefinitionJson:
         self.load_cashflow()
         self.load_balance_sheet()
         self.load_income_statement()
+        self.load_changes_equity()
         self.save_dict_to_json()
 
     @cached_property
     def base_taxonomy(self) -> ModelXbrl:
         """Return the base taxonomy model XBRL."""
-        return ReadFiling.load_model_xbrl(
-            zip_file_path=self.PATH_LINK_ROLE_XML, cntlr=self.cntlr
+        return load_model_xbrl(zip_file_path=self.PATH_LINK_ROLE_XML, cntlr=self.cntlr)
+
+    def _loop_rel_set(self, link_role_definition: str) -> set[str]:
+        """Loop through relationship set."""
+        base_taxonomy_rels = self.base_taxonomy.relationshipSet(
+            parentChild, link_role_definition
         )
+
+        base_taxonomy_clarks = {
+            rel.toModelObject.qname.clarkNotation
+            for rel in base_taxonomy_rels.modelRelationships
+        }
+        for root in base_taxonomy_rels.rootConcepts:
+            base_taxonomy_clarks.add(root.qname.clarkNotation)
+
+        return base_taxonomy_clarks
 
     def load_cashflow(self) -> None:
         """Load all cash flow items."""
-        base_taxonomy_cash_flow_rels = self.base_taxonomy.relationshipSet(
-            parentChild, LinkRoleDefinition.CASH_FLOW
+        self.output_data_dict[StatementName.CASH_FLOW.value] = list(
+            self._loop_rel_set(LinkRoleDefinition.CASH_FLOW.value)
         )
-
-        base_taxonomy_clarks = {
-            clean_linkrole(clean_ifrs(rel.toModelObject.qname.clarkNotation))
-            for rel in base_taxonomy_cash_flow_rels.modelRelationships
-        }
-        for root in base_taxonomy_cash_flow_rels.rootConcepts:
-            base_taxonomy_clarks.add(
-                clean_linkrole(clean_ifrs(root.qname.clarkNotation))
-            )
-
-        self.output_data_dict["cash_flow"] = list(base_taxonomy_clarks)
 
     def load_balance_sheet(self) -> None:
         """Load all balance sheet items."""
-        base_taxonomy_cash_flow_rels = self.base_taxonomy.relationshipSet(
-            parentChild, LinkRoleDefinition.BALANCE_SHEET
+        self.output_data_dict[StatementName.BALANCE_SHEET.value] = list(
+            self._loop_rel_set(LinkRoleDefinition.BALANCE_SHEET.value)
         )
-
-        base_taxonomy_clarks = {
-            clean_linkrole(clean_ifrs(rel.toModelObject.qname.clarkNotation))
-            for rel in base_taxonomy_cash_flow_rels.modelRelationships
-        }
-        for root in base_taxonomy_cash_flow_rels.rootConcepts:
-            base_taxonomy_clarks.add(
-                clean_linkrole(clean_ifrs(root.qname.clarkNotation))
-            )
-
-        self.output_data_dict["balance_sheet"] = list(base_taxonomy_clarks)
 
     def load_income_statement(self) -> None:
         """Load all income statement items."""
-        base_taxonomy_cash_flow_rels = self.base_taxonomy.relationshipSet(
-            parentChild, LinkRoleDefinition.INCOME_STATEMENT
+        self.output_data_dict[StatementName.INCOME_STATEMENT.value] = list(
+            self._loop_rel_set(LinkRoleDefinition.INCOME_STATEMENT.value)
         )
 
-        base_taxonomy_clarks = {
-            clean_linkrole(clean_ifrs(rel.toModelObject.qname.clarkNotation))
-            for rel in base_taxonomy_cash_flow_rels.modelRelationships
-        }
-        for root in base_taxonomy_cash_flow_rels.rootConcepts:
-            base_taxonomy_clarks.add(
-                clean_linkrole(clean_ifrs(root.qname.clarkNotation))
-            )
-
-        self.output_data_dict["income_statement"] = list(base_taxonomy_clarks)
+    def load_changes_equity(self) -> None:
+        """Load all changes in equity items."""
+        self.output_data_dict[StatementName.CHANGES_EQUITY.value] = list(
+            self._loop_rel_set(LinkRoleDefinition.CHANGES_EQUITY.value)
+        )
 
     def save_dict_to_json(self) -> None:
         """Save data dict to JSON file."""

@@ -2,30 +2,33 @@
 
 from __future__ import annotations
 
+from functools import cached_property
+import json
 import logging
 import os
 from pathlib import Path
 import time
 
-from arelle import FileSource as FileSourceFile, PluginManager
-from arelle.Cntlr import Cntlr
-from arelle.CntlrCmdLine import filesourceEntrypointFiles
-from arelle.FileSource import FileSource
+from arelle import PluginManager
 from arelle.ModelDtsObject import ModelRelationship
 from arelle.ModelRelationshipSet import ModelRelationshipSet
 from arelle.ModelValue import QName
 from arelle.ModelXbrl import ModelXbrl
-from arelle.XbrlConst import summationItem
+from arelle.XbrlConst import parentChild, summationItem
 from openpyxl.styles import NamedStyle
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.worksheet import Worksheet
 import pandas as pd
 
+from pyesef.parse_xbrl_file.load_statement_definition import (
+    StatementName,
+    UpdateStatementDefinitionJson,
+)
 from pyesef.utils.data_management import asdict_with_properties
 
 from ..const import PATH_PROJECT_ROOT
 from ..error import PyEsefError
-from .common import EsefData, clean_linkrole
+from .common import Controller, EsefData, clean_linkrole, load_model_xbrl
 from .extract_definitions_to_csv import extract_definitions_to_csv
 from .hierarchy import Hierarchy
 from .read_facts import facts_to_data_list
@@ -97,14 +100,6 @@ def data_list_to_clean_df(data_list: list[EsefData]) -> pd.DataFrame:
     df_before_duplicate_drop = df_before_duplicate_drop.drop(columns=["value_int"])
 
     return df_before_duplicate_drop
-
-
-class Controller(Cntlr):  # type: ignore
-    """Controller."""
-
-    def __init__(self) -> None:
-        """Init controller with logging."""
-        super().__init__(logFileName="logToPrint", hasGui=False)
 
 
 def _extract_model_roles(
@@ -213,63 +208,62 @@ class ReadFiling:
 
                 self.file_to_parse_list.append(zip_file_path)
 
-    @staticmethod
-    def load_model_xbrl(zip_file_path: str, cntlr: Controller) -> ModelXbrl:
-        """Load a ModelXbrl from a file path."""
-        try:
-            file_source: FileSource = FileSourceFile.openFileSource(
-                zip_file_path,
-                cntlr,
-                checkIfXmlIsEis=False,
-            )
+    @cached_property
+    def model_role_map(self) -> dict[str, set[str]]:
+        """Return a map of statement types and their xml items."""
+        with open(
+            UpdateStatementDefinitionJson.PATH_JSON_MAP_FILE, encoding="UTF-8"
+        ) as json_file:
+            return json.loads(json_file.read())
 
-            # Find entrypoint files
-            _entrypoint_files = filesourceEntrypointFiles(
-                filesource=file_source,
-                entrypointFiles=[{"file": zip_file_path}],
-            )
+    def find_link_role(self, model_xbrl: ModelXbrl, name: str) -> str:
+        """Find model link roles for cash flow."""
+        base_taxonomy_clarks = set(self.model_role_map[name])
 
-            # This is required to correctly populate _entrypointFiles
-            for plugin_xbrl_method in PluginManager.pluginClassMethods(
-                "CntlrCmdLine.Filing.Start"
-            ):
-                plugin_xbrl_method(
-                    cntlr,
-                    None,
-                    file_source,
-                    _entrypoint_files,
-                    sourceZipStream=None,
-                    responseZipStream=None,
-                )
-            _entrypoint = _entrypoint_files[0]
-            _entrypoint_file = _entrypoint["file"]
-            file_source.select(_entrypoint_file)
-            cntlr.entrypointFile = _entrypoint_file
+        max_score = 0
+        filer_role = ""
+        for role in model_xbrl.roleTypes.keys():
+            role_pres_rels = model_xbrl.relationshipSet(parentChild, role)
+            role_concept_clarks = {
+                rel.toModelObject.qname.clarkNotation
+                for rel in role_pres_rels.modelRelationships
+            }
+            for root in role_pres_rels.rootConcepts:
+                role_concept_clarks.add(root.qname.clarkNotation)
+            score = len(role_concept_clarks & base_taxonomy_clarks)
+            if score > max_score:
+                max_score = score
+                filer_role = role
 
-            # Load plugin
-            cntlr.modelManager.validateDisclosureSystem = True
-            cntlr.modelManager.disclosureSystem.select("esef")
+        clean_role = filer_role.split("/")[-1]
 
-            model_xbrl = cntlr.modelManager.load(
-                file_source,
-                "Loading",
-                entrypoint=_entrypoint,
-            )
-
-            file_source.close()
-
-            return model_xbrl
-        except Exception as exc:
-            raise OSError("File not loaded due to ", exc) from exc
+        return clean_role
 
     def parse_file_list(self) -> None:
         """PARSE FILE."""
         for idx, zip_file_path in enumerate(self.file_to_parse_list):
             try:
                 # Load zip-file into a ModelXbrl instance
-                model_xbrl = self.load_model_xbrl(
+                model_xbrl = load_model_xbrl(
                     zip_file_path=zip_file_path,
                     cntlr=self.cntlr,
+                )
+
+                cash_flow_name = self.find_link_role(
+                    model_xbrl=model_xbrl,
+                    name=StatementName.CASH_FLOW.value,
+                )
+                income_statement_name = self.find_link_role(
+                    model_xbrl=model_xbrl,
+                    name=StatementName.INCOME_STATEMENT.value,
+                )
+                balance_sheet_name = self.find_link_role(
+                    model_xbrl=model_xbrl,
+                    name=StatementName.BALANCE_SHEET.value,
+                )
+                changes_equity_name = self.find_link_role(
+                    model_xbrl=model_xbrl,
+                    name=StatementName.CHANGES_EQUITY.value,
                 )
 
                 if self.definitions.empty and len(model_xbrl.facts):
@@ -285,6 +279,10 @@ class ReadFiling:
                 fact_list = facts_to_data_list(
                     model_xbrl=model_xbrl,
                     to_model_to_linkrole_map=to_model_to_linkrole_map,
+                    cash_flow_name=cash_flow_name,
+                    income_statement_name=income_statement_name,
+                    balance_sheet_name=balance_sheet_name,
+                    changes_equity_name=changes_equity_name,
                 )
                 self.filing_list.extend(fact_list)
                 model_xbrl.modelManager.cntlr.addToLog(
