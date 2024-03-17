@@ -17,6 +17,8 @@ from arelle.ModelValue import QName
 from arelle.ModelXbrl import ModelXbrl
 from arelle.XbrlConst import summationItem
 from openpyxl.styles import NamedStyle
+from openpyxl.utils import get_column_letter
+from openpyxl.worksheet.worksheet import Worksheet
 import pandas as pd
 
 from pyesef.helpers.extract_definitions_to_csv import extract_definitions_to_csv
@@ -268,7 +270,7 @@ class ReadFiling:
 
     def parse_file_list(self) -> None:
         """PARSE FILE."""
-        for zip_file_path in self.file_to_parse_list:
+        for idx, zip_file_path in enumerate(self.file_to_parse_list):
             try:
                 # Load zip-file into a ModelXbrl instance
                 model_xbrl = self.load_model_xbrl(
@@ -291,6 +293,9 @@ class ReadFiling:
                     to_model_to_linkrole_map=to_model_to_linkrole_map,
                 )
                 self.filing_list.extend(fact_list)
+                model_xbrl.modelManager.cntlr.addToLog(
+                    f"Finished working on: {idx}/{len(self.file_to_parse_list)}"
+                )
                 model_xbrl.close()
 
                 # Move the filing folder to another location.
@@ -340,7 +345,12 @@ class ReadFiling:
             date_style.number_format = "yyyy-mm-dd"
 
             # Get the workbook and sheet objects
-            worksheet = writer.sheets["Data"]
+            worksheet: Worksheet = writer.sheets["Data"]
+
+            # Enable autofilter
+            worksheet.auto_filter.ref = (
+                "A1:" + get_column_letter(worksheet.max_column) + str(worksheet.max_row)
+            )
 
             # Apply the date style to the entire column
             for cell in worksheet["A"]:
