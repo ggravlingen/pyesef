@@ -21,14 +21,14 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.worksheet import Worksheet
 import pandas as pd
 
-from pyesef.helpers.extract_definitions_to_csv import extract_definitions_to_csv
-from pyesef.load_parse_file.common import EsefData
+from pyesef.parse_xbrl_file.common import EsefData
+from pyesef.parse_xbrl_file.extract_definitions_to_csv import extract_definitions_to_csv
 from pyesef.utils.data_management import asdict_with_properties
 
 from ..const import PATH_PROJECT_ROOT
 from ..error import PyEsefError
-from ..load_parse_file.read_facts import facts_to_data_list
 from .hierarchy import Hierarchy
+from .read_facts import facts_to_data_list
 
 FILE_ENDING_ZIP = ".zip"
 

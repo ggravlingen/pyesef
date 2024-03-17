@@ -3,7 +3,7 @@
 from datetime import datetime
 from unittest.mock import Mock, patch
 
-from pyesef.load_parse_file.read_facts import (
+from pyesef.parse_xbrl_file.read_facts import (
     _get_is_extension,
     _get_label,
     _get_legal_name,
@@ -65,7 +65,7 @@ def test_get_membership():
 
 
 @patch(
-    "pyesef.load_parse_file.read_facts.parsed_value",
+    "pyesef.parse_xbrl_file.read_facts.parsed_value",
     return_value="NameOfUltimateParentOfGroup",
 )
 def test_get_legal_name_of_ultimate_parent(_mock_data):
@@ -85,7 +85,7 @@ def test_get_legal_name_of_ultimate_parent(_mock_data):
 
 
 @patch(
-    "pyesef.load_parse_file.read_facts.parsed_value",
+    "pyesef.parse_xbrl_file.read_facts.parsed_value",
     return_value="NameOfParentEntity",
 )
 def test_get_legal_name_of_parent_entity(_mock_data):
@@ -102,7 +102,7 @@ def test_get_legal_name_of_parent_entity(_mock_data):
 
 
 @patch(
-    "pyesef.load_parse_file.read_facts.parsed_value",
+    "pyesef.parse_xbrl_file.read_facts.parsed_value",
     return_value="NameOfParentEntity",
 )
 def test_get_legal_name__none(_mock_data):

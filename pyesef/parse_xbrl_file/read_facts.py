@@ -15,10 +15,9 @@ from arelle.ModelValue import QName, dateTime
 from arelle.ModelXbrl import ModelXbrl
 from arelle.ValidateXbrlCalcs import roundValue
 
-from pyesef.load_parse_file.common import EsefData
-
 from ..const import NiceType
 from ..error import PyEsefError
+from .common import EsefData
 
 
 class BaseXBRLiType(Enum):
