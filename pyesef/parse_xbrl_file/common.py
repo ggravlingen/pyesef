@@ -2,8 +2,24 @@
 
 from dataclasses import dataclass
 from datetime import date
+from enum import StrEnum
 import fractions
 from typing import Any
+
+from arelle import FileSource as FileSourceFile, PluginManager
+from arelle.Cntlr import Cntlr
+from arelle.CntlrCmdLine import filesourceEntrypointFiles
+from arelle.FileSource import FileSource
+from arelle.ModelXbrl import ModelXbrl
+
+
+class StatementName(StrEnum):
+    """Define names of statements."""
+
+    BALANCE_SHEET = "BalanceSheet"
+    CASH_FLOW = "CashFlow"
+    CHANGES_EQUITY = "ChangesEquity"
+    INCOME_STATEMENT = "Income Statement"
 
 
 def clean_linkrole(link_role: str) -> str:
@@ -52,22 +68,22 @@ class EsefData:
     @property
     def is_balance_sheet(self) -> bool:
         """Return True if the node is part of the balance sheet."""
-        return self.level_1 == "BalanceSheet"
+        return self.level_1 == StatementName.BALANCE_SHEET.value
 
     @property
     def is_cash_flow(self) -> bool:
         """Return True if the node is part of the cash flow statement."""
-        return self.level_1 == "CashFlow"
+        return self.level_1 == StatementName.CASH_FLOW.value
 
     @property
     def is_income_statement(self) -> bool:
         """Return True if the node is part of the income statement."""
-        return self.level_1 == "IncomeStatement"
+        return self.level_1 == StatementName.INCOME_STATEMENT.value
 
     @property
     def is_changes_in_equity(self) -> bool:
         """Retrun True if the node is part of the change in equity statement."""
-        return self.level_1 == "ChangesEquity"
+        return self.level_1 == StatementName.CHANGES_EQUITY.value
 
     @property
     def is_other(self) -> bool:
@@ -105,3 +121,60 @@ class EsefData:
             "ProfitLoss",
             "ComprehensiveIncome",
         ]
+
+
+class Controller(Cntlr):  # type: ignore
+    """Controller."""
+
+    def __init__(self) -> None:
+        """Init controller with logging."""
+        super().__init__(logFileName="logToPrint", hasGui=False)
+
+
+def load_model_xbrl(zip_file_path: str, cntlr: Controller) -> ModelXbrl:
+    """Load a ModelXbrl from a file path."""
+    try:
+        file_source: FileSource = FileSourceFile.openFileSource(
+            zip_file_path,
+            cntlr,
+            checkIfXmlIsEis=False,
+        )
+
+        # Find entrypoint files
+        _entrypoint_files = filesourceEntrypointFiles(
+            filesource=file_source,
+            entrypointFiles=[{"file": zip_file_path}],
+        )
+
+        # This is required to correctly populate _entrypointFiles
+        for plugin_xbrl_method in PluginManager.pluginClassMethods(
+            "CntlrCmdLine.Filing.Start"
+        ):
+            plugin_xbrl_method(
+                cntlr,
+                None,
+                file_source,
+                _entrypoint_files,
+                sourceZipStream=None,
+                responseZipStream=None,
+            )
+        _entrypoint = _entrypoint_files[0]
+        _entrypoint_file = _entrypoint["file"]
+        file_source.select(_entrypoint_file)
+        cntlr.entrypointFile = _entrypoint_file
+
+        # Load plugin
+        cntlr.modelManager.validateDisclosureSystem = True
+        cntlr.modelManager.disclosureSystem.select("esef")
+
+        model_xbrl = cntlr.modelManager.load(
+            file_source,
+            "Loading",
+            entrypoint=_entrypoint,
+        )
+
+        file_source.close()
+
+        return model_xbrl
+    except Exception as exc:
+        raise OSError("File not loaded due to ", exc) from exc

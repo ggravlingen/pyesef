@@ -71,6 +71,7 @@ disable = [
   # It's easier to use f-string than lazy % formatting
   "logging-fstring-interpolation",
   "too-many-branches",
+  "too-many-arguments",
 ]
 
 [tool.pylint.REPORTS]
