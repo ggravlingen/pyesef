@@ -53,25 +53,34 @@ class SaveToExcel:
 
     def main(self) -> None:
         """Run program."""
+        startrow = 0
+        mode = "w"
+        if_sheet_exists = None
+
+        if os.path.exists(self.TEMPLATE_OUTPUT_PATH_EXCEL):
+            reader = pd.read_excel(self.TEMPLATE_OUTPUT_PATH_EXCEL)
+            startrow = reader.shape[0] + 1
+            mode = "a"
+            if_sheet_exists = "overlay"
+
         with pd.ExcelWriter(
             path=self.TEMPLATE_OUTPUT_PATH_EXCEL,
             engine="openpyxl",
-            mode="a",
-            if_sheet_exists="overlay",
+            mode=mode,  # type: ignore[arg-type]
+            if_sheet_exists=if_sheet_exists,  # type: ignore[arg-type]
             engine_kwargs={},
         ) as writer:
-            self.save(writer=writer)
+            self.save(writer=writer, startrow=startrow)
 
-    def save(self, writer: ExcelWriter) -> None:
+    def save(self, writer: ExcelWriter, startrow: int) -> None:
         """Save file."""
-        reader = pd.read_excel(self.TEMPLATE_OUTPUT_PATH_EXCEL)
         self.df_to_save.to_excel(
             excel_writer=writer,
             index=False,
             sheet_name=DataSheetName.DATA.value,
             freeze_panes=(1, 0),
             startcol=0,
-            startrow=reader.shape[0] + 1,
+            startrow=startrow,
         )
 
         self._add_data_auto_filter(writer=writer)
