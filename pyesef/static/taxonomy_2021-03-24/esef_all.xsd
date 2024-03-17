@@ -1,0 +1,1241 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?officialURI http://www.esma.europa.eu/taxonomy/2021-03-24/esef_all.xsd?>
+<?taxonomy-version 1.0.0?>
+<?taxonomy-date 2021-03-24?>
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:esef_all="http://www.esma.europa.eu/taxonomy/2021-03-24/esef_all" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:gen="http://xbrl.org/2008/generic" targetNamespace="http://www.esma.europa.eu/taxonomy/2021-03-24/esef_all" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:appinfo>
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-for.xml" xlink:role="http://www.xbrl.org/2003/role/linkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-cal.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+<!--
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-en.xml" xlink:role="http://www.xbrl.org/2003/role/linkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-ro.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-ga.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-pt.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-sk.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-sl.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-sv.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-bg.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-cs.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-da.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-de.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-el.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-es.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-fi.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-et.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-fr.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-hr.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-hu.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-nl.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-it.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-lt.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-lv.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-mt.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+		<link:linkbaseRef xlink:type="simple" xlink:href="esef_all-gen-pl.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+-->
+      <link:roleType roleURI="http://www.esma.europa.eu/xbrl/role/all/esef_role-000000" id="esef_role-000000">
+        <link:definition>[000000] Tags that must be applied if corresponding information is present in a report</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs-dim_role-913000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs-dim_role-913000">
+        <link:definition>[913000] Axis - Consolidated and separate financial statements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs-dim_role-901000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs-dim_role-901000">
+        <link:definition>[901000] Axis - Retrospective application and retrospective restatement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs-dim_role-901100" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs-dim_role-901100">
+        <link:definition>[901100] Axis - Departure from requirement of IFRS</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs-dim_role-901500" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs-dim_role-901500">
+        <link:definition>[901500] Axis - Creation date</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs-dim_role-903000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs-dim_role-903000">
+        <link:definition>[903000] Axis - Continuing and discontinued operations</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs-dim_role-904000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs-dim_role-904000">
+        <link:definition>[904000] Axis - Assets and liabilities classified as held for sale</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs-dim_role-914000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs-dim_role-914000">
+        <link:definition>[914000] Axis - Currency in which information is displayed</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs-dim_role-915000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs-dim_role-915000">
+        <link:definition>[915000] Axis - Cumulative effect at date of initial application</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-110000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-110000">
+        <link:definition>[110000] General information about financial statements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-210000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-210000">
+        <link:definition>[210000] Statement of financial position, current/non-current</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-220000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-220000">
+        <link:definition>[220000] Statement of financial position, order of liquidity</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-310000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-310000">
+        <link:definition>[310000] Statement of comprehensive income, profit or loss, by function of expense</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-320000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-320000">
+        <link:definition>[320000] Statement of comprehensive income, profit or loss, by nature of expense</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-410000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-410000">
+        <link:definition>[410000] Statement of comprehensive income, OCI components presented net of tax</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-420000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-420000">
+        <link:definition>[420000] Statement of comprehensive income, OCI components presented before tax</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-610000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-610000">
+        <link:definition>[610000] Statement of changes in equity</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-810000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-810000">
+        <link:definition>[810000] Notes - Corporate information and statement of IFRS compliance</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-810000a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-810000a">
+        <link:definition>[810000a] Notes - Corporate information and statement of IFRS compliance</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-810000b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-810000b">
+        <link:definition>[810000b] Notes - Corporate information and statement of IFRS compliance</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-810000c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-810000c">
+        <link:definition>[810000c] Notes - Corporate information and statement of IFRS compliance</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-800100" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-800100">
+        <link:definition>[800100] Subclassifications of assets, liabilities and equities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-800200" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-800200">
+        <link:definition>[800200] Analysis of income and expense</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-861000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-861000">
+        <link:definition>[861000] Notes - Analysis of other comprehensive income by item</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-861200" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-861200">
+        <link:definition>[861200] Notes - Share capital, reserves and other equity interest</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-861200a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-861200a">
+        <link:definition>[861200a] Notes - Share capital, reserves and other equity interest</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-861200b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-861200b">
+        <link:definition>[861200b] Notes - Share capital, reserves and other equity interest</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-800400" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-800400">
+        <link:definition>[800400] Statement of changes in equity, additional disclosures</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-800500" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-800500">
+        <link:definition>[800500] List of notes</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-800600" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-800600">
+        <link:definition>[800600] List of accounting policies</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-880000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-880000">
+        <link:definition>[880000] Notes - Additional information</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_1_role-800100a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_1_role-800100a">
+        <link:definition>[800100a] Subclassifications of assets, liabilities and equities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_10_role-815000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_10_role-815000">
+        <link:definition>[815000] Notes - Events after reporting period</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_12_role-835110" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_12_role-835110">
+        <link:definition>[835110] Notes - Income taxes</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_12_role-835110a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_12_role-835110a">
+        <link:definition>[835110a] Notes - Income taxes</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_12_role-835110b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_12_role-835110b">
+        <link:definition>[835110b] Notes - Income taxes</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_16_role-822100" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_16_role-822100">
+        <link:definition>[822100] Notes - Property, plant and equipment</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_19_role-834480" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_19_role-834480">
+        <link:definition>[834480] Notes - Employee benefits</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_19_role-834480a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_19_role-834480a">
+        <link:definition>[834480a] Notes - Employee benefits</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_19_role-834480b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_19_role-834480b">
+        <link:definition>[834480b] Notes - Employee benefits</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_19_role-834480c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_19_role-834480c">
+        <link:definition>[834480c] Notes - Employee benefits</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_19_role-834480d" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_19_role-834480d">
+        <link:definition>[834480d] Notes - Employee benefits</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_2_role-826380" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_2_role-826380">
+        <link:definition>[826380] Notes - Inventories</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_20_role-831400" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_20_role-831400">
+        <link:definition>[831400] Notes - Government grants</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_21_role-842000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_21_role-842000">
+        <link:definition>[842000] Notes - Effects of changes in foreign exchange rates</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_23_role-836200" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_23_role-836200">
+        <link:definition>[836200] Notes - Borrowing costs</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_24_role-818000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_24_role-818000">
+        <link:definition>[818000] Notes - Related party</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_24_role-818000a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_24_role-818000a">
+        <link:definition>[818000a] Notes - Related party</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_26_role-710000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_26_role-710000">
+        <link:definition>[710000] Statement of changes in net assets available for benefits</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_27_role-825480" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_27_role-825480">
+        <link:definition>[825480] Notes - Separate financial statements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_27_role-825480a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_27_role-825480a">
+        <link:definition>[825480a] Notes - Separate financial statements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_27_role-825480c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_27_role-825480c">
+        <link:definition>[825480c] Notes - Separate financial statements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_29_role-816000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_29_role-816000">
+        <link:definition>[816000] Notes - Hyperinflationary reporting</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_33_role-838000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_33_role-838000">
+        <link:definition>[838000] Notes - Earnings per share</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_33_role-838000a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_33_role-838000a">
+        <link:definition>[838000a] Notes - Earnings per share</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_34_role-813000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_34_role-813000">
+        <link:definition>[813000] Notes - Interim financial reporting</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_36_role-832410" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_36_role-832410">
+        <link:definition>[832410] Notes - Impairment of assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_36_role-832410a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_36_role-832410a">
+        <link:definition>[832410a] Notes - Impairment of assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_36_role-832410b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_36_role-832410b">
+        <link:definition>[832410b] Notes - Impairment of assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_36_role-832410c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_36_role-832410c">
+        <link:definition>[832410c] Notes - Impairment of assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_36_role-832410d" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_36_role-832410d">
+        <link:definition>[832410d] Notes - Impairment of assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_37_role-827570" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_37_role-827570">
+        <link:definition>[827570] Notes - Other provisions, contingent liabilities and contingent assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_37_role-827570a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_37_role-827570a">
+        <link:definition>[827570a] Notes - Other provisions, contingent liabilities and contingent assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_37_role-827570b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_37_role-827570b">
+        <link:definition>[827570b] Notes - Other provisions, contingent liabilities and contingent assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_38_role-823180" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_38_role-823180">
+        <link:definition>[823180] Notes - Intangible assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_38_role-823180a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_38_role-823180a">
+        <link:definition>[823180a] Notes - Intangible assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_38_role-823180b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_38_role-823180b">
+        <link:definition>[823180b] Notes - Intangible assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_38_role-823180c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_38_role-823180c">
+        <link:definition>[823180c] Notes - Intangible assets</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_40_role-825100" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_40_role-825100">
+        <link:definition>[825100] Notes - Investment property</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_41_role-824180" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_41_role-824180">
+        <link:definition>[824180] Notes - Agriculture</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_41_role-824180a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_41_role-824180a">
+        <link:definition>[824180a] Notes - Agriculture</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_41_role-824180b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_41_role-824180b">
+        <link:definition>[824180b] Notes - Agriculture</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_7_role-510000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_7_role-510000">
+        <link:definition>[510000] Statement of cash flows, direct method</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_7_role-520000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_7_role-520000">
+        <link:definition>[520000] Statement of cash flows, indirect method</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_7_role-851100" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_7_role-851100">
+        <link:definition>[851100] Notes - Cash flow statement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_7_role-800300" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_7_role-800300">
+        <link:definition>[800300] Statement of cash flows, additional disclosures</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_8_role-811000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_8_role-811000">
+        <link:definition>[811000] Notes - Accounting policies, changes in accounting estimates and errors</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_8_role-811000a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_8_role-811000a">
+        <link:definition>[811000a] Notes - Accounting policies, changes in accounting estimates and errors</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_8_role-811000b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_8_role-811000b">
+        <link:definition>[811000b] Notes - Accounting policies, changes in accounting estimates and errors</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ias_8_role-811000c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ias_8_role-811000c">
+        <link:definition>[811000c] Notes - Accounting policies, changes in accounting estimates and errors</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifric_2_role-868500" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifric_2_role-868500">
+        <link:definition>[868500] Notes - Members' shares in co-operative entities and similar instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifric_5_role-868200" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifric_5_role-868200">
+        <link:definition>[868200] Notes - Rights to interests arising from decommissioning, restoration and environmental rehabilitation funds</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_1_role-819100" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_1_role-819100">
+        <link:definition>[819100] Notes - First time adoption</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_1_role-819100a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_1_role-819100a">
+        <link:definition>[819100a] Notes - First time adoption</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_1_role-819100b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_1_role-819100b">
+        <link:definition>[819100b] Notes - First time adoption</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_1_role-819100c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_1_role-819100c">
+        <link:definition>[819100c] Notes - First time adoption</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_role-825700" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_12_role-825700">
+        <link:definition>[825700] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_role-825700a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_12_role-825700a">
+        <link:definition>[825700a] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_role-825700b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_12_role-825700b">
+        <link:definition>[825700b] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_role-825700c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_12_role-825700c">
+        <link:definition>[825700c] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_role-825700d" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_12_role-825700d">
+        <link:definition>[825700d] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_role-825700e" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_12_role-825700e">
+        <link:definition>[825700e] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_role-825700f" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_12_role-825700f">
+        <link:definition>[825700f] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_12_role-825700g" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_12_role-825700g">
+        <link:definition>[825700g] Notes - Interests in other entities</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_role-823000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_13_role-823000">
+        <link:definition>[823000] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_role-823000a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_13_role-823000a">
+        <link:definition>[823000a] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_role-823000b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_13_role-823000b">
+        <link:definition>[823000b] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_role-823000c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_13_role-823000c">
+        <link:definition>[823000c] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_role-823000d" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_13_role-823000d">
+        <link:definition>[823000d] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_role-823000e" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_13_role-823000e">
+        <link:definition>[823000e] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_role-823000f" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_13_role-823000f">
+        <link:definition>[823000f] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_role-823000g" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_13_role-823000g">
+        <link:definition>[823000g] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_role-823000h" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_13_role-823000h">
+        <link:definition>[823000h] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_13_role-823000i" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_13_role-823000i">
+        <link:definition>[823000i] Notes - Fair value measurement</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_14_role-824500" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_14_role-824500">
+        <link:definition>[824500] Notes - Regulatory deferral accounts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_14_role-824500a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_14_role-824500a">
+        <link:definition>[824500a] Notes - Regulatory deferral accounts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_15_role-831150" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_15_role-831150">
+        <link:definition>[831150] Notes - Revenue from contracts with customers</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_15_role-831150a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_15_role-831150a">
+        <link:definition>[831150a] Notes - Revenue from contracts with customers</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_15_role-831150b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_15_role-831150b">
+        <link:definition>[831150b] Notes - Revenue from contracts with customers</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_15_role-831150c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_15_role-831150c">
+        <link:definition>[831150c] Notes - Revenue from contracts with customers</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_16_role-832610" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_16_role-832610">
+        <link:definition>[832610] Notes - Leases</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_16_role-832610a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_16_role-832610a">
+        <link:definition>[832610a] Notes - Leases</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_16_role-832610b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_16_role-832610b">
+        <link:definition>[832610b] Notes - Leases</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600">
+        <link:definition>[836600] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600a">
+        <link:definition>[836600a] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600b">
+        <link:definition>[836600b] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600c">
+        <link:definition>[836600c] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600d" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600d">
+        <link:definition>[836600d] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600e" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600e">
+        <link:definition>[836600e] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600f" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600f">
+        <link:definition>[836600f] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600g" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600g">
+        <link:definition>[836600g] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600h" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600h">
+        <link:definition>[836600h] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600i" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600i">
+        <link:definition>[836600i] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600j" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600j">
+        <link:definition>[836600j] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600k" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600k">
+        <link:definition>[836600k] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600l" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600l">
+        <link:definition>[836600l] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600m" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600m">
+        <link:definition>[836600m] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600n" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600n">
+        <link:definition>[836600n] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_17_role-836600o" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_17_role-836600o">
+        <link:definition>[836600o] Notes - Insurance contracts (IFRS 17)</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_2_role-834120" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_2_role-834120">
+        <link:definition>[834120] Notes - Share-based payment arrangements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_2_role-834120a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_2_role-834120a">
+        <link:definition>[834120a] Notes - Share-based payment arrangements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_2_role-834120b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_2_role-834120b">
+        <link:definition>[834120b] Notes - Share-based payment arrangements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_2_role-834120c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_2_role-834120c">
+        <link:definition>[834120c] Notes - Share-based payment arrangements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_3_role-817000" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_3_role-817000">
+        <link:definition>[817000] Notes - Business combinations</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_3_role-817000a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_3_role-817000a">
+        <link:definition>[817000a] Notes - Business combinations</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_3_role-817000b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_3_role-817000b">
+        <link:definition>[817000b] Notes - Business combinations</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_3_role-817000c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_3_role-817000c">
+        <link:definition>[817000c] Notes - Business combinations</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_3_role-817000d" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_3_role-817000d">
+        <link:definition>[817000d] Notes - Business combinations</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500">
+        <link:definition>[836500] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500a">
+        <link:definition>[836500a] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500b">
+        <link:definition>[836500b] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500c">
+        <link:definition>[836500c] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500d" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500d">
+        <link:definition>[836500d] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500e" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500e">
+        <link:definition>[836500e] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500f" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500f">
+        <link:definition>[836500f] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500g" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500g">
+        <link:definition>[836500g] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500h" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500h">
+        <link:definition>[836500h] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500i" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500i">
+        <link:definition>[836500i] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500j" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500j">
+        <link:definition>[836500j] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500k" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500k">
+        <link:definition>[836500k] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500l" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500l">
+        <link:definition>[836500l] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500m" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500m">
+        <link:definition>[836500m] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_4_role-836500n" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_4_role-836500n">
+        <link:definition>[836500n] Notes - Insurance contracts</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_5_role-825900" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_5_role-825900">
+        <link:definition>[825900] Notes - Non-current asset held for sale and discontinued operations</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_6_role-822200" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_6_role-822200">
+        <link:definition>[822200] Notes - Exploration for and evaluation of mineral resources</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390">
+        <link:definition>[822390] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390a">
+        <link:definition>[822390a] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390b">
+        <link:definition>[822390b] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390c">
+        <link:definition>[822390c] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390d" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390d">
+        <link:definition>[822390d] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390e" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390e">
+        <link:definition>[822390e] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390f" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390f">
+        <link:definition>[822390f] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390g" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390g">
+        <link:definition>[822390g] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390h" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390h">
+        <link:definition>[822390h] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390i" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390i">
+        <link:definition>[822390i] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390j" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390j">
+        <link:definition>[822390j] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390k" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390k">
+        <link:definition>[822390k] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390l" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390l">
+        <link:definition>[822390l] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390m" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390m">
+        <link:definition>[822390m] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390n" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390n">
+        <link:definition>[822390n] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390o" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390o">
+        <link:definition>[822390o] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390p" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390p">
+        <link:definition>[822390p] Notes - Financial Instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390q" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390q">
+        <link:definition>[822390q] Notes - Financial Instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390r" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390r">
+        <link:definition>[822390r] Notes - Financial Instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390s" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390s">
+        <link:definition>[822390s] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390t" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390t">
+        <link:definition>[822390t] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390u" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390u">
+        <link:definition>[822390u] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390v" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390v">
+        <link:definition>[822390v] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390w" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390w">
+        <link:definition>[822390w] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390x" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390x">
+        <link:definition>[822390x] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390y" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390y">
+        <link:definition>[822390y] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390z" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390z">
+        <link:definition>[822390z] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390za" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390za">
+        <link:definition>[822390za] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390zb" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390zb">
+        <link:definition>[822390zb] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390zc" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390zc">
+        <link:definition>[822390zc] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390zd" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390zd">
+        <link:definition>[822390zd] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390ze" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390ze">
+        <link:definition>[822390ze] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390zf" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390zf">
+        <link:definition>[822390zf] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390zg" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390zg">
+        <link:definition>[822390zg] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390zh" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390zh">
+        <link:definition>[822390zh] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390zi" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390zi">
+        <link:definition>[822390zi] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_7_role-822390zj" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_7_role-822390zj">
+        <link:definition>[822390zj] Notes - Financial instruments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_8_role-871100" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_8_role-871100">
+        <link:definition>[871100] Notes - Operating segments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_8_role-871100a" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_8_role-871100a">
+        <link:definition>[871100a] Notes - Operating segments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_8_role-871100b" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_8_role-871100b">
+        <link:definition>[871100b] Notes - Operating segments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_8_role-871100c" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_8_role-871100c">
+        <link:definition>[871100c] Notes - Operating segments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_8_role-871100d" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_8_role-871100d">
+        <link:definition>[871100d] Notes - Operating segments</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="sic_29_role-832900" roleURI="http://www.esma.europa.eu/xbrl/role/all/sic_29_role-832900">
+        <link:definition>[832900] Notes - Service concession arrangements</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_axi_role" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_axi_role">
+        <link:definition>Axis aggregation validations</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_cro_role" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_cro_role">
+        <link:definition>Cross period validations</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_eps_role" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_eps_role">
+        <link:definition>Earnings per share validations</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_axi_periodAdj_role" roleURI="http://www.esma.europa.eu/xbrl/role/all/ifrs_axi_periodAdj_role">
+        <link:definition>Period adjusted Axis aggregation validations</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+    </xsd:appinfo>
+  </xsd:annotation>
+</xsd:schema>

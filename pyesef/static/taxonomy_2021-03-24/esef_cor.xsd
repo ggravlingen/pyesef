@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?officialURI http://www.esma.europa.eu/taxonomy/2021-03-24/esef_cor.xsd?>
+<?taxonomy-version 1.0.0?>
+<?taxonomy-date 2021-03-24?>
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:esef_cor="http://www.esma.europa.eu/taxonomy/2021-03-24/esef_cor" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2020-01-21" xmlns:gen="http://xbrl.org/2008/generic" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" targetNamespace="http://www.esma.europa.eu/taxonomy/2021-03-24/esef_cor" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:appinfo>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/labels/in_full_ifrs-en_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/labels/lab_full_ifrs-en_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/labels/doc_full_ifrs-en_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_1/ref_ias_1_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_10/ref_ias_10_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_12/ref_ias_12_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_16/ref_ias_16_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_19/ref_ias_19_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_2/ref_ias_2_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_20/ref_ias_20_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_21/ref_ias_21_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_23/ref_ias_23_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_24/ref_ias_24_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_26/ref_ias_26_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_27/ref_ias_27_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_29/ref_ias_29_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_33/ref_ias_33_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_34/ref_ias_34_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_36/ref_ias_36_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_37/ref_ias_37_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_38/ref_ias_38_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_40/ref_ias_40_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_41/ref_ias_41_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_7/ref_ias_7_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ias_8/ref_ias_8_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifric_2/ref_ifric_2_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifric_5/ref_ifric_5_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_1/ref_ifrs_1_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_12/ref_ifrs_12_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_13/ref_ifrs_13_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_14/ref_ifrs_14_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_15/ref_ifrs_15_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_16/ref_ifrs_16_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_17/ref_ifrs_17_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_2/ref_ifrs_2_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_3/ref_ifrs_3_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_4/ref_ifrs_4_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_5/ref_ifrs_5_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_6/ref_ifrs_6_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_7/ref_ifrs_7_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/ifrs_8/ref_ifrs_8_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="http://xbrl.ifrs.org/taxonomy/2021-03-24/full_ifrs/linkbases/sic_29/ref_sic_29_2021-03-24.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-for.xml" xlink:role="http://www.xbrl.org/2003/role/linkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-dim.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+<!--
+    <link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-en.xml" xlink:role="http://www.xbrl.org/2003/role/linkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-ro.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-ro.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-ga.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-ga.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-pt.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-pt.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-sk.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-sk.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-sl.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-sl.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-sv.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-sv.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-bg.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-bg.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-cs.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-cs.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-da.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-da.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-de.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-de.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-el.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-el.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-es.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-es.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-fi.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-fi.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-et.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-et.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-fr.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-fr.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-hr.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-hr.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-hu.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-hu.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-nl.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-nl.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-it.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-it.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-lt.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-lt.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-lv.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-lv.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-mt.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-mt.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-lab-pl.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+	<link:linkbaseRef xlink:type="simple" xlink:href="esef_cor-gen-pl.xml" xlink:role="http://www.xbrl.org/2003/role/LinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/> 
+-->
+      <link:roleType id="ifrs-dim_role-990000" roleURI="http://www.esma.europa.eu/xbrl/role/cor/ifrs-dim_role-990000">
+        <link:definition>[990000] Axis - Defaults</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.esma.europa.eu/xbrl/role/cor/esef_role-999999" id="esef_role-999999">
+        <link:definition>[999999] Line items not dimensionally qualified</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.esma.europa.eu/xbrl/role/cor/esef_man_role" id="esef_man_role">
+        <link:definition>Mandatory mark-up validations</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.esma.europa.eu/xbrl/role/cor/esef_con_role" id="esef_con_role">
+        <link:definition>Context validations</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.esma.europa.eu/xbrl/role/cor/esef_fac_role" id="esef_fac_role">
+        <link:definition>Fact and footnotes validations</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_equ_role" roleURI="http://www.esma.europa.eu/xbrl/role/cor/ifrs_equ_role">
+        <link:definition>Fact equivalence validations</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_pos_role" roleURI="http://www.esma.europa.eu/xbrl/role/cor/ifrs_pos_role">
+        <link:definition>Positive fact validations</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_neg1_role" roleURI="http://www.esma.europa.eu/xbrl/role/cor/ifrs_neg1_role">
+        <link:definition>Negative fact validations 1</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_neg2_role" roleURI="http://www.esma.europa.eu/xbrl/role/cor/ifrs_neg2_role">
+        <link:definition>Negative fact validations 2</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_per_role" roleURI="http://www.esma.europa.eu/xbrl/role/cor/ifrs_per_role">
+        <link:definition>Percentage warnings</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_tech_role" roleURI="http://www.esma.europa.eu/xbrl/role/cor/ifrs_tech_role">
+        <link:definition>Technical validations</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ifrs_axi_periodAdj_role" roleURI="http://www.esma.europa.eu/xbrl/role/cor/ifrs_axi_periodAdj_role">
+        <link:definition>Period adjusted Axis aggregation validations</link:definition>
+        <link:usedOn>gen:link</link:usedOn>
+      </link:roleType>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <xsd:import namespace="http://www.esma.europa.eu/taxonomy/ext/technical" schemaLocation="http://www.esma.europa.eu/taxonomy/ext/technical.xsd"/>
+  <xsd:import namespace="http://www.xbrl.org/taxonomy/int/lei/2020-07-02/required" schemaLocation="https://www.xbrl.org/taxonomy/int/lei/2020-07-02/lei-required.xsd"/>
+  <xsd:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+  <xsd:import namespace="http://www.xbrl.org/dtr/type/2020-01-21" schemaLocation="https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"/>
+  <xsd:element name="ItemsAreFurtherDetailedInSection800100SubclassificationsOfAssetsLiabilitiesAndEquities" id="esef_cor_ItemsAreFurtherDetailedInSection800100SubclassificationsOfAssetsLiabilitiesAndEquities" type="dtr-types:guidanceItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="instant"/>
+  <xsd:element name="ItemsAreFurtherDetailedInSection800200AnalysisOfIncomeAndExpense" id="esef_cor_ItemsAreFurtherDetailedInSection800200AnalysisOfIncomeAndExpense" type="dtr-types:guidanceItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="instant"/>
+  <xsd:element name="ItemsAreFurtherDetailedInSection800300StatementOfCashFlowsAdditionalDisclosures" id="esef_cor_ItemsAreFurtherDetailedInSection800300StatementOfCashFlowsAdditionalDisclosures" type="dtr-types:guidanceItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="instant"/>
+  <xsd:element name="ItemsAreFurtherDetailedInSection800400StatementOfChangesInEquityAdditionalDisclosures" id="esef_cor_ItemsAreFurtherDetailedInSection800400StatementOfChangesInEquityAdditionalDisclosures" type="dtr-types:guidanceItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="instant"/>
+  <xsd:element name="NotesAccountingPoliciesAndMandatoryTags" id="esef_cor_NotesAccountingPoliciesAndMandatoryTags" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="instant"/>
+  <xsd:element name="LineItemsNotDimensionallyQualified" id="esef_cor_LineItemsNotDimensionallyQualified" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="instant"/>
+  <xsd:element name="LineItemsNotDimensionallyQualifiedPlaceholder" id="esef_cor_LineItemsNotDimensionallyQualifiedPlaceholder" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="instant"/>
+</xsd:schema>

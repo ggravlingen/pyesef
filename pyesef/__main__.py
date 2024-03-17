@@ -4,7 +4,7 @@ import argparse
 
 from pyesef import __version__
 from pyesef.download import download_packages
-from pyesef.parse_xbrl_file import ReadFiling
+from pyesef.parse_xbrl_file import ReadFiling, UpdateStatementDefinitionJson
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Handle XBRL files.")
@@ -21,6 +21,12 @@ if __name__ == "__main__":
         action="store_true",
         help="Download all packages from repository",
     )
+    parser.add_argument(
+        "--update",
+        "-u",
+        action="store_true",
+        help="Update statement definitions",
+    )
 
     org_args = parser.parse_args()
 
@@ -29,3 +35,6 @@ if __name__ == "__main__":
 
     if org_args.export:
         ReadFiling(should_move_parsed_file=False)
+
+    if org_args.update:
+        UpdateStatementDefinitionJson()

@@ -6,6 +6,12 @@ import fractions
 from typing import Any
 
 
+def clean_linkrole(link_role: str) -> str:
+    """Clean link role."""
+    split_link_role = link_role.split("/")
+    return split_link_role[-1]
+
+
 @dataclass
 class EsefData:
     """Represent ESEF data as a dataclass."""
