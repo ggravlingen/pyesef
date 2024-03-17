@@ -44,58 +44,46 @@ class SaveToExcel:
 
         if df_to_save.empty:
             self.parent.cntlr.addToLog(
-                "Empty output dataframe. Output file not saved.", level=logging.WARNING
+                "Empty output dataframe. Output file not saved.",
+                level=logging.WARNING,
             )
             return
 
-        self.save()
+        self.main()
 
-    @property
-    def _file_exists(self) -> bool:
-        """Check if file exists."""
-        return os.path.exists(self.TEMPLATE_OUTPUT_PATH_EXCEL)
-
-    def save_definitions(self, writer: ExcelWriter) -> None:
-        """Save definitions sheet."""
-        if (
-            not self.parent.definitions.empty
-            and DataSheetName.DEFINITIONS.value not in writer.sheets
-        ):
-            self.parent.definitions.to_excel(
-                writer,
-                index=False,
-                sheet_name=DataSheetName.DEFINITIONS.value,
-                freeze_panes=(1, 0),
-            )
-
-    def save(self) -> None:
-        """Save file."""
+    def main(self) -> None:
+        """Run program."""
         with pd.ExcelWriter(
             self.TEMPLATE_OUTPUT_PATH_EXCEL,
             engine="openpyxl",
         ) as writer:
-            self.df_to_save.to_excel(
-                writer,
-                index=False,
-                sheet_name=DataSheetName.DATA.value,
-                freeze_panes=(1, 0),
-            )
+            self.save(writer=writer)
 
-            # Get the workbook and sheet objects
-            worksheet: Worksheet = writer.sheets[DataSheetName.DATA.value]
+    def save(self, writer: ExcelWriter) -> None:
+        """Save file."""
+        self.df_to_save.to_excel(
+            writer,
+            index=False,
+            sheet_name=DataSheetName.DATA.value,
+            freeze_panes=(1, 0),
+        )
 
-            self._add_data_auto_filter(worksheet=worksheet)
-            self._add_data_sheet_styling(worksheet=worksheet)
-            self.save_definitions(writer=writer)
+        self._add_data_auto_filter(writer=writer)
+        self._add_data_sheet_styling(writer=writer)
+        self._save_definitions(writer=writer)
 
-    def _add_data_auto_filter(self, worksheet: Worksheet) -> None:
+    def _add_data_auto_filter(self, writer: ExcelWriter) -> None:
         """Add auto filter to data sheet."""
+        worksheet: Worksheet = writer.sheets[DataSheetName.DATA.value]
+
         worksheet.auto_filter.ref = (  # Enable autofilter
             "A1:" + get_column_letter(worksheet.max_column) + str(worksheet.max_row)
         )
 
-    def _add_data_sheet_styling(self, worksheet: Worksheet) -> None:
+    def _add_data_sheet_styling(self, writer: ExcelWriter) -> None:
         """Add styling to data sheet."""
+        worksheet: Worksheet = writer.sheets[DataSheetName.DATA.value]
+
         date_style = NamedStyle(
             name="date_style"
         )  # Define a named style with the desired date format
@@ -112,3 +100,16 @@ class SaveToExcel:
         # Apply the integer style to the value column (column 'B')
         for cell in worksheet["G"]:
             cell.style = int_style
+
+    def _save_definitions(self, writer: ExcelWriter) -> None:
+        """Save definitions sheet."""
+        if (
+            not self.parent.definitions.empty
+            and DataSheetName.DEFINITIONS.value not in writer.sheets
+        ):
+            self.parent.definitions.to_excel(
+                writer,
+                index=False,
+                sheet_name=DataSheetName.DEFINITIONS.value,
+                freeze_panes=(1, 0),
+            )

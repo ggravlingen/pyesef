@@ -317,6 +317,9 @@ class ReadFiling:
                         level=logging.WARNING,
                     )
 
+            if idx > 1:
+                break
+
     def filings_to_clean_df(self) -> None:
         """Return a clean df."""
         self.output_df = data_list_to_clean_df(self.filing_list)
