@@ -53,19 +53,34 @@ class SaveToExcel:
 
     def main(self) -> None:
         """Run program."""
-        with pd.ExcelWriter(
-            self.TEMPLATE_OUTPUT_PATH_EXCEL,
-            engine="openpyxl",
-        ) as writer:
-            self.save(writer=writer)
+        startrow = 0
+        mode = "w"
+        if_sheet_exists = None
 
-    def save(self, writer: ExcelWriter) -> None:
+        if os.path.exists(self.TEMPLATE_OUTPUT_PATH_EXCEL):
+            reader = pd.read_excel(self.TEMPLATE_OUTPUT_PATH_EXCEL)
+            startrow = reader.shape[0] + 1
+            mode = "a"
+            if_sheet_exists = "overlay"
+
+        with pd.ExcelWriter(
+            path=self.TEMPLATE_OUTPUT_PATH_EXCEL,
+            engine="openpyxl",
+            mode=mode,  # type: ignore[arg-type]
+            if_sheet_exists=if_sheet_exists,  # type: ignore[arg-type]
+            engine_kwargs={},
+        ) as writer:
+            self.save(writer=writer, startrow=startrow)
+
+    def save(self, writer: ExcelWriter, startrow: int) -> None:
         """Save file."""
         self.df_to_save.to_excel(
-            writer,
+            excel_writer=writer,
             index=False,
             sheet_name=DataSheetName.DATA.value,
             freeze_panes=(1, 0),
+            startcol=0,
+            startrow=startrow,
         )
 
         self._add_data_auto_filter(writer=writer)
@@ -80,26 +95,36 @@ class SaveToExcel:
             "A1:" + get_column_letter(worksheet.max_column) + str(worksheet.max_row)
         )
 
+    def get_named_style_names(self, writer: ExcelWriter) -> list[str]:
+        """Return a list of named styles."""
+        return [
+            style.name for style in writer.book._named_styles  # type: ignore # pylint: disable=protected-access
+        ]
+
     def _add_data_sheet_styling(self, writer: ExcelWriter) -> None:
         """Add styling to data sheet."""
         worksheet: Worksheet = writer.sheets[DataSheetName.DATA.value]
 
-        date_style = NamedStyle(
-            name="date_style"
-        )  # Define a named style with the desired date format
-        date_style.number_format = "yyyy-mm-dd"
+        named_styles = self.get_named_style_names(writer=writer)
 
-        # Apply the date style to the entire column
-        for cell in worksheet["A"]:
-            cell.style = date_style
+        if "date_style" not in named_styles:
+            date_style = NamedStyle(
+                name="date_style"
+            )  # Define a named style with the desired date format
+            date_style.number_format = "yyyy-mm-dd"
 
-        # Define a named style for integer formatting
-        int_style = NamedStyle(name="int_style")
-        int_style.number_format = "0"
+            # Apply the date style to the entire column
+            for cell in worksheet["A"]:
+                cell.style = date_style
 
-        # Apply the integer style to the value column (column 'B')
-        for cell in worksheet["G"]:
-            cell.style = int_style
+        if "int_style" not in named_styles:
+            # Define a named style for integer formatting
+            int_style = NamedStyle(name="int_style")
+            int_style.number_format = "0"
+
+            # Apply the integer style to the value column (column 'B')
+            for cell in worksheet["G"]:
+                cell.style = int_style
 
     def _save_definitions(self, writer: ExcelWriter) -> None:
         """Save definitions sheet."""
