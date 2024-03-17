@@ -27,8 +27,8 @@ from pyesef.utils.data_management import asdict_with_properties
 
 from ..const import PATH_PROJECT_ROOT
 from ..error import PyEsefError
-from ..helpers.hierarchy import Hierarchy
 from ..load_parse_file.read_facts import facts_to_data_list
+from .hierarchy import Hierarchy
 
 FILE_ENDING_ZIP = ".zip"
 
