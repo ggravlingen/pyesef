@@ -71,6 +71,7 @@ disable = [
   "too-many-locals",
   # It's easier to use f-string than lazy % formatting
   "logging-fstring-interpolation",
+  "too-many-branches",
 ]
 
 [tool.pylint.REPORTS]

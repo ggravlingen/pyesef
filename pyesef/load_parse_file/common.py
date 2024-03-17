@@ -38,6 +38,7 @@ class EsefData:
         "is_cash_flow",
         "is_balance_sheet",
         "is_income_statement",
+        "is_changes_in_equity",
         "is_other",
         "is_total",
     ]
@@ -45,31 +46,22 @@ class EsefData:
     @property
     def is_balance_sheet(self) -> bool:
         """Return True if the node is part of the balance sheet."""
-        return self.level_1 in (
-            "RapportOEverFinansiellStaellning",
-        ) or self.xml_name in (
-            "Assets",
-            "Liabilities",
-            "EquityAndLiabilities",
-        )
+        return self.level_1 == "BalanceSheet"
 
     @property
     def is_cash_flow(self) -> bool:
         """Return True if the node is part of the cash flow statement."""
-        return self.level_1 in ("RapportOEverKassafloeden",) or self.xml_name in (
-            "IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges",
-            "EffectOfExchangeRateChangesOnCashAndCashEquivalents",
-        )
+        return self.level_1 == "CashFlow"
 
     @property
     def is_income_statement(self) -> bool:
         """Return True if the node is part of the income statement."""
-        return self.level_1 in ("RapportOEverTotalresultat", "Resultat")
+        return self.level_1 == "IncomeStatement"
 
     @property
     def is_changes_in_equity(self) -> bool:
         """Retrun True if the node is part of the change in equity statement."""
-        return self.level_1 in ("RapportOEverFoeraendringarIEgetKapital",)
+        return self.level_1 == "ChangesEquity"
 
     @property
     def is_other(self) -> bool:
@@ -78,6 +70,7 @@ class EsefData:
             not self.is_cash_flow
             and not self.is_balance_sheet
             and not self.is_income_statement
+            and not self.is_changes_in_equity
         )
 
     @property

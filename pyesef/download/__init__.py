@@ -38,6 +38,11 @@ def _download_and_verify_package(filing: Filing) -> None:
 
     LOGGER.info(f"Downloading {filing.file_url}")
 
+    # The file already exists, do an early return
+    if os.path.exists(filing.write_location):
+        LOGGER.info(f"File {filing.file_url} already exists, skipping")
+        return
+
     req = requests.get(filing.file_url, stream=True, timeout=30)
     with open(filing.write_location, "wb") as _file:
         for chunk in req.iter_content(chunk_size=2048):

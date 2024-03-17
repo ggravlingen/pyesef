@@ -28,6 +28,94 @@ class BaseXBRLiType(Enum):
     DATE = "dateItemType"
 
 
+ROLE_TO_STATEMENT_TYPE_MAP = {
+    # Balance sheet
+    "ConsolidatedBalanceSheets": "BalanceSheet",
+    "EgetKapitalOchSkulder": "BalanceSheet",
+    "ias_1_role-210000": "BalanceSheet",
+    "ias_1_role-210000_extended": "BalanceSheet",
+    "ias_1_role-220000": "BalanceSheet",
+    "FinancialPosition": "BalanceSheet",
+    "KoncernensBalansrkning": "BalanceSheet",
+    "Koncernensbalansraekning": "BalanceSheet",
+    "Rapportöverfinansiellställningförkoncernen": "BalanceSheet",
+    "RapportverFinansiellStllningFrKoncernen": "BalanceSheet",
+    "RapportOEverFinansiellStaellning": "BalanceSheet",
+    "StatementOfFinancialPosition": "BalanceSheet",
+    "StatementoffinancialpositioncurrentnoncurrentStatement": "BalanceSheet",
+    "Table1StatementOfFinancialPositionAbstract": "BalanceSheet",
+    "Tillgangar": "BalanceSheet",
+    # Cash flow
+    "ias_7_role-520000": "CashFlow",
+    "ias_7_role-520000_extended": "CashFlow",
+    "CashFlowStatement": "CashFlow",
+    "ConsolidatedStatementsOfCashFlows": "CashFlow",
+    "KassafldesanalysFrKoncernen": "CashFlow",
+    "Koncernenskassafloedesanalys": "CashFlow",
+    "RapportOEverKassafloeden": "CashFlow",
+    "Rapportöverkassaflödenförkoncernen": "CashFlow",
+    "StatementOfCashFlows": "CashFlow",
+    "Table1StatementOfCashFlowsAbstract": "CashFlow",
+    "StatementofcashflowsindirectmethodStatement": "CashFlow",
+    # Changes in equity
+    "ChangesinEquity": "ChangesEquity",
+    "ChangesinEquity2": "ChangesEquity",
+    "ConsolidatedStatementsOfChangesInEquity": "ChangesEquity",
+    "ias_1_role-610000": "ChangesEquity",
+    "ias_1_role-610000_extended": "ChangesEquity",
+    "RapportOEverFoeraendringarIEgetKapital": "ChangesEquity",
+    "SammanstllningverFrndringAvEgetKapitalIKoncernen": "ChangesEquity",
+    "StatementofchangesinequityStatement": "ChangesEquity",
+    # Income statement
+    "ConsolidatedStatementsOfComprehensiveIncomeLoss": "IncomeStatement",
+    "ConsolidatedStatementsOfOperations": "IncomeStatement",
+    "ComprehensiveIncome": "IncomeStatement",
+    "IncomeStatement": "IncomeStatement",
+    "IncomeStatement2": "IncomeStatement",
+    "ias_1_role-310000": "IncomeStatement",
+    "ias_1_role-310000_extended": "IncomeStatement",
+    "ias_1_role-320000": "IncomeStatement",
+    "ias_1_role-320000_extended": "IncomeStatement",
+    "ias_1_role-410000": "IncomeStatement",
+    "ias_1_role-410000_extended": "IncomeStatement",
+    "ias_1_role-420000": "IncomeStatement",
+    "KoncernensResultatrkningOchvrigtTotalresultat": "IncomeStatement",
+    "KoncernensRapportverTotalresultatAlternate1": "IncomeStatement",
+    "KoncernensRapportverTotalresultat": "IncomeStatement",
+    "Koncernensrapportoevertotalresultat": "IncomeStatement",
+    "KoncernensResultatrkning": "IncomeStatement",
+    "KoncernensResultatrkningAlternate1": "IncomeStatement",
+    "ProfitOrLoss": "IncomeStatement",
+    "ProfitLoss": "IncomeStatement",
+    "RapportOEverTotalresultat": "IncomeStatement",
+    "RapportOEverTotalresultat2": "IncomeStatement",
+    "Rapportöverresultatochövrigttotalresultatförkoncernen": "IncomeStatement",
+    "Resultat": "IncomeStatement",
+    "StatementOfComprehensiveIncome": "IncomeStatement",
+    "StatementOfComprehensiveIncome2": "IncomeStatement",
+    "Table1ProfitOrLossAbstract": "IncomeStatement",
+    "Table1StatementOfComprehensiveIncomeAbstract": "IncomeStatement",
+    "StatementofcomprehensiveincomeOCIcomponentspresentednetoftaxStatement": (
+        "IncomeStatement"
+    ),
+    "StatementofcomprehensiveincomeOCIcomponentspresentednetoftaxStatement_1": (
+        "IncomeStatement"
+    ),
+    "StatementofcomprehensiveincomeprofitorlossbyfunctionofexpenseStatement": (
+        "IncomeStatement"
+    ),
+    "StatementofcomprehensiveincomeprofitorlossbyfunctionofexpenseStatement_1": (
+        "IncomeStatement"
+    ),
+    "StatementofcomprehensiveincomeprofitorlossbynatureofexpenseStatement": (
+        "IncomeStatement"
+    ),
+    "StatementofcomprehensiveincomeprofitorlossbynatureofexpenseStatement_1": (
+        "IncomeStatement"
+    ),
+}
+
+
 def parsed_value(
     fact: ModelFact,
 ) -> fractions.Fraction | int | Any | bool | str | None:
@@ -199,9 +287,15 @@ def facts_to_data_list(
             value = cast(int, value)
 
             if xml_name in to_model_to_linkrole_map:
-                xml_level_1 = to_model_to_linkrole_map[xml_name]
+                xml_level_1_key = to_model_to_linkrole_map[xml_name]
             else:
-                xml_level_1 = None
+                xml_level_1_key = None
+
+            level_1: str | None
+            if xml_level_1_key and xml_level_1_key in ROLE_TO_STATEMENT_TYPE_MAP:
+                level_1 = ROLE_TO_STATEMENT_TYPE_MAP[xml_level_1_key]
+            else:
+                level_1 = xml_level_1_key
 
             fact_list.append(
                 EsefData(
@@ -215,7 +309,7 @@ def facts_to_data_list(
                     is_company_defined=_get_is_extension(qname.prefix),
                     membership=membership_name,
                     label=_get_label(fact.propertyView),
-                    level_1=xml_level_1,
+                    level_1=level_1,
                 )
             )
         except Exception as exc:
