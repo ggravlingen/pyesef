@@ -9,8 +9,8 @@ from urllib import request
 from pyesef.download.common import Country, Filing
 from pyesef.log import LOGGER
 
-# Loads 1000 items at a time
-API_URL = "https://filings.xbrl.org/api/filings?page%5Bsize%5D=1000&page%5Bnumber%5D="
+# Loads 500 items at a time
+API_URL = "https://filings.xbrl.org/api/filings?page%5Bsize%5D=500&page%5Bnumber%5D="
 
 
 DEBUG_FILTER_LEI_LIST: list[str] = []
