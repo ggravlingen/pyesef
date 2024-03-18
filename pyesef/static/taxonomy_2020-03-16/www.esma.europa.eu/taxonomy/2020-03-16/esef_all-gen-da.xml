@@ -1,0 +1,593 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?officialURI http://www.esma.europa.eu/taxonomy/2020-03-16/esef_all-gen-da.xml?>
+<?taxonomy-version 1.0.0?>
+<?taxonomy-date 2020-03-16?>
+<link:linkbase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gen="http://xbrl.org/2008/generic" xmlns:label="http://xbrl.org/2008/label" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd http://www.w3.org/1999/xlink http://www.xbrl.org/2003/xlink-2003-12-31.xsd http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd">
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:type="simple" xlink:href="http://www.xbrl.org/2008/generic-link.xsd#standard-link-role"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/label" xlink:type="simple" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#standard-label"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:type="simple" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#element-label"/>
+  <gen:link xlink:type="extended" xlink:role="http://www.xbrl.org/2008/role/link">
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#esef_role-000000" xlink:label="esef_role-000000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_esef_role-000000">[000000] Tags, der skal anvendes, hvis tilsvarende oplysninger er anført i en årsrapport</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="esef_role-000000" xlink:to="label_esef_role-000000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-110000" xlink:label="ias_1_role-110000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-110000">[110000] Generelle oplysninger om årsregnskaber</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-110000" xlink:to="label_ias_1_role-110000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-210000" xlink:label="ias_1_role-210000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-210000">[210000] Opgørelse af finansiel stilling, omsætningsaktiver og anlægsaktiver og kortfristede og langfristede forpligtelser</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-210000" xlink:to="label_ias_1_role-210000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-220000" xlink:label="ias_1_role-220000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-220000">[220000] Opgørelse af finansiel stilling efter likviditet</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-220000" xlink:to="label_ias_1_role-220000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-310000" xlink:label="ias_1_role-310000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-310000">[310000] Totalindkomstopgørelse, resultatopgørelse, funktionsopdeling af omkostninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-310000" xlink:to="label_ias_1_role-310000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-320000" xlink:label="ias_1_role-320000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-320000">[320000] Totalindkomstopgørelse, resultatopgørelse, artsopdeling af omkostninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-320000" xlink:to="label_ias_1_role-320000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-410000" xlink:label="ias_1_role-410000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-410000">[410000] Totalindkomstopgørelse, OCI-elementer efter skat</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-410000" xlink:to="label_ias_1_role-410000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-420000" xlink:label="ias_1_role-420000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-420000">[420000] Totalindkomstopgørelse, OCI-elementer før skat</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-420000" xlink:to="label_ias_1_role-420000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-610000" xlink:label="ias_1_role-610000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-610000">[610000] Egenkapitalopgørelse</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-610000" xlink:to="label_ias_1_role-610000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800100" xlink:label="ias_1_role-800100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-800100">[800100] Underklassifikation af aktiver, forpligtelser og egenkapital</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800100" xlink:to="label_ias_1_role-800100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800100a" xlink:label="ias_1_role-800100a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-800100a">[800100] Underklassifikation af aktiver, forpligtelser og egenkapital</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800100a" xlink:to="label_ias_1_role-800100a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800200" xlink:label="ias_1_role-800200"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-800200">[800200] Analyse af indtægter og omkostninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800200" xlink:to="label_ias_1_role-800200"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800400" xlink:label="ias_1_role-800400"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-800400">[800400] Egenkapitalopgørelse, yderligere oplysninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800400" xlink:to="label_ias_1_role-800400"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800500" xlink:label="ias_1_role-800500"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-800500">[800500] Liste over noter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800500" xlink:to="label_ias_1_role-800500"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800600" xlink:label="ias_1_role-800600"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-800600">[800600] Liste over regnskabspraksis</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800600" xlink:to="label_ias_1_role-800600"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-810000" xlink:label="ias_1_role-810000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-810000">[810000] Noter – Selskabsoplysninger og erklæring om overensstemmelse med IFRS</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-810000" xlink:to="label_ias_1_role-810000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-810000a" xlink:label="ias_1_role-810000a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-810000a">[810000] Noter – Selskabsoplysninger og erklæring om overensstemmelse med IFRS</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-810000a" xlink:to="label_ias_1_role-810000a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-810000b" xlink:label="ias_1_role-810000b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-810000b">[810000] Noter – Selskabsoplysninger og erklæring om overensstemmelse med IFRS</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-810000b" xlink:to="label_ias_1_role-810000b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-810000c" xlink:label="ias_1_role-810000c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-810000c">[810000] Noter – Selskabsoplysninger og erklæring om overensstemmelse med IFRS</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-810000c" xlink:to="label_ias_1_role-810000c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-861000" xlink:label="ias_1_role-861000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-861000">[861000] Noter – Analyse af øvrig totalindkomst pr. post</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-861000" xlink:to="label_ias_1_role-861000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-861200" xlink:label="ias_1_role-861200"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-861200">[861200] – Noter – Selskabskapital, reserver og andre egenkapitalinteresser</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-861200" xlink:to="label_ias_1_role-861200"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-861200a" xlink:label="ias_1_role-861200a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-861200a">[861200] – Noter – Selskabskapital, reserver og andre egenkapitalinteresser</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-861200a" xlink:to="label_ias_1_role-861200a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-861200b" xlink:label="ias_1_role-861200b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-861200b">[861200] – Noter – Selskabskapital, reserver og andre egenkapitalinteresser</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-861200b" xlink:to="label_ias_1_role-861200b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-880000" xlink:label="ias_1_role-880000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_1_role-880000">[880000] Noter – Yderligere oplysninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-880000" xlink:to="label_ias_1_role-880000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_10_role-815000" xlink:label="ias_10_role-815000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_10_role-815000">[815000] Noter – Begivenheder efter regnskabsårets afslutning</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_10_role-815000" xlink:to="label_ias_10_role-815000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_12_role-835110" xlink:label="ias_12_role-835110"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_12_role-835110">[835110] Noter – Indkomstskatter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_12_role-835110" xlink:to="label_ias_12_role-835110"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_12_role-835110a" xlink:label="ias_12_role-835110a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_12_role-835110a">[835110] Noter – Indkomstskatter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_12_role-835110a" xlink:to="label_ias_12_role-835110a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_12_role-835110b" xlink:label="ias_12_role-835110b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_12_role-835110b">[835110] Noter – Indkomstskatter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_12_role-835110b" xlink:to="label_ias_12_role-835110b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_16_role-822100" xlink:label="ias_16_role-822100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_16_role-822100">[822100] Noter – Materielle anlægsaktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_16_role-822100" xlink:to="label_ias_16_role-822100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_19_role-834480" xlink:label="ias_19_role-834480"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_19_role-834480">[834480] Noter – Personaleydelser</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_19_role-834480" xlink:to="label_ias_19_role-834480"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_19_role-834480a" xlink:label="ias_19_role-834480a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_19_role-834480a">[834480] Noter – Personaleydelser</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_19_role-834480a" xlink:to="label_ias_19_role-834480a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_19_role-834480b" xlink:label="ias_19_role-834480b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_19_role-834480b">[834480] Noter – Personaleydelser</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_19_role-834480b" xlink:to="label_ias_19_role-834480b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_19_role-834480c" xlink:label="ias_19_role-834480c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_19_role-834480c">[834480] Noter – Personaleydelser</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_19_role-834480c" xlink:to="label_ias_19_role-834480c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_19_role-834480d" xlink:label="ias_19_role-834480d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_19_role-834480d">[834480] Noter – Personaleydelser</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_19_role-834480d" xlink:to="label_ias_19_role-834480d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_2_role-826380" xlink:label="ias_2_role-826380"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_2_role-826380">[826380] Noter – Varebeholdninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_2_role-826380" xlink:to="label_ias_2_role-826380"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_20_role-831400" xlink:label="ias_20_role-831400"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_20_role-831400">[831400] Noter – Offentlige tilskud</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_20_role-831400" xlink:to="label_ias_20_role-831400"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_21_role-842000" xlink:label="ias_21_role-842000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_21_role-842000">[842000] Noter – Valutaomregning</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_21_role-842000" xlink:to="label_ias_21_role-842000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_23_role-836200" xlink:label="ias_23_role-836200"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_23_role-836200">[836200] Noter – Låneomkostninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_23_role-836200" xlink:to="label_ias_23_role-836200"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_24_role-818000" xlink:label="ias_24_role-818000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_24_role-818000">[818000] Noter – Nærtstående part</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_24_role-818000" xlink:to="label_ias_24_role-818000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_24_role-818000a" xlink:label="ias_24_role-818000a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_24_role-818000a">[818000] Noter – Nærtstående part</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_24_role-818000a" xlink:to="label_ias_24_role-818000a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_26_role-710000" xlink:label="ias_26_role-710000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_26_role-710000">[710000] Opgørelse over ændringerne i de nettoaktiver, som er disponible for ydelser</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_26_role-710000" xlink:to="label_ias_26_role-710000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_27_role-825480" xlink:label="ias_27_role-825480"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_27_role-825480">[825480] Noter – Separate årsregnskaber</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_27_role-825480" xlink:to="label_ias_27_role-825480"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_27_role-825480a" xlink:label="ias_27_role-825480a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_27_role-825480a">[825480] Noter – Separate årsregnskaber</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_27_role-825480a" xlink:to="label_ias_27_role-825480a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_27_role-825480c" xlink:label="ias_27_role-825480c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_27_role-825480c">[825480] Noter – Separate årsregnskaber</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_27_role-825480c" xlink:to="label_ias_27_role-825480c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_29_role-816000" xlink:label="ias_29_role-816000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_29_role-816000">[816000] – Regnskabsaflæggelse i hyperinflationsøkonomier</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_29_role-816000" xlink:to="label_ias_29_role-816000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_33_role-838000" xlink:label="ias_33_role-838000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_33_role-838000">[838000] Noter – Indtjening pr. aktie</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_33_role-838000" xlink:to="label_ias_33_role-838000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_34_role-813000" xlink:label="ias_34_role-813000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_34_role-813000">[813000] Noter – Præsentation af delårsregnskaber</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_34_role-813000" xlink:to="label_ias_34_role-813000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_36_role-832410" xlink:label="ias_36_role-832410"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_36_role-832410">[832410] Noter – Værdiforringelse af aktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_36_role-832410" xlink:to="label_ias_36_role-832410"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_36_role-832410a" xlink:label="ias_36_role-832410a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_36_role-832410a">[832410] Noter – Værdiforringelse af aktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_36_role-832410a" xlink:to="label_ias_36_role-832410a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_36_role-832410b" xlink:label="ias_36_role-832410b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_36_role-832410b">[832410] Noter – Værdiforringelse af aktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_36_role-832410b" xlink:to="label_ias_36_role-832410b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_36_role-832410c" xlink:label="ias_36_role-832410c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_36_role-832410c">[832410] Noter – Værdiforringelse af aktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_36_role-832410c" xlink:to="label_ias_36_role-832410c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_36_role-832410d" xlink:label="ias_36_role-832410d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_36_role-832410d">[832410] Noter – Værdiforringelse af aktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_36_role-832410d" xlink:to="label_ias_36_role-832410d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_37_role-827570" xlink:label="ias_37_role-827570"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_37_role-827570">[827570] Noter – Andre hensatte forpligtelser, eventualforpligtelser og eventualaktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_37_role-827570" xlink:to="label_ias_37_role-827570"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_37_role-827570a" xlink:label="ias_37_role-827570a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_37_role-827570a">[827570] Noter – Andre hensatte forpligtelser, eventualforpligtelser og eventualaktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_37_role-827570a" xlink:to="label_ias_37_role-827570a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_37_role-827570b" xlink:label="ias_37_role-827570b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_37_role-827570b">[827570] Noter – Andre hensatte forpligtelser, eventualforpligtelser og eventualaktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_37_role-827570b" xlink:to="label_ias_37_role-827570b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_38_role-823180" xlink:label="ias_38_role-823180"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_38_role-823180">[823180] Noter – Immaterielle aktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_38_role-823180" xlink:to="label_ias_38_role-823180"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_38_role-823180a" xlink:label="ias_38_role-823180a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_38_role-823180a">[823180] Noter – Immaterielle aktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_38_role-823180a" xlink:to="label_ias_38_role-823180a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_38_role-823180b" xlink:label="ias_38_role-823180b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_38_role-823180b">[823180] Noter – Immaterielle aktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_38_role-823180b" xlink:to="label_ias_38_role-823180b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_38_role-823180c" xlink:label="ias_38_role-823180c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_38_role-823180c">[823180] Noter – Immaterielle aktiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_38_role-823180c" xlink:to="label_ias_38_role-823180c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_40_role-825100" xlink:label="ias_40_role-825100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_40_role-825100">[825100] Noter – Investeringsejendom</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_40_role-825100" xlink:to="label_ias_40_role-825100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_41_role-824180" xlink:label="ias_41_role-824180"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_41_role-824180">[824180] Noter – Landbrug</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_41_role-824180" xlink:to="label_ias_41_role-824180"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_41_role-824180a" xlink:label="ias_41_role-824180a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_41_role-824180a">[824180] Noter – Landbrug</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_41_role-824180a" xlink:to="label_ias_41_role-824180a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_41_role-824180b" xlink:label="ias_41_role-824180b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_41_role-824180b">[824180] Noter – Landbrug</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_41_role-824180b" xlink:to="label_ias_41_role-824180b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_7_role-510000" xlink:label="ias_7_role-510000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_7_role-510000">[510000] Pengestrømsopgørelse, direkte metode</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_7_role-510000" xlink:to="label_ias_7_role-510000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_7_role-520000" xlink:label="ias_7_role-520000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_7_role-520000">[520000] Pengestrømsopgørelse, indirekte metode</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_7_role-520000" xlink:to="label_ias_7_role-520000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_7_role-800300" xlink:label="ias_7_role-800300"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_7_role-800300">[800300] Pengestrømsopgørelse, yderligere oplysninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_7_role-800300" xlink:to="label_ias_7_role-800300"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_7_role-851100" xlink:label="ias_7_role-851100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_7_role-851100">[851100] Noter – Pengestrømsopgørelse</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_7_role-851100" xlink:to="label_ias_7_role-851100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_8_role-811000" xlink:label="ias_8_role-811000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_8_role-811000">[811000] Noter – Anvendt regnskabspraksis, ændringer i regnskabsmæssige skøn og fejl</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_8_role-811000" xlink:to="label_ias_8_role-811000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_8_role-811000a" xlink:label="ias_8_role-811000a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_8_role-811000a">[811000] Noter – Anvendt regnskabspraksis, ændringer i regnskabsmæssige skøn og fejl</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_8_role-811000a" xlink:to="label_ias_8_role-811000a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_8_role-811000b" xlink:label="ias_8_role-811000b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_8_role-811000b">[811000] Noter – Anvendt regnskabspraksis, ændringer i regnskabsmæssige skøn og fejl</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_8_role-811000b" xlink:to="label_ias_8_role-811000b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_8_role-811000c" xlink:label="ias_8_role-811000c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ias_8_role-811000c">[811000] Noter – Anvendt regnskabspraksis, ændringer i regnskabsmæssige skøn og fejl</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_8_role-811000c" xlink:to="label_ias_8_role-811000c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifric_2_role-868500" xlink:label="ifric_2_role-868500"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifric_2_role-868500">[868500] Noter – Andele i andelsvirksomheder og lignende instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifric_2_role-868500" xlink:to="label_ifric_2_role-868500"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifric_5_role-868200" xlink:label="ifric_5_role-868200"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifric_5_role-868200">[868200] – Rettigheder til kapitalandele hidrørende fra fonde til dækning af omkostninger forbundet med afvikling, retablering og miljøgenopretning</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifric_5_role-868200" xlink:to="label_ifric_5_role-868200"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_1_role-819100" xlink:label="ifrs_1_role-819100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_1_role-819100">[819100] Noter – Førstegangsanvendelse</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_1_role-819100" xlink:to="label_ifrs_1_role-819100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_1_role-819100a" xlink:label="ifrs_1_role-819100a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_1_role-819100a">[819100] Noter – Førstegangsanvendelse</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_1_role-819100a" xlink:to="label_ifrs_1_role-819100a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_1_role-819100b" xlink:label="ifrs_1_role-819100b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_1_role-819100b">[819100] Noter – Førstegangsanvendelse</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_1_role-819100b" xlink:to="label_ifrs_1_role-819100b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_1_role-819100c" xlink:label="ifrs_1_role-819100c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_1_role-819100c">[819100] Noter – Førstegangsanvendelse</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_1_role-819100c" xlink:to="label_ifrs_1_role-819100c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700" xlink:label="ifrs_12_role-825700"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_12_role-825700">[825700] Noter – Kapitalandele i andre virksomheder</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700" xlink:to="label_ifrs_12_role-825700"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700a" xlink:label="ifrs_12_role-825700a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_12_role-825700a">[825700] Noter – Kapitalandele i andre virksomheder</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700a" xlink:to="label_ifrs_12_role-825700a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700b" xlink:label="ifrs_12_role-825700b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_12_role-825700b">[825700] Noter – Kapitalandele i andre virksomheder</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700b" xlink:to="label_ifrs_12_role-825700b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700c" xlink:label="ifrs_12_role-825700c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_12_role-825700c">[825700] Noter – Kapitalandele i andre virksomheder</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700c" xlink:to="label_ifrs_12_role-825700c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700d" xlink:label="ifrs_12_role-825700d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_12_role-825700d">[825700] Noter – Kapitalandele i andre virksomheder</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700d" xlink:to="label_ifrs_12_role-825700d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700e" xlink:label="ifrs_12_role-825700e"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_12_role-825700e">[825700] Noter – Kapitalandele i andre virksomheder</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700e" xlink:to="label_ifrs_12_role-825700e"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700f" xlink:label="ifrs_12_role-825700f"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_12_role-825700f">[825700] Noter – Kapitalandele i andre virksomheder</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700f" xlink:to="label_ifrs_12_role-825700f"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700g" xlink:label="ifrs_12_role-825700g"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_12_role-825700g">[825700] Noter – Kapitalandele i andre virksomheder</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700g" xlink:to="label_ifrs_12_role-825700g"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000" xlink:label="ifrs_13_role-823000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_13_role-823000">[823000] Noter – Dagsværdimåling</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000" xlink:to="label_ifrs_13_role-823000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000a" xlink:label="ifrs_13_role-823000a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_13_role-823000a">[823000] Noter – Dagsværdimåling</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000a" xlink:to="label_ifrs_13_role-823000a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000b" xlink:label="ifrs_13_role-823000b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_13_role-823000b">[823000] Noter – Dagsværdimåling</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000b" xlink:to="label_ifrs_13_role-823000b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000c" xlink:label="ifrs_13_role-823000c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_13_role-823000c">[823000] Noter – Dagsværdimåling</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000c" xlink:to="label_ifrs_13_role-823000c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000d" xlink:label="ifrs_13_role-823000d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_13_role-823000d">[823000] Noter – Dagsværdimåling</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000d" xlink:to="label_ifrs_13_role-823000d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000e" xlink:label="ifrs_13_role-823000e"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_13_role-823000e">[823000] Noter – Dagsværdimåling</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000e" xlink:to="label_ifrs_13_role-823000e"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000f" xlink:label="ifrs_13_role-823000f"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_13_role-823000f">[823000] Noter – Dagsværdimåling</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000f" xlink:to="label_ifrs_13_role-823000f"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000g" xlink:label="ifrs_13_role-823000g"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_13_role-823000g">[823000] Noter – Dagsværdimåling</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000g" xlink:to="label_ifrs_13_role-823000g"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000h" xlink:label="ifrs_13_role-823000h"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_13_role-823000h">[823000] Noter – Dagsværdimåling</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000h" xlink:to="label_ifrs_13_role-823000h"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000i" xlink:label="ifrs_13_role-823000i"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_13_role-823000i">[823000] Noter – Dagsværdimåling</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000i" xlink:to="label_ifrs_13_role-823000i"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_14_role-824500" xlink:label="ifrs_14_role-824500"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_14_role-824500">[824500] Noter – Regulatoriske aktiver og passiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_14_role-824500" xlink:to="label_ifrs_14_role-824500"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_14_role-824500a" xlink:label="ifrs_14_role-824500a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_14_role-824500a">[824500] Noter – Regulatoriske aktiver og passiver</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_14_role-824500a" xlink:to="label_ifrs_14_role-824500a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_15_role-831150" xlink:label="ifrs_15_role-831150"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_15_role-831150">[831150] Noter – Omsætning fra kontrakter med kunder</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_15_role-831150" xlink:to="label_ifrs_15_role-831150"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_15_role-831150a" xlink:label="ifrs_15_role-831150a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_15_role-831150a">[831150] Noter – Omsætning fra kontrakter med kunder</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_15_role-831150a" xlink:to="label_ifrs_15_role-831150a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_15_role-831150b" xlink:label="ifrs_15_role-831150b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_15_role-831150b">[831150] Noter – Omsætning fra kontrakter med kunder</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_15_role-831150b" xlink:to="label_ifrs_15_role-831150b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_15_role-831150c" xlink:label="ifrs_15_role-831150c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_15_role-831150c">[831150] Noter – Omsætning fra kontrakter med kunder</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_15_role-831150c" xlink:to="label_ifrs_15_role-831150c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_16_role-832610" xlink:label="ifrs_16_role-832610"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_16_role-832610">[832610] Noter – Lejekontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_16_role-832610" xlink:to="label_ifrs_16_role-832610"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_16_role-832610a" xlink:label="ifrs_16_role-832610a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_16_role-832610a">[832610] Noter – Lejekontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_16_role-832610a" xlink:to="label_ifrs_16_role-832610a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_16_role-832610b" xlink:label="ifrs_16_role-832610b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_16_role-832610b">[832610] Noter – Lejekontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_16_role-832610b" xlink:to="label_ifrs_16_role-832610b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600" xlink:label="ifrs_17_role-836600"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600" xlink:to="label_ifrs_17_role-836600"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600a" xlink:label="ifrs_17_role-836600a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600a">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600a" xlink:to="label_ifrs_17_role-836600a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600b" xlink:label="ifrs_17_role-836600b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600b">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600b" xlink:to="label_ifrs_17_role-836600b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600c" xlink:label="ifrs_17_role-836600c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600c">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600c" xlink:to="label_ifrs_17_role-836600c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600d" xlink:label="ifrs_17_role-836600d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600d">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600d" xlink:to="label_ifrs_17_role-836600d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600e" xlink:label="ifrs_17_role-836600e"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600e">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600e" xlink:to="label_ifrs_17_role-836600e"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600f" xlink:label="ifrs_17_role-836600f"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600f">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600f" xlink:to="label_ifrs_17_role-836600f"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600g" xlink:label="ifrs_17_role-836600g"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600g">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600g" xlink:to="label_ifrs_17_role-836600g"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600h" xlink:label="ifrs_17_role-836600h"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600h">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600h" xlink:to="label_ifrs_17_role-836600h"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600i" xlink:label="ifrs_17_role-836600i"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600i">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600i" xlink:to="label_ifrs_17_role-836600i"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600j" xlink:label="ifrs_17_role-836600j"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600j">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600j" xlink:to="label_ifrs_17_role-836600j"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600k" xlink:label="ifrs_17_role-836600k"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600k">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600k" xlink:to="label_ifrs_17_role-836600k"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600l" xlink:label="ifrs_17_role-836600l"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600l">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600l" xlink:to="label_ifrs_17_role-836600l"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600m" xlink:label="ifrs_17_role-836600m"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600m">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600m" xlink:to="label_ifrs_17_role-836600m"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600n" xlink:label="ifrs_17_role-836600n"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_17_role-836600n">[836600] Noter – Forsikringskontrakter (IFRS 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600n" xlink:to="label_ifrs_17_role-836600n"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_2_role-834120" xlink:label="ifrs_2_role-834120"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_2_role-834120">[834120] Noter – Aktiebaserede vederlæggelsesordninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_2_role-834120" xlink:to="label_ifrs_2_role-834120"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_2_role-834120a" xlink:label="ifrs_2_role-834120a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_2_role-834120a">[834120] Noter – Aktiebaserede vederlæggelsesordninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_2_role-834120a" xlink:to="label_ifrs_2_role-834120a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_2_role-834120b" xlink:label="ifrs_2_role-834120b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_2_role-834120b">[834120] Noter – Aktiebaserede vederlæggelsesordninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_2_role-834120b" xlink:to="label_ifrs_2_role-834120b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_2_role-834120c" xlink:label="ifrs_2_role-834120c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_2_role-834120c">[834120] Noter – Aktiebaserede vederlæggelsesordninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_2_role-834120c" xlink:to="label_ifrs_2_role-834120c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_3_role-817000" xlink:label="ifrs_3_role-817000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_3_role-817000">[817000] Noter – Virksomhedssammenslutninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_3_role-817000" xlink:to="label_ifrs_3_role-817000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_3_role-817000a" xlink:label="ifrs_3_role-817000a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_3_role-817000a">[817000] Noter – Virksomhedssammenslutninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_3_role-817000a" xlink:to="label_ifrs_3_role-817000a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_3_role-817000b" xlink:label="ifrs_3_role-817000b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_3_role-817000b">[817000] Noter – Virksomhedssammenslutninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_3_role-817000b" xlink:to="label_ifrs_3_role-817000b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_3_role-817000c" xlink:label="ifrs_3_role-817000c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_3_role-817000c">[817000] Noter – Virksomhedssammenslutninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_3_role-817000c" xlink:to="label_ifrs_3_role-817000c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_3_role-817000d" xlink:label="ifrs_3_role-817000d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_3_role-817000d">[817000] Noter – Virksomhedssammenslutninger</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_3_role-817000d" xlink:to="label_ifrs_3_role-817000d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500" xlink:label="ifrs_4_role-836500"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500" xlink:to="label_ifrs_4_role-836500"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500a" xlink:label="ifrs_4_role-836500a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500a">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500a" xlink:to="label_ifrs_4_role-836500a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500b" xlink:label="ifrs_4_role-836500b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500b">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500b" xlink:to="label_ifrs_4_role-836500b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500c" xlink:label="ifrs_4_role-836500c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500c">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500c" xlink:to="label_ifrs_4_role-836500c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500d" xlink:label="ifrs_4_role-836500d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500d">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500d" xlink:to="label_ifrs_4_role-836500d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500e" xlink:label="ifrs_4_role-836500e"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500e">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500e" xlink:to="label_ifrs_4_role-836500e"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500f" xlink:label="ifrs_4_role-836500f"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500f">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500f" xlink:to="label_ifrs_4_role-836500f"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500g" xlink:label="ifrs_4_role-836500g"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500g">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500g" xlink:to="label_ifrs_4_role-836500g"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500h" xlink:label="ifrs_4_role-836500h"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500h">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500h" xlink:to="label_ifrs_4_role-836500h"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500i" xlink:label="ifrs_4_role-836500i"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500i">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500i" xlink:to="label_ifrs_4_role-836500i"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500j" xlink:label="ifrs_4_role-836500j"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500j">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500j" xlink:to="label_ifrs_4_role-836500j"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500k" xlink:label="ifrs_4_role-836500k"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500k">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500k" xlink:to="label_ifrs_4_role-836500k"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500l" xlink:label="ifrs_4_role-836500l"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500l">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500l" xlink:to="label_ifrs_4_role-836500l"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500m" xlink:label="ifrs_4_role-836500m"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500m">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500m" xlink:to="label_ifrs_4_role-836500m"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500n" xlink:label="ifrs_4_role-836500n"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_4_role-836500n">[836500] Noter – Forsikringskontrakter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500n" xlink:to="label_ifrs_4_role-836500n"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_5_role-825900" xlink:label="ifrs_5_role-825900"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_5_role-825900">[825900] Noter – Anlægsaktiver, som besiddes med henblik på salg og ophørte aktiviteter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_5_role-825900" xlink:to="label_ifrs_5_role-825900"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_6_role-822200" xlink:label="ifrs_6_role-822200"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_6_role-822200">[822200] Noter – Efterforskning og vurdering af mineralressourcer</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_6_role-822200" xlink:to="label_ifrs_6_role-822200"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390" xlink:label="ifrs_7_role-822390"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390" xlink:to="label_ifrs_7_role-822390"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390a" xlink:label="ifrs_7_role-822390a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390a">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390a" xlink:to="label_ifrs_7_role-822390a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390b" xlink:label="ifrs_7_role-822390b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390b">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390b" xlink:to="label_ifrs_7_role-822390b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390c" xlink:label="ifrs_7_role-822390c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390c">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390c" xlink:to="label_ifrs_7_role-822390c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390d" xlink:label="ifrs_7_role-822390d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390d">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390d" xlink:to="label_ifrs_7_role-822390d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390e" xlink:label="ifrs_7_role-822390e"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390e">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390e" xlink:to="label_ifrs_7_role-822390e"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390f" xlink:label="ifrs_7_role-822390f"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390f">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390f" xlink:to="label_ifrs_7_role-822390f"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390g" xlink:label="ifrs_7_role-822390g"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390g">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390g" xlink:to="label_ifrs_7_role-822390g"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390h" xlink:label="ifrs_7_role-822390h"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390h">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390h" xlink:to="label_ifrs_7_role-822390h"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390i" xlink:label="ifrs_7_role-822390i"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390i">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390i" xlink:to="label_ifrs_7_role-822390i"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390j" xlink:label="ifrs_7_role-822390j"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390j">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390j" xlink:to="label_ifrs_7_role-822390j"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390k" xlink:label="ifrs_7_role-822390k"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390k">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390k" xlink:to="label_ifrs_7_role-822390k"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390l" xlink:label="ifrs_7_role-822390l"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390l">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390l" xlink:to="label_ifrs_7_role-822390l"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390m" xlink:label="ifrs_7_role-822390m"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390m">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390m" xlink:to="label_ifrs_7_role-822390m"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390n" xlink:label="ifrs_7_role-822390n"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390n">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390n" xlink:to="label_ifrs_7_role-822390n"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390o" xlink:label="ifrs_7_role-822390o"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390o">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390o" xlink:to="label_ifrs_7_role-822390o"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390p" xlink:label="ifrs_7_role-822390p"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390p">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390p" xlink:to="label_ifrs_7_role-822390p"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390q" xlink:label="ifrs_7_role-822390q"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390q">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390q" xlink:to="label_ifrs_7_role-822390q"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390r" xlink:label="ifrs_7_role-822390r"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390r">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390r" xlink:to="label_ifrs_7_role-822390r"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390s" xlink:label="ifrs_7_role-822390s"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390s">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390s" xlink:to="label_ifrs_7_role-822390s"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390t" xlink:label="ifrs_7_role-822390t"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390t">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390t" xlink:to="label_ifrs_7_role-822390t"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390u" xlink:label="ifrs_7_role-822390u"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390u">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390u" xlink:to="label_ifrs_7_role-822390u"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390v" xlink:label="ifrs_7_role-822390v"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390v">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390v" xlink:to="label_ifrs_7_role-822390v"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390w" xlink:label="ifrs_7_role-822390w"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390w">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390w" xlink:to="label_ifrs_7_role-822390w"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390x" xlink:label="ifrs_7_role-822390x"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390x">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390x" xlink:to="label_ifrs_7_role-822390x"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390y" xlink:label="ifrs_7_role-822390y"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390y">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390y" xlink:to="label_ifrs_7_role-822390y"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390z" xlink:label="ifrs_7_role-822390z"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390z">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390z" xlink:to="label_ifrs_7_role-822390z"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390za" xlink:label="ifrs_7_role-822390za"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390za">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390za" xlink:to="label_ifrs_7_role-822390za"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zb" xlink:label="ifrs_7_role-822390zb"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390zb">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zb" xlink:to="label_ifrs_7_role-822390zb"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zc" xlink:label="ifrs_7_role-822390zc"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390zc">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zc" xlink:to="label_ifrs_7_role-822390zc"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zd" xlink:label="ifrs_7_role-822390zd"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390zd">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zd" xlink:to="label_ifrs_7_role-822390zd"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390ze" xlink:label="ifrs_7_role-822390ze"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390ze">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390ze" xlink:to="label_ifrs_7_role-822390ze"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zf" xlink:label="ifrs_7_role-822390zf"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390zf">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zf" xlink:to="label_ifrs_7_role-822390zf"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zg" xlink:label="ifrs_7_role-822390zg"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_7_role-822390zg">[822390] Noter – Finansielle instrumenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zg" xlink:to="label_ifrs_7_role-822390zg"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_8_role-871100" xlink:label="ifrs_8_role-871100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_8_role-871100">[871100] Noter – Driftssegmenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_8_role-871100" xlink:to="label_ifrs_8_role-871100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_8_role-871100a" xlink:label="ifrs_8_role-871100a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_8_role-871100a">[871100] Noter – Driftssegmenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_8_role-871100a" xlink:to="label_ifrs_8_role-871100a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_8_role-871100b" xlink:label="ifrs_8_role-871100b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_8_role-871100b">[871100] Noter – Driftssegmenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_8_role-871100b" xlink:to="label_ifrs_8_role-871100b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_8_role-871100c" xlink:label="ifrs_8_role-871100c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_8_role-871100c">[871100] Noter – Driftssegmenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_8_role-871100c" xlink:to="label_ifrs_8_role-871100c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_8_role-871100d" xlink:label="ifrs_8_role-871100d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_8_role-871100d">[871100] Noter – Driftssegmenter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_8_role-871100d" xlink:to="label_ifrs_8_role-871100d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_axi_role" xlink:label="ifrs_axi_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_axi_role">Validering af akseaggregering</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_axi_role" xlink:to="label_ifrs_axi_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_cro_role" xlink:label="ifrs_cro_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_cro_role">Validering på tværs af regnskabsår</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_cro_role" xlink:to="label_ifrs_cro_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_eps_role" xlink:label="ifrs_eps_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs_eps_role">Validering af indtjening pr. aktie</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_eps_role" xlink:to="label_ifrs_eps_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-901000" xlink:label="ifrs-dim_role-901000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs-dim_role-901000">[901000] Akse – Anvendelse med tilbagevirkende kraft og tilpasning med tilbagevirkende kraft</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-901000" xlink:to="label_ifrs-dim_role-901000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-901100" xlink:label="ifrs-dim_role-901100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs-dim_role-901100">[901100] Akse – Afvigelse fra krav i IFRS</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-901100" xlink:to="label_ifrs-dim_role-901100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-901500" xlink:label="ifrs-dim_role-901500"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs-dim_role-901500">[901500] Akse – Oprettelsesdato</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-901500" xlink:to="label_ifrs-dim_role-901500"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-903000" xlink:label="ifrs-dim_role-903000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs-dim_role-903000">[903000] Akse – Fortsættende og ophørte aktiviteter</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-903000" xlink:to="label_ifrs-dim_role-903000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-904000" xlink:label="ifrs-dim_role-904000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs-dim_role-904000">[904000] – Aktiver og forpligtelser, der er klassificeret som besiddelse med henblik på salg</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-904000" xlink:to="label_ifrs-dim_role-904000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-913000" xlink:label="ifrs-dim_role-913000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_ifrs-dim_role-913000">[913000] Akse – Koncernregnskaber og separate årsregnskaber</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-913000" xlink:to="label_ifrs-dim_role-913000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#sic_29_role-832900" xlink:label="sic_29_role-832900"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="da" xlink:label="label_sic_29_role-832900">[832900] Noter – koncessionsaftaler</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="sic_29_role-832900" xlink:to="label_sic_29_role-832900"/>
+  </gen:link>
+</link:linkbase>

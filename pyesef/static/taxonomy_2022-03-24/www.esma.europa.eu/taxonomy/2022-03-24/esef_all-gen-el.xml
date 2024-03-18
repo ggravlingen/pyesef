@@ -1,0 +1,618 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<link:linkbase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gen="http://xbrl.org/2008/generic" xmlns:label="http://xbrl.org/2008/label" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd http://www.w3.org/1999/xlink http://www.xbrl.org/2003/xlink-2003-12-31.xsd http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd">
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:type="simple" xlink:href="http://www.xbrl.org/2008/generic-link.xsd#standard-link-role"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/label" xlink:type="simple" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#standard-label"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2009/role/netLabel" xlink:type="simple" xlink:href="http://www.xbrl.org/lrr/role/net-2009-12-16.xsd#netLabel"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2009/role/negatedLabel" xlink:type="simple" xlink:href="http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd#negatedLabel"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2009/role/negatedTerseLabel" xlink:type="simple" xlink:href="http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd#negatedTerseLabel"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2009/role/negatedTotalLabel" xlink:type="simple" xlink:href="http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd#negatedTotalLabel"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:type="simple" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#element-label"/>
+  <gen:link xlink:type="extended" xlink:role="http://www.xbrl.org/2008/role/link">
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#esef_role-000000" xlink:label="esef_role-000000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_esef_role-000000">[000000] Ετικέτες που πρέπει να χρησιμοποιηθούν εάν οι αντίστοιχες πληροφορίες υπάρχουν σε μια έκθεση</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="esef_role-000000" xlink:to="label_esef_role-000000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-110000" xlink:label="ias_1_role-110000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-110000">[110000] Γενικές πληροφορίες περί οικονομικών καταστάσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-110000" xlink:to="label_ias_1_role-110000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-210000" xlink:label="ias_1_role-210000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-210000">[210000] Κατάσταση οικονομικής θέσης, κυκλοφορούντα/μη κυκλοφορούντα στοιχεία</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-210000" xlink:to="label_ias_1_role-210000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-220000" xlink:label="ias_1_role-220000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-220000">[220000] Κατάσταση οικονομικής θέσης, σειρά ρευστότητας</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-220000" xlink:to="label_ias_1_role-220000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-310000" xlink:label="ias_1_role-310000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-310000">[310000] Κατάσταση συνολικών εσόδων, αποτελέσματα, ανά λειτουργία του εξόδου</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-310000" xlink:to="label_ias_1_role-310000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-320000" xlink:label="ias_1_role-320000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-320000">[320000] Κατάσταση συνολικών εσόδων, αποτελέσματα, ανά είδος εξόδου</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-320000" xlink:to="label_ias_1_role-320000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-410000" xlink:label="ias_1_role-410000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-410000">[410000] Κατάσταση συνολικών εσόδων, συστατικά στοιχεία λοιπών συνολικών εσόδων (OCI) παρουσιαζόμενα μετά την αφαίρεση του φόρου</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-410000" xlink:to="label_ias_1_role-410000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-420000" xlink:label="ias_1_role-420000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-420000">[420000] Κατάσταση συνολικών εσόδων, συστατικά στοιχεία λοιπών συνολικών εσόδων (OCI) παρουσιαζόμενα προ φόρου</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-420000" xlink:to="label_ias_1_role-420000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-610000" xlink:label="ias_1_role-610000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-610000">[610000] Κατάσταση μεταβολών ιδίων κεφαλαίων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-610000" xlink:to="label_ias_1_role-610000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800100" xlink:label="ias_1_role-800100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-800100">[800100] Υποταξινομήσεις περιουσιακών στοιχείων, υποχρεώσεων και μετοχές</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800100" xlink:to="label_ias_1_role-800100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800100a" xlink:label="ias_1_role-800100a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-800100a">[800100a] Υποταξινομήσεις περιουσιακών στοιχείων, υποχρεώσεων και μετοχές</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800100a" xlink:to="label_ias_1_role-800100a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800200" xlink:label="ias_1_role-800200"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-800200">[800200] Ανάλυση εσόδων και εξόδων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800200" xlink:to="label_ias_1_role-800200"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800400" xlink:label="ias_1_role-800400"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-800400">[800400] Κατάσταση μεταβολών ιδίων κεφαλαίων, πρόσθετες γνωστοποιήσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800400" xlink:to="label_ias_1_role-800400"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800500" xlink:label="ias_1_role-800500"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-800500">[800500] Κατάλογος σημειώσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800500" xlink:to="label_ias_1_role-800500"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800600" xlink:label="ias_1_role-800600"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-800600">[800600] Κατάλογος λογιστικών πολιτικών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800600" xlink:to="label_ias_1_role-800600"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-800610" xlink:label="ias_1_role-800610"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-800610">[800610] Κατάλογος σημαντικών πληροφοριών λογιστικής πολιτικής</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-800610" xlink:to="label_ias_1_role-800610"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-810000" xlink:label="ias_1_role-810000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-810000">[810000] Σημειώσεις - Εταιρικές πληροφορίες και κατάσταση συμμόρφωσης με τα ΔΠΧΑ</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-810000" xlink:to="label_ias_1_role-810000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-810000a" xlink:label="ias_1_role-810000a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-810000a">[810000a] Σημειώσεις - Εταιρικές πληροφορίες και κατάσταση συμμόρφωσης με τα ΔΠΧΑ + Γνωστοποίηση ποσών που πρέπει να ανακτηθούν ή να διακανονιστούν μετά από δώδεκα μήνες για κατηγορίες περιουσιακών στοιχείων και υποχρεώσεων που περιλαμβάνουν ποσά που πρέπει να ανακτηθούν ή να διακανονιστούν τόσο σε όχι περισσότερο όσο και σε περισσότερο από δώδεκα μήνες μετά την ημερομηνία αναφοράς</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-810000a" xlink:to="label_ias_1_role-810000a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-810000b" xlink:label="ias_1_role-810000b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-810000b">[810000b] Σημειώσεις - Εταιρικές πληροφορίες και κατάσταση συμμόρφωσης με τα ΔΠΧΑ + Γνωστοποίηση ανακατατάξεων ή αλλαγών στην παρουσίαση</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-810000b" xlink:to="label_ias_1_role-810000b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-810000c" xlink:label="ias_1_role-810000c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-810000c">[810000c] Σημειώσεις - Εταιρικές πληροφορίες και κατάσταση συμμόρφωσης με τα ΔΠΧΑ + Γνωστοποίηση περιουσιακών στοιχείων και υποχρεώσεων με σημαντικό κίνδυνο σημαντικών προσαρμογών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-810000c" xlink:to="label_ias_1_role-810000c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-861000" xlink:label="ias_1_role-861000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-861000">[861000] Σημειώσεις - Ανάλυση λοιπών συνολικών εσόδων ανά στοιχείο</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-861000" xlink:to="label_ias_1_role-861000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-861200" xlink:label="ias_1_role-861200"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-861200">[861200] Σημειώσεις - Μετοχικό κεφάλαιο, αποθεματικά και άλλα συμμετοχικά δικαιώματα</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-861200" xlink:to="label_ias_1_role-861200"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-861200a" xlink:label="ias_1_role-861200a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-861200a">[861200a] Σημειώσεις - Μετοχικό κεφάλαιο, αποθεματικά και άλλα συμμετοχικά δικαιώματα + Γνωστοποίηση κατηγοριών μετοχικού κεφαλαίου</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-861200a" xlink:to="label_ias_1_role-861200a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-861200b" xlink:label="ias_1_role-861200b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-861200b">[861200b] Σημειώσεις - Μετοχικό κεφάλαιο, αποθεματικά και άλλα συμμετοχικά δικαιώματα + Γνωστοποίηση αποθεματικών που περιλαμβάνονται στα ίδια κεφάλαια</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-861200b" xlink:to="label_ias_1_role-861200b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_1_role-880000" xlink:label="ias_1_role-880000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_1_role-880000">[880000] Σημειώσεις - Πρόσθετες πληροφορίες</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_1_role-880000" xlink:to="label_ias_1_role-880000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_10_role-815000" xlink:label="ias_10_role-815000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_10_role-815000">[815000] Σημειώσεις - Γεγονότα μετά την περίοδο αναφοράς</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_10_role-815000" xlink:to="label_ias_10_role-815000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_12_role-835110" xlink:label="ias_12_role-835110"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_12_role-835110">[835110] Σημειώσεις - Φόροι εισοδήματος</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_12_role-835110" xlink:to="label_ias_12_role-835110"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_12_role-835110a" xlink:label="ias_12_role-835110a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_12_role-835110a">[835110a] Σημειώσεις - Φόροι εισοδήματος</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_12_role-835110a" xlink:to="label_ias_12_role-835110a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_12_role-835110b" xlink:label="ias_12_role-835110b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_12_role-835110b">[835110b] Σημειώσεις - Φόροι εισοδήματος</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_12_role-835110b" xlink:to="label_ias_12_role-835110b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_16_role-822100" xlink:label="ias_16_role-822100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_16_role-822100">[822100] Σημειώσεις - Ενσώματα πάγια</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_16_role-822100" xlink:to="label_ias_16_role-822100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_19_role-834480" xlink:label="ias_19_role-834480"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_19_role-834480">[834480] Σημειώσεις - Παροχές σε εργαζομένους</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_19_role-834480" xlink:to="label_ias_19_role-834480"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_19_role-834480a" xlink:label="ias_19_role-834480a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_19_role-834480a">[834480a] Σημειώσεις - Παροχές σε εργαζομένους + Γνωστοποίηση καθαρής υποχρέωσης (περιουσιακού στοιχείου) καθορισμένων παροχών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_19_role-834480a" xlink:to="label_ias_19_role-834480a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_19_role-834480b" xlink:label="ias_19_role-834480b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_19_role-834480b">[834480b] Σημειώσεις - Παροχές σε εργαζομένους + Γνωστοποίηση δικαιωμάτων επιστροφής</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_19_role-834480b" xlink:to="label_ias_19_role-834480b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_19_role-834480c" xlink:label="ias_19_role-834480c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_19_role-834480c">[834480c] Σημειώσεις - Παροχές σε εργαζομένους + Γνωστοποίηση της εύλογης αξίας των περιουσιακών στοιχείων του προγράμματος</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_19_role-834480c" xlink:to="label_ias_19_role-834480c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_19_role-834480d" xlink:label="ias_19_role-834480d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_19_role-834480d">[834480d] Σημειώσεις - Παροχές σε εργαζομένους + Γνωστοποίηση ανάλυσης ευαισθησίας για αναλογιστικές παραδοχές</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_19_role-834480d" xlink:to="label_ias_19_role-834480d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_2_role-826380" xlink:label="ias_2_role-826380"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_2_role-826380">[826380] Σημειώσεις - Αποθέματα</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_2_role-826380" xlink:to="label_ias_2_role-826380"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_20_role-831400" xlink:label="ias_20_role-831400"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_20_role-831400">[831400] Σημειώσεις - Κρατικές επιχορηγήσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_20_role-831400" xlink:to="label_ias_20_role-831400"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_21_role-842000" xlink:label="ias_21_role-842000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_21_role-842000">[842000] Σημειώσεις - Επιδράσεις μεταβολών των τιμών συναλλάγματος</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_21_role-842000" xlink:to="label_ias_21_role-842000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_23_role-836200" xlink:label="ias_23_role-836200"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_23_role-836200">[836200] Σημειώσεις - Κόστος δανεισμού</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_23_role-836200" xlink:to="label_ias_23_role-836200"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_24_role-818000" xlink:label="ias_24_role-818000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_24_role-818000">[818000] Σημειώσεις - Συνδεδεμένα μέρη</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_24_role-818000" xlink:to="label_ias_24_role-818000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_24_role-818000a" xlink:label="ias_24_role-818000a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_24_role-818000a">[818000a] Σημειώσεις - Συνδεδεμένα μέρη + Γνωστοποίηση ποσών δαπανών που πραγματοποιούνται από την οικονομική οντότητα για την παροχή υπηρεσιών βασικών διοικητικών στελεχών οι οποίες παρέχονται από χωριστή οντότητα διαχείρισης </label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_24_role-818000a" xlink:to="label_ias_24_role-818000a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_26_role-710000" xlink:label="ias_26_role-710000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_26_role-710000">[710000] Κατάσταση μεταβολών καθαρών περιουσιακών στοιχείων διαθέσιμων για παροχές</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_26_role-710000" xlink:to="label_ias_26_role-710000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_27_role-825480" xlink:label="ias_27_role-825480"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_27_role-825480">[825480] Σημειώσεις - Ατομικές οικονομικές καταστάσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_27_role-825480" xlink:to="label_ias_27_role-825480"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_27_role-825480a" xlink:label="ias_27_role-825480a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_27_role-825480a">[825480a] Σημειώσεις - Ατομικές οικονομικές καταστάσεις + Γνωστοποίηση θυγατρικών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_27_role-825480a" xlink:to="label_ias_27_role-825480a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_27_role-825480c" xlink:label="ias_27_role-825480c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_27_role-825480c">[825480c] Σημειώσεις - Ατομικές οικονομικές καταστάσεις + Γνωστοποίηση συγγενών επιχειρήσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_27_role-825480c" xlink:to="label_ias_27_role-825480c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_29_role-816000" xlink:label="ias_29_role-816000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_29_role-816000">[816000] Σημειώσεις - Αναφορά σε συνθήκες υπερπληθωρισμού</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_29_role-816000" xlink:to="label_ias_29_role-816000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_33_role-838000" xlink:label="ias_33_role-838000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_33_role-838000">[838000] Σημειώσεις - Κέρδη ανά μετοχή</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_33_role-838000" xlink:to="label_ias_33_role-838000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_33_role-838000a" xlink:label="ias_33_role-838000a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_33_role-838000a">[838000a] Σημειώσεις - Κέρδη ανά μετοχή + Γνωστοποίηση αποθετήριων εγγράφων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_33_role-838000a" xlink:to="label_ias_33_role-838000a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_34_role-813000" xlink:label="ias_34_role-813000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_34_role-813000">[813000] Σημειώσεις - Ενδιάμεση χρηματοοικονομική αναφορά</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_34_role-813000" xlink:to="label_ias_34_role-813000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_36_role-832410" xlink:label="ias_36_role-832410"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_36_role-832410">[832410] Σημειώσεις - Απομείωση αξίας περιουσιακών στοιχείων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_36_role-832410" xlink:to="label_ias_36_role-832410"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_36_role-832410a" xlink:label="ias_36_role-832410a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_36_role-832410a">[832410a] Σημειώσεις - Απομείωση αξίας περιουσιακών στοιχείων + Γνωστοποίηση ζημίας απομείωσης και αναστροφής ζημίας απομείωσης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_36_role-832410a" xlink:to="label_ias_36_role-832410a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_36_role-832410b" xlink:label="ias_36_role-832410b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_36_role-832410b">[832410b] Σημειώσεις - Απομείωση αξίας περιουσιακών στοιχείων + Γνωστοποίηση πληροφοριών σχετικά με ζημία απομείωσης που αναγνωρίστηκε ή αναστράφηκε για μεμονωμένο περιουσιακό στοιχείο ή μονάδα δημιουργίας ταμειακών ροών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_36_role-832410b" xlink:to="label_ias_36_role-832410b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_36_role-832410c" xlink:label="ias_36_role-832410c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_36_role-832410c">[832410c] Σημειώσεις - Απομείωση αξίας περιουσιακών στοιχείων + Γνωστοποίηση πληροφοριών σχετικά με μονάδες δημιουργίας ταμειακών ροών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_36_role-832410c" xlink:to="label_ias_36_role-832410c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_36_role-832410d" xlink:label="ias_36_role-832410d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_36_role-832410d">[832410d] Σημειώσεις - Απομείωση αξίας περιουσιακών στοιχείων + Γνωστοποίηση ζημίας απομείωσης που αναγνωρίστηκε ή αναστράφηκε για μονάδα δημιουργίας ταμειακών ροών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_36_role-832410d" xlink:to="label_ias_36_role-832410d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_37_role-827570" xlink:label="ias_37_role-827570"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_37_role-827570">[827570] Σημειώσεις - Προβλέψεις, ενδεχόμενες υποχρεώσεις και ενδεχόμενα περιουσιακά στοιχεία</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_37_role-827570" xlink:to="label_ias_37_role-827570"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_37_role-827570a" xlink:label="ias_37_role-827570a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_37_role-827570a">[827570a] Σημειώσεις - Προβλέψεις, ενδεχόμενες υποχρεώσεις και ενδεχόμενα περιουσιακά στοιχεία + Γνωστοποίηση άλλων προβλέψεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_37_role-827570a" xlink:to="label_ias_37_role-827570a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_37_role-827570b" xlink:label="ias_37_role-827570b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_37_role-827570b">[827570b] Σημειώσεις - Προβλέψεις, ενδεχόμενες υποχρεώσεις και ενδεχόμενα περιουσιακά στοιχεία + Γνωστοποίηση ενδεχόμενων υποχρεώσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_37_role-827570b" xlink:to="label_ias_37_role-827570b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_38_role-823180" xlink:label="ias_38_role-823180"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_38_role-823180">[823180] Σημειώσεις - Άυλα περιουσιακά στοιχεία</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_38_role-823180" xlink:to="label_ias_38_role-823180"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_38_role-823180a" xlink:label="ias_38_role-823180a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_38_role-823180a">[823180a] Σημειώσεις - Άυλα περιουσιακά στοιχεία + Γνωστοποίηση συμφωνίας των μεταβολών των άυλων περιουσιακών στοιχείων και της υπεραξίας</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_38_role-823180a" xlink:to="label_ias_38_role-823180a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_38_role-823180b" xlink:label="ias_38_role-823180b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_38_role-823180b">[823180b] Σημειώσεις - Άυλα περιουσιακά στοιχεία + Γνωστοποίηση άυλων περιουσιακών στοιχείων με αόριστη ωφέλιμη ζωή</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_38_role-823180b" xlink:to="label_ias_38_role-823180b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_38_role-823180c" xlink:label="ias_38_role-823180c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_38_role-823180c">[823180c] Σημειώσεις - Άυλα περιουσιακά στοιχεία + Γνωστοποίηση άυλων περιουσιακών στοιχείων που είναι σημαντικά για την οικονομική οντότητα</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_38_role-823180c" xlink:to="label_ias_38_role-823180c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_40_role-825100" xlink:label="ias_40_role-825100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_40_role-825100">[825100] Σημειώσεις - Επενδυσεις σε ακίνητα</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_40_role-825100" xlink:to="label_ias_40_role-825100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_41_role-824180" xlink:label="ias_41_role-824180"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_41_role-824180">[824180] Σημειώσεις - Γεωργία</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_41_role-824180" xlink:to="label_ias_41_role-824180"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_41_role-824180a" xlink:label="ias_41_role-824180a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_41_role-824180a">[824180a] Σημειώσεις - Γεωργία + Γνωστοποίηση λεπτομερών πληροφοριών σχετικά με βιολογικά περιουσιακά στοιχεία</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_41_role-824180a" xlink:to="label_ias_41_role-824180a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_41_role-824180b" xlink:label="ias_41_role-824180b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_41_role-824180b">[824180b] Σημειώσεις - Γεωργία + Γνωστοποίηση πληροφοριών σχετικά με αγροτική παραγωγή</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_41_role-824180b" xlink:to="label_ias_41_role-824180b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_7_role-510000" xlink:label="ias_7_role-510000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_7_role-510000">[510000] Κατάσταση ταμειακών ροών, άμεση μέθοδος</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_7_role-510000" xlink:to="label_ias_7_role-510000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_7_role-520000" xlink:label="ias_7_role-520000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_7_role-520000">[520000] Κατάσταση ταμειακών ροών, έμμεση μέθοδος</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_7_role-520000" xlink:to="label_ias_7_role-520000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_7_role-800300" xlink:label="ias_7_role-800300"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_7_role-800300">[800300] Κατάσταση ταμειακών ροών, πρόσθετες γνωστοποιήσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_7_role-800300" xlink:to="label_ias_7_role-800300"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_7_role-851100" xlink:label="ias_7_role-851100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_7_role-851100">[851100] Σημειώσεις - Κατάσταση ταμειακών ροών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_7_role-851100" xlink:to="label_ias_7_role-851100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_8_role-811000" xlink:label="ias_8_role-811000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_8_role-811000">[811000] Σημειώσεις - Λογιστικές πολιτικές, μεταβολές των λογιστικών εκτιμήσεων και λάθη</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_8_role-811000" xlink:to="label_ias_8_role-811000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_8_role-811000a" xlink:label="ias_8_role-811000a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_8_role-811000a">[811000a] Σημειώσεις - Λογιστικές πολιτικές, μεταβολές των λογιστικών εκτιμήσεων και λάθη + Γνωστοποίηση αρχικής εφαρμογής προτύπου ή διερμηνείας </label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_8_role-811000a" xlink:to="label_ias_8_role-811000a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_8_role-811000b" xlink:label="ias_8_role-811000b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_8_role-811000b">[811000b] Σημειώσεις - Λογιστικές πολιτικές, μεταβολές των λογιστικών εκτιμήσεων και λάθη + Γνωστοποίηση εκούσιας αλλαγής λογιστικής πολιτικής</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_8_role-811000b" xlink:to="label_ias_8_role-811000b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ias_8_role-811000c" xlink:label="ias_8_role-811000c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ias_8_role-811000c">[811000c] Σημειώσεις - Λογιστικές πολιτικές, μεταβολές των λογιστικών εκτιμήσεων και λάθη + Γνωστοποίηση μεταβολών λογιστικών εκτιμήσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ias_8_role-811000c" xlink:to="label_ias_8_role-811000c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifric_2_role-868500" xlink:label="ifric_2_role-868500"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifric_2_role-868500">[868500] Σημειώσεις - Μερίδια μελών σε συνεταιριστικές οικονομικές οντότητες και παρόμοια μέσα</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifric_2_role-868500" xlink:to="label_ifric_2_role-868500"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifric_5_role-868200" xlink:label="ifric_5_role-868200"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifric_5_role-868200">[868200] Σημειώσεις - Δικαιώματα συμμετοχών σε ταμεία παροπλισμού, αποκατάστασης και περιβαλλοντικής εξυγίανσης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifric_5_role-868200" xlink:to="label_ifric_5_role-868200"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_1_role-819100" xlink:label="ifrs_1_role-819100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_1_role-819100">[819100] Σημειώσεις - Πρώτη εφαρμογή</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_1_role-819100" xlink:to="label_ifrs_1_role-819100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_1_role-819100a" xlink:label="ifrs_1_role-819100a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_1_role-819100a">[819100a] Σημειώσεις - Πρώτη εφαρμογή + Γνωστοποίηση συγκριτικής πληροφόρησης που συντάχθηκε σύμφωνα με τις προηγούμενες ΓΑΛΑ</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_1_role-819100a" xlink:to="label_ifrs_1_role-819100a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_1_role-819100b" xlink:label="ifrs_1_role-819100b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_1_role-819100b">[819100b] Σημειώσεις - Πρώτη εφαρμογή + Γνωστοποίηση προσδιορισμένων εκ νέου χρηματοοικονομικών περιουσιακών στοιχείων και υποχρεώσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_1_role-819100b" xlink:to="label_ifrs_1_role-819100b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_1_role-819100c" xlink:label="ifrs_1_role-819100c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_1_role-819100c">[819100c] Σημειώσεις - Πρώτη εφαρμογή + Γνωστοποίηση των εύλογων αξιών στοιχείων που χρησιμοποιούνται ως τεκμαιρόμενο κόστος</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_1_role-819100c" xlink:to="label_ifrs_1_role-819100c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700" xlink:label="ifrs_12_role-825700"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_12_role-825700">[825700] Σημειώσεις - Συμμετοχές σε άλλες οντότητες</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700" xlink:to="label_ifrs_12_role-825700"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700a" xlink:label="ifrs_12_role-825700a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_12_role-825700a">[825700a] Σημειώσεις - Συμμετοχές σε άλλες οντότητες + Γνωστοποίηση πληροφοριών σχετικά με ενοποιημένες δομημένες οικονομικές οντότητες</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700a" xlink:to="label_ifrs_12_role-825700a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700b" xlink:label="ifrs_12_role-825700b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_12_role-825700b">[825700b] Σημειώσεις - Συμμετοχές σε άλλες οντότητες + Γνωστοποίηση συγγενών επιχειρήσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700b" xlink:to="label_ifrs_12_role-825700b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700c" xlink:label="ifrs_12_role-825700c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_12_role-825700c">[825700c] Σημειώσεις - Συμμετοχές σε άλλες οντότητες + Γνωστοποίηση κοινών επιχειρήσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700c" xlink:to="label_ifrs_12_role-825700c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700d" xlink:label="ifrs_12_role-825700d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_12_role-825700d">[825700d] Σημειώσεις - Συμμετοχές σε άλλες οντότητες + Γνωστοποίηση κοινοπραξιών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700d" xlink:to="label_ifrs_12_role-825700d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700e" xlink:label="ifrs_12_role-825700e"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_12_role-825700e">[825700e] Σημειώσεις - Συμμετοχές σε άλλες οντότητες + Γνωστοποίηση μη ενοποιημένων δομημένων οικονομικών οντοτήτων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700e" xlink:to="label_ifrs_12_role-825700e"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700f" xlink:label="ifrs_12_role-825700f"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_12_role-825700f">[825700f] Σημειώσεις - Συμμετοχές σε άλλες οντότητες + Γνωστοποίηση πληροφοριών σχετικά με μη ενοποιημένες θυγατρικές</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700f" xlink:to="label_ifrs_12_role-825700f"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_12_role-825700g" xlink:label="ifrs_12_role-825700g"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_12_role-825700g">[825700g] Σημειώσεις - Συμμετοχές σε άλλες οντότητες + Γνωστοποίηση πληροφοριών σχετικά με μη ενοποιημένες δομημένες οικονομικές οντότητες που ελέγχονται από την οικονομική οντότητα επενδύσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_12_role-825700g" xlink:to="label_ifrs_12_role-825700g"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000" xlink:label="ifrs_13_role-823000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_13_role-823000">[823000] Σημειώσεις - Επιμέτρηση εύλογης αξίας</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000" xlink:to="label_ifrs_13_role-823000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000a" xlink:label="ifrs_13_role-823000a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_13_role-823000a">[823000a] Σημειώσεις - Επιμέτρηση εύλογης αξίας + Γνωστοποίηση επιμέτρησης της εύλογης αξίας υποχρεώσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000a" xlink:to="label_ifrs_13_role-823000a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000b" xlink:label="ifrs_13_role-823000b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_13_role-823000b">[823000b] Σημειώσεις - Επιμέτρηση εύλογης αξίας + Γνωστοποίηση επιμέτρησης της εύλογης αξίας συμμετοχικών τίτλων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000b" xlink:to="label_ifrs_13_role-823000b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000c" xlink:label="ifrs_13_role-823000c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_13_role-823000c">[823000c] Σημειώσεις - Επιμέτρηση εύλογης αξίας + Γνωστοποίηση σημαντικών μη παρατηρήσιμων εισροών που χρησιμοποιήθηκαν για την επιμέτρηση της εύλογης αξίας των περιουσιακών στοιχείων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000c" xlink:to="label_ifrs_13_role-823000c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000d" xlink:label="ifrs_13_role-823000d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_13_role-823000d">[823000d] Σημειώσεις - Επιμέτρηση εύλογης αξίας + Γνωστοποίηση σημαντικών μη παρατηρήσιμων εισροών που χρησιμοποιήθηκαν για την επιμέτρηση της εύλογης αξίας υποχρεώσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000d" xlink:to="label_ifrs_13_role-823000d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000e" xlink:label="ifrs_13_role-823000e"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_13_role-823000e">[823000e] Σημειώσεις - Επιμέτρηση εύλογης αξίας + Γνωστοποίηση σημαντικών μη παρατηρήσιμων εισροών που χρησιμοποιήθηκαν για την επιμέτρηση της εύλογης αξίας συμμετοχικών τίτλων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000e" xlink:to="label_ifrs_13_role-823000e"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000f" xlink:label="ifrs_13_role-823000f"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_13_role-823000f">[823000f] Σημειώσεις - Επιμέτρηση εύλογης αξίας + Γνωστοποίηση υποχρεώσεων που επιμετρούνται στην εύλογη αξία και εκδίδονται με αδιαχώριστη πιστωτική ενίσχυση τρίτου</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000f" xlink:to="label_ifrs_13_role-823000f"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000g" xlink:label="ifrs_13_role-823000g"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_13_role-823000g">[823000g] Σημειώσεις - Επιμέτρηση εύλογης αξίας + Γνωστοποίηση ανάλυσης ευαισθησίας της επιμέτρησης εύλογης αξίας στις μεταβολές σε μη παρατηρήσιμες εισροές, περιουσιακά στοιχεία</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000g" xlink:to="label_ifrs_13_role-823000g"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000h" xlink:label="ifrs_13_role-823000h"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_13_role-823000h">[823000h] Σημειώσεις - Επιμέτρηση εύλογης αξίας + Γνωστοποίηση ανάλυσης ευαισθησίας της επιμέτρησης εύλογης αξίας στις μεταβολές σε μη παρατηρήσιμες εισροές, υποχρεώσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000h" xlink:to="label_ifrs_13_role-823000h"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_13_role-823000i" xlink:label="ifrs_13_role-823000i"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_13_role-823000i">[823000i] Σημειώσεις - Επιμέτρηση εύλογης αξίας + Γνωστοποίηση ανάλυσης ευαισθησίας της επιμέτρησης εύλογης αξίας στις μεταβολές σε μη παρατηρήσιμες εισροές, ίδιοι συμμετοχικοί τίτλοι της οικονομικής οντότητας</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_13_role-823000i" xlink:to="label_ifrs_13_role-823000i"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_14_role-824500" xlink:label="ifrs_14_role-824500"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_14_role-824500">[824500] Σημειώσεις - Ρυθμιστικοί μεταβατικοί λογαριασμοί</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_14_role-824500" xlink:to="label_ifrs_14_role-824500"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_14_role-824500a" xlink:label="ifrs_14_role-824500a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_14_role-824500a">[824500a] Σημειώσεις - Ρυθμιστικοί μεταβατικοί λογαριασμοί + Γνωστοποίηση πληροφοριών σχετικά με ποσά που αναγνωρίζονται σε σχέση με τα υπόλοιπα μεταβατικών λογαριασμών ρυθμιζόμενων δραστηριοτήτων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_14_role-824500a" xlink:to="label_ifrs_14_role-824500a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_15_role-831150" xlink:label="ifrs_15_role-831150"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_15_role-831150">[831150] Σημειώσεις -  Έσοδα από συμβάσεις με πελάτες</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_15_role-831150" xlink:to="label_ifrs_15_role-831150"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_15_role-831150a" xlink:label="ifrs_15_role-831150a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_15_role-831150a">[831150a] Σημειώσεις -  Έσοδα από συμβάσεις με πελάτες + Γνωστοποίηση υποχρεώσεων εκτέλεσης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_15_role-831150a" xlink:to="label_ifrs_15_role-831150a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_15_role-831150b" xlink:label="ifrs_15_role-831150b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_15_role-831150b">[831150b] Σημειώσεις -  Έσοδα από συμβάσεις με πελάτες + Γνωστοποίηση τιμής συναλλαγής που επιμερίζεται στις υπολειπόμενες υποχρεώσεις εκτέλεσης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_15_role-831150b" xlink:to="label_ifrs_15_role-831150b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_15_role-831150c" xlink:label="ifrs_15_role-831150c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_15_role-831150c">[831150c] Σημειώσεις -  Έσοδα από συμβάσεις με πελάτες + Γνωστοποίηση περιουσιακών στοιχείων που αναγνωρίζονται από τις δαπάνες εξασφάλισης ή εκπλήρωσης συμβάσεων με πελάτες</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_15_role-831150c" xlink:to="label_ifrs_15_role-831150c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_16_role-832610" xlink:label="ifrs_16_role-832610"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_16_role-832610">[832610] Σημειώσεις - Μισθώσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_16_role-832610" xlink:to="label_ifrs_16_role-832610"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_16_role-832610a" xlink:label="ifrs_16_role-832610a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_16_role-832610a">[832610a] Σημειώσεις - Μισθώσεις + Γνωστοποίηση ανάλυσης ληκτότητας για καταβολές εισπρακτέων μισθωμάτων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_16_role-832610a" xlink:to="label_ifrs_16_role-832610a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_16_role-832610b" xlink:label="ifrs_16_role-832610b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_16_role-832610b">[832610b] Σημειώσεις - Μισθώσεις + Γνωστοποίηση ανάλυσης ληκτότητας για καταβολές μισθωμάτων βάσει λειτουργικής μίσθωσης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_16_role-832610b" xlink:to="label_ifrs_16_role-832610b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600" xlink:label="ifrs_17_role-836600"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600">[836600] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17)</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600" xlink:to="label_ifrs_17_role-836600"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600a" xlink:label="ifrs_17_role-836600a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600a">[836600a] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση συμφωνίας των μεταβολών στα ασφαλιστήρια συμβόλαια κατά στοιχεία</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600a" xlink:to="label_ifrs_17_role-836600a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600b" xlink:label="ifrs_17_role-836600b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600b">[836600b] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση ανάλυσης εσόδων από ασφάλιση</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600b" xlink:to="label_ifrs_17_role-836600b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600c" xlink:label="ifrs_17_role-836600c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600c">[836600c] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση επιπτώσεων ασφαλιστηρίων συμβολαίων που αναγνωρίστηκαν αρχικά</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600c" xlink:to="label_ifrs_17_role-836600c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600d" xlink:label="ifrs_17_role-836600d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600d">[836600d] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση πληροφοριών σχετικά με την αναμενόμενη αναγνώριση του συμβατικού περιθωρίου υπηρεσίας στα αποτελέσματα</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600d" xlink:to="label_ifrs_17_role-836600d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600e" xlink:label="ifrs_17_role-836600e"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600e">[836600e] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση προσαρμογών που πραγματοποιήθηκαν όταν η οικονομική οντότητα άλλαξε τη βάση διαχωρισμού των χρηματοοικονομικών εσόδων (εξόδων) ασφάλισης μεταξύ αποτελεσμάτων και λοιπών συνολικών εσόδων για συμβόλαια με χαρακτηριστικά άμεσης συμμετοχής</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600e" xlink:to="label_ifrs_17_role-836600e"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600f" xlink:label="ifrs_17_role-836600f"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600f">[836600f] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση εισροών στις μεθόδους που χρησιμοποιούνται για την επιμέτρηση των συμβολαίων που εμπίπτουν στο πεδίο εφαρμογής του ΔΠΧΑ 17</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600f" xlink:to="label_ifrs_17_role-836600f"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600g" xlink:label="ifrs_17_role-836600g"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600g">[836600g] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση καμπύλης απόδοσης που χρησιμοποιείται για την προεξόφληση ταμειακών ροών που δεν διαφοροποιούνται βάσει των αποδόσεων των υποκείμενων στοιχείων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600g" xlink:to="label_ifrs_17_role-836600g"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600h" xlink:label="ifrs_17_role-836600h"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600h">[836600h] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση της φύσης και της έκτασης των κινδύνων που απορρέουν από συμβόλαια που εμπίπτουν στο πεδίο εφαρμογής του ΔΠΧΑ 17</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600h" xlink:to="label_ifrs_17_role-836600h"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600i" xlink:label="ifrs_17_role-836600i"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600i">[836600i] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση λεπτομερών πληροφοριών σχετικά με συγκεντρώσεις κινδύνων που απορρέουν από συμβόλαια που εμπίπτουν στο πεδίο εφαρμογής του ΔΠΧΑ 17</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600i" xlink:to="label_ifrs_17_role-836600i"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600j" xlink:label="ifrs_17_role-836600j"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600j">[836600j] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση ανάλυσης ευαισθησίας στις μεταβολές των μεταβλητών κινδύνου που απορρέουν από συμβόλαια που εμπίπτουν στο πεδίο εφαρμογής του ΔΠΧΑ 17</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600j" xlink:to="label_ifrs_17_role-836600j"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600k" xlink:label="ifrs_17_role-836600k"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600k">[836600k] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση πραγματικών αξιώσεων για αποζημίωση συγκρινόμενων με προηγούμενες εκτιμήσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600k" xlink:to="label_ifrs_17_role-836600k"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600l" xlink:label="ifrs_17_role-836600l"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600l">[836600l] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση πληροφοριών σχετικά με πιστωτικό κίνδυνο που απορρέει από συμβόλαια που εμπίπτουν στο πεδίο εφαρμογής του ΔΠΧΑ 17</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600l" xlink:to="label_ifrs_17_role-836600l"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600m" xlink:label="ifrs_17_role-836600m"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600m">[836600m] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση ανάλυσης ληκτότητας για κίνδυνο ρευστότητας που απορρέει από συμβόλαια που εμπίπτουν στο πεδίο εφαρμογής του ΔΠΧΑ 17</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600m" xlink:to="label_ifrs_17_role-836600m"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600n" xlink:label="ifrs_17_role-836600n"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600n">[836600n] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση προσδιορισμού εκ νέου των χρηματοοικονομικών περιουσιακών στοιχείων κατά την ημερομηνία αρχικής εφαρμογής του ΔΠΧΑ 17</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600n" xlink:to="label_ifrs_17_role-836600n"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_17_role-836600o" xlink:label="ifrs_17_role-836600o"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_17_role-836600o">[836600o] Σημειώσεις - Ασφαλιστήρια συμβόλαια (ΔΠΧΑ 17) + Γνωστοποίηση πληροφοριών σχετικά με την αναμενόμενη παύση αναγνώρισης περιουσιακών στοιχείων για ταμειακές ροές κτήσης ασφάλισης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_17_role-836600o" xlink:to="label_ifrs_17_role-836600o"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_2_role-834120" xlink:label="ifrs_2_role-834120"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_2_role-834120">[834120] Σημειώσεις - Συμφωνίες παροχών που εξαρτώνται από την αξία των μετοχών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_2_role-834120" xlink:to="label_ifrs_2_role-834120"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_2_role-834120a" xlink:label="ifrs_2_role-834120a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_2_role-834120a">[834120a] Σημειώσεις - Συμφωνίες παροχών που εξαρτώνται από την αξία των μετοχών + Γνωστοποίηση όρων και προϋποθέσεων συμφωνίας παροχών που εξαρτώνται από την αξία των μετοχών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_2_role-834120a" xlink:to="label_ifrs_2_role-834120a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_2_role-834120b" xlink:label="ifrs_2_role-834120b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_2_role-834120b">[834120b] Σημειώσεις - Συμφωνίες παροχών που εξαρτώνται από την αξία των μετοχών + Γνωστοποίηση αριθμού και σταθμισμένης μέσης εναπομένουσας συμβατικής διάρκειας ανεξόφλητων μετοχικών δικαιωμάτων προαίρεσης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_2_role-834120b" xlink:to="label_ifrs_2_role-834120b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_2_role-834120c" xlink:label="ifrs_2_role-834120c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_2_role-834120c">[834120c] Σημειώσεις - Συμφωνίες παροχών που εξαρτώνται από την αξία των μετοχών + Γνωστοποίηση φάσματος τιμών άσκησης των ανεξόφλητων μετοχικών δικαιωμάτων προαίρεσης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_2_role-834120c" xlink:to="label_ifrs_2_role-834120c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_3_role-817000" xlink:label="ifrs_3_role-817000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_3_role-817000">[817000] Σημειώσεις - Συνενώσεις επιχειρήσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_3_role-817000" xlink:to="label_ifrs_3_role-817000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_3_role-817000a" xlink:label="ifrs_3_role-817000a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_3_role-817000a">[817000a] Σημειώσεις - Συνενώσεις επιχειρήσεων + Γνωστοποίηση συναλλαγών που αναγνωρίζονται χωριστά από την απόκτηση περιουσιακών στοιχείων και την ανάληψη υποχρεώσεων σε συνένωση επιχειρήσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_3_role-817000a" xlink:to="label_ifrs_3_role-817000a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_3_role-817000b" xlink:label="ifrs_3_role-817000b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_3_role-817000b">[817000b] Σημειώσεις - Συνενώσεις επιχειρήσεων + Γνωστοποίηση αποκτηθεισών απαιτήσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_3_role-817000b" xlink:to="label_ifrs_3_role-817000b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_3_role-817000c" xlink:label="ifrs_3_role-817000c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_3_role-817000c">[817000c] Σημειώσεις - Συνενώσεις επιχειρήσεων + Γνωστοποίηση ενδεχόμενων υποχρεώσεων σε συνένωση επιχειρήσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_3_role-817000c" xlink:to="label_ifrs_3_role-817000c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_3_role-817000d" xlink:label="ifrs_3_role-817000d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_3_role-817000d">[817000d] Σημειώσεις - Συνενώσεις επιχειρήσεων + Γνωστοποίηση συμφωνίας των μεταβολών της υπεραξίας</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_3_role-817000d" xlink:to="label_ifrs_3_role-817000d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500" xlink:label="ifrs_4_role-836500"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500">[836500] Σημειώσεις - Ασφαλιστήρια συμβόλαια</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500" xlink:to="label_ifrs_4_role-836500"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500a" xlink:label="ifrs_4_role-836500a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500a">[836500a] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση του καθαρού και του ακαθάριστου ποσού και του μεριδίου αντασφαλιστή για ποσά που απορρέουν από ασφαλιστήρια συμβόλαια</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500a" xlink:to="label_ifrs_4_role-836500a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500b" xlink:label="ifrs_4_role-836500b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500b">[836500b] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση χρηματοοικονομικών περιουσιακών στοιχείων στα οποία εφαρμόζεται η προσέγγιση της επικάλυψης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500b" xlink:to="label_ifrs_4_role-836500b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500c" xlink:label="ifrs_4_role-836500c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500c">[836500c] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση των επιπτώσεων της αναταξινόμησης στα αποτελέσματα βάσει της προσέγγισης επικάλυψης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500c" xlink:to="label_ifrs_4_role-836500c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500d" xlink:label="ifrs_4_role-836500d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500d">[836500d] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση πληροφοριών σχετικά με την προσέγγιση της επικάλυψης για συγγενείς επιχειρήσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500d" xlink:to="label_ifrs_4_role-836500d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500e" xlink:label="ifrs_4_role-836500e"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500e">[836500e] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση χρηματοοικονομικών περιουσιακών στοιχείων στα οποία εφαρμόζεται η προσέγγιση της επικάλυψης για συγγενείς επιχειρήσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500e" xlink:to="label_ifrs_4_role-836500e"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500f" xlink:label="ifrs_4_role-836500f"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500f">[836500f] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση των επιπτώσεων της αναταξινόμησης στα αποτελέσματα βάσει της προσέγγισης επικάλυψης για συγγενείς επιχειρήσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500f" xlink:to="label_ifrs_4_role-836500f"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500g" xlink:label="ifrs_4_role-836500g"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500g">[836500g] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση πληροφοριών σχετικά με την προσέγγιση της επικάλυψης για κοινοπραξίες</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500g" xlink:to="label_ifrs_4_role-836500g"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500h" xlink:label="ifrs_4_role-836500h"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500h">[836500h] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση χρηματοοικονομικών περιουσιακών στοιχείων στα οποία εφαρμόζεται η προσέγγιση της επικάλυψης για κοινοπραξίες</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500h" xlink:to="label_ifrs_4_role-836500h"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500i" xlink:label="ifrs_4_role-836500i"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500i">[836500i] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση των επιπτώσεων της αναταξινόμησης στα αποτελέσματα βάσει της προσέγγισης επικάλυψης για κοινοπραξίες</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500i" xlink:to="label_ifrs_4_role-836500i"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500j" xlink:label="ifrs_4_role-836500j"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500j">[836500j] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση λεπτομερών πληροφοριών σχετικά με τα χρηματοοικονομικά περιουσιακά στοιχεία που περιγράφονται στην παράγραφο 39Ε στοιχείο α) του ΔΠΧΑ 4</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500j" xlink:to="label_ifrs_4_role-836500j"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500k" xlink:label="ifrs_4_role-836500k"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500k">[836500k] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση πληροφοριών σχετικά με την προσωρινή εξαίρεση των συγγενών επιχειρήσεων από το ΔΠΧΑ 9</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500k" xlink:to="label_ifrs_4_role-836500k"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500l" xlink:label="ifrs_4_role-836500l"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500l">[836500l] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση λεπτομερών πληροφοριών σχετικά με τα χρηματοοικονομικά περιουσιακά στοιχεία που περιγράφονται στην παράγραφο 39Ε στοιχείο α) του ΔΠΧΑ 4 για τις συγγενείς επιχειρήσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500l" xlink:to="label_ifrs_4_role-836500l"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500m" xlink:label="ifrs_4_role-836500m"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500m">[836500m] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση πληροφοριών σχετικά με την προσωρινή εξαίρεση των κοινοπραξιών από το ΔΠΧΑ 9</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500m" xlink:to="label_ifrs_4_role-836500m"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_4_role-836500n" xlink:label="ifrs_4_role-836500n"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_4_role-836500n">[836500n] Σημειώσεις - Ασφαλιστήρια συμβόλαια + Γνωστοποίηση λεπτομερών πληροφοριών σχετικά με τα χρηματοοικονομικά περιουσιακά στοιχεία που περιγράφονται στην παράγραφο 39Ε στοιχείο α) του ΔΠΧΑ 4 για τις κοινοπραξίες</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_4_role-836500n" xlink:to="label_ifrs_4_role-836500n"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_5_role-825900" xlink:label="ifrs_5_role-825900"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_5_role-825900">[825900] Σημειώσεις - Μη κυκλοφορούντα περιουσιακά στοιχεία που κατέχονται προς πώληση και διακοπείσες δραστηριότητες</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_5_role-825900" xlink:to="label_ifrs_5_role-825900"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_6_role-822200" xlink:label="ifrs_6_role-822200"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_6_role-822200">[822200] Σημειώσεις - Έρευνα και αξιολόγηση ορυκτών πόρων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_6_role-822200" xlink:to="label_ifrs_6_role-822200"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390" xlink:label="ifrs_7_role-822390"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390">[822390] Σημειώσεις - Χρηματοοικονομικά μέσα</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390" xlink:to="label_ifrs_7_role-822390"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390a" xlink:label="ifrs_7_role-822390a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390a">[822390a] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση χρηματοοικονομικών περιουσιακών στοιχείων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390a" xlink:to="label_ifrs_7_role-822390a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390b" xlink:label="ifrs_7_role-822390b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390b">[822390b] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση χρηματοοικονομικών υποχρεώσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390b" xlink:to="label_ifrs_7_role-822390b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390c" xlink:label="ifrs_7_role-822390c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390c">[822390c] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση μεταβιβασθέντων χρηματοοικονομικών περιουσιακών στοιχείων που δεν έχουν παύσει να αναγνωρίζονται στο σύνολό τους</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390c" xlink:to="label_ifrs_7_role-822390c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390d" xlink:label="ifrs_7_role-822390d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390d">[822390d] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση λεπτομερών πληροφοριών σχετικά με χρηματοοικονομικά μέσα</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390d" xlink:to="label_ifrs_7_role-822390d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390e" xlink:label="ifrs_7_role-822390e"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390e">[822390e] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση χρηματοοικονομικών περιουσιακών στοιχείων σε καθυστέρηση ή που έχουν υποστεί απομείωση αξίας</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390e" xlink:to="label_ifrs_7_role-822390e"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390f" xlink:label="ifrs_7_role-822390f"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390f">[822390f] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση λεπτομερών πληροφοριών σχετικά με αντισταθμίσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390f" xlink:to="label_ifrs_7_role-822390f"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390g" xlink:label="ifrs_7_role-822390g"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390g">[822390g] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση της φύσης και της έκτασης των κινδύνων που απορρέουν από χρηματοοικονομικά μέσα</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390g" xlink:to="label_ifrs_7_role-822390g"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390h" xlink:label="ifrs_7_role-822390h"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390h">[822390h] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση συνεχιζόμενης συμμετοχής στα χρηματοοικονομικά περιουσιακά στοιχεία που έχουν παύσει να αναγνωρίζονται</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390h" xlink:to="label_ifrs_7_role-822390h"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390i" xlink:label="ifrs_7_role-822390i"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390i">[822390i] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση ανάλυσης ληκτότητας των μη προεξοφλημένων ταμειακών εκροών για την επαναγορά χρηματοοικονομικών περιουσιακών στοιχείων που έχουν παύσει να αναγνωρίζονται ή άλλων ποσών πληρωτέων στον εκδοχέα σε σχέση με μεταβιβασθέντα περιουσιακά στοιχεία</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390i" xlink:to="label_ifrs_7_role-822390i"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390j" xlink:label="ifrs_7_role-822390j"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390j">[822390j] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση ανάλυσης ληκτότητας για μη παράγωγες χρηματοοικονομικές υποχρεώσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390j" xlink:to="label_ifrs_7_role-822390j"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390k" xlink:label="ifrs_7_role-822390k"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390k">[822390k] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση ανάλυσης ληκτότητας για παράγωγες χρηματοοικονομικές υποχρεώσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390k" xlink:to="label_ifrs_7_role-822390k"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390l" xlink:label="ifrs_7_role-822390l"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390l">[822390l] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση της εύλογης αξίας επενδύσεων σε συμμετοχικούς τίτλους που προσδιορίζονται στην εύλογη αξία μέσω των λοιπών συνολικών εσόδων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390l" xlink:to="label_ifrs_7_role-822390l"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390m" xlink:label="ifrs_7_role-822390m"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390m">[822390m] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση ανάλυσης ληκτότητας για χρηματοοικονομικά περιουσιακά στοιχεία διακρατούμενα για τη διαχείριση του κινδύνου ρευστότητας</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390m" xlink:to="label_ifrs_7_role-822390m"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390n" xlink:label="ifrs_7_role-822390n"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390n">[822390n] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση εξωτερικών πιστωτικών διαβαθμίσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390n" xlink:to="label_ifrs_7_role-822390n"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390o" xlink:label="ifrs_7_role-822390o"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390o">[822390o] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση εσωτερικών πιστωτικών διαβαθμίσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390o" xlink:to="label_ifrs_7_role-822390o"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390p" xlink:label="ifrs_7_role-822390p"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390p">[822390p] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση συμψηφισμού χρηματοοικονομικών περιουσιακών στοιχείων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390p" xlink:to="label_ifrs_7_role-822390p"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390q" xlink:label="ifrs_7_role-822390q"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390q">[822390q] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση συμψηφισμού χρηματοοικονομικών υποχρεώσεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390q" xlink:to="label_ifrs_7_role-822390q"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390r" xlink:label="ifrs_7_role-822390r"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390r">[822390r] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση χρηματοοικονομικών μέσων κατά είδος επιτοκίου</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390r" xlink:to="label_ifrs_7_role-822390r"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390s" xlink:label="ifrs_7_role-822390s"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390s">[822390s] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση της στρατηγικής διαχείρισης κινδύνου που σχετίζεται με τη λογιστική αντιστάθμισης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390s" xlink:to="label_ifrs_7_role-822390s"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390t" xlink:label="ifrs_7_role-822390t"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390t">[822390t] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση πληροφοριών σχετικά με τους όρους και τις προϋποθέσεις των μέσων αντιστάθμισης και τον τρόπο με τον οποίο επηρεάζουν τις μελλοντικές ταμειακές ροές</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390t" xlink:to="label_ifrs_7_role-822390t"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390u" xlink:label="ifrs_7_role-822390u"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390u">[822390u] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση λεπτομερών πληροφοριών σχετικά με μέσα αντιστάθμισης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390u" xlink:to="label_ifrs_7_role-822390u"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390v" xlink:label="ifrs_7_role-822390v"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390v">[822390v] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση λεπτομερών πληροφοριών σχετικά με αντισταθμισμένα στοιχεία</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390v" xlink:to="label_ifrs_7_role-822390v"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390w" xlink:label="ifrs_7_role-822390w"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390w">[822390w] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση πληροφοριών σχετικά με ποσά που επηρέασαν την κατάσταση συνολικών εσόδων λόγω λογιστικής αντιστάθμισης</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390w" xlink:to="label_ifrs_7_role-822390w"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390x" xlink:label="ifrs_7_role-822390x"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390x">[822390x] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση πληροφοριών σχετικά με πιστωτικά ανοίγματα που έχουν προσδιοριστεί ότι επιμετρούνται στην εύλογη αξία μέσω των αποτελεσμάτων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390x" xlink:to="label_ifrs_7_role-822390x"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390y" xlink:label="ifrs_7_role-822390y"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390y">[822390y] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση λεπτομερών πληροφοριών σχετικά με δανειοληπτικές πράξεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390y" xlink:to="label_ifrs_7_role-822390y"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390z" xlink:label="ifrs_7_role-822390z"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390z">[822390z] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση ανακατάταξης χρηματοοικονομικών περιουσιακών στοιχείων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390z" xlink:to="label_ifrs_7_role-822390z"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390za" xlink:label="ifrs_7_role-822390za"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390za">[822390za] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση συμφωνίας των μεταβολών στην πρόβλεψη ζημίας και επεξήγηση των μεταβολών της ακαθάριστης λογιστικής αξίας των χρηματοπιστωτικών μέσων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390za" xlink:to="label_ifrs_7_role-822390za"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zb" xlink:label="ifrs_7_role-822390zb"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390zb">[822390zb] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση έκθεσης σε πιστωτικό κίνδυνο</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zb" xlink:to="label_ifrs_7_role-822390zb"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zc" xlink:label="ifrs_7_role-822390zc"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390zc">[822390zc] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση πίνακα προβλέψεων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zc" xlink:to="label_ifrs_7_role-822390zc"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zd" xlink:label="ifrs_7_role-822390zd"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390zd">[822390zd] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση χρηματοοικονομικών περιουσιακών στοιχείων που επηρεάζονται από τις τροποποιήσεις του ΔΠΧΑ 9 για τα χαρακτηριστικά προεξόφλησης με αρνητική αντιστάθμιση</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zd" xlink:to="label_ifrs_7_role-822390zd"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390ze" xlink:label="ifrs_7_role-822390ze"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390ze">[822390ze] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση χρηματοοικονομικών υποχρεώσεων που επηρεάζονται από τις τροποποιήσεις του ΔΠΧΑ 9 για τα χαρακτηριστικά προεξόφλησης με αρνητική αντιστάθμιση</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390ze" xlink:to="label_ifrs_7_role-822390ze"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zf" xlink:label="ifrs_7_role-822390zf"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390zf">[822390zf] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση χρηματοοικονομικών περιουσιακών στοιχείων κατά την ημερομηνία αρχικής εφαρμογής του ΔΠΧΑ 9</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zf" xlink:to="label_ifrs_7_role-822390zf"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zg" xlink:label="ifrs_7_role-822390zg"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390zg">[822390zg] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση χρηματοοικονομικών υποχρεώσεων κατά την ημερομηνία αρχικής εφαρμογής του ΔΠΧΑ 9</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zg" xlink:to="label_ifrs_7_role-822390zg"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zh" xlink:label="ifrs_7_role-822390zh"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390zh">[822390zh] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση ποσοτικών πληροφοριών σχετικά με χρηματοοικονομικά μέσα που δεν έχουν μεταβεί ακόμη σε εναλλακτικό επιτόκιο αναφοράς</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zh" xlink:to="label_ifrs_7_role-822390zh"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zi" xlink:label="ifrs_7_role-822390zi"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390zi">[822390zi] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση χρηματοοικονομικών περιουσιακών στοιχείων που επηρεάζονται από τις τροποποιήσεις του ΔΠΧΑ 9 που πραγματοποιήθηκαν από το ΔΠΧΑ 17</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zi" xlink:to="label_ifrs_7_role-822390zi"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_7_role-822390zj" xlink:label="ifrs_7_role-822390zj"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_7_role-822390zj">[822390zj] Σημειώσεις - Χρηματοοικονομικά μέσα + Γνωστοποίηση χρηματοοικονομικών υποχρεώσεων που επηρεάζονται από τις τροποποιήσεις του ΔΠΧΑ 9 που πραγματοποιήθηκαν από το ΔΠΧΑ 17</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_7_role-822390zj" xlink:to="label_ifrs_7_role-822390zj"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_8_role-871100" xlink:label="ifrs_8_role-871100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_8_role-871100">[871100] Σημειώσεις - Λειτουργικοί τομείς</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_8_role-871100" xlink:to="label_ifrs_8_role-871100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_8_role-871100a" xlink:label="ifrs_8_role-871100a"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_8_role-871100a">[871100a] Σημειώσεις - Λειτουργικοί τομείς + Γνωστοποίηση λειτουργικών τομέων</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_8_role-871100a" xlink:to="label_ifrs_8_role-871100a"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_8_role-871100b" xlink:label="ifrs_8_role-871100b"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_8_role-871100b">[871100b] Σημειώσεις - Λειτουργικοί τομείς + Γνωστοποίηση προϊόντων και υπηρεσιών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_8_role-871100b" xlink:to="label_ifrs_8_role-871100b"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_8_role-871100c" xlink:label="ifrs_8_role-871100c"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_8_role-871100c">[871100c] Σημειώσεις - Λειτουργικοί τομείς + Γνωστοποίηση γεωγραφικών περιοχών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_8_role-871100c" xlink:to="label_ifrs_8_role-871100c"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_8_role-871100d" xlink:label="ifrs_8_role-871100d"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_8_role-871100d">[871100d] Σημειώσεις - Λειτουργικοί τομείς + Γνωστοποίηση σημαντικών πελατών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_8_role-871100d" xlink:to="label_ifrs_8_role-871100d"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_axi_role" xlink:label="ifrs_axi_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_axi_role">Επικυρώσεις άθροισης άξονα</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_axi_role" xlink:to="label_ifrs_axi_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_cro_role" xlink:label="ifrs_cro_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_cro_role">Διασταυρούμενες επικυρώσεις περιόδου</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_cro_role" xlink:to="label_ifrs_cro_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs_eps_role" xlink:label="ifrs_eps_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs_eps_role">Επικυρώσεις κερδών ανά μετοχή</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_eps_role" xlink:to="label_ifrs_eps_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-901000" xlink:label="ifrs-dim_role-901000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs-dim_role-901000">[901000] Άξονας - Αναδρομική εφαρμογή και αναδρομική αναδιατύπωση</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-901000" xlink:to="label_ifrs-dim_role-901000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-901100" xlink:label="ifrs-dim_role-901100"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs-dim_role-901100">[901100] Άξονας - Παρέκκλιση από απαίτηση ΔΠΧΑ</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-901100" xlink:to="label_ifrs-dim_role-901100"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-901500" xlink:label="ifrs-dim_role-901500"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs-dim_role-901500">[901500] Άξονας - Ημερομηνία δημιουργίας</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-901500" xlink:to="label_ifrs-dim_role-901500"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-903000" xlink:label="ifrs-dim_role-903000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs-dim_role-903000">[903000] Άξονας - Συνεχιζόμενες και διακοπείσες δραστηριότητες</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-903000" xlink:to="label_ifrs-dim_role-903000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-904000" xlink:label="ifrs-dim_role-904000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs-dim_role-904000">[904000] Άξονας - Περιουσιακά στοιχεία και υποχρεώσεις που κατέχονται προς πώληση</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-904000" xlink:to="label_ifrs-dim_role-904000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-913000" xlink:label="ifrs-dim_role-913000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs-dim_role-913000">[913000] Άξονας - Ενοποιημένες και Ατομικές Οικονομικές Καταστάσεις</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-913000" xlink:to="label_ifrs-dim_role-913000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-914000" xlink:label="ifrs-dim_role-914000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs-dim_role-914000">[914000] Άξονας — Νόμισμα στο οποίο απεικονίζεται η πληροφόρηση</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-914000" xlink:to="label_ifrs-dim_role-914000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#ifrs-dim_role-915000" xlink:label="ifrs-dim_role-915000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_ifrs-dim_role-915000">[915000] Άξονας — Σωρευτικό αποτέλεσμα κατά την ημερομηνία αρχικής εφαρμογής</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-915000" xlink:to="label_ifrs-dim_role-915000"/>
+    <link:loc xlink:type="locator" xlink:href="esef_all.xsd#sic_29_role-832900" xlink:label="sic_29_role-832900"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="el" xlink:label="label_sic_29_role-832900">[832900] Σημειώσεις - Συμφωνίες παραχώρησης δικαιώματος παροχής υπηρεσιών</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="sic_29_role-832900" xlink:to="label_sic_29_role-832900"/>
+  </gen:link>
+</link:linkbase>

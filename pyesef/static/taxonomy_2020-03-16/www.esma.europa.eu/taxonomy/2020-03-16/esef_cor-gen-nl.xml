@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?officialURI http://www.esma.europa.eu/taxonomy/2020-03-16/esef_cor-gen-nl.xml?>
+<?taxonomy-version 1.0.0?>
+<?taxonomy-date 2020-03-16?>
+<link:linkbase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gen="http://xbrl.org/2008/generic" xmlns:label="http://xbrl.org/2008/label" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd http://www.w3.org/1999/xlink http://www.xbrl.org/2003/xlink-2003-12-31.xsd http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd">
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/link" xlink:type="simple" xlink:href="http://www.xbrl.org/2008/generic-link.xsd#standard-link-role"/>
+  <link:roleRef roleURI="http://www.xbrl.org/2008/role/label" xlink:type="simple" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#standard-label"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:type="simple" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#element-label"/>
+  <gen:link xlink:type="extended" xlink:role="http://www.xbrl.org/2008/role/link">
+    <link:loc xlink:type="locator" xlink:href="esef_cor.xsd#esef_con_role" xlink:label="esef_con_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_esef_con_role">Context validations</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="esef_con_role" xlink:to="label_esef_con_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_cor.xsd#esef_fac_role" xlink:label="esef_fac_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_esef_fac_role">Fact and footnotes validations</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="esef_fac_role" xlink:to="label_esef_fac_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_cor.xsd#esef_man_role" xlink:label="esef_man_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_esef_man_role">Mandatory mark-up validations</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="esef_man_role" xlink:to="label_esef_man_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_cor.xsd#esef_role-999999" xlink:label="esef_role-999999"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_esef_role-999999">[999999] Posten die niet dimensionaal zijn gekwalificeerd</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="esef_role-999999" xlink:to="label_esef_role-999999"/>
+    <link:loc xlink:type="locator" xlink:href="esef_cor.xsd#ifrs_equ_role" xlink:label="ifrs_equ_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_ifrs_equ_role">Fact equivalence validations</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_equ_role" xlink:to="label_ifrs_equ_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_cor.xsd#ifrs_neg1_role" xlink:label="ifrs_neg1_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_ifrs_neg1_role">Negative fact validations 1</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_neg1_role" xlink:to="label_ifrs_neg1_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_cor.xsd#ifrs_neg2_role" xlink:label="ifrs_neg2_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_ifrs_neg2_role">Negative fact validations 2</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_neg2_role" xlink:to="label_ifrs_neg2_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_cor.xsd#ifrs_per_role" xlink:label="ifrs_per_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_ifrs_per_role">Percentage waarschuwingen</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_per_role" xlink:to="label_ifrs_per_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_cor.xsd#ifrs_pos_role" xlink:label="ifrs_pos_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_ifrs_pos_role">Positive fact validations</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_pos_role" xlink:to="label_ifrs_pos_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_cor.xsd#ifrs_tech_role" xlink:label="ifrs_tech_role"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_ifrs_tech_role">Technical validations</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs_tech_role" xlink:to="label_ifrs_tech_role"/>
+    <link:loc xlink:type="locator" xlink:href="esef_cor.xsd#ifrs-dim_role-990000" xlink:label="ifrs-dim_role-990000"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_ifrs-dim_role-990000">[990000] As - Wanbetalingen</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="ifrs-dim_role-990000" xlink:to="label_ifrs-dim_role-990000"/>
+    <link:loc xlink:type="locator" xlink:href="http://www.esma.europa.eu/taxonomy/ext/technical.xsd#BlockDefaultUseOfLineItemsScenario" xlink:label="BlockDefaultUseOfLineItemsScenario"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_BlockDefaultUseOfLineItemsScenario">Voorkomt standaardgebruik van posten (wanneer niet uitdrukkelijk toegelaten) voor een scenario</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="BlockDefaultUseOfLineItemsScenario" xlink:to="label_BlockDefaultUseOfLineItemsScenario"/>
+    <link:loc xlink:type="locator" xlink:href="http://www.esma.europa.eu/taxonomy/ext/technical.xsd#BlockDefaultUseOfLineItemsSegment" xlink:label="BlockDefaultUseOfLineItemsSegment"/>
+    <label:label xlink:type="resource" xlink:role="http://www.xbrl.org/2008/role/label" xml:lang="nl" xlink:label="label_BlockDefaultUseOfLineItemsSegment">Voorkomt standaardgebruik van posten (wanneer niet uitdrukkelijk toegelaten) voor een segment</label:label>
+    <gen:arc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="BlockDefaultUseOfLineItemsSegment" xlink:to="label_BlockDefaultUseOfLineItemsSegment"/>
+  </gen:link>
+</link:linkbase>
