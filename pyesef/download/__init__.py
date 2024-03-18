@@ -10,6 +10,7 @@ import requests
 
 from pyesef.download.api_extractor import api_to_filing_record_list
 from pyesef.log import LOGGER
+from pyesef.utils.decorators import retry
 
 from .common import Filing
 
@@ -25,6 +26,7 @@ def is_valid_zip(file_path: str) -> bool:
         return False
 
 
+@retry()
 def _download_and_verify_package(filing: Filing) -> None:
     """
     Download a package and store it the archive-folder.
