@@ -235,8 +235,8 @@ class ReadFiling:
                 filer_role = role
 
         if filer_role == "":
-            raise PyEsefError(
-                f"Filter role {name} not found in {model_xbrl.fileSource.baseurl}"
+            model_xbrl.modelManager.cntlr.addToLog(
+                f"Unable to find link role for {name}", logging.WARNING
             )
 
         clean_role = filer_role.split("/")[-1]
