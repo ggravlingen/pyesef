@@ -72,7 +72,7 @@ class EsefData:
             self.level_1 == StatementName.BALANCE_SHEET.value
             # We need to catch these separately
             or self.wider_anchor_or_xml_name in ("Assets", "EquityAndLiabilities")
-        ) and self.membership is None
+        ) and self.membership is None  # Avoid storing duplicates in the balance sheet
 
     @property
     def is_cash_flow(self) -> bool:
