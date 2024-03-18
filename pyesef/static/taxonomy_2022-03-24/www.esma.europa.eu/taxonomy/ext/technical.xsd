@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+	targetNamespace="http://www.esma.europa.eu/taxonomy/ext/technical" 
+	xmlns:link="http://www.xbrl.org/2003/linkbase" 
+	xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+	xmlns:gen="http://xbrl.org/2008/generic" 
+	xmlns:xbrldt="http://xbrl.org/2005/xbrldt" 
+	xmlns:esma_technical="http://www.esma.europa.eu/taxonomy/ext/technical" 
+	xmlns:label="http://xbrl.org/2008/label" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified" 
+	attributeFormDefault="unqualified">
+	<import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" />
+	<import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" />
+	<annotation>
+		<appinfo>
+			<link:roleType roleURI="http://www.esma.europa.eu/xbrl/role/ext/BlockDefaultUseOfLineItemsSegment" id="BlockDefaultUseOfLineItemsSegment">
+				<link:definition>Prevents default use of line items (i.e. when not explicitly allowed) for segment</link:definition>
+				<link:usedOn>link:definitionLink</link:usedOn>
+			</link:roleType>
+			<link:roleType roleURI="http://www.esma.europa.eu/xbrl/role/ext/BlockDefaultUseOfLineItemsScenario" id="BlockDefaultUseOfLineItemsScenario">
+				<link:definition>Prevents default use of line items (i.e. when not explicitly allowed) for scenario</link:definition>
+				<link:usedOn>link:definitionLink</link:usedOn>
+			</link:roleType>
+		</appinfo>
+	</annotation>
+	<element name="NullDimension" abstract="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="instant" nillable="true" id="esma_technical_NullDimension"/>
+	<element name="NullHypercube" abstract="true" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" xbrli:periodType="instant" nillable="true" id="esma_technical_NullHypercube"/>
+	<element name="NullItems" abstract="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="instant" nillable="true" id="esma_technical_NullItems"/>	
+	<complexType name="guidanceItemType">
+		<simpleContent>
+			<restriction base="xbrli:stringItemType"/>
+		</simpleContent>
+	</complexType>	
+</schema>
