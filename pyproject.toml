@@ -31,7 +31,7 @@ dependencies    = [
 dev = [
   "black==24.2.0",
   "coverage==7.4.3",
-  "mypy==1.8.0",
+  "mypy==1.9.0",
   "pre-commit==3.5.0",
   "pylint==3.0.2",
   "pytest==8.0.2",
