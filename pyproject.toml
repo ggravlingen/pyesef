@@ -29,17 +29,17 @@ dependencies    = [
 ]
 [project.optional-dependencies]
 dev = [
-  "black==24.2.0",
-  "coverage==7.4.3",
-  "mypy==1.8.0",
+  "black==24.3.0",
+  "coverage==7.4.4",
+  "mypy==1.9.0",
   "pre-commit==3.5.0",
-  "pylint==3.0.2",
+  "pylint==3.1.0",
   "pytest==8.0.2",
-  "pytest-cov==4.1.0",
-  "pandas-stubs==2.2.0.240218",
+  "pytest-cov==5.0.0",
+  "pandas-stubs==2.2.1.240316",
   "pytest-timeout==2.2.0",
-  "ruff==0.3.2",
-  "types-openpyxl==3.1.0.20240311",
+  "ruff==0.3.4",
+  "types-openpyxl==3.1.0.20240331",
   "types-requests==2.31.0.20240218",
 ]
 
