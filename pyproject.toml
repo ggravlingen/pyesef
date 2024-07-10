@@ -47,10 +47,13 @@ dev = [
 platforms = ["any"]
 zip-safe  = false
 include-package-data = true
-packages = ["pyesef"]
+
+[tool.setuptools.packages.find]
+include = ["pyesef", "pyesef.*"]
+exclude = ["script", "tests"]
 
 [tool.setuptools.package-data]
-"pyesef" = ["py.typed"]
+"pyesef" = ["py.typed", "static/statement_definition.json"]
 
 [tool.black]
 target-version = ["py311"]
