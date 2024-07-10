@@ -47,7 +47,6 @@ dev = [
 platforms = ["any"]
 zip-safe  = false
 include-package-data = true
-packages = ["pyesef"]
 
 [tool.setuptools.packages.find]
 include = ["pyesef", "pyesef.*"]
