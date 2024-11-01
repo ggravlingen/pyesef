@@ -39,7 +39,7 @@ dev = [
   "pandas-stubs==2.2.3.241009",
   "pytest-timeout==2.3.1",
   "ruff==0.7.1",
-  "types-openpyxl==3.1.5.20240918",
+  "types-openpyxl==3.1.5.20241025",
   "types-requests==2.32.0.20241016",
 ]
 
