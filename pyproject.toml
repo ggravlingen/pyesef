@@ -34,7 +34,7 @@ dev = [
   "mypy==1.13.0",
   "pre-commit==4.0.1",
   "pylint==3.3.1",
-  "pytest==8.3.3",
+  "pytest==8.3.4",
   "pytest-cov==6.0.0",
   "pandas-stubs==2.2.3.241126",
   "pytest-timeout==2.3.1",
