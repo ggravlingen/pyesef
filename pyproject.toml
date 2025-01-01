@@ -33,7 +33,7 @@ dev = [
   "coverage==7.6.8",
   "mypy==1.14.1",
   "pre-commit==4.0.1",
-  "pylint==3.3.1",
+  "pylint==3.3.3",
   "pytest==8.3.4",
   "pytest-cov==6.0.0",
   "pandas-stubs==2.2.3.241126",
