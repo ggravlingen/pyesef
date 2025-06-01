@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools==80.1.0", "wheel~=0.45.1", "toml"]
+requires = ["setuptools==80.9.0", "wheel~=0.45.1", "toml"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -30,17 +30,17 @@ dependencies    = [
 [project.optional-dependencies]
 dev = [
   "black==25.1.0",
-  "coverage==7.8.0",
-  "mypy==1.15.0",
+  "coverage==7.8.2",
+  "mypy==1.16.0",
   "pre-commit==4.2.0",
-  "pylint==3.3.6",
+  "pylint==3.3.7",
   "pytest==8.3.5",
   "pytest-cov==6.1.1",
-  "pandas-stubs==2.2.3.250308",
-  "pytest-timeout==2.3.1",
-  "ruff==0.11.7",
+  "pandas-stubs==2.2.3.250527",
+  "pytest-timeout==2.4.0",
+  "ruff==0.11.12",
   "types-openpyxl==3.1.5.20250306",
-  "types-requests==2.32.0.20250328",
+  "types-requests==2.32.0.20250515",
 ]
 
 [tool.setuptools]
