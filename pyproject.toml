@@ -38,7 +38,7 @@ dev = [
   "pytest-cov==6.1.1",
   "pandas-stubs==2.2.3.250527",
   "pytest-timeout==2.4.0",
-  "ruff==0.11.12",
+  "ruff==0.12.1",
   "types-openpyxl==3.1.5.20250602",
   "types-requests==2.32.0.20250515",
 ]
