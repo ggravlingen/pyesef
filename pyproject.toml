@@ -22,7 +22,7 @@ classifiers=[
 dependencies    = [
   "arelle-release==2.37.28",
   "colorlog==6.9.0",
-  "lxml==5.4.0",
+  "lxml==6.0.0",
   "pandas==2.3.0",
   "requests==2.32.4",
   "tinycss2==1.4.0",
