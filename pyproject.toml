@@ -36,7 +36,7 @@ dev = [
   "pylint==3.3.7",
   "pytest==8.4.1",
   "pytest-cov==6.2.1",
-  "pandas-stubs==2.2.3.250527",
+  "pandas-stubs==2.3.0.250703",
   "pytest-timeout==2.4.0",
   "ruff==0.12.7",
   "types-openpyxl==3.1.5.20250602",
