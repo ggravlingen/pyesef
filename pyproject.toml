@@ -30,7 +30,7 @@ dependencies    = [
 [project.optional-dependencies]
 dev = [
   "black==25.9.0",
-  "coverage==7.10.7",
+  "coverage==7.11.0",
   "mypy==1.17.1",
   "pre-commit==4.3.0",
   "pylint==3.3.8",
