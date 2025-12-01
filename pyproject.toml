@@ -20,7 +20,7 @@ classifiers=[
     "Intended Audience :: Financial and Insurance Industry",
 ]
 dependencies    = [
-  "arelle-release==2.37.42",
+  "arelle-release==2.37.72",
   "colorlog==6.10.1",
   "lxml==5.4.0",
   "pandas==2.3.3",
