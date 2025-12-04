@@ -26,7 +26,7 @@ jobs:
       python_cache_key: ${{ steps.generate_python_cache_key.outputs.key }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.0
+        uses: actions/checkout@v6.0.1
 
       - name: Filter for core changes
         uses: dorny/paths-filter@v3.0.2
@@ -61,7 +61,7 @@ jobs:
         python-version: ${{ fromJSON(needs.info.outputs.python_versions) }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.0
+        uses: actions/checkout@v6.0.1
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v6.1.0
@@ -99,7 +99,7 @@ jobs:
     if: needs.info.outputs.run_pipeline == 'true'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.0
+        uses: actions/checkout@v6.0.1
         with:
           fetch-depth: "2"
       - name: Set up Python ${{ matrix.python-version }}
@@ -146,7 +146,7 @@ jobs:
     if: needs.info.outputs.run_pipeline == 'true'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.0
+        uses: actions/checkout@v6.0.1
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v6.1.0
