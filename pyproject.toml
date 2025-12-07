@@ -25,7 +25,7 @@ dependencies    = [
   "lxml==5.4.0",
   "pandas==2.3.3",
   "requests==2.32.5",
-  "tinycss2==1.4.0",
+  "tinycss2==1.5.1",
 ]
 [project.optional-dependencies]
 dev = [
