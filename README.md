@@ -1,3 +1,6 @@
+**ARCHIVED 2026-01-03**
+
+
 [![Coverage Status](https://coveralls.io/repos/github/ggravlingen/pyesef/badge.svg?branch=main)](https://coveralls.io/github/ggravlingen/pyesef?branch=main)
 
 ## pyesef
